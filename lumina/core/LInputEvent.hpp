@@ -1,5 +1,13 @@
 #pragma once
-
+/**
+ * \file LInputEvent.hpp
+ * This file is part of the Lumina Graphics Framework.
+ * 
+ * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
+ * 
+ * This file defines some enums and structs used for input events (mouse
+ * and keyboard).
+ */
 #include "LKeyCode.hpp"
 
 #include <cstring>
