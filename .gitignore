@@ -1,0 +1,7 @@
+obj
+test
+*.sublime-workspace
+
+
+lumina/lumina.a
+lumina/obj
