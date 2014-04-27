@@ -6,13 +6,20 @@
  * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
  * 
  * This file is included by almost every file in the engine.
- * This file MUST:
- *  - TODO -
+ * This file MUST define a class lumina::config::CommonBase 
+ * (usually done by typedef), which implements a lumina base.
+ * See L/core/LNullBase.hpp for more information.
+ * In the default version of this file you can choose between two 
+ * given implementations. See each file (L/core/LContextBase.hpp,
+ * L/core/LSingleBase.hpp) for additional information about those 
+ * implementations.
+ * You can also use LNullBase as CommonBase, if you wish to disable some 
+ * functionality.
  */
-#define USE_CONTEXT true
+#define BASE_PROXY_USE_CONTEXT true
 
 // if the service context is used, there is one service for each context
-#if USE_CONTEXT
+#if BASE_PROXY_USE_CONTEXT
   #include "../core/LContextBase.hpp"
 
   namespace lumina {
@@ -32,4 +39,4 @@
   }
 
 #endif
-#undef USE_CONTEXT
+#undef BASE_PROXY_USE_CONTEXT

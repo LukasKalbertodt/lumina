@@ -16,8 +16,6 @@ using namespace lumina;
 using namespace std;
 
 
-// #include "lumina/util/LColor.hpp"
-// #include "lumina/util/LTypeConversion.hpp"
 
 LEventResult onEvent(const LInputEvent& e) {
   // cout << "Event :)" << endl;
