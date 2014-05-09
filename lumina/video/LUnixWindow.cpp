@@ -60,23 +60,23 @@ void LUnixWindow::open() {
 
   glfwMakeContextCurrent(m_window);
 
-  log("[Window] Opened new GLFW window: Success! (Handle: ", m_window, ")");
+  log("[LWindow] Opened new GLFW window: Success! (Handle: ", m_window, ")");
 }
 
 void LUnixWindow::close() {
   if(m_window) {
     glfwDestroyWindow(m_window);
     s_eventReceiver.erase(m_window);
-    log("[Window] Destroyed GLFW window. (Handle: ", m_window, ")");
+    log("[LWindow] Destroyed GLFW window. (Handle: ", m_window, ")");
     m_window = nullptr;
 
     if(s_eventReceiver.empty()) {
       glfwTerminate();
-      log("[Window] Last window was destroyed, called glfwTerminate: Success!");
+      log("[LWindow] Last window was destroyed, called glfwTerminate: Success!");
     }
   }
   else {
-    logWarning("[Window] Attempting to close a GLFW window, "
+    logWarning("[LWindow] Attempting to close a GLFW window, "
       "which is not open!");
   }
 }

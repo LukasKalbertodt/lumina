@@ -50,7 +50,7 @@ public:
   template <typename... Ts>
   void logWarning(Ts... msgs) {
     if(m_stdIO) {
-      logStdIO(LTFG::Yellow, getTimeString(), "WARNING: ", msgs..., LTC::Reset);
+      logStdIO(LTFG::Yellow, getTimeString(), " WARNING: ", msgs..., LTC::Reset);
       std::cout << std::endl;
     }
 
@@ -70,7 +70,7 @@ public:
   template <typename... Ts>
   void logError(Ts... msgs) {
     if(m_stdIO) {
-      logStdIO(LTFG::Red, getTimeString(), "ERROR: ", msgs..., LTC::Reset);
+      logStdIO(LTFG::Red, getTimeString(), " ERROR: ", msgs..., LTC::Reset);
       std::cout << std::endl;
     }
 

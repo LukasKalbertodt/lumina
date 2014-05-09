@@ -4,7 +4,6 @@
 #include "LVertexLayout.hpp"
 
 #include <GL/glew.h>
-
 #include <cstddef>
 #include <memory>
 

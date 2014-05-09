@@ -1,9 +1,11 @@
 #include "lumina/video/LWindow.hpp"
-#include "lumina/video/LDriverFactory.hpp"
+// #include "lumina/video/LDriverFactory.hpp"
 #include "lumina/util/LVector.hpp"
 #include "lumina/util/LMatrix.hpp"
 #include "lumina/video/gl/LGLVertexBuffer.hpp"
 #include "lumina/video/LRawMesh.hpp"
+#include "lumina/video/LShader.hpp"
+#include "lumina/video/LShaderSource.hpp"
 
 // #include <memory>
 // #include <string>
@@ -43,6 +45,20 @@ void windowTest() {
 
   auto screenSize = win.getSize();
   cout << "Resolution: " << screenSize << endl;
+
+
+  // Shader tests
+  LShader<LShaderType::Vertex> vs;
+  vs.compile(loadShaderFromFile("shader/test.vsh"));
+  LShader<LShaderType::Fragment> fs;
+  fs.compile(loadShaderFromFile("shader/test.fsh"));
+
+
+
+
+
+
+
 
 
   // GLuint texColor, texNormal;
