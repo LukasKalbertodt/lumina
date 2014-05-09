@@ -363,10 +363,11 @@ struct LMatrix : public LXMatrixImpl<T, R, C> {
 template <typename T, std::size_t N> 
 struct LMatrix<T, N, N> : public LXMatrixImpl<T, N, N>{
 
-  void setToIdentity() {
+  LMatrix<T, N, N>& setToIdentity() {
     for(int i = 0; i < N; ++i) {
       this->data[i][i] = T(1);
     }
+    return *this;
   }
 
   LVector<T, N> getDiagonal() const {
@@ -377,10 +378,11 @@ struct LMatrix<T, N, N> : public LXMatrixImpl<T, N, N>{
     return out;
   }
 
-  void setDiagonal(LVector<T, N> vec) {
+  LMatrix<T, N, N>& setDiagonal(LVector<T, N> vec) {
     for(int i = 0; i < N; ++i) {
       this->data[i][i] = vec.data[i];
     }
+    return *this;
   }
 
   T determinant() const {
