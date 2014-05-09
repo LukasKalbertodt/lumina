@@ -44,12 +44,9 @@ public:
   void fillVertexData(const void* src,
                       std::size_t size,
                       std::size_t offset = 0);
-  // void copyVertexData(const void* src,
-  //                     std::size_t size,
-  //                     std::size_t offset = 0);
+
   // void* lock();
   // void unlock();
-  // void SetStreamSource();
 
 private:
   GLuint m_vertexHandle;
@@ -57,9 +54,10 @@ private:
   GLuint m_vertexArrayObject;
   std::size_t m_vertexCount;
   std::size_t m_indexCount;
-  LVertexLayout m_vertexLayout;
+  LVertexLayout m_vertexLayout;   // TODO: not needed atm...
 
-  void createVAO();
+  void bindVAO();
+  void bindVBO();
 };
 
 } // namespace lumina

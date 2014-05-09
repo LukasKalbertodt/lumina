@@ -5,9 +5,10 @@
 namespace lumina {
 
 LRawMesh::~LRawMesh() {
-  // glDeleteBuffers does nothing if second argument is 0
+  // glDelete* does nothing if second argument is 0
   glDeleteBuffers(1, &m_vertexHandle);
   glDeleteBuffers(1, &m_indexHandle);
+  glDeleteVertexArrays(1, &m_vertexArrayObject);
 }
 
 
@@ -31,8 +32,8 @@ void LRawMesh::createVertexBuffer(std::size_t vertexCount) {
 
 void LRawMesh::setVertexLayout(LVertexLayout layout) {
   m_vertexLayout = layout;
-  glBindVertexArray(m_vertexArrayObject);
-  glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
+  bindVAO();
+  bindVBO();
   m_vertexLayout.apply();
 
   auto err = glGetError();
@@ -47,7 +48,7 @@ void LRawMesh::fillVertexData(const void* src,
                               std::size_t size,
                               std::size_t offset) {
   // bind buffer and copy data
-  glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
+  bindVBO();
   glBufferSubData(GL_ARRAY_BUFFER, offset, size, src);
 
   // check for errors
@@ -58,11 +59,19 @@ void LRawMesh::fillVertexData(const void* src,
   }
 }
 
-void LRawMesh::createVAO() {
+void LRawMesh::bindVAO() {
   if(m_vertexArrayObject != 0) {
     glGenVertexArrays(1, &m_vertexArrayObject);
   }
+  glBindVertexArray(m_vertexArrayObject);
 }
 
+void LRawMesh::bindVBO() {
+  if(m_vertexHandle == 0) {
+    logError("[LRawMesh] Attempt to bind VBO, but it was never created!");
+    throw LGLException("Attempt to bind VBO, but it was never created");
+  }
+  glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
+}
 
 } // namespace lumina

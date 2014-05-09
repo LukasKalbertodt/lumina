@@ -16,29 +16,10 @@
 using namespace lumina;
 using namespace std;
 
-
-
-LEventResult onEvent(const LInputEvent& e) {
-  // cout << "Event :)" << endl;
-  if(e.type == LInputType::KeyInput &&
-      e.keyInput.type == LKeyEventType::Character) {
-    cout << e.keyInput.c << endl;
-  }
-
-  if(e.type == LInputType::MouseInput &&
-      e.mouseInput.type == LMouseEventType::LButtonPressed) {
-    cout << "LÄFT" << endl;
-  }
-
-  return LEventResult::Skipped;
-}
-
 void windowTest();
-
 
 int main() {
   windowTest();
-
 }
 
 void windowTest() {
@@ -46,10 +27,8 @@ void windowTest() {
 
   LWindow win("Hai :3");
   win.setVersionHint(3, 3);
-  auto a = win.addEventCallback(onEvent);
-  // win.removsceEventCallback(a);
   win.addEventCallback([&](const LInputEvent& e) {
-    if(e.keyInput.c == 'x') { 
+    if(e.keyInput.key == LKeyCode::Escape) { 
       run = false; 
       return LEventResult::Processed;
     }
@@ -63,7 +42,7 @@ void windowTest() {
 
 
   auto screenSize = win.getSize();
-  cout << screenSize << endl;
+  cout << "Resolution: " << screenSize << endl;
 
 
   // GLuint texColor, texNormal;
@@ -106,60 +85,17 @@ void windowTest() {
      0.0f,  1.0f, 0.0f,
   };
 
-  // GLuint VertexArrayID;
-  // glGenVertexArrays(1, &VertexArrayID);
-  // glBindVertexArray(VertexArrayID);
-
-  // cout << "VAO: " << VertexArrayID << endl;
-
-  // LGLVertexBuffer buf;
-  // buf.create(3, 12);
-  // buf.copyData(vertexData, sizeof(vertexData));
-  // auto handle = buf.getHandle();
-
-  // glBindBuffer(GL_ARRAY_BUFFER, handle);
-  // glVertexAttribPointer(
-  //    0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
-  //    3,                  // size
-  //    GL_FLOAT,           // type
-  //    GL_FALSE,           // normalized?
-  //    0,                  // stride
-  //    (void*)0            // array buffer offset
-  // );
-
-  // glEnableVertexAttribArray(0);
 
   LRawMesh mesh;
   mesh.createVertexBuffer(9);
   mesh.fillVertexData(vertexData, sizeof(vertexData));
-  // mesh.setVertexLayout(createVertexLayout<LVertexComponent::Pos3D>());
   mesh.setVertexLayout(createVertexLayout());
 
   while(win.isValid() && run) {
-    win.update();
-
-
-    // glEnableVertexAttribArray(0);
-    
+    win.update();    
      
     // Draw the triangle !
-    glDrawArrays(GL_TRIANGLES, 0, 3); // Starting from vertex 0; 3 vertices total -> 1 triangle
-     
-    // glDisableVertexAttribArray(0);
-
-    // glBegin(GL_QUADS);
-    //   glTexCoord2f(0.f, 1.f); glVertex2f(-0.5f, -0.5f);
-    //   glTexCoord2f(1.f, 1.f); glVertex2f(1.f, -1.f);
-    //   glTexCoord2f(1.f, 0.f); glVertex2f(1.f, 1.f);
-    //   glTexCoord2f(0.f, 0.f); glVertex2f(-1.f, 1.f);
-    // glEnd();
-
-    // glBegin(GL_QUADS);
-    //   glVertex2f(-0.5f, -0.5f);
-    //   glVertex2f(1.f, -1.f);
-    //   glVertex2f(1.f, 1.f);
-    //   glVertex2f(-1.f, 1.f);
-    // glEnd();
+    glDrawArrays(GL_TRIANGLES, 0, 3); 
 
     cnt->swapBuffer();
   }
