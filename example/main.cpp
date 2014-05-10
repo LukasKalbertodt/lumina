@@ -6,6 +6,7 @@
 #include "lumina/video/LRawMesh.hpp"
 #include "lumina/video/LShader.hpp"
 #include "lumina/video/LShaderSource.hpp"
+#include "lumina/video/LPipeline.hpp"
 
 // #include <memory>
 // #include <string>
@@ -13,7 +14,7 @@
 #include <iostream>
 #include <vector>
 
-#include <GL/glew.h>
+// #include <GL/glew.h>
 
 using namespace lumina;
 using namespace std;
@@ -29,6 +30,7 @@ void windowTest() {
 
   LWindow win("Hai :3");
   win.setVersionHint(3, 3);
+  // win.setVersionHint(1, 1);
   win.addEventCallback([&](const LInputEvent& e) {
     if(e.keyInput.key == LKeyCode::Escape) { 
       run = false; 
@@ -43,15 +45,11 @@ void windowTest() {
   cnt->makeCurrent();
 
 
-  auto screenSize = win.getSize();
-  cout << "Resolution: " << screenSize << endl;
+  // auto screenSize = win.getSize();
+  // cout << "Resolution: " << screenSize << endl;
 
 
-  // Shader tests
-  LShader<LShaderType::Vertex> vs;
-  vs.compile(loadShaderFromFile("shader/test.vsh"));
-  LShader<LShaderType::Fragment> fs;
-  fs.compile(loadShaderFromFile("shader/test.fsh"));
+
 
 
 
@@ -106,6 +104,15 @@ void windowTest() {
   mesh.createVertexBuffer(9);
   mesh.fillVertexData(vertexData, sizeof(vertexData));
   mesh.setVertexLayout(createVertexLayout());
+
+
+  // Shader tests
+  LShader<LShaderType::Vertex> vs;
+  vs.compile(loadShaderFromFile("shader/test.vsh"));
+  LShader<LShaderType::Fragment> fs;
+  fs.compile(loadShaderFromFile("shader/test.fsh"));
+  LPipelineContainer p(vs, fs);
+  p.use();
 
   while(win.isValid() && run) {
     win.update();    

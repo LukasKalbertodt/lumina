@@ -1,11 +1,13 @@
 #pragma once
 
+#include <cstdint>
 #include <functional>
 #include <map>
 #include <memory>
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <utility>
 
 #include "../config/BaseProxy.hpp"
 #include "../core/LInputEvent.hpp"
@@ -23,7 +25,7 @@ class LUnixWindow : public config::CommonBase {
 public:
   LUnixWindow(std::string title = "Lumina Application",
               Vec2i size = Vec2i(600, 400))
-    : m_window(nullptr), m_size(size), m_title(title) {}
+    : m_window(nullptr), m_size(size), m_version(1, 1), m_title(title) {}
 
   ~LUnixWindow();
 
@@ -31,7 +33,9 @@ public:
   using CallbackAccessor = std::vector<EventCallback>::size_type;
 
   void setTitle(std::string title);
-  void setVersionHint(int major, int minor = 0);
+  void setVersionHint(int major, int minor = 0) {
+    m_version = std::pair<std::int16_t, std::int16_t>(major, minor);
+  }
   void resize(Vec2i size);
   Vec2i getSize();
   LRenderContext* getRenderContext(LDriverType type);
@@ -53,6 +57,7 @@ public:
 private:
   GLFWwindow* m_window;
   Vec2i m_size;
+  std::pair<std::int16_t, std::int16_t> m_version;
   std::string m_title;  // TODO: check if we need this
   std::unique_ptr<LUnixGLRenderContext> m_renderContext;
   std::vector<LInputEvent> m_eventQueue;

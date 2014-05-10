@@ -17,11 +17,11 @@ ifeq ($(ASAN), 1)
 endif
 
 
-.PHONY: makelumina clean all clear new fancy
+.PHONY: makelumina clean all clear new fancy test
 
-all: makelumina test
+all: test
 
-test: $(GAME_OBJ) lumina/lumina.a
+test: $(GAME_OBJ) 
 	$(CXX) -o $@ $(GAME_OBJ) lumina/lumina.a $(LDFLAGS)
 
 makelumina: 

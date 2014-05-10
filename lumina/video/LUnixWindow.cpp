@@ -33,20 +33,36 @@ LRenderContext* LUnixWindow::getRenderContext(LDriverType type) {
 }
 
 void LUnixWindow::open() {
-   // Init GLFW
+   // Init GLFW (TODO: do this just once)
   if(!glfwInit()) {
-    logError("GLFW initialization failed!");
+    logError("[LWindow] GLFW initialization failed!");
     throw runtime_error("GLFW initialization failed");
   }
 
-  // Create window
+  // set window hints
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, m_version.first);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, m_version.second);
+  // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+
+  // Create window
   m_window
       = glfwCreateWindow(m_size.x, m_size.y, m_title.c_str(), nullptr, nullptr);
   if(!m_window) {
     // glfwTerminate();  // TODO: cleanup neccessary?
-    logError("GLFW window creation failed");
+    logError("[LWindow] GLFW window creation failed");
     throw runtime_error("GLFW window creation failed");
+  }
+
+  // check attributes
+  int major = glfwGetWindowAttrib(m_window, GLFW_CONTEXT_VERSION_MAJOR);
+  int minor = glfwGetWindowAttrib(m_window, GLFW_CONTEXT_VERSION_MINOR);
+  if(major != m_version.first || minor != m_version.second) {
+    logWarning("[LWindow] Actual version <",
+               major, ".", minor,
+               "> differs from version hint <",
+               m_version.first, ".", m_version.second,
+               ">!");
   }
 
   // add to list of event receiving windows
@@ -86,11 +102,6 @@ void LUnixWindow::setTitle(std::string title) {
   if(m_window) {
     glfwSetWindowTitle(m_window, title.c_str());
   }
-}
-
-void LUnixWindow::setVersionHint(int major, int minor) {
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
 }
 
 void LUnixWindow::resize(Vec2i size) {

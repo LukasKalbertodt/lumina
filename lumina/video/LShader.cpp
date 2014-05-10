@@ -24,6 +24,9 @@ void LShader<LShaderType::Fragment>::createShaderObject() {
 
 template <LShaderType Type>
 void LShader<Type>::compile(LShaderSource source) {
+  // assign filename
+  m_filename = source.filename;
+
   // create shader object
   createShaderObject();
 
@@ -42,12 +45,12 @@ void LShader<Type>::compile(LShaderSource source) {
     glGetShaderiv(m_handle, GL_INFO_LOG_LENGTH, &logLength);
     vector<char> compileLog(logLength);
     glGetShaderInfoLog(m_handle, logLength, nullptr, compileLog.data());
-    logError("[LShader] Could not compile shader <", source.filename, "> ->");
+    logError("[LShader] Could not compile shader <", m_filename, "> ->");
     logError("[LShader] ", compileLog.data());
     throw LGLException("Could not compile shader");
   }
 
-  log("[LShader] Shader <", source.filename, "> was successfully compiled.");
+  log("[LShader] Shader <", m_filename, "> was successfully compiled.");
 }
 
 template <>

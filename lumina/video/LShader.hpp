@@ -23,6 +23,8 @@ public:
   // descructor
   ~LShader();
 
+  GLuint getHandle() { return m_handle; }
+  std::string getFilename() { return m_filename; }
 
   void compile(LShaderSource source);
   void compile(std::string code) {
@@ -31,6 +33,7 @@ public:
 
 private:
   GLuint m_handle;
+  std::string m_filename;
 
   void createShaderObject();
 };
