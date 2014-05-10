@@ -89,5 +89,5 @@ private:
 
 // traits
 namespace std {
-template <> struct is_floating_point<engine::half> : true_type {};
+template <> struct is_floating_point<lumina::half> : true_type {};
 }

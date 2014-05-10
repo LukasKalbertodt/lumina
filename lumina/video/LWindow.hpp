@@ -10,8 +10,8 @@
 #include <utility>
 
 #include "../config/BaseProxy.hpp"
-#include "../core/LInputEvent.hpp"
-#include "../core/LKeyCode.hpp"
+#include "../input/LInputEvent.hpp"
+#include "../input/LKeyCode.hpp"
 #include "../util/LVector.hpp"
 #include "LRenderContext.hpp"
 

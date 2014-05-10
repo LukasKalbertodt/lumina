@@ -1,14 +1,14 @@
-GAME_CPP := $(wildcard example/*.cpp)
-GAME_OBJ := $(GAME_CPP:%.cpp=obj/%.o)
+EXAMPLE_CPP := $(wildcard example/*.cpp)
+EXAMPLE_OUT := $(EXAMPLE_CPP:example/%.cpp=%.bin)
 
-CXXFLAGS := -Wall -std=c++1y -I.
+CXXFLAGS := -Wall -std=c++11 -I.
 CXX := clang++
 LDFLAGS := -lGLEW -lglfw3 -lXi -lXrandr
 
-ifeq ($(DEBUG), 1)
-  CXXFLAGS += -g
+ifeq ($(RELEASE),1)
+  CXXFLAGS += -O3
 else
-	CXXFLAGS += -O3
+	CXXFLAGS += -g
 endif
 
 ifeq ($(ASAN), 1)
@@ -17,35 +17,13 @@ ifeq ($(ASAN), 1)
 endif
 
 
-.PHONY: makelumina clean all clear new fancy test
+.PHONY: clean all clear new fancy test
 
-all: test
+all: $(EXAMPLE_OUT)
 
-test: $(GAME_OBJ) 
-	$(CXX) -o $@ $(GAME_OBJ) lumina/lumina.a $(LDFLAGS)
+%.bin: example/%.cpp lumina/lumina.a
+	$(CXX) $(CXXFLAGS) -o $@ $< lumina/lumina.a $(LDFLAGS)
 
-makelumina: 
-	cd lumina && $(MAKE) DEBUG=$(DEBUG) ASAN=$(ASAN) CXX=$(CXX)
-
-lumina/lumina.a: makelumina
-
-obj/%.o: %.cpp $(ALL_HPP) | obj
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-obj:
-	mkdir obj obj/example
 
 clean:
-	rm -rf obj
-	rm -f test
-
-cleanall: clean
-	cd lumina && $(MAKE) clean
-
-clear:
-	clear
-
-fancy: clear all
-
-new: clear clean all
-newall: clear cleanall all
+	rm -f *.bin

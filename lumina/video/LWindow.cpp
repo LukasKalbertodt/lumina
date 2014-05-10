@@ -34,7 +34,7 @@ void LWindow::open() {
   // set window hints
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, m_version.first);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, m_version.second);
-  // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
   // Create window

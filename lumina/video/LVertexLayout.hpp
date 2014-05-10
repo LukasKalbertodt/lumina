@@ -18,7 +18,7 @@ enum class LVertexComponent {
   TexCoord
 };
 
-namespace intern {
+namespace internal {
 
 template <LVertexComponent C>
 struct LVertexCompTraits;
@@ -56,10 +56,8 @@ template <int Index,
           LVertexComponent Head,
           LVertexComponent... Tail>
 typename std::enable_if<sizeof...(Tail) == 0>::type applyLayoutImpl() {
-  std::cout << "end: " << Index << ", " << intern::LVertexCompTraits<Head>::size
-    << ", " << Stride << "," << Offset << std::endl;
   glVertexAttribPointer(Index,
-                        intern::LVertexCompTraits<Head>::size,
+                        internal::LVertexCompTraits<Head>::size,
                         GL_FLOAT,
                         GL_FALSE,
                         Stride * 4,
@@ -73,11 +71,8 @@ template <int Index,
           LVertexComponent Head,
           LVertexComponent... Tail>
 typename std::enable_if<sizeof...(Tail) != 0>::type applyLayoutImpl() {
-  std::cout << "middle: " << Index << ", "
-            << intern::LVertexCompTraits<Head>::size << ", " << Stride << ","
-            << Offset << std::endl;
   glVertexAttribPointer(Index,
-                        intern::LVertexCompTraits<Head>::size,
+                        internal::LVertexCompTraits<Head>::size,
                         GL_FLOAT,
                         GL_FALSE,
                         Stride * 4,
@@ -85,7 +80,7 @@ typename std::enable_if<sizeof...(Tail) != 0>::type applyLayoutImpl() {
   glEnableVertexAttribArray(Index);
   applyLayoutImpl<Index + 1,
                   Stride,
-                  Offset + intern::LVertexCompTraits<Head>::size,
+                  Offset + internal::LVertexCompTraits<Head>::size,
                   Tail...>();
 }
 
@@ -109,10 +104,8 @@ private:
 
   template<LVertexComponent... Comp>
   static void applyVertexLayout() {
-    std::cout << "Start: " << sizeof...(Comp) << ", stride: " <<
-    intern::LVertexCompHelper<Comp...>::stride << std::endl;
-    intern::applyLayoutImpl<0,
-                            intern::LVertexCompHelper<Comp...>::stride,
+    internal::applyLayoutImpl<0,
+                            internal::LVertexCompHelper<Comp...>::stride,
                             0,
                             Comp...>();
   }

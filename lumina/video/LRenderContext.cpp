@@ -1,4 +1,5 @@
 #include "LRenderContext.hpp"
+#include "LGLTools.hpp"
 #include "../core/LGLException.hpp"
 
 #include <GL/glew.h>
@@ -21,8 +22,9 @@ void LRenderContext::create() {
   // check for GL error (glew often causes one when using new context versions)
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
-    logWarning(
-      "[LRenderContext] glewInit() caused an openGL error <", err, ">.");
+    logWarning("[LRenderContext] glewInit() caused an openGL error <",
+               translateGLError(err),
+               ">.");
   }
 }
 
