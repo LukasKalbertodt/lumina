@@ -1,6 +1,12 @@
 #version 330 core
-out vec3 color;
+
+in VertexData {
+  vec3 color;
+} i;
+
+out vec4 o_color;
  
 void main(){
-    color = vec3(1,0,0);
+  o_color.xyz = i.color;
+  o_color.w = 1.0;
 }

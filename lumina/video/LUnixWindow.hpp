@@ -36,6 +36,7 @@ public:
   void setVersionHint(int major, int minor = 0) {
     m_version = std::pair<std::int16_t, std::int16_t>(major, minor);
   }
+  void setVSync(bool enable);
   void resize(Vec2i size);
   Vec2i getSize();
   LRenderContext* getRenderContext(LDriverType type);

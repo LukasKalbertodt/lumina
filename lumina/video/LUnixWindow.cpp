@@ -79,6 +79,11 @@ void LUnixWindow::open() {
   log("[LWindow] Opened new GLFW window: Success! (Handle: ", m_window, ")");
 }
 
+void LUnixWindow::setVSync(bool enable) {
+  glfwSwapInterval(enable ? 1 : 0);
+}
+
+
 void LUnixWindow::close() {
   if(m_window) {
     glfwDestroyWindow(m_window);

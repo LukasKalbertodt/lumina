@@ -30,6 +30,7 @@ void windowTest() {
 
   LWindow win("Hai :3");
   win.setVersionHint(3, 3);
+  win.setVSync(true);
   // win.setVersionHint(1, 1);
   win.addEventCallback([&](const LInputEvent& e) {
     if(e.keyInput.key == LKeyCode::Escape) { 
@@ -39,6 +40,7 @@ void windowTest() {
     return LEventResult::Skipped;
   });
   win.open();
+  win.setVSync(true);
 
   auto cnt = win.getRenderContext(LDriverType::OpenGL);
   cnt->create();
@@ -93,17 +95,30 @@ void windowTest() {
   //   1.0f,  1.0f,  0.0f,
   // };
 
+
+  // echo lumina::intern::LVertexCompHelper<
+
+
+  // static const float vertexData[] = {
+  //    -1.0f, -1.0f, 0.0f,
+  //    1.0f, -1.0f, 0.0f,
+  //    0.0f,  1.0f, 0.0f,
+  // };
+
   static const float vertexData[] = {
-     -1.0f, -1.0f, 0.0f,
-     1.0f, -1.0f, 0.0f,
-     0.0f,  1.0f, 0.0f,
+     -1.0f, -1.f, 0.0f, 1.0f, 0.f, 0.f,
+     1.0f, -1.0f, 0.0f, 0.f, 1.f, 0.f,
+     0.0f,  1.0f, 0.0f, 0.f, 0.f, 1.f
   };
 
 
   LRawMesh mesh;
-  mesh.createVertexBuffer(9);
+  mesh.createVertexBuffer(sizeof(vertexData)/4);
   mesh.fillVertexData(vertexData, sizeof(vertexData));
-  mesh.setVertexLayout(createVertexLayout());
+  mesh.setVertexLayout(
+    createVertexLayout<LVertexComponent::Pos3D, LVertexComponent::Color>());
+  // mesh.setVertexLayout(
+  //   createVertexLayout<LVertexComponent::Pos3D>());
 
 
   // Shader tests
