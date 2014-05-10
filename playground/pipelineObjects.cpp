@@ -120,8 +120,10 @@ int main() {
   TextureContainer tc;
 
   auto pipe = tiePipeline(vs, fpp, fs);
+  LXPipelineHelper<1, VertexShader, FragmentPreProcessing, FragmentShader>::
+    getPartAt(pipe).activate();
   // auto pipe2 = tiePipeline(pipe, om);
-  pipe.getPart<2>().activate();
+  // pipe.getPart<2>().activate();
   // pipe.getPart<1>().activate();
   // pipe.getPart<2>().activate();
   // pipe.activate();
