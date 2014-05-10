@@ -1,6 +1,7 @@
 obj
 test
 *.sublime-workspace
+*.bin
 
 
 lumina/lumina.a
