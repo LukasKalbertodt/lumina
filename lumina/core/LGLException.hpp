@@ -1,12 +1,12 @@
 #pragma once
 
-#include "LVideoDriverException.hpp"
+#include "LException.hpp"
 
 namespace lumina {
 
-class LGLException : public LVideoDriverException {
+class LGLException : public LException {
   // inherit constructor
-  using LVideoDriverException::LVideoDriverException;
+  using LException::LException;
 };
 
 } // namespace lumina

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "stdexcept"
+#include <stdexcept>
 
 namespace lumina {
 
-class LVideoDriverException : public std::runtime_error {
+class LException : public std::runtime_error {
   // inherit constructor
   using std::runtime_error::runtime_error;
 };
