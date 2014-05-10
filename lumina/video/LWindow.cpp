@@ -1,4 +1,4 @@
-#include "LUnixWindow.hpp"
+#include "LWindow.hpp"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -9,30 +9,22 @@ using namespace std;
 
 namespace lumina {
 
-// static member: map GLFWwindow to instances of LUnixWindow for event dispatch
-std::map<GLFWwindow*, LUnixWindow*> LUnixWindow::s_eventReceiver;
+// static member: map GLFWwindow to instances of LWindow for event dispatch
+std::map<GLFWwindow*, LWindow*> LWindow::s_eventReceiver;
 
 
-LUnixWindow::~LUnixWindow() {
+LWindow::~LWindow() {
   if(m_window) {
     close();
   }
 }
 
-LRenderContext* LUnixWindow::getRenderContext(LDriverType type) {
-  switch(type) {
-    case LDriverType::OpenGL:
-      m_renderContext.reset(new LUnixGLRenderContext(m_window));
-      return m_renderContext.get();
-    case LDriverType::DirectX:
-      logError("DirectX with UnixWindow is not supported!");
-      throw runtime_error("DirectX with UnixWindow is not supported");
-  }
-  // if no case matched: no known driver
-  throw runtime_error("Unknown driver type");
+LRenderContext* LWindow::getRenderContext() {
+  m_renderContext.reset(new LRenderContext(m_window));
+  return m_renderContext.get();
 }
 
-void LUnixWindow::open() {
+void LWindow::open() {
    // Init GLFW (TODO: do this just once)
   if(!glfwInit()) {
     logError("[LWindow] GLFW initialization failed!");
@@ -69,22 +61,22 @@ void LUnixWindow::open() {
   s_eventReceiver[m_window] = this;
 
   // prepare event callbacks
-  glfwSetWindowSizeCallback(m_window, LUnixWindow::resizeCallback);
-  glfwSetKeyCallback(m_window, LUnixWindow::keyCallback);
-  glfwSetCharCallback(m_window, LUnixWindow::charCallback);
-  glfwSetMouseButtonCallback(m_window, LUnixWindow::mouseButtonCallback);
+  glfwSetWindowSizeCallback(m_window, LWindow::resizeCallback);
+  glfwSetKeyCallback(m_window, LWindow::keyCallback);
+  glfwSetCharCallback(m_window, LWindow::charCallback);
+  glfwSetMouseButtonCallback(m_window, LWindow::mouseButtonCallback);
 
   glfwMakeContextCurrent(m_window);
 
   log("[LWindow] Opened new GLFW window: Success! (Handle: ", m_window, ")");
 }
 
-void LUnixWindow::setVSync(bool enable) {
+void LWindow::setVSync(bool enable) {
   glfwSwapInterval(enable ? 1 : 0);
 }
 
 
-void LUnixWindow::close() {
+void LWindow::close() {
   if(m_window) {
     glfwDestroyWindow(m_window);
     s_eventReceiver.erase(m_window);
@@ -102,34 +94,34 @@ void LUnixWindow::close() {
   }
 }
 
-void LUnixWindow::setTitle(std::string title) {
+void LWindow::setTitle(std::string title) {
   m_title = title;
   if(m_window) {
     glfwSetWindowTitle(m_window, title.c_str());
   }
 }
 
-void LUnixWindow::resize(Vec2i size) {
+void LWindow::resize(Vec2i size) {
   m_size = size;
   if(m_window) {
     glfwSetWindowSize(m_window, m_size.x, m_size.y);
   }
 }
 
-Vec2i LUnixWindow::getSize() {
+Vec2i LWindow::getSize() {
   if(m_window)
     glfwGetWindowSize(m_window, &m_size.x, &m_size.y);
   return m_size;
 }
 
-void LUnixWindow::update() {
+void LWindow::update() {
   pollEvents();
   if(m_window && glfwWindowShouldClose(m_window)) {
     close();
   }
 }
 
-void LUnixWindow::pollEvents() {
+void LWindow::pollEvents() {
   // let glfw poll all events for all windows
   // the callback function will be called and will fill the event queue
   glfwPollEvents();
@@ -145,15 +137,15 @@ void LUnixWindow::pollEvents() {
   m_eventQueue.clear();
 }
 
-bool LUnixWindow::isValid() {
+bool LWindow::isValid() {
   return (m_window && !glfwWindowShouldClose(m_window));
 }
 
-void LUnixWindow::postEvent(LInputEvent e) {
+void LWindow::postEvent(LInputEvent e) {
   m_eventQueue.push_back(e);
 }
 
-void LUnixWindow::resizeCallback(GLFWwindow* win, int width, int height) {
+void LWindow::resizeCallback(GLFWwindow* win, int width, int height) {
   if(s_eventReceiver.count(win) != 0) {
     // something
   }
@@ -163,7 +155,7 @@ void LUnixWindow::resizeCallback(GLFWwindow* win, int width, int height) {
   }
 }
 
-void LUnixWindow::keyCallback(GLFWwindow* win, int key, int scancode,
+void LWindow::keyCallback(GLFWwindow* win, int key, int scancode,
                               int action, int mods) {
   // transcode input into lumina format
   LInputEvent e;
@@ -192,7 +184,7 @@ void LUnixWindow::keyCallback(GLFWwindow* win, int key, int scancode,
 }
 
 
-void LUnixWindow::charCallback(GLFWwindow* win, unsigned int key) {
+void LWindow::charCallback(GLFWwindow* win, unsigned int key) {
   // transcode input into lumina format
   LInputEvent e;
   e.type = LInputType::KeyInput;
@@ -209,7 +201,7 @@ void LUnixWindow::charCallback(GLFWwindow* win, unsigned int key) {
   }
 }
 
-void LUnixWindow::mouseButtonCallback(GLFWwindow* win, int button, int action,
+void LWindow::mouseButtonCallback(GLFWwindow* win, int button, int action,
                                       int mods) {
   // transcode input into lumina format
   LInputEvent e;
@@ -244,7 +236,7 @@ void LUnixWindow::mouseButtonCallback(GLFWwindow* win, int button, int action,
   }
 }
 
-LKeyCode LUnixWindow::translateKey(int key)
+LKeyCode LWindow::translateKey(int key)
 {
   switch(key)
   {

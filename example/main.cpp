@@ -1,8 +1,6 @@
 #include "lumina/video/LWindow.hpp"
-// #include "lumina/video/LDriverFactory.hpp"
 #include "lumina/util/LVector.hpp"
 #include "lumina/util/LMatrix.hpp"
-#include "lumina/video/gl/LGLVertexBuffer.hpp"
 #include "lumina/video/LRawMesh.hpp"
 #include "lumina/video/LShader.hpp"
 #include "lumina/video/LShaderSource.hpp"
@@ -42,7 +40,7 @@ void windowTest() {
   win.open();
   win.setVSync(true);
 
-  auto cnt = win.getRenderContext(LDriverType::OpenGL);
+  auto cnt = win.getRenderContext();
   cnt->create();
   cnt->makeCurrent();
 

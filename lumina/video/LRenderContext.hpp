@@ -1,14 +1,24 @@
 #pragma once
 
+#include "../config/BaseProxy.hpp"
+#include "LRenderContext.hpp"
+
+struct GLFWwindow;
+
 namespace lumina {
 
-class LRenderContext {
+class LRenderContext : public config::CommonBase {
 public:
-  virtual void create() = 0;
-  virtual void makeCurrent() = 0;
-  virtual void swapBuffer() = 0;
+  LRenderContext(GLFWwindow* window) 
+    : m_windowHandle(window) {
+  }
 
-  virtual ~LRenderContext() = default;
+  void create();
+  void makeCurrent();
+  void swapBuffer();
+
+private:
+  GLFWwindow* m_windowHandle;
 };
 
-} // namespace lumina
+}

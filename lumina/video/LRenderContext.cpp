@@ -1,20 +1,24 @@
-#include "LUnixGLRenderContext.hpp"
+#include "LRenderContext.hpp"
 #include "../core/LGLException.hpp"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
 #include <iostream>
 
 namespace lumina {
 
-void LUnixGLRenderContext::create() {
+void LRenderContext::create() {
+  // glewExperimental to use context versions above 3.2
   glewExperimental = GL_TRUE;
   GLenum status = glewInit();
+
+  // check for errors
   if(status != GLEW_OK) {
     logError("[LRenderContext] glewInit() failed!");
     throw LGLException("glewInit() failed");
   }
+
+  // check for GL error (glew often causes one when using new context versions)
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
     logWarning(
@@ -22,11 +26,11 @@ void LUnixGLRenderContext::create() {
   }
 }
 
-void LUnixGLRenderContext::makeCurrent() {
+void LRenderContext::makeCurrent() {
   glfwMakeContextCurrent(m_windowHandle);
 }
 
-void LUnixGLRenderContext::swapBuffer() {
+void LRenderContext::swapBuffer() {
   glfwSwapBuffers(m_windowHandle);
 }
 
