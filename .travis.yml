@@ -1,0 +1,11 @@
+language: cpp
+compiler: clang
+
+script: sh releasebuild.sh
+
+notifications:
+  recipients:
+    - lukas.kalbertodt@gmail.com
+  email:
+    on_success: change
+    on_failure: always
