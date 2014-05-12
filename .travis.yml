@@ -8,6 +8,7 @@ before_install:
 - cd glfw
 - cmake .
 - sudo make install
+- cd ..
 
 script: sh releasebuild.sh
 
