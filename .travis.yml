@@ -5,9 +5,8 @@ before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -y libglew1.6-dev cmake xorg-dev libglu1-mesa-dev
 - wget https://github.com/glfw/glfw/archive/3.0.4.zip
-- mv 3.0.4.zip glfw.zip
-- unzip glfw.zip
-- cd glfw
+- unzip 3.0.4.zip
+- cd glfw-3.0.4
 - cmake .
 - sudo make install
 - cd ..
