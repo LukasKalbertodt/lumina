@@ -3,7 +3,11 @@ compiler: clang
 
 before_install:
 - sudo apt-get update -qq
-- sudo apt-get install -y libglew1.6-dev libglfw-dev
+- sudo apt-get install -y libglew1.6-dev cmake xorg-dev libglu1-mesa-dev
+- git clone https://github.com/glfw/glfw.git
+- cd glfw
+- cmake .
+- sudo make install
 
 script: sh releasebuild.sh
 
