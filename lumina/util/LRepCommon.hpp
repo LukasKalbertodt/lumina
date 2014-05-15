@@ -10,6 +10,9 @@
  */
 
 namespace lumina {
+
+class half;
+
 /**
  * @brief Helper function to generate a string from a arbitrary type.
  *        Just for internal use!
@@ -28,12 +31,26 @@ lxNumericFormat(T in) {
 }
 
 template <typename T>
-typename std::enable_if<std::is_floating_point<T>::value, std::string>::type
+typename std::enable_if<std::is_floating_point<T>::value
+                        && !std::is_same<T, half>::value,
+                        std::string>::type
 lxNumericFormat(T in) {
   char buf[20];
   std::snprintf(buf, 20, "%g", in);
   return std::string(buf);
 }
+
+template <typename T>
+typename std::enable_if<std::is_same<T, half>::value, std::string>::type
+lxNumericFormat(T in) {
+  return lxNumericFormat(static_cast<float>(in));
+}
+
+// void lxNumericFormat(half in) {
+//   char buf[20];
+//   std::snprintf(buf, 20, "%g", in);
+//   return std::string(buf);
+// }
 
 template <typename T>
 typename std::enable_if<!std::is_arithmetic<T>::value, std::string>::type

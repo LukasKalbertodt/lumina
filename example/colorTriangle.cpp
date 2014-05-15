@@ -49,7 +49,7 @@ int main() {
   };
 
   // create mesh and load data into mesh
-  LRawMesh mesh;
+  LMesh mesh;
   mesh.createVertexBuffer(sizeof(vertexData)/4);
   mesh.fillVertexData(vertexData, sizeof(vertexData));
 

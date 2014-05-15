@@ -1,7 +1,7 @@
 EXAMPLE_CPP := $(wildcard example/*.cpp)
 EXAMPLE_OUT := $(EXAMPLE_CPP:example/%.cpp=%.bin)
 
-CXXFLAGS := -Wall -std=c++11 -I.
+CXXFLAGS := -Wall -std=c++1y -I.
 CXX := clang++
 LDFLAGS := -lGLEW -lglfw3 -lXi -lXrandr
 

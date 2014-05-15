@@ -8,81 +8,49 @@
 
 namespace lumina {
 
-enum class LVertexComponent {
-  None,
-  Pos3D,
-  Pos2D,
-  Color,
-  Normal,
-  Tangent,
-  TexCoord
-};
-
 namespace internal {
 
-template <LVertexComponent C>
-struct LVertexCompTraits;
-
-#define X(comp_, size_)                                                        \
-  template <> struct LVertexCompTraits<LVertexComponent::comp_> {              \
-    static constexpr int size = size_;                                         \
-  }
-
-X(Pos3D, 3);
-X(Pos2D, 2);
-X(Color, 3);
-X(Normal, 3);
-X(Tangent, 3);
-X(TexCoord, 2);
-
-#undef X
-
-
-template <LVertexComponent Head, LVertexComponent... Tail>
-struct LVertexCompHelper {
-  static constexpr int stride = LVertexCompHelper<Tail...>::stride
-                                + LVertexCompTraits<Head>::size;
-};
-
-template <LVertexComponent Head>
-struct LVertexCompHelper<Head> {
-  static constexpr int stride = LVertexCompTraits<Head>::size;
-};
-
-
 template <int Index,
           int Stride,
           int Offset,
-          LVertexComponent Head,
-          LVertexComponent... Tail>
+          int Size,
+          int... Tail>
 typename std::enable_if<sizeof...(Tail) == 0>::type applyLayoutImpl() {
+  static_assert(Size >= 4, "Incompatible type for vertex layout (to small!)");
   glVertexAttribPointer(Index,
-                        internal::LVertexCompTraits<Head>::size,
+                        Size/4,
                         GL_FLOAT,
                         GL_FALSE,
-                        Stride * 4,
-                        reinterpret_cast<void*>(Offset * 4));
+                        Stride,
+                        reinterpret_cast<void*>(Offset));
   glEnableVertexAttribArray(Index);
 }
 
 template <int Index,
           int Stride,
           int Offset,
-          LVertexComponent Head,
-          LVertexComponent... Tail>
+          int Size,
+          int... Tail>
 typename std::enable_if<sizeof...(Tail) != 0>::type applyLayoutImpl() {
+  static_assert(Size >= 4, "Incompatible type for vertex layout (to small!)");
   glVertexAttribPointer(Index,
-                        internal::LVertexCompTraits<Head>::size,
+                        Size/4,
                         GL_FLOAT,
                         GL_FALSE,
-                        Stride * 4,
-                        reinterpret_cast<void*>(Offset * 4));
+                        Stride,
+                        reinterpret_cast<void*>(Offset));
   glEnableVertexAttribArray(Index);
-  applyLayoutImpl<Index + 1,
-                  Stride,
-                  Offset + internal::LVertexCompTraits<Head>::size,
-                  Tail...>();
+  applyLayoutImpl<Index + 1, Stride, Offset + Size, Tail...>();
 }
+
+template <typename T, typename... Ts>
+struct LayoutTypes {
+  static constexpr int stride = LayoutTypes<Ts...>::stride + sizeof(T);
+};
+template <typename T>
+struct LayoutTypes<T> {
+  static constexpr int stride = sizeof(T);
+};
 
 }
 
@@ -102,25 +70,25 @@ private:
     }
   }
 
-  template<LVertexComponent... Comp>
+  template<typename... Ts>
   static void applyVertexLayout() {
     internal::applyLayoutImpl<0,
-                            internal::LVertexCompHelper<Comp...>::stride,
-                            0,
-                            Comp...>();
+                              internal::LayoutTypes<Ts...>::stride,
+                              0,
+                              sizeof(Ts)...>();
   }
 
   
   // friend declarations
-  template <LVertexComponent...>
+  template <typename...>
   friend LVertexLayout createVertexLayout();
-  friend class LRawMesh;
+  friend class LMesh;
 };
 
 
-template <LVertexComponent... Components>
+template <typename... Ts>
 LVertexLayout createVertexLayout() {
-  return LVertexLayout(&LVertexLayout::applyVertexLayout<Components...>);
+  return LVertexLayout(&LVertexLayout::applyVertexLayout<Ts...>);
 }
 
 } // namespace lumina

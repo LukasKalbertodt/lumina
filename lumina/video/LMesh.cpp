@@ -1,51 +1,45 @@
-#include "LRawMesh.hpp"
+#include "LMesh.hpp"
 
-#include "../core/LGLException.hpp"  
 
 namespace lumina {
 
-LRawMesh::~LRawMesh() {
+LMesh::~LMesh() {
   // glDelete* does nothing if second argument is 0
   glDeleteBuffers(1, &m_vertexHandle);
   glDeleteBuffers(1, &m_indexHandle);
   glDeleteVertexArrays(1, &m_vertexArrayObject);
 }
 
-
-void LRawMesh::createVertexBuffer(std::size_t vertexCount) {
-  // assign new values  
+void LMesh::create(int vertexCount) {
   m_vertexCount = vertexCount;
 
-  // Create buffer
+  // Create vertex buffer
   glGenBuffers(1, &m_vertexHandle);
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
 
-  glBufferData(GL_ARRAY_BUFFER, size(), nullptr, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, vertexSize(), nullptr, GL_STATIC_DRAW);
 
   // Check for error
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
-    logError("[LRawMesh] Unable to create vertex buffer <", err, "> !");
+    logError("[LMesh] Unable to create vertex buffer <",
+             translateGLError(err),
+             "> !");
     throw LGLException("Unable to create vertex buffer");
   }
 }
 
-void LRawMesh::setVertexLayout(LVertexLayout layout) {
-  m_vertexLayout = layout;
-  bindVAO();
-  bindVBO();
-  m_vertexLayout.apply();
+void LMesh::create(int vertexCount, int indexCount) {
+  // create vertex buffer
+  create(vertexCount);
 
-  // glGetError();
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[LRawMesh] Error <", err, "> while applying vertex layout!");
-    throw LGLException("Error while applying vertex layout");
-  }
+  m_indexCount = indexCount;
+
+  // TODO: create index buffer
 }
 
 
-void LRawMesh::fillVertexData(const void* src,
+void LMesh::fillVertexData(const void* src,
                               std::size_t size,
                               std::size_t offset) {
   // bind buffer and copy data
@@ -55,12 +49,12 @@ void LRawMesh::fillVertexData(const void* src,
   // check for errors
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
-    logError("[LRawMesh] Error <", err, "> while copying data into buffer!");
+    logError("[LMesh] Error <", err, "> while copying data into buffer!");
     throw LGLException("Error while copying data into buffer");
   }
 }
 
-void LRawMesh::bindVAO() {
+void LMesh::bindVAO() {
   // create new if none was created so far
   if(m_vertexArrayObject == 0) {
     glGenVertexArrays(1, &m_vertexArrayObject);
@@ -68,9 +62,9 @@ void LRawMesh::bindVAO() {
   glBindVertexArray(m_vertexArrayObject);
 }
 
-void LRawMesh::bindVBO() {
+void LMesh::bindVBO() {
   if(m_vertexHandle == 0) {
-    logError("[LRawMesh] Attempt to bind VBO, but it was never created!");
+    logError("[LMesh] Attempt to bind VBO, but it was never created!");
     throw LGLException("Attempt to bind VBO, but it was never created");
   }
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);

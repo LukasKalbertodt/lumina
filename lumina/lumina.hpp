@@ -15,7 +15,7 @@
 #include "util/half.hpp"            // 16 bit float type
 #include "util/LVector.hpp"         // mathematical vector
 #include "util/LMatrix.hpp"         // matrix
-#include "util/LColor.hpp"          // color
+// #include "util/LColor.hpp"          // color
 #include "util/LTerminalColor.hpp"  // tools to write colored text to stdout
 
 // include video.hpp -> includes more files

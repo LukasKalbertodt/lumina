@@ -4,7 +4,7 @@
 
 namespace lumina {
 
-const char* translateGLError(GLenum error) {
+inline const char* translateGLError(GLenum error) {
   switch(error) {
     case GL_NO_ERROR:           return "GL_NO_ERROR";
     case GL_INVALID_ENUM:       return "GL_INVALID_ENUM";

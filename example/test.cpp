@@ -1,18 +1,8 @@
-#include "lumina/video/LWindow.hpp"
-#include "lumina/util/LVector.hpp"
-#include "lumina/util/LMatrix.hpp"
-#include "lumina/video/LRawMesh.hpp"
-#include "lumina/video/LShader.hpp"
-#include "lumina/video/LShaderSource.hpp"
-#include "lumina/video/LPipeline.hpp"
+#include "lumina/lumina.hpp"
+#include "lumina/util/Color.hpp"
 
-// #include <memory>
-// #include <string>
-// #include <functional>
 #include <iostream>
 #include <vector>
-
-// #include <GL/glew.h>
 
 using namespace lumina;
 using namespace std;
@@ -45,64 +35,6 @@ void windowTest() {
   cnt->makeCurrent();
 
 
-  // auto screenSize = win.getSize();
-  // cout << "Resolution: " << screenSize << endl;
-
-
-
-
-
-
-
-
-
-
-
-
-  // GLuint texColor, texNormal;
-  // glGenTextures(1, &texColor);
-  // glBindTexture(GL_TEXTURE_2D, texColor);
-  // //<texture params>
-  // glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, screenSize.x, screenSize.y,
-  //              0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
-  // // glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
-  // //                           GL_TEXTURE_2D, texColor, 0);
-
-  // glGenTextures(1, &texNormal);
-  // glBindTexture(GL_TEXTURE_2D, texNormal);  
-
-  // vector<uint32_t> texData(screenSize.x * screenSize.y);
-  // for(int x = 0; x < screenSize.x; x++) {
-  //   for(int y = 0; y < screenSize.y; y++) {
-  //     // cout << x*screenSize.x + y << endl;
-  //     texData[x*screenSize.y + y] = 0xFFFFFFFF;
-  //   }
-  // }
-
-//   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, screenSize.x, screenSize.y,
-//                0, GL_RGBA, GL_UNSIGNED_BYTE, texData.data());
-//   // glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT1_EXT,
-//   //                           GL_TEXTURE_2D, texNormal, 0);
-
-
-//   glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-
-  // static const float vertexData[] = {
-  //   -0.5f, -0.5f, 0.0f, 
-  //   1.0f,  -1.0f, 0.0f, 
-  //   1.0f,  1.0f,  0.0f,
-  // };
-
-
-  // echo lumina::intern::LVertexCompHelper<
-
-
-  // static const float vertexData[] = {
-  //    -1.0f, -1.0f, 0.0f,
-  //    1.0f, -1.0f, 0.0f,
-  //    0.0f,  1.0f, 0.0f,
-  // };
-
   static const float vertexData[] = {
      -1.0f, -1.f, 0.0f, 1.0f, 0.f, 0.f,
      1.0f, -1.0f, 0.0f, 0.f, 1.f, 0.f,
@@ -110,13 +42,12 @@ void windowTest() {
   };
 
 
-  LRawMesh mesh;
-  mesh.createVertexBuffer(sizeof(vertexData)/4);
-  mesh.fillVertexData(vertexData, sizeof(vertexData));
-  mesh.setVertexLayout(
-    createVertexLayout<LVertexComponent::Pos3D, LVertexComponent::Color>());
-  // mesh.setVertexLayout(
-  //   createVertexLayout<LVertexComponent::Pos3D>());
+  LMesh mesh(sizeof(vertexData)/4);
+  
+  mesh.apply<Vec3f, Color32f>([](auto& m) {
+    m.fillVertexData(vertexData, sizeof(vertexData));
+    m.applyVertexLayout();
+  });
 
 
   // Shader tests
