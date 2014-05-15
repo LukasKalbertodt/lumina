@@ -35,17 +35,13 @@ void windowTest() {
   cnt->makeCurrent();
 
 
-  static const float vertexData[] = {
-     -1.0f, -1.f, 0.0f, 1.0f, 0.f, 0.f,
-     1.0f, -1.0f, 0.0f, 0.f, 1.f, 0.f,
-     0.0f,  1.0f, 0.0f, 0.f, 0.f, 1.f
-  };
 
-
-  LMesh mesh(sizeof(vertexData)/4);
+  LMesh mesh(3*3*2);
   
   mesh.apply<Vec3f, Color32f>([](auto& m) {
-    m.fillVertexData(vertexData, sizeof(vertexData));
+    m.vertex[0] = Vec3f(-1.f, -1.f, 0.f), Color32f(1.f, 0.f, 0.f);
+    m.vertex[1] = Vec3f(1.f, -1.f, 0.f), Color32f(0.f, 1.f, 0.f);
+    m.vertex[2] = Vec3f(0.f, 1.f, 0.f), Color32f(0.f, 0.f, 1.f);
     m.applyVertexLayout();
   });
 

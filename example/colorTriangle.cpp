@@ -41,21 +41,15 @@ int main() {
   // ===========================================================================
   // Create Mesh and shaders
   // ===========================================================================
-  // mesh data: 3 floats position, 3 floats color
-  static const float vertexData[] = {
-     -1.0f, -1.f, 0.0f, 1.0f, 0.f, 0.f,
-     1.0f, -1.0f, 0.0f, 0.f, 1.f, 0.f,
-     0.0f,  1.0f, 0.0f, 0.f, 0.f, 1.f
-  };
-
-  // create mesh and load data into mesh
-  LMesh mesh;
-  mesh.createVertexBuffer(sizeof(vertexData)/4);
-  mesh.fillVertexData(vertexData, sizeof(vertexData));
-
-  // set the buffer layout
-  mesh.setVertexLayout(
-    createVertexLayout<LVertexComponent::Pos3D, LVertexComponent::Color>());
+  LMesh mesh(3*3*2);
+  
+  mesh.apply<Vec3f, Color32f>([](auto& m) {
+    m.vertex[0] = Vec3f(-1.f, -1.f, 0.f), Color32f(1.f, 0.f, 0.f);
+    m.vertex[1] = Vec3f(1.f, -1.f, 0.f), Color32f(0.f, 1.f, 0.f);
+    m.vertex[2] = Vec3f(0.f, 1.f, 0.f), Color32f(0.f, 0.f, 1.f);
+    m.applyVertexLayout();
+  });
+  
 
   // create and compile two shaders 
   LShader<LShaderType::Vertex> vs;

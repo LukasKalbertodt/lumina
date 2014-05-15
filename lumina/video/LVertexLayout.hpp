@@ -16,7 +16,12 @@ template <int Index,
           int Size,
           int... Tail>
 typename std::enable_if<sizeof...(Tail) == 0>::type applyLayoutImpl() {
+  // std::cout << Index << ", " << Stride << ", " << Offset << ", " << Size
+  //           << std::endl;
   static_assert(Size >= 4, "Incompatible type for vertex layout (to small!)");
+  static_assert(Size % 4 == 0,
+                "Incompatible type for vertex layout (size not "
+                "divisible by 4!)");
   glVertexAttribPointer(Index,
                         Size/4,
                         GL_FLOAT,
@@ -33,6 +38,11 @@ template <int Index,
           int... Tail>
 typename std::enable_if<sizeof...(Tail) != 0>::type applyLayoutImpl() {
   static_assert(Size >= 4, "Incompatible type for vertex layout (to small!)");
+  static_assert(Size % 4 == 0,
+                "Incompatible type for vertex layout (size not "
+                "divisible by 4!)");
+  // std::cout << Index << ", " << Stride << ", " << Offset << ", " << Size
+  //           << std::endl;
   glVertexAttribPointer(Index,
                         Size/4,
                         GL_FLOAT,
@@ -52,43 +62,6 @@ struct LayoutTypes<T> {
   static constexpr int stride = sizeof(T);
 };
 
-}
-
-class LVertexLayout {
-public:
-  LVertexLayout() : m_delegate(nullptr) {}
-
-
-private:
-  void (*m_delegate)();
-
-  LVertexLayout(void(*delegate)()) : m_delegate(delegate) {}
-
-  void apply() {
-    if(m_delegate) {
-      m_delegate();
-    }
-  }
-
-  template<typename... Ts>
-  static void applyVertexLayout() {
-    internal::applyLayoutImpl<0,
-                              internal::LayoutTypes<Ts...>::stride,
-                              0,
-                              sizeof(Ts)...>();
-  }
-
-  
-  // friend declarations
-  template <typename...>
-  friend LVertexLayout createVertexLayout();
-  friend class LMesh;
-};
-
-
-template <typename... Ts>
-LVertexLayout createVertexLayout() {
-  return LVertexLayout(&LVertexLayout::applyVertexLayout<Ts...>);
 }
 
 } // namespace lumina
