@@ -39,20 +39,20 @@ void LMesh::create(int vertexCount, int indexCount) {
 }
 
 
-void LMesh::fillVertexData(const void* src,
-                              std::size_t size,
-                              std::size_t offset) {
-  // bind buffer and copy data
-  bindVBO();
-  glBufferSubData(GL_ARRAY_BUFFER, offset, size, src);
+// void LMesh::fillVertexData(const void* src,
+//                               std::size_t size,
+//                               std::size_t offset) {
+//   // bind buffer and copy data
+//   bindVBO();
+//   glBufferSubData(GL_ARRAY_BUFFER, offset, size, src);
 
-  // check for errors
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[LMesh] Error <", err, "> while copying data into buffer!");
-    throw LGLException("Error while copying data into buffer");
-  }
-}
+//   // check for errors
+//   auto err = glGetError();
+//   if(err != GL_NO_ERROR) {
+//     logError("[LMesh] Error <", err, "> while copying data into buffer!");
+//     throw LGLException("Error while copying data into buffer");
+//   }
+// }
 
 void LMesh::bindVAO() {
   // create new if none was created so far

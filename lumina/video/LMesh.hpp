@@ -1,9 +1,10 @@
 #pragma once
 
-#include "../config/BaseProxy.hpp"
 #include "LGLTools.hpp"
-#include "../core/LGLException.hpp"  
+#include "PrimitiveType.hpp"
 #include "LVertexLayout.hpp"
+#include "../config/BaseProxy.hpp"
+#include "../core/LGLException.hpp"  
 #include "../util/VariadicTools.hpp"
 
 #include <GL/glew.h>
@@ -24,7 +25,8 @@ public:
       m_indexHandle(0),
       m_vertexArrayObject(0),
       m_vertexCount(0),
-      m_indexCount(0) {}
+      m_indexCount(0),
+      m_primitiveType(GL_TRIANGLES) {}
 
   LMesh(int vertexCount) : LMesh() {
     create(vertexCount);
@@ -49,6 +51,11 @@ public:
   void create(int vertexCount, int indexCount);
   template <typename... Cs, typename L>
   void apply(L lambda);
+  void sendData() {
+    bindVAO();
+    bindVBO();
+    glDrawArrays(m_primitiveType, 0, 3);
+  }
 
 
 protected:
@@ -57,15 +64,26 @@ protected:
   GLuint m_vertexArrayObject;
   std::size_t m_vertexCount;
   std::size_t m_indexCount;
+  GLenum m_primitiveType;
 
   std::size_t vertexCount() const { return m_vertexCount; }
   std::size_t indexCount() const { return m_indexCount; }
   std::size_t vertexSize() const { return m_vertexCount * 4; }
   std::size_t indexSize() const { return m_indexCount * 4; }
 
-  void fillVertexData(const void* src,
-                      std::size_t size,
-                      std::size_t offset = 0);
+  void setPrimitiveType(PrimitiveType type) {
+    switch(type) {
+      case PrimitiveType::Point:
+        m_primitiveType = GL_POINTS;
+        break;
+      case PrimitiveType::Triangle:
+        m_primitiveType = GL_TRIANGLES;
+        break;
+      case PrimitiveType::TriangleStrip:
+        m_primitiveType = GL_TRIANGLE_STRIP;
+        break;
+    }
+  }
 
   void bindVAO();
   void bindVBO();
@@ -190,7 +208,7 @@ public:
   }
 
   // use functions of base class
-  using LMesh::fillVertexData;
+  using LMesh::setPrimitiveType;
   void applyVertexLayout();
 
   BufferWriter vertex;

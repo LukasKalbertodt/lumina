@@ -58,7 +58,8 @@ void windowTest() {
     win.update();    
      
     // Draw the triangle !
-    glDrawArrays(GL_TRIANGLES, 0, 3); 
+    // glDrawArrays(GL_TRIANGLES, 0, 3); 
+    mesh.sendData();
 
     cnt->swapBuffer();
   }
