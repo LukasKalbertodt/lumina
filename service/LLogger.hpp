@@ -30,12 +30,12 @@ public:
   template <typename... Ts>
   void log(Ts... msgs) {
     if(m_stdIO) {
-      logStdIO(getTimeString(), msgs...);
+      logStdIO("[", getTimeString(), "]", msgs...);
       std::cout << std::endl;
     }
 
     if(m_logFile && m_logFile.is_open()) {
-      logFile(getTimeString(), msgs...);
+      logFile("[", getTimeString(), "]", msgs...);
       m_logFile << std::endl;
     }
 
@@ -50,12 +50,12 @@ public:
   template <typename... Ts>
   void logWarning(Ts... msgs) {
     if(m_stdIO) {
-      logStdIO(LTFG::Yellow, getTimeString(), " WARNING: ", msgs..., LTC::Reset);
+      logStdIO(LTFG::Yellow, "[", getTimeString(), " WARNING]", msgs..., LTC::Reset);
       std::cout << std::endl;
     }
 
     if(m_logFile && m_logFile.is_open()) {
-      logFile(getTimeString(), "ERROR: ", msgs...);
+      logFile("[", getTimeString(), " WARNING]", msgs...);
       m_logFile << std::endl;
     }
 
@@ -70,12 +70,12 @@ public:
   template <typename... Ts>
   void logError(Ts... msgs) {
     if(m_stdIO) {
-      logStdIO(LTFG::Red, getTimeString(), " ERROR: ", msgs..., LTC::Reset);
+      logStdIO(LTFG::Red, "[", getTimeString(), " ERROR]", msgs..., LTC::Reset);
       std::cout << std::endl;
     }
 
     if(m_logFile && m_logFile.is_open()) {
-      logFile(getTimeString(), "ERROR: ", msgs...);
+      logFile("[", getTimeString(), " ERROR]", msgs...);
       m_logFile << std::endl;
     }
 
@@ -159,8 +159,8 @@ private:
     int sec  = duration_cast<seconds>(diff).count() % 60;
     int min  = duration_cast<minutes>(diff).count() % 100;
 
-    char out[] = "[00:00.0000]";
-    std::snprintf(out, 13, "[%.2i:%.2i.%.4i]", min, sec, msec);
+    char out[] = "00:00.0000";
+    std::snprintf(out, 11, "%.2i:%.2i.%.4i", min, sec, msec);
 
     return std::string(out);
   }

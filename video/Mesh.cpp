@@ -1,16 +1,22 @@
-#include "LMesh.hpp"
+#include "Mesh.hpp"
 
 
 namespace lumina {
 
-LMesh::~LMesh() {
+void Mesh::sendData() {
+  // bindVAO();
+  // bindVBO();
+  glDrawArrays(m_primitiveType, 0, 3);
+}
+
+Mesh::~Mesh() {
   // glDelete* does nothing if second argument is 0
   glDeleteBuffers(1, &m_vertexHandle);
   glDeleteBuffers(1, &m_indexHandle);
   glDeleteVertexArrays(1, &m_vertexArrayObject);
 }
 
-void LMesh::create(int vertexCount) {
+void Mesh::create(int vertexCount) {
   m_vertexCount = vertexCount;
 
   // Create vertex buffer
@@ -22,14 +28,14 @@ void LMesh::create(int vertexCount) {
   // Check for error
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
-    logError("[LMesh] Unable to create vertex buffer <",
+    logError("[Mesh] Unable to create vertex buffer <",
              translateGLError(err),
              "> !");
     throw LGLException("Unable to create vertex buffer");
   }
 }
 
-void LMesh::create(int vertexCount, int indexCount) {
+void Mesh::create(int vertexCount, int indexCount) {
   // create vertex buffer
   create(vertexCount);
 
@@ -39,7 +45,7 @@ void LMesh::create(int vertexCount, int indexCount) {
 }
 
 
-// void LMesh::fillVertexData(const void* src,
+// void Mesh::fillVertexData(const void* src,
 //                               std::size_t size,
 //                               std::size_t offset) {
 //   // bind buffer and copy data
@@ -49,12 +55,12 @@ void LMesh::create(int vertexCount, int indexCount) {
 //   // check for errors
 //   auto err = glGetError();
 //   if(err != GL_NO_ERROR) {
-//     logError("[LMesh] Error <", err, "> while copying data into buffer!");
+//     logError("[Mesh] Error <", err, "> while copying data into buffer!");
 //     throw LGLException("Error while copying data into buffer");
 //   }
 // }
 
-void LMesh::bindVAO() {
+void Mesh::bindVAO() {
   // create new if none was created so far
   if(m_vertexArrayObject == 0) {
     glGenVertexArrays(1, &m_vertexArrayObject);
@@ -62,9 +68,11 @@ void LMesh::bindVAO() {
   glBindVertexArray(m_vertexArrayObject);
 }
 
-void LMesh::bindVBO() {
+
+
+void Mesh::bindVBO() {
   if(m_vertexHandle == 0) {
-    logError("[LMesh] Attempt to bind VBO, but it was never created!");
+    logError("[Mesh] Attempt to bind VBO, but it was never created!");
     throw LGLException("Attempt to bind VBO, but it was never created");
   }
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
