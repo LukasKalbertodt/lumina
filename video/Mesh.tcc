@@ -1,5 +1,6 @@
 namespace lumina {
 
+/* Mesh constructors **********************************************************/
 inline Mesh::Mesh()
   : m_vertexHandle(0),
     m_indexHandle(0),
@@ -25,6 +26,7 @@ inline Mesh::Mesh(int vertexCount, int indexCount) : Mesh() {
 // Mesh& operator=(Mesh&& m);
 
 
+/* Mesh methods ***************************************************************/
 inline std::size_t Mesh::vertexCount() const { return m_vertexCount; }
 inline std::size_t Mesh::indexCount() const { return m_indexCount; }
 inline std::size_t Mesh::vertexSize() const { return m_vertexCount * 4; }
@@ -44,7 +46,13 @@ inline void Mesh::setPrimitiveType(PrimitiveType type) {
   }
 }
 
+template <typename... Cs, typename L>
+void Mesh::prime(L lambda) {
+  HotMesh<Cs...> hot(*this);
+  lambda(hot);
+}
 
+/* HotMesh methods ************************************************************/
 template <typename... Cs>
 HotMesh<Cs...>::HotMesh(Mesh& ref) : vertex(ref.m_vertexCount) {
   this->m_vertexHandle = ref.m_vertexHandle;
@@ -65,7 +73,27 @@ HotMesh<Cs...>::HotMesh(Mesh& ref) : vertex(ref.m_vertexCount) {
   }
 
   GLbitfield mode = GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT;
-  vertex.m_buf = glMapBufferRange(GL_ARRAY_BUFFER, 0, vertexSize(), mode);
+  vertex.buffer = glMapBufferRange(GL_ARRAY_BUFFER, 0, vertexSize(), mode);
 }
 
+
+template <typename... Cs>
+void HotMesh<Cs...>::applyVertexLayout() {
+  internal::applyLayoutImpl<0,
+                            internal::LayoutTypes<Cs...>::stride,
+                            0,
+                            sizeof(Cs)...>();
 }
+
+  // set handles to 0 so ~Mesh won't delete them (dirty hack...)
+template <typename... Cs>
+HotMesh<Cs...>::~HotMesh() {
+  this->m_vertexHandle = 0;
+  this->m_indexHandle = 0;
+  this->m_vertexArrayObject = 0;
+
+  // unmap vertex buffer
+  glUnmapBuffer(GL_ARRAY_BUFFER);
+}
+
+} // namespace lumina

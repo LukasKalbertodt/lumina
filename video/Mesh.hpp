@@ -14,15 +14,30 @@
 
 
 namespace lumina {
+// =============================================================================
+// Forward declarations for all types
+// =============================================================================
+class Mesh;
+template <typename...> class HotMesh;
+namespace internal {
+  template <typename T, typename... Ts> struct AssignBufferWriter;
+  template <typename... Cs> struct VBufferWriteHelper;
+  template <typename T, typename... Ts> struct CommaBufferWriter;
+}
 
-template <typename...>
-class HotMesh;
 
-
-
-
-
-
+// =============================================================================
+// Definition of Mesh and HotMesh
+// =============================================================================
+/**
+* \brief Represents a geometry mesh
+* Mesh represents a collection of vertices with arbitrary attributes, which may
+* be indexed. It uses an OpenGL vertex and an optional index buffer. 
+* The typical creation cycle is: 
+* * Creating a new instance of Mesh (which is useless on it's own)
+* * Call `create` to create the underlying data structures
+* * Call `prime` to obtain a HotMesh (the Mesh need to be created first)
+*/
 class Mesh : public config::CommonBase {
 public:
   // default constructor
@@ -45,7 +60,7 @@ public:
   void create(int vertexCount);
   void create(int vertexCount, int indexCount);
   template <typename... Cs, typename L>
-  void apply(L lambda);
+  void prime(L lambda);
   void sendData();
 
 
@@ -72,19 +87,12 @@ protected:
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * @brief Hot version of mesh
+ * @details [long description]
+ * 
+ * @tparam Cs [description]
+ */
 template <typename... Cs>
 class HotMesh : public Mesh {
 private:
@@ -92,7 +100,6 @@ private:
 
   friend Mesh;
 
-  class BufferWriter;
 
 public:
   // delete copy and move constructors to avoid copys
@@ -102,113 +109,120 @@ public:
   HotMesh& operator==(HotMesh&&) = delete;
 
   // custom destructor
-  // set handles to 0 so ~Mesh won't delete them (dirty hack...)
-  ~HotMesh() {
-    this->m_vertexHandle = 0;
-    this->m_indexHandle = 0;
-    this->m_vertexArrayObject = 0;
-
-    // unmap vertex buffer
-    glUnmapBuffer(GL_ARRAY_BUFFER);
-  }
+  ~HotMesh();
 
   // use functions of base class
   using Mesh::setPrimitiveType;
   void applyVertexLayout();
 
-  BufferWriter vertex;
+  internal::VBufferWriteHelper<Cs...> vertex;
 
 };
 
 
-template <typename... Cs, typename L>
-void Mesh::apply(L lambda) {
-  HotMesh<Cs...> hot(*this);
-  lambda(hot);
-}
 
+// =============================================================================
+// Definition of internal helper types
+// =============================================================================
+namespace internal {
+/**
+ * Type of the `vertex` member of a HotMesh. Overloads operator[] and executes
+ * bound checks.
+ */
 template <typename... Cs>
-void HotMesh<Cs...>::applyVertexLayout() {
-  internal::applyLayoutImpl<0,
-                            internal::LayoutTypes<Cs...>::stride,
-                            0,
-                            sizeof(Cs)...>();
-}
+struct VBufferWriteHelper {
+private:
+  // declare friends
+  template <typename...> friend class ::lumina::HotMesh;
 
-template <typename... Cs>
-class HotMesh<Cs...>::BufferWriter {
+  // internal data
+  void* buffer;
+  int vertexCount;
+
+public:
+  VBufferWriteHelper(int vertexCount)
+    : buffer(nullptr), vertexCount(vertexCount) {}
+
+  // subscript operator
+  AssignBufferWriter<Cs...> operator[](int index) {
+    // Test if index is valid (not even asan detects overflow the memory 
+    // after this block is somehow allocated by OpenGL anyways)
+    if(index >= ((vertexCount*4)/internal::LayoutTypes<Cs...>::stride)) {
+      throw LGLException("VertexWriter: Index out of bounds!");
+    }
+
+    // calculate offset and return another helper object
+    auto* buf = static_cast<char*>(buffer)
+                + index * internal::LayoutTypes<Cs...>::stride;
+    return AssignBufferWriter<Cs...>(buf);
+  }    
+};
+
+
+/**
+ * Helper for overloading the = operator. 
+ */
+template <typename T, typename... Ts> 
+struct AssignBufferWriter {
+private:
+  void* buffer;
+
+public:
+  AssignBufferWriter(void* ptr) : buffer(ptr) {}
+
+  CommaBufferWriter<Ts...> operator=(T data) {
+    *static_cast<T*>(buffer) = data;
+    return CommaBufferWriter<Ts...>(static_cast<T*>(buffer) + 1);
+  }
+};
+
+// specialization for just one remaining type
+template <typename T>
+struct AssignBufferWriter<T> {
+private:
+  void* buffer;
+
+public:
+  AssignBufferWriter(void* ptr) : buffer(ptr) {}
+
+  void operator=(T data) { *static_cast<T*>(buffer) = data; }
+};
+
+
+/**
+ * Helper type for overloading the , operator.
+ */
+template <typename T, typename... Ts>
+struct CommaBufferWriter {
+private:
+  void* buffer;
+
+public:
+  CommaBufferWriter(void* ptr) : buffer(ptr) {}
+
+  CommaBufferWriter<Ts...> operator,(T data) {
+    *static_cast<T*>(buffer) = data;
+    return CommaBufferWriter<Ts...>(static_cast<T*>(buffer) + 1);
+  }
+};
+
+// specialization for just one remaining type
+template <typename T>
+struct CommaBufferWriter<T> {
   private:
-    template <typename T, typename... Ts>
-    class CommaBufferWriter {
-    private:
-      void* m_buf;
+  void* buffer;
 
-    public:
-      CommaBufferWriter(void* ptr) : m_buf(ptr) {}
-      CommaBufferWriter<Ts...> operator,(T data) {
-        *static_cast<T*>(m_buf) = data;
-        return CommaBufferWriter<Ts...>(static_cast<T*>(m_buf) + 1);
-      }
-    };
+public:
+  CommaBufferWriter(void* ptr) : buffer(ptr) {}
 
-    template <typename T>
-    class CommaBufferWriter<T> {
-      private:
-      void* m_buf;
+  void operator,(T data) {
+    *static_cast<T*>(buffer) = data;
+  }
+};
 
-    public:
-      CommaBufferWriter(void* ptr) : m_buf(ptr) {}
-      void operator,(T data) {
-        *static_cast<T*>(m_buf) = data;
-      }
-    };
-
-    template <typename T, typename... Ts>
-    class AssignBufferWriter {
-    private:
-      void* m_buf;
-
-    public:
-      AssignBufferWriter(void* ptr) : m_buf(ptr) {}
-
-      CommaBufferWriter<Ts...> operator=(T data) {
-        std::cout << "blub" << m_buf << std::endl;
-        *static_cast<T*>(m_buf) = data;
-        return CommaBufferWriter<Ts...>(static_cast<T*>(m_buf) + 1);
-      }
-    };
-    template <typename T>
-    class AssignBufferWriter<T> {
-    private:
-      void* m_buf;
-
-    public:
-      AssignBufferWriter(void* ptr) : m_buf(ptr) {}
-
-      void operator=(T data) {
-        *static_cast<T*>(m_buf) = data;
-      }
-    };
-
-    void* m_buf;
-    int m_vertexCount;
-    friend HotMesh;
-
-  public:
-    BufferWriter(int vertexCount)
-      : m_buf(nullptr), m_vertexCount(vertexCount) {}
-
-    AssignBufferWriter<Cs...> operator[](int index) {
-      if(index >= ((m_vertexCount*4)/internal::LayoutTypes<Cs...>::stride)) {
-        throw LGLException("VertexWriter: Index out of bounds!");
-      }
-      return AssignBufferWriter<Cs...>(
-        static_cast<char*>(m_buf)
-        + index * internal::LayoutTypes<Cs...>::stride);
-    }    
-  };
-
+} // namespace internal
 
 } // namespace lumina
 
+// include out of line definitions
 #include "Mesh.tcc"

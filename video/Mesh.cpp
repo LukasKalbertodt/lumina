@@ -4,8 +4,7 @@
 namespace lumina {
 
 void Mesh::sendData() {
-  // bindVAO();
-  // bindVBO();
+  // TODO: need to bind buffers here?
   glDrawArrays(m_primitiveType, 0, 3);
 }
 
@@ -44,21 +43,6 @@ void Mesh::create(int vertexCount, int indexCount) {
   // TODO: create index buffer
 }
 
-
-// void Mesh::fillVertexData(const void* src,
-//                               std::size_t size,
-//                               std::size_t offset) {
-//   // bind buffer and copy data
-//   bindVBO();
-//   glBufferSubData(GL_ARRAY_BUFFER, offset, size, src);
-
-//   // check for errors
-//   auto err = glGetError();
-//   if(err != GL_NO_ERROR) {
-//     logError("[Mesh] Error <", err, "> while copying data into buffer!");
-//     throw LGLException("Error while copying data into buffer");
-//   }
-// }
 
 void Mesh::bindVAO() {
   // create new if none was created so far
