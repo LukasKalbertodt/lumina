@@ -7,9 +7,9 @@
 
 namespace lumina {
 
-class LPipelineContainer : public config::CommonBase {
+class PipelineContainer : public config::CommonBase {
 public:
-  LPipelineContainer(LShader<LShaderType::Vertex>& vs,
+  PipelineContainer(LShader<LShaderType::Vertex>& vs,
                      LShader<LShaderType::Fragment>& fs)
     : m_vertexShader(vs), m_fragmentShader(fs), m_program(0) {
     linkShaderProgram();
@@ -28,7 +28,7 @@ private:
 };
 
 
-// LPipelineContainer linkPipeline()
+// PipelineContainer linkPipeline()
 
 
 

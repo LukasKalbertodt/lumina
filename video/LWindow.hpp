@@ -13,7 +13,7 @@
 #include "../input/LInputEvent.hpp"
 #include "../input/LKeyCode.hpp"
 #include "../util/LVector.hpp"
-#include "LRenderContext.hpp"
+#include "RenderContext.hpp"
 
 struct GLFWwindow;
 
@@ -37,7 +37,7 @@ public:
   void setVSync(bool enable);
   void resize(Vec2i size);
   Vec2i getSize();
-  LRenderContext* getRenderContext();
+  RenderContext* getRenderContext();
   void open();
   void close();
   void pollEvents();
@@ -58,7 +58,7 @@ private:
   Vec2i m_size;
   std::pair<std::int16_t, std::int16_t> m_version;
   std::string m_title;  // TODO: check if we need this
-  std::unique_ptr<LRenderContext> m_renderContext;
+  std::unique_ptr<RenderContext> m_renderContext;
   std::vector<LInputEvent> m_eventQueue;
   std::vector<EventCallback> m_eventCallbacks;
 

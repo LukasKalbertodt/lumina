@@ -19,8 +19,8 @@ LWindow::~LWindow() {
   }
 }
 
-LRenderContext* LWindow::getRenderContext() {
-  m_renderContext.reset(new LRenderContext(m_window));
+RenderContext* LWindow::getRenderContext() {
+  m_renderContext.reset(new RenderContext(m_window));
   return m_renderContext.get();
 }
 

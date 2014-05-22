@@ -1,17 +1,17 @@
-#include "LPipeline.hpp"
-#include "../core/LGLException.hpp"
+#include "Program.hpp"
 
 #include <vector>
 using namespace std;
 
 namespace lumina {
 
-void LPipelineContainer::linkShaderProgram() {
+void Program::link(LShader<LShaderType::Vertex> vs,
+                   LShader<LShaderType::Fragment> fs) {
   m_program = glCreateProgram();
 
   // attach both shaders
-  glAttachShader(m_program, m_vertexShader.getHandle());
-  glAttachShader(m_program, m_fragmentShader.getHandle());
+  glAttachShader(m_program, vs.getHandle());
+  glAttachShader(m_program, fs.getHandle());
 
   // link program
   glLinkProgram(m_program);
@@ -27,22 +27,18 @@ void LPipelineContainer::linkShaderProgram() {
     vector<char> compileLog(logLength);
     glGetShaderInfoLog(m_program, logLength, nullptr, compileLog.data());
     logError("[LShader] Could not link shaders <",
-             m_vertexShader.getFilename(),
+             vs.getFilename(),
              ", ",
-             m_fragmentShader.getFilename(),
+             fs.getFilename(),
              "> ->");
     logError("[LShader] ", compileLog.data());
     throw LGLException("Could not compile shader");
   }
   log("[LShader] Shaders <",
-      m_vertexShader.getFilename(),
+      vs.getFilename(),
       ", ",
-      m_fragmentShader.getFilename(),
+      fs.getFilename(),
       "> were successfully linked.");
 }
 
-void LPipelineContainer::use() {
-  glUseProgram(m_program);
 }
-
-} // namespace lumina

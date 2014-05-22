@@ -225,4 +225,4 @@ public:
 } // namespace lumina
 
 // include out of line definitions
-#include "Mesh.tcc"
+#include "Mesh.tpp"
