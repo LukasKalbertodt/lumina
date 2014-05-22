@@ -1,4 +1,5 @@
 #include "Program.hpp"
+#include "GLException.hpp"
 
 #include <vector>
 using namespace std;
@@ -32,7 +33,7 @@ void Program::link(LShader<LShaderType::Vertex> vs,
              fs.getFilename(),
              "> ->");
     logError("[LShader] ", compileLog.data());
-    throw LGLException("Could not compile shader");
+    throw GLException("Could not compile shader");
   }
   log("[LShader] Shaders <",
       vs.getFilename(),

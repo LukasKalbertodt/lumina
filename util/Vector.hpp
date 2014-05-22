@@ -1,14 +1,14 @@
 #pragma once
 /**
- * \file LVector.hpp
+ * \file Vector.hpp
  * This file is part of the Lumina Graphics Framework.
  * 
  * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
  * 
- * This file includes LVectorCore.hpp, which defines LVector, and provides 
+ * This file includes VectorCore.hpp, which defines Vector, and provides 
  * additional functions for generating a string representation.
  */
-#include "LVectorCore.hpp"
+#include "VectorCore.hpp"
 #include "LRepCommon.hpp"
 
 #include <string>
@@ -17,13 +17,13 @@
 namespace lumina {
 
 /**
- * @brief Creates a string representation of a LVector
+ * @brief Creates a string representation of a Vector
  */
 template <typename T, std::size_t N>
-std::string vectorRep(LVector<T, N> in) {
+std::string vectorRep(Vector<T, N> in) {
   // TODO: add type here
-  std::string out("LVecN {");
-  out[4] = '0' + (N % 10);
+  std::string out("VecN {");
+  out[3] = '0' + (N % 10);
 
   for(int i = 0; i < N; ++i) {
     if(i != 0) 
@@ -55,7 +55,7 @@ std::string vectorRep(LVector<T, N> in) {
  * @brief Overloads the stream output operator using vectorRep
  */
 template <typename T, std::size_t N>
-std::ostream& operator<<(std::ostream& out, const LVector<T, N>& vec) {
+std::ostream& operator<<(std::ostream& out, const Vector<T, N>& vec) {
   return (out << vectorRep(vec));
 }
 

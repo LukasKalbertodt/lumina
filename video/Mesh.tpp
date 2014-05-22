@@ -69,7 +69,7 @@ HotMesh<Cs...>::HotMesh(Mesh& ref) : vertex(ref.m_vertexCount) {
     logError("[Mesh] Error <",
              translateGLError(err),
              "> while creating hot mesh!");
-    throw LGLException("Error while creating hot mesh");
+    throw GLException("Error while creating hot mesh");
   }
 
   GLbitfield mode = GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT;

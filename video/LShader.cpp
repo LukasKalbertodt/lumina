@@ -1,5 +1,5 @@
 #include "LShader.hpp"
-#include "../core/LGLException.hpp"  
+#include "GLException.hpp"  
 
 #include <vector>
 using namespace std;
@@ -47,7 +47,7 @@ void LShader<Type>::compile(LShaderSource source) {
     glGetShaderInfoLog(m_handle, logLength, nullptr, compileLog.data());
     logError("[LShader] Could not compile shader <", m_filename, "> ->");
     logError("[LShader] ", compileLog.data());
-    throw LGLException("Could not compile shader");
+    throw GLException("Could not compile shader");
   }
 
   log("[LShader] Shader <", m_filename, "> was successfully compiled.");

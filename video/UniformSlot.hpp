@@ -3,7 +3,7 @@
 #include "Program.fpp"
 #include "UniformSet.fpp"
 #include "../config/BaseProxy.hpp"
-#include "../util/LVector.hpp"
+#include "../util/Vector.hpp"
 #include "../util/NonCopyable.hpp"
 
 namespace lumina { 
@@ -14,7 +14,7 @@ public:
 
   void operator=(float val);
   template <typename T, std::size_t N>
-  void operator=(LVector<T, N> val);
+  void operator=(Vector<T, N> val);
 
 private:
   GLuint index;

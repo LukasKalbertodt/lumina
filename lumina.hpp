@@ -4,8 +4,7 @@
 #include "config/LConfig.hpp"
 
 // include core components
-#include "core/LException.hpp"
-#include "core/LGLException.hpp"
+#include "core/LuminaException.hpp"
 
 // include input components
 #include "input/LKeyCode.hpp"
@@ -13,8 +12,8 @@
 
 // include utility types
 #include "util/half.hpp"            // 16 bit float type
-#include "util/LVector.hpp"         // mathematical vector
-#include "util/LMatrix.hpp"         // matrix
+#include "util/Vector.hpp"          // mathematical vector
+#include "util/Matrix.hpp"          // matrix
 #include "util/Color.hpp"           // color
 #include "util/LTerminalColor.hpp"  // tools to write colored text to stdout
 

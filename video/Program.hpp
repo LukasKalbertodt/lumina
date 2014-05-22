@@ -4,7 +4,6 @@
 #include "RenderContext.fpp"
 #include "UniformSet.hpp"
 #include "../config/BaseProxy.hpp"
-#include "../core/LGLException.hpp"
 
 #include <GL/glew.h>
 #include <string>

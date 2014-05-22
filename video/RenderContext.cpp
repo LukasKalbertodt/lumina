@@ -1,7 +1,7 @@
-#include "LGLTools.hpp"
+#include "GLException.hpp"
+#include "GLTools.hpp"
 #include "Program.hpp"
 #include "RenderContext.hpp"
-#include "../core/LGLException.hpp"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -16,7 +16,7 @@ void RenderContext::create() {
   // check for errors
   if(status != GLEW_OK) {
     logError("[RenderContext] glewInit() failed with status <", status, ">!");
-    throw LGLException("glewInit() failed");
+    throw GLException("glewInit() failed");
   }
 
   // check for GL error (glew often causes one when using new context versions)

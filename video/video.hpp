@@ -8,3 +8,4 @@
 #include "Pipeline.hpp"
 #include "Mesh.hpp"
 #include "Program.hpp"
+#include "GLException.hpp"

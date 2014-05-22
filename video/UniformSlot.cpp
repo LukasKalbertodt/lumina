@@ -1,6 +1,6 @@
-#include "LGLTools.hpp"
+#include "GLException.hpp"
+#include "GLTools.hpp"
 #include "UniformSlot.hpp"
-#include "../core/LGLException.hpp"
 
 #include <GL/glew.h>
 
@@ -16,7 +16,7 @@ void UniformSlot::operator=(float val) {
     logError("[UniformSlot] Error while writing float uniform <",
              translateGLError(err),
              ">!");
-    throw LGLException("[UniformSlot] Error while writing float uniform");
+    throw GLException("[UniformSlot] Error while writing float uniform");
   }
 }
 

@@ -1,18 +1,18 @@
 #pragma once
 /**
- * \file LMatrixCore.hpp
+ * \file MatrixCore.hpp
  * This file is part of the Lumina Graphics Framework.
  *
  * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
  * \author Sebastian von Ohr
  *
- * This file will define LMatrix and various matrix functions. In most cases you
- * should include LMatrix.hpp instead, which provides additional helper
+ * This file will define Matrix and various matrix functions. In most cases you
+ * should include Matrix.hpp instead, which provides additional helper
  * functions (but has more dependencies).
- * This file also depends on LVectorCore.hpp!
+ * This file also depends on VectorCore.hpp!
  */
 
-#include "LVectorCore.hpp"
+#include "VectorCore.hpp"
 
 #include <cstddef>
 #include <cstring>
@@ -300,27 +300,27 @@ struct LXMatrixImpl {
     memset(data, 0, sizeof(data));
   }
 
-  LVector<T, C> getRow(std::size_t index) const {
+  Vector<T, C> getRow(std::size_t index) const {
     if(index >= R)
       throw std::out_of_range("Invalid row index");
-    LVector<T, C> out;  // TODO: could memcpy for POD types
+    Vector<T, C> out;  // TODO: could memcpy for POD types
     for(int i = 0; i < C; ++i) {
       out.data[i] = data[index][i];
     }
     return out;
   }
 
-  LVector<T, R> getColumn(std::size_t index) const {
+  Vector<T, R> getColumn(std::size_t index) const {
     if(index >= C)
       throw std::out_of_range("Invalid column index");
-    LVector<T, R> out;
+    Vector<T, R> out;
     for(int i = 0; i < R; ++i) {
       out.data[i] = data[i][index];
     }
     return out;
   }
 
-  void setRow(std::size_t index, LVector<T, C> vec) {
+  void setRow(std::size_t index, Vector<T, C> vec) {
     if(index >= R)
       throw std::out_of_range("Invalid row index");
     for(int i = 0; i < C; ++i) {
@@ -328,7 +328,7 @@ struct LXMatrixImpl {
     }
   }
 
-  void setColumn(std::size_t index, LVector<T, R> vec) {
+  void setColumn(std::size_t index, Vector<T, R> vec) {
     if(index >= C)
       throw std::out_of_range("Invalid column index");
     for(int i = 0; i < R; ++i) {
@@ -341,7 +341,7 @@ struct LXMatrixImpl {
 
 
 /*******************************************************************************
-* Definition of LMatrix
+* Definition of Matrix
 *******************************************************************************/
 /**
  * @brief Represents a RxC matrix with elements of type T
@@ -351,9 +351,9 @@ struct LXMatrixImpl {
  * @tparam C Number of Columns
  */
 template <typename T, std::size_t R, std::size_t C>
-struct LMatrix : public LXMatrixImpl<T, R, C> {
-  LMatrix<T, C, R> transposed() const {
-    LMatrix<T, C, R> out;
+struct Matrix : public LXMatrixImpl<T, R, C> {
+  Matrix<T, C, R> transposed() const {
+    Matrix<T, C, R> out;
     LXMatrixHelper<T>::transpose(this->data, out.data);
     return out;
   }
@@ -361,24 +361,24 @@ struct LMatrix : public LXMatrixImpl<T, R, C> {
 
 // specialization for quadratic matrices
 template <typename T, std::size_t N> 
-struct LMatrix<T, N, N> : public LXMatrixImpl<T, N, N>{
+struct Matrix<T, N, N> : public LXMatrixImpl<T, N, N>{
 
-  LMatrix<T, N, N>& setToIdentity() {
+  Matrix<T, N, N>& setToIdentity() {
     for(int i = 0; i < N; ++i) {
       this->data[i][i] = T(1);
     }
     return *this;
   }
 
-  LVector<T, N> getDiagonal() const {
-    LVector<T, N> out;
+  Vector<T, N> getDiagonal() const {
+    Vector<T, N> out;
     for(int i = 0; i < N; ++i) {
       out.data[i] = this->data[i][i];
     }
     return out;
   }
 
-  LMatrix<T, N, N>& setDiagonal(LVector<T, N> vec) {
+  Matrix<T, N, N>& setDiagonal(Vector<T, N> vec) {
     for(int i = 0; i < N; ++i) {
       this->data[i][i] = vec.data[i];
     }
@@ -389,14 +389,14 @@ struct LMatrix<T, N, N> : public LXMatrixImpl<T, N, N>{
     return LXMatrixHelper<T>::det(this->data);
   }
 
-  LMatrix<T, N, N> inverted() const {
-    LMatrix<T, N, N> out;
+  Matrix<T, N, N> inverted() const {
+    Matrix<T, N, N> out;
     LXMatrixHelper<T>::invert(this->data, out.data);
     return out;
   }
 
-  LMatrix<T, N, N> transposed() const {
-    LMatrix<T, N, N> out;
+  Matrix<T, N, N> transposed() const {
+    Matrix<T, N, N> out;
     LXMatrixHelper<T>::transpose(this->data, out.data);
     return out;
   }
@@ -405,23 +405,23 @@ struct LMatrix<T, N, N> : public LXMatrixImpl<T, N, N>{
 
 
 /*******************************************************************************
-* Definition of non member functions for LMatrix
+* Definition of non member functions for Matrix
 *******************************************************************************/
 /***** unary operators ********************************************************/
 template <typename T, std::size_t R, std::size_t C>
-LMatrix<T, R, C> operator+(const LMatrix<T, R, C>& m) {
+Matrix<T, R, C> operator+(const Matrix<T, R, C>& m) {
   return m;
 }
 
 template <typename T, std::size_t R, std::size_t C>
-LMatrix<T, R, C> operator-(const LMatrix<T, R, C>& m) {
-  // LMatrix<T, R, C> out;
+Matrix<T, R, C> operator-(const Matrix<T, R, C>& m) {
+  // Matrix<T, R, C> out;
   // for(int i = 0; i < R; ++i) {
   //   for(int j = 0; j < C; ++j) {
   //     out.data[i][j] = -m.data[i][j];
   //   }
   // }
-  LMatrix<T, R, C> out;
+  Matrix<T, R, C> out;
   out -= m;
   return out;
 }
@@ -430,8 +430,8 @@ LMatrix<T, R, C> operator-(const LMatrix<T, R, C>& m) {
 /***** assignment operators ***************************************************/
 // matrix += matrix
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-LMatrix<Ta, R, C>& operator+=(LMatrix<Ta, R, C>& lh,
-                              const LMatrix<Tb, R, C>& rh) {
+Matrix<Ta, R, C>& operator+=(Matrix<Ta, R, C>& lh,
+                              const Matrix<Tb, R, C>& rh) {
   for(int i = 0; i < R; ++i) {
     for(int j = 0; j < C; ++j) {
       lh.data[i][j] += rh.data[i][j];
@@ -442,8 +442,8 @@ LMatrix<Ta, R, C>& operator+=(LMatrix<Ta, R, C>& lh,
 
 // matrix -= matrix
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-LMatrix<Ta, R, C>& operator-=(LMatrix<Ta, R, C>& lh,
-                              const LMatrix<Tb, R, C>& rh) {
+Matrix<Ta, R, C>& operator-=(Matrix<Ta, R, C>& lh,
+                              const Matrix<Tb, R, C>& rh) {
   for(int i = 0; i < R; ++i) {
     for(int j = 0; j < C; ++j) {
       lh.data[i][j] -= rh.data[i][j];
@@ -454,15 +454,15 @@ LMatrix<Ta, R, C>& operator-=(LMatrix<Ta, R, C>& lh,
 
 // matrix *= matrix
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-LMatrix<Ta, R, C>& operator*=(LMatrix<Ta, R, C>& lh,
-                              const LMatrix<Tb, R, C>& rh) {
+Matrix<Ta, R, C>& operator*=(Matrix<Ta, R, C>& lh,
+                              const Matrix<Tb, R, C>& rh) {
   lxMatMultiply(lh.data, rh.data, lh.data);
   return lh;
 }
 
 // matrix *= scalar
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-LMatrix<Ta, R, C>& operator*=(LMatrix<Ta, R, C>& lh, Tb rh) {
+Matrix<Ta, R, C>& operator*=(Matrix<Ta, R, C>& lh, Tb rh) {
   for(int i = 0; i < R; ++i) {
     for(int j = 0; j < C; ++j) {
       lh.data[i][j] *= rh;
@@ -473,7 +473,7 @@ LMatrix<Ta, R, C>& operator*=(LMatrix<Ta, R, C>& lh, Tb rh) {
 
 // matrix /= scalar
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-LMatrix<Ta, R, C>& operator/=(LMatrix<Ta, R, C>& lh, Tb rh) {
+Matrix<Ta, R, C>& operator/=(Matrix<Ta, R, C>& lh, Tb rh) {
   for(int i = 0; i < R; ++i) {
     for(int j = 0; j < C; ++j) {
       lh.data[i][j] /= rh;
@@ -486,63 +486,63 @@ LMatrix<Ta, R, C>& operator/=(LMatrix<Ta, R, C>& lh, Tb rh) {
 /***** arithmetic operators ***************************************************/
 // matrix * scalar
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-auto operator*(const LMatrix<Ta, R, C>& lh, Tb rh)
-  -> LMatrix<decltype(Ta(0) * Tb(0)), R, C> {
-  LMatrix<decltype(Ta(0) * Tb(0)), R, C> out(lh);
+auto operator*(const Matrix<Ta, R, C>& lh, Tb rh)
+  -> Matrix<decltype(Ta(0) * Tb(0)), R, C> {
+  Matrix<decltype(Ta(0) * Tb(0)), R, C> out(lh);
   out *= rh;
   return out;
 }
 
 // scalar * matrix
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-auto operator*(Tb lh, const LMatrix<Ta, R, C>& rh)
-  -> LMatrix<decltype(Ta(0) * Tb(0)), R, C> {
-  LMatrix<decltype(Ta(0) * Tb(0)), R, C> out(rh);
+auto operator*(Tb lh, const Matrix<Ta, R, C>& rh)
+  -> Matrix<decltype(Ta(0) * Tb(0)), R, C> {
+  Matrix<decltype(Ta(0) * Tb(0)), R, C> out(rh);
   out *= lh;
   return out;
 }
 
 // matrix / scalar
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-auto operator/(const LMatrix<Ta, R, C>& lh, Tb rh)
-  -> LMatrix<decltype(Ta(0) / Tb(0)), R, C> {
-  LMatrix<decltype(Ta(0) / Tb(0)), R, C> out(lh);
+auto operator/(const Matrix<Ta, R, C>& lh, Tb rh)
+  -> Matrix<decltype(Ta(0) / Tb(0)), R, C> {
+  Matrix<decltype(Ta(0) / Tb(0)), R, C> out(lh);
   out /= rh;
   return out;
 }
 
 // matrix + matrix
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-auto operator+(const LMatrix<Ta, R, C>& lh, const LMatrix<Tb, R, C>& rh)
-  -> LMatrix<decltype(Ta(0) + Tb(0)), R, C> {
-  LMatrix<decltype(Ta(0) + Tb(0)), R, C> out(lh);
+auto operator+(const Matrix<Ta, R, C>& lh, const Matrix<Tb, R, C>& rh)
+  -> Matrix<decltype(Ta(0) + Tb(0)), R, C> {
+  Matrix<decltype(Ta(0) + Tb(0)), R, C> out(lh);
   out += rh;
   return out;
 }
 
 // matrix - matrix
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-auto operator-(const LMatrix<Ta, R, C>& lh, const LMatrix<Tb, R, C>& rh)
-  -> LMatrix<decltype(Ta(0) - Tb(0)), R, C> {
-  LMatrix<decltype(Ta(0) - Tb(0)), R, C> out(lh);
+auto operator-(const Matrix<Ta, R, C>& lh, const Matrix<Tb, R, C>& rh)
+  -> Matrix<decltype(Ta(0) - Tb(0)), R, C> {
+  Matrix<decltype(Ta(0) - Tb(0)), R, C> out(lh);
   out -= rh;
   return out;
 }
 
 // matrix * matrix
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-auto operator*(const LMatrix<Ta, R, C>& lh, const LMatrix<Tb, R, C>& rh)
-  -> LMatrix<decltype(Ta(0) * Tb(0)), R, C> {
-  LMatrix<decltype(Ta(0) * Tb(0)), R, C> out(lh);
+auto operator*(const Matrix<Ta, R, C>& lh, const Matrix<Tb, R, C>& rh)
+  -> Matrix<decltype(Ta(0) * Tb(0)), R, C> {
+  Matrix<decltype(Ta(0) * Tb(0)), R, C> out(lh);
   lxMatMultiply(lh.data, rh.data, out.data);
   return out;
 }
 
 // matrix * vector
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-auto operator*(const LMatrix<Ta, R, C>& lh, LVector<Tb, C> rh)
-  -> LVector<decltype(Ta(0) + Tb(0)), R> {
-  LVector<decltype(Ta(0) + Tb(0)), R> out;
+auto operator*(const Matrix<Ta, R, C>& lh, Vector<Tb, C> rh)
+  -> Vector<decltype(Ta(0) + Tb(0)), R> {
+  Vector<decltype(Ta(0) + Tb(0)), R> out;
   lxMatMultiply(lh.data,
                 reinterpret_cast<Tb(&)[C][1]>(rh.data),
                 reinterpret_cast<Tb(&)[C][1]>(out.data));
@@ -551,9 +551,9 @@ auto operator*(const LMatrix<Ta, R, C>& lh, LVector<Tb, C> rh)
 
 // vector * matrix
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
-auto operator*(LVector<Tb, R> lh, const LMatrix<Ta, R, C>& rh)
-  -> LVector<decltype(Ta(0) + Tb(0)), C> {
-  LVector<decltype(Ta(0) + Tb(0)), C> out;
+auto operator*(Vector<Tb, R> lh, const Matrix<Ta, R, C>& rh)
+  -> Vector<decltype(Ta(0) + Tb(0)), C> {
+  Vector<decltype(Ta(0) + Tb(0)), C> out;
   lxMatMultiply(reinterpret_cast<Tb(&)[1][R]>(lh.data),
                 rh.data,
                 reinterpret_cast<Tb(&)[1][C]>(out.data));
@@ -590,7 +590,7 @@ Tdst matrix_cast(const Tsrc& in) {
 * Typedefs for common types
 *******************************************************************************/
 template <typename T, std::size_t N>
-using MatQ = LMatrix<T, N, N>;
+using MatQ = Matrix<T, N, N>;
 
 template <std::size_t N>
 using MatQf = MatQ<float, N>;

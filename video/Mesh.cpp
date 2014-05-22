@@ -30,7 +30,7 @@ void Mesh::create(int vertexCount) {
     logError("[Mesh] Unable to create vertex buffer <",
              translateGLError(err),
              "> !");
-    throw LGLException("Unable to create vertex buffer");
+    throw GLException("Unable to create vertex buffer");
   }
 }
 
@@ -57,7 +57,7 @@ void Mesh::bindVAO() {
 void Mesh::bindVBO() {
   if(m_vertexHandle == 0) {
     logError("[Mesh] Attempt to bind VBO, but it was never created!");
-    throw LGLException("Attempt to bind VBO, but it was never created");
+    throw GLException("Attempt to bind VBO, but it was never created");
   }
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
 }

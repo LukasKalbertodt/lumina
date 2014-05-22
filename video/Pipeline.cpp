@@ -1,5 +1,5 @@
 #include "Pipeline.hpp"
-#include "../core/LGLException.hpp"
+#include "GLException.hpp"
 
 #include <vector>
 using namespace std;
@@ -32,7 +32,7 @@ void PipelineContainer::linkShaderProgram() {
              m_fragmentShader.getFilename(),
              "> ->");
     logError("[LShader] ", compileLog.data());
-    throw LGLException("Could not compile shader");
+    throw GLException("Could not compile shader");
   }
   log("[LShader] Shaders <",
       m_vertexShader.getFilename(),

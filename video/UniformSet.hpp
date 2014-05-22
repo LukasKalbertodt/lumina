@@ -1,9 +1,9 @@
 #pragma once
 
-#include "LGLTools.hpp"
+#include "GLException.hpp"
+#include "GLTools.hpp"
 #include "Program.fpp"
 #include "UniformSlot.hpp"
-#include "../core/LGLException.hpp"
 #include "../config/BaseProxy.hpp"
 #include "../util/NonCopyable.hpp"
 #include <GL/glew.h>
@@ -23,7 +23,7 @@ public:
       logError("[UniformSet] Error while obtaining uniform offset <",
                translateGLError(err),
                ">!");
-      throw LGLException("[UniformSet] Error while obtaining uniform offset");
+      throw GLException("[UniformSet] Error while obtaining uniform offset");
     }
 
     // check if name lookup was successful

@@ -1,12 +1,12 @@
 #pragma once
 /**
- * \file LVectorCore.hpp
+ * \file VectorCore.hpp
  * This file is part of the Lumina Graphics Framework.
  *
  * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
  *
- * This file will define LVector and various vector functions. In most cases you
- * should include LVector.hpp instead, which provides additional helper
+ * This file will define Vector and various vector functions. In most cases you
+ * should include Vector.hpp instead, which provides additional helper
  * functions (but has more dependencies).
  */
 #include <cmath>
@@ -20,7 +20,7 @@ namespace lumina {
 * Internal Helper: The following is for internal use only!
 *******************************************************************************/
 /**
- * @brief Specialized helper base struct for LVector.
+ * @brief Specialized helper base struct for Vector.
  *        Just for internal use!
  * 
  * @tparam T Type of the vector data
@@ -139,14 +139,14 @@ constexpr std::size_t lxMin(std::size_t a, std::size_t b) {
 /// definition of PI
 constexpr double lxVecPI = 3.14159265359;
 
-// forward declare LVectorIterator
+// forward declare VectorIterator
 template <typename T, std::size_t N>
-class LVectorIterator;
+class VectorIterator;
 
 
 
 /*******************************************************************************
-* Definition of LVector
+* Definition of Vector
 *******************************************************************************/
 /**
  * @brief Represents a vector with arbitrary dimension and type of elements.
@@ -155,14 +155,14 @@ class LVectorIterator;
  * @tparam N Dimension of the vector
  */
 template <typename T, std::size_t N>
-struct LVector : public LXVectorImpl<T, N> {
+struct Vector : public LXVectorImpl<T, N> {
 
   /***** Constructors, typedefs, data access, conversion **********************/
   /// inheriting constructor from base class
   using LXVectorImpl<T, N>::LXVectorImpl;
 
   /// iterator type
-  using iterator = LVectorIterator<T, N>;
+  using iterator = VectorIterator<T, N>;
   /// type of the vector's elements
   using type = T;
   /// dimension of the vector
@@ -186,7 +186,7 @@ struct LVector : public LXVectorImpl<T, N> {
 
   /***** simple arithmetic operators, altering the object *********************/
   template <typename OT>
-  LVector<T, N>& operator+=(const LVector<OT, N>& v) {
+  Vector<T, N>& operator+=(const Vector<OT, N>& v) {
     for(int i = 0; i < N; ++i) {
       this->data[i] += v.data[i];
     }
@@ -194,7 +194,7 @@ struct LVector : public LXVectorImpl<T, N> {
   }
 
   template <typename OT>
-  LVector<T, N>& operator-=(const LVector<OT, N>& v) {
+  Vector<T, N>& operator-=(const Vector<OT, N>& v) {
     for(int i = 0; i < N; ++i) {
       this->data[i] -= v.data[i];
     }
@@ -202,7 +202,7 @@ struct LVector : public LXVectorImpl<T, N> {
   }
 
   template <typename S>
-  LVector<T, N>& operator*=(S scalar) {
+  Vector<T, N>& operator*=(S scalar) {
     for(int i = 0; i < N; ++i) {
       this->data[i] *= scalar;
     }
@@ -210,7 +210,7 @@ struct LVector : public LXVectorImpl<T, N> {
   }
 
   template <typename S>
-  LVector<T, N>& operator/=(S scalar) {
+  Vector<T, N>& operator/=(S scalar) {
     for(int i = 0; i < N; ++i) {
       this->data[i] /= scalar;
     }
@@ -219,12 +219,12 @@ struct LVector : public LXVectorImpl<T, N> {
 
 
   /***** Unary operators ******************************************************/
-  LVector<T, N> operator+() const {
+  Vector<T, N> operator+() const {
     return *this;
   }
 
-  LVector<T, N> operator-() const {
-    LVector<T, N> out(*this);
+  Vector<T, N> operator-() const {
+    Vector<T, N> out(*this);
     for(int i = 0; i < N; ++i) {
       out.data[i] = -out.data[i];
     }
@@ -233,7 +233,7 @@ struct LVector : public LXVectorImpl<T, N> {
 
 
   /***** comparison operators *************************************************/
-  bool operator==(const LVector<T, N>& other) const {
+  bool operator==(const Vector<T, N>& other) const {
     for(int i = 0; i < N; ++i) {
       if(this->data[i] != other.data[i])
         return false;
@@ -241,12 +241,12 @@ struct LVector : public LXVectorImpl<T, N> {
     return true;
   }
 
-  bool operator!=(const LVector<T, N>& other) const {
+  bool operator!=(const Vector<T, N>& other) const {
     return !(*this == other);
   }
 
   // TODO: does this make sense?
-  bool operator<(const LVector<T, N>& other) const {
+  bool operator<(const Vector<T, N>& other) const {
     for(int i = 0; i < N; ++i) {
       if(this->data[i] < other.data[i]) 
         return true;
@@ -256,15 +256,15 @@ struct LVector : public LXVectorImpl<T, N> {
     return false;
   }
 
-  bool operator>(const LVector<T, N>& other) const {
+  bool operator>(const Vector<T, N>& other) const {
     return (other < *this);
   }
 
-  bool operator<=(const LVector<T, N>& other) const {
+  bool operator<=(const Vector<T, N>& other) const {
     return (*this < other || *this == other);
   }
 
-  bool operator>=(const LVector<T, N>& other) const {
+  bool operator>=(const Vector<T, N>& other) const {
     return (other < *this || *this == other);
   }
 
@@ -306,8 +306,8 @@ struct LVector : public LXVectorImpl<T, N> {
 
 
   /***** Arithmetic functions with vector output ******************************/
-  LVector<T, N> normalized() const {
-    return LVector<T, N>(*this).normalize();
+  Vector<T, N> normalized() const {
+    return Vector<T, N>(*this).normalize();
   }
 
   void normalize() {
@@ -317,15 +317,15 @@ struct LVector : public LXVectorImpl<T, N> {
   }
 
   template <typename To>
-  void scale(const LVector<To, N>& o) {
+  void scale(const Vector<To, N>& o) {
     for(int i = 0; i < N; ++i) {
       this->data[i] *= o.data[i];
     }
   }
 
   template <typename To>
-  LVector<T, N> scaled(const LVector<To, N>& o) {
-    return LVector<T, N>(*this).scale();
+  Vector<T, N> scaled(const Vector<To, N>& o) {
+    return Vector<T, N>(*this).scale();
   }
 
   template <typename Ta>
@@ -334,8 +334,8 @@ struct LVector : public LXVectorImpl<T, N> {
   }
 
   template <typename Ta>
-  LVector<T, N> rotated(Ta phi, Ta theta) const {
-    return LVector<T, N>(
+  Vector<T, N> rotated(Ta phi, Ta theta) const {
+    return Vector<T, N>(
       cos(theta) * cos(phi) * this->x
         - cos(theta) * sin(phi) * this->y
         + sin(theta) * this->z,
@@ -348,69 +348,69 @@ struct LVector : public LXVectorImpl<T, N> {
   }
 
   template <typename To>
-  void reflect(const LVector<To, N>& normal) {
+  void reflect(const Vector<To, N>& normal) {
     *this -= normal * 2 * dot(*this, normal);
   }
 
   template <typename To>
-  auto reflected(const LVector<To, N>& normal)
-      const -> LVector<decltype(T(0) - To(0)), N> {
-    return LVector<decltype(T(0) - To(0)), N>(*this).reflect(normal);
+  auto reflected(const Vector<To, N>& normal)
+      const -> Vector<decltype(T(0) - To(0)), N> {
+    return Vector<decltype(T(0) - To(0)), N>(*this).reflect(normal);
   }
 };
 
 
 
 /*******************************************************************************
-* Definition of non member functions for LVector
+* Definition of non member functions for Vector
 *******************************************************************************/
 /***** Simple arithmetic operators ********************************************/
 template <typename T1, typename T2, std::size_t N>
-auto operator+(const LVector<T1, N>& v1, const LVector<T2, N>& v2)
-    -> LVector<decltype(T1(0) + T2(0)), N> {
-  LVector<decltype(T1(0) + T2(0)), N> out(v1);
+auto operator+(const Vector<T1, N>& v1, const Vector<T2, N>& v2)
+    -> Vector<decltype(T1(0) + T2(0)), N> {
+  Vector<decltype(T1(0) + T2(0)), N> out(v1);
   return (out += v2);
 }
 
 template <typename T1, typename T2, std::size_t N>
-auto operator-(const LVector<T1, N>& v1, const LVector<T2, N>& v2)
-    -> LVector<decltype(T1(0) - T2(0)), N> {
-  LVector<decltype(T1(0) - T2(0)), N> out(v1);
+auto operator-(const Vector<T1, N>& v1, const Vector<T2, N>& v2)
+    -> Vector<decltype(T1(0) - T2(0)), N> {
+  Vector<decltype(T1(0) - T2(0)), N> out(v1);
   return (out -= v2);
 }
 
 template <typename T1, typename T2, std::size_t N>
-auto operator*(const LVector<T1, N>& v, T2 scalar)
-    -> LVector<decltype(T1(0) * T2(0)), N> {
-  LVector<decltype(T1(0) * T2(0)), N> out(v);
+auto operator*(const Vector<T1, N>& v, T2 scalar)
+    -> Vector<decltype(T1(0) * T2(0)), N> {
+  Vector<decltype(T1(0) * T2(0)), N> out(v);
   return out *= scalar;
 }
 
 template <typename T1, typename T2, std::size_t N>
-auto operator*(T2 scalar, const LVector<T1, N>& v)
-    -> LVector<decltype(T1(0) * T2(0)), N> {
-  LVector<decltype(T1(0) * T2(0)), N> out(v);
+auto operator*(T2 scalar, const Vector<T1, N>& v)
+    -> Vector<decltype(T1(0) * T2(0)), N> {
+  Vector<decltype(T1(0) * T2(0)), N> out(v);
   return out *= scalar;
 }
 
 template <typename T1, typename T2, std::size_t N>
-auto operator/(const LVector<T1, N>& v, T2 scalar)
-    -> LVector<decltype(T1(0) / T2(0)), N> {
-  LVector<decltype(T1(0) / T2(0)), N> out(v);
+auto operator/(const Vector<T1, N>& v, T2 scalar)
+    -> Vector<decltype(T1(0) / T2(0)), N> {
+  Vector<decltype(T1(0) / T2(0)), N> out(v);
   return out *= scalar;
 }
 
 template <typename T1, typename T2, std::size_t N>
-auto operator/(T2 scalar, const LVector<T1, N>& v)
-    -> LVector<decltype(T1(0) / T2(0)), N> {
-  LVector<decltype(T1(0) / T2(0)), N> out(v);
+auto operator/(T2 scalar, const Vector<T1, N>& v)
+    -> Vector<decltype(T1(0) / T2(0)), N> {
+  Vector<decltype(T1(0) / T2(0)), N> out(v);
   return out *= scalar;
 }
 
 
 /***** commutative vector calculations ****************************************/
 template <typename T1, typename T2, std::size_t N>
-auto dot(const LVector<T1, N>& lh, const LVector<T2, N>& rh)
+auto dot(const Vector<T1, N>& lh, const Vector<T2, N>& rh)
     -> decltype(T1(0) + T2(0)) {
   decltype(T1(0) + T2(0)) out = 0;
   for(int i = 0; i < N; ++i) {
@@ -420,22 +420,22 @@ auto dot(const LVector<T1, N>& lh, const LVector<T2, N>& rh)
 }
 
 template <typename T1, typename T2>
-auto cross(const LVector<T1, 3>& lh, const LVector<T2, 3>& rh)
-    -> LVector<decltype(T1(0) * T2(0)), 3> {
-  return LVector<decltype(T1(0) + T2(0)), 3>(lh.y * rh.z - lh.z * rh.y,
+auto cross(const Vector<T1, 3>& lh, const Vector<T2, 3>& rh)
+    -> Vector<decltype(T1(0) * T2(0)), 3> {
+  return Vector<decltype(T1(0) + T2(0)), 3>(lh.y * rh.z - lh.z * rh.y,
                                              lh.z * rh.x - lh.x * rh.z,
                                              lh.x * rh.y - lh.y * rh.x);
 }
 
 
 template <typename T1, typename T2, std::size_t N>
-auto distance(const LVector<T1, N>& a, const LVector<T2, N>& b)
+auto distance(const Vector<T1, N>& a, const Vector<T2, N>& b)
     -> decltype((a - b).length()) {
   return (a - b).length();
 }
 
 template <typename T1, typename T2, std::size_t N>
-auto angle(const LVector<T1, N>& a, const LVector<T2, N>& b)
+auto angle(const Vector<T1, N>& a, const Vector<T2, N>& b)
     -> decltype(acos(a.length() * b.length())) {
   return acos(dot(a, b) / (a.length() * b.length()));
 }
@@ -443,8 +443,8 @@ auto angle(const LVector<T1, N>& a, const LVector<T2, N>& b)
 
 /***** vector_cast definition *************************************************/
 template <typename Tdst, typename Tsrc, std::size_t N>
-LVector<Tdst, N> vector_cast(const LVector<Tsrc, N>& in) {
-  LVector<Tdst, N> out;
+Vector<Tdst, N> vector_cast(const Vector<Tsrc, N>& in) {
+  Vector<Tdst, N> out;
   for(int i = 0; i < N; ++i) {
     out.data[i] = static_cast<Tdst>(in.data[i]);
   }
@@ -452,8 +452,8 @@ LVector<Tdst, N> vector_cast(const LVector<Tsrc, N>& in) {
 }
 
 template <std::size_t Ndst, std::size_t Nsrc, typename T>
-LVector<T, Ndst> vector_cast(const LVector<T, Nsrc>& in) {
-  LVector<T, Ndst> out;
+Vector<T, Ndst> vector_cast(const Vector<T, Nsrc>& in) {
+  Vector<T, Ndst> out;
   for(int i = 0; i < lxMin(Ndst, Nsrc); ++i) {
     out.data[i] = in.data[i];
   }
@@ -461,8 +461,8 @@ LVector<T, Ndst> vector_cast(const LVector<T, Nsrc>& in) {
 }
 
 template <typename Tdst, std::size_t Ndst, typename Tsrc, std::size_t Nsrc>
-LVector<Tdst, Ndst> vector_cast(const LVector<Tsrc, Nsrc>& in) {
-  LVector<Tdst, Ndst> out;
+Vector<Tdst, Ndst> vector_cast(const Vector<Tsrc, Nsrc>& in) {
+  Vector<Tdst, Ndst> out;
   for(int i = 0; i < lxMin(Ndst, Nsrc); ++i) {
     out.data[i] = static_cast<Tdst>(in.data[i]);
   }
@@ -475,39 +475,39 @@ LVector<Tdst, Ndst> vector_cast(const LVector<Tsrc, Nsrc>& in) {
 * Typedefs for common types
 *******************************************************************************/
 template <typename T>
-using Vec2 = LVector<T, 2>;
-using Vec2f = LVector<float, 2>; 
-using Vec2i = LVector<int, 2>; 
+using Vec2 = Vector<T, 2>;
+using Vec2f = Vector<float, 2>; 
+using Vec2i = Vector<int, 2>; 
 
 template <typename T>
-using Vec3 = LVector<T, 3>;
-using Vec3f = LVector<float, 3>; 
-using Vec3i = LVector<int, 3>; 
+using Vec3 = Vector<T, 3>;
+using Vec3f = Vector<float, 3>; 
+using Vec3i = Vector<int, 3>; 
 
 template <typename T>
-using Vec4 = LVector<T, 4>;
-using Vec4f = LVector<float, 4>; 
-using Vec4i = LVector<int, 4>; 
+using Vec4 = Vector<T, 4>;
+using Vec4f = Vector<float, 4>; 
+using Vec4i = Vector<int, 4>; 
 
 
 
 /*******************************************************************************
-* LVectorIterator definition and functions
+* VectorIterator definition and functions
 *******************************************************************************/
 template <typename T, std::size_t N>
-class LVectorIterator : public LVector<T, N> {
+class VectorIterator : public Vector<T, N> {
 private:
-  // LVector<T, N> m_current;
-  LVector<T, N> m_target;
+  // Vector<T, N> m_current;
+  Vector<T, N> m_target;
 
   template <typename Tf, std::size_t Nf>
-  friend typename LVector<Tf, Nf>::iterator begin(LVector<Tf, Nf> v);
+  friend typename Vector<Tf, Nf>::iterator begin(Vector<Tf, Nf> v);
   template <typename Tf, std::size_t Nf>
-  friend typename LVector<Tf, Nf>::iterator end(LVector<Tf, Nf> v);
+  friend typename Vector<Tf, Nf>::iterator end(Vector<Tf, Nf> v);
 
   using iterator = void;
 
-  LVectorIterator(LVector<T, N> v) : m_target(v) {}
+  VectorIterator(Vector<T, N> v) : m_target(v) {}
 
   void skipToEnd() {
     this->data[0] = m_target.data[0];
@@ -526,7 +526,7 @@ public:
     return out;
   }
 
-  LVectorIterator& operator++() {
+  VectorIterator& operator++() {
     for(int i = N - 1; i > 0; --i) {
       if(++this->data[i] < m_target.data[i])
         return *this;
@@ -537,25 +537,25 @@ public:
     return *this;
   }
 
-  LVectorIterator<T, N> operator++(int) {
-    LVectorIterator<T, N> pre(*this);
+  VectorIterator<T, N> operator++(int) {
+    VectorIterator<T, N> pre(*this);
     ++(*this);
     return pre;
   }
 };
 
 template <typename T, std::size_t N>
-typename LVector<T, N>::iterator begin(LVector<T, N> v) {
+typename Vector<T, N>::iterator begin(Vector<T, N> v) {
   static_assert(!std::is_floating_point<T>::value, 
     "You cannot obtain a iterator of an floating pointer vector type!");
-  return typename LVector<T, N>::iterator(v);
+  return typename Vector<T, N>::iterator(v);
 }
 
 template <typename T, std::size_t N>
-typename LVector<T, N>::iterator end(LVector<T, N> v) {
+typename Vector<T, N>::iterator end(Vector<T, N> v) {
   static_assert(!std::is_floating_point<T>::value, 
     "You cannot obtain a iterator of an floating pointer vector type!");
-  typename LVector<T, N>::iterator out(v);
+  typename Vector<T, N>::iterator out(v);
   out.skipToEnd();
   return out;
 }

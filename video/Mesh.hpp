@@ -1,10 +1,10 @@
 #pragma once
 
-#include "LGLTools.hpp"
+#include "GLException.hpp"  
+#include "GLTools.hpp"
 #include "PrimitiveType.hpp"
 #include "LVertexLayout.hpp"
 #include "../config/BaseProxy.hpp"
-#include "../core/LGLException.hpp"  
 #include "../util/VariadicTools.hpp"
 
 #include <GL/glew.h>
@@ -148,7 +148,7 @@ public:
     // Test if index is valid (not even asan detects overflow the memory 
     // after this block is somehow allocated by OpenGL anyways)
     if(index >= ((vertexCount*4)/internal::LayoutTypes<Cs...>::stride)) {
-      throw LGLException("VertexWriter: Index out of bounds!");
+      throw GLException("VertexWriter: Index out of bounds!");
     }
 
     // calculate offset and return another helper object

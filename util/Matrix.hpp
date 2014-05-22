@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LMatrixCore.hpp"
+#include "MatrixCore.hpp"
 #include "LRepCommon.hpp"
 
 #include <string>
@@ -9,8 +9,8 @@
 namespace lumina {
 
 template <typename T, std::size_t Z, std::size_t S>
-std::string matrixRep(const LMatrix<T, Z, S>& m) {
-  std::string out = "LMatrix<0x0> {";
+std::string matrixRep(const Matrix<T, Z, S>& m) {
+  std::string out = "Matrix<0x0> {";
 
   // TODO: maybe fix this ugly %10 hack
   out[8] += Z % 10;
@@ -37,7 +37,7 @@ std::string matrixRep(const LMatrix<T, Z, S>& m) {
 }
 
 template <typename T, std::size_t Z, std::size_t S>
-std::ostream& operator<<(std::ostream& out, const LMatrix<T, Z, S>& m) {
+std::ostream& operator<<(std::ostream& out, const Matrix<T, Z, S>& m) {
   return (out << matrixRep(m));
 }
 
