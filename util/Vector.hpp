@@ -9,7 +9,7 @@
  * additional functions for generating a string representation.
  */
 #include "VectorCore.hpp"
-#include "LRepCommon.hpp"
+#include "RepCommon.hpp"
 
 #include <string>
 #include <ostream>
@@ -46,7 +46,7 @@ std::string vectorRep(Vector<T, N> in) {
     }
 
     // append string representation of the element
-    out += lxNumericFormat(in.data[i]);
+    out += numberToRep(in.data[i]);
   }
   return out + "}";
 }

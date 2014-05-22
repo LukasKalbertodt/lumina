@@ -1,6 +1,6 @@
 #pragma once
 /**
- * \file LTerminalColor.hpp
+ * \file TerminalColor.hpp
  * This file is part of the Lumina Graphics Framework.
  * 
  * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>

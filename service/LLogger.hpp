@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../config/LConfig.hpp"
-#include "../util/LTerminalColor.hpp"
+#include "../util/TerminalColor.hpp"
 
 #include <chrono>
 #include <fstream>

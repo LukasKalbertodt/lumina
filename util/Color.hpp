@@ -9,7 +9,7 @@
  * additional functions for generating a string representation.
  */
 #include "ColorCore.hpp"
-#include "LRepCommon.hpp"
+#include "RepCommon.hpp"
 
 #include <iomanip>
 #include <ostream>
@@ -44,10 +44,10 @@ template <typename T>
 std::string colorRep(Color<T, true> in) {
   std::string out(internal::ColorRepTrait<T>::name);
   out += " {";
-  out += "r => " + lxNumericFormat(in.r) + ", ";
-  out += "g => " + lxNumericFormat(in.g) + ", ";
-  out += "b => " + lxNumericFormat(in.b) + ", ";
-  out += "a => " + lxNumericFormat(in.a);
+  out += "r => " + numberToRep(in.r) + ", ";
+  out += "g => " + numberToRep(in.g) + ", ";
+  out += "b => " + numberToRep(in.b) + ", ";
+  out += "a => " + numberToRep(in.a);
   out += "}";
   return out;
 }
@@ -55,9 +55,9 @@ template <typename T>
 std::string colorRep(Color<T, false> in) {
   std::string out(internal::ColorRepTrait<T>::name);
   out += " {";
-  out += "r => " + lxNumericFormat(in.r) + ", ";
-  out += "g => " + lxNumericFormat(in.g) + ", ";
-  out += "b => " + lxNumericFormat(in.b);
+  out += "r => " + numberToRep(in.r) + ", ";
+  out += "g => " + numberToRep(in.g) + ", ";
+  out += "b => " + numberToRep(in.b);
   out += "}";
   return out;
 }

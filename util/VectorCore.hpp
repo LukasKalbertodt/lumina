@@ -15,10 +15,11 @@
 #include <type_traits>
 
 namespace lumina {
+namespace internal {
 
-/*******************************************************************************
-* Internal Helper: The following is for internal use only!
-*******************************************************************************/
+// =============================================================================
+// Internal Helper: The following is for internal use only!
+// =============================================================================
 /**
  * @brief Specialized helper base struct for Vector.
  *        Just for internal use!
@@ -27,7 +28,7 @@ namespace lumina {
  * @tparam N Dimension of the vector
  */
 template <typename T, std::size_t N>
-struct LXVectorImpl {
+struct VectorImpl {
   static_assert(N > 1, "Are you fucking kidding me?");
 
   union {
@@ -41,20 +42,20 @@ struct LXVectorImpl {
   };
 
   template <typename... Ts>
-  LXVectorImpl(Ts... vals)
+  VectorImpl(Ts... vals)
     : data{static_cast<T>(vals)...} {
     static_assert(sizeof...(Ts) == N, "Number of constructor arguments do not "
       "match the template parameter N!");
   }
 
-  LXVectorImpl()
+  VectorImpl()
     : data{static_cast<T>(0)} {
   }
 };
 
 // specialization for 2d
 template <typename T>
-struct LXVectorImpl<T, 2> {
+struct VectorImpl<T, 2> {
   union {
     T data[2];
     struct {
@@ -63,11 +64,11 @@ struct LXVectorImpl<T, 2> {
     };
   };
 
-  LXVectorImpl(T x, T y)
+  VectorImpl(T x, T y)
     : x(x), y(y) {  
   }
 
-  LXVectorImpl()
+  VectorImpl()
     : x(static_cast<T>(0)),
       y(static_cast<T>(0)) {
   }
@@ -76,7 +77,7 @@ struct LXVectorImpl<T, 2> {
 
 // specialization for 3d
 template <typename T>
-struct LXVectorImpl<T, 3> {
+struct VectorImpl<T, 3> {
   union {
     T data[3];
     struct {
@@ -86,11 +87,11 @@ struct LXVectorImpl<T, 3> {
     };
   };
 
-  LXVectorImpl(T x, T y, T z)
+  VectorImpl(T x, T y, T z)
     : x(x), y(y), z(z) {  
   }
 
-  LXVectorImpl()
+  VectorImpl()
     : x(static_cast<T>(0)),
       y(static_cast<T>(0)),
       z(static_cast<T>(0)) {
@@ -99,7 +100,7 @@ struct LXVectorImpl<T, 3> {
 
 // specialization for 4d
 template <typename T>
-struct LXVectorImpl<T, 4> {
+struct VectorImpl<T, 4> {
   union {
     T data[4];
     struct {
@@ -110,11 +111,11 @@ struct LXVectorImpl<T, 4> {
     };
   };
 
-  LXVectorImpl(T x, T y, T z, T w)
+  VectorImpl(T x, T y, T z, T w)
     : x(x), y(y), z(z), w(w) {  
   }
 
-  LXVectorImpl()
+  VectorImpl()
     : x(static_cast<T>(0)),
       y(static_cast<T>(0)),
       z(static_cast<T>(0)),
@@ -132,12 +133,14 @@ struct LXVectorImpl<T, 4> {
  * 
  * @return the smallest of a and b
  */
-constexpr std::size_t lxMin(std::size_t a, std::size_t b) {
+constexpr std::size_t vecMin(std::size_t a, std::size_t b) {
   return (a > b) ? b : a;
 }
 
 /// definition of PI
-constexpr double lxVecPI = 3.14159265359;
+constexpr double vecPI = 3.14159265359;
+
+} // namespace internal
 
 // forward declare VectorIterator
 template <typename T, std::size_t N>
@@ -145,9 +148,9 @@ class VectorIterator;
 
 
 
-/*******************************************************************************
-* Definition of Vector
-*******************************************************************************/
+// =============================================================================
+// Definition of Vector
+// =============================================================================
 /**
  * @brief Represents a vector with arbitrary dimension and type of elements.
  * 
@@ -155,11 +158,11 @@ class VectorIterator;
  * @tparam N Dimension of the vector
  */
 template <typename T, std::size_t N>
-struct Vector : public LXVectorImpl<T, N> {
+struct Vector : public internal::VectorImpl<T, N> {
 
   /***** Constructors, typedefs, data access, conversion **********************/
   /// inheriting constructor from base class
-  using LXVectorImpl<T, N>::LXVectorImpl;
+  using internal::VectorImpl<T, N>::VectorImpl;
 
   /// iterator type
   using iterator = VectorIterator<T, N>;
@@ -287,7 +290,7 @@ struct Vector : public LXVectorImpl<T, N> {
     static_assert(N >= 2, "You cannot calculate phi of a vector which "
       "dimension is lower than 2!");
     auto phi = atan2(this->data[1], this->data[0]);
-    return (phi < 0) ? (phi + 2*lxVecPI) : phi;
+    return (phi < 0) ? (phi + 2*internal::vecPI) : phi;
   }
 
   auto theta() const -> decltype(acos(T(0))) {
@@ -361,9 +364,9 @@ struct Vector : public LXVectorImpl<T, N> {
 
 
 
-/*******************************************************************************
-* Definition of non member functions for Vector
-*******************************************************************************/
+// =============================================================================
+// Definition of non member functions for Vector
+// =============================================================================
 /***** Simple arithmetic operators ********************************************/
 template <typename T1, typename T2, std::size_t N>
 auto operator+(const Vector<T1, N>& v1, const Vector<T2, N>& v2)
@@ -454,7 +457,7 @@ Vector<Tdst, N> vector_cast(const Vector<Tsrc, N>& in) {
 template <std::size_t Ndst, std::size_t Nsrc, typename T>
 Vector<T, Ndst> vector_cast(const Vector<T, Nsrc>& in) {
   Vector<T, Ndst> out;
-  for(int i = 0; i < lxMin(Ndst, Nsrc); ++i) {
+  for(int i = 0; i < internal::vecMin(Ndst, Nsrc); ++i) {
     out.data[i] = in.data[i];
   }
   return out;
@@ -463,7 +466,7 @@ Vector<T, Ndst> vector_cast(const Vector<T, Nsrc>& in) {
 template <typename Tdst, std::size_t Ndst, typename Tsrc, std::size_t Nsrc>
 Vector<Tdst, Ndst> vector_cast(const Vector<Tsrc, Nsrc>& in) {
   Vector<Tdst, Ndst> out;
-  for(int i = 0; i < lxMin(Ndst, Nsrc); ++i) {
+  for(int i = 0; i < internal::vecMin(Ndst, Nsrc); ++i) {
     out.data[i] = static_cast<Tdst>(in.data[i]);
   }
   return out;
@@ -471,9 +474,9 @@ Vector<Tdst, Ndst> vector_cast(const Vector<Tsrc, Nsrc>& in) {
 
 
 
-/*******************************************************************************
-* Typedefs for common types
-*******************************************************************************/
+// =============================================================================
+// Typedefs for common types
+// =============================================================================
 template <typename T>
 using Vec2 = Vector<T, 2>;
 using Vec2f = Vector<float, 2>; 
@@ -491,9 +494,9 @@ using Vec4i = Vector<int, 4>;
 
 
 
-/*******************************************************************************
-* VectorIterator definition and functions
-*******************************************************************************/
+// =============================================================================
+// VectorIterator definition and functions
+// =============================================================================
 template <typename T, std::size_t N>
 class VectorIterator : public Vector<T, N> {
 private:

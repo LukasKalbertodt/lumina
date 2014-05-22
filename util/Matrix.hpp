@@ -1,7 +1,7 @@
 #pragma once
 
 #include "MatrixCore.hpp"
-#include "LRepCommon.hpp"
+#include "RepCommon.hpp"
 
 #include <string>
 #include <ostream>
@@ -26,7 +26,7 @@ std::string matrixRep(const Matrix<T, Z, S>& m) {
       if(j != 0) {
         out += ", ";
       }
-      out += lxNumericFormat(m.data[i][j]);
+      out += numberToRep(m.data[i][j]);
     }
 
     out += "}";

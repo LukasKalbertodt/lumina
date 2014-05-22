@@ -12,7 +12,7 @@
 namespace lumina {
 
 class half;
-
+namespace internal {
 /**
  * @brief Helper function to generate a string from a arbitrary type.
  *        Just for internal use!
@@ -26,7 +26,7 @@ class half;
  */
 template <typename T>
 typename std::enable_if<std::is_integral<T>::value, std::string>::type
-lxNumericFormat(T in) {
+numberToRep(T in) {
   return std::to_string(in);
 }
 
@@ -34,7 +34,7 @@ template <typename T>
 typename std::enable_if<std::is_floating_point<T>::value
                         && !std::is_same<T, half>::value,
                         std::string>::type
-lxNumericFormat(T in) {
+numberToRep(T in) {
   char buf[20];
   std::snprintf(buf, 20, "%g", in);
   return std::string(buf);
@@ -42,11 +42,11 @@ lxNumericFormat(T in) {
 
 template <typename T>
 typename std::enable_if<std::is_same<T, half>::value, std::string>::type
-lxNumericFormat(T in) {
-  return lxNumericFormat(static_cast<float>(in));
+numberToRep(T in) {
+  return numberToRep(static_cast<float>(in));
 }
 
-// void lxNumericFormat(half in) {
+// void numberToRep(half in) {
 //   char buf[20];
 //   std::snprintf(buf, 20, "%g", in);
 //   return std::string(buf);
@@ -54,8 +54,9 @@ lxNumericFormat(T in) {
 
 template <typename T>
 typename std::enable_if<!std::is_arithmetic<T>::value, std::string>::type
-lxNumericFormat(const T& in) {
+numberToRep(const T& in) {
   return static_cast<std::string>(in);
 }
 
+}
 }
