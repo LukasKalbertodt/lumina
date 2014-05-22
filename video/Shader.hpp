@@ -1,34 +1,34 @@
 #pragma once
 #include "../config/BaseProxy.hpp"
-#include "LShaderSource.hpp"
+#include "ShaderSource.hpp"
 
 #include "GL/glew.h"
 #include <string>
 
 namespace lumina {
 
-enum class LShaderType {
+enum class ShaderType {
   Vertex, Fragment
 };
 
-template <LShaderType Type>
-class LShader : public config::CommonBase {
+template <ShaderType Type>
+class Shader : public config::CommonBase {
 public:
   // typedefs and constexpr
-  static constexpr LShaderType shaderType = Type;
+  static constexpr ShaderType shaderType = Type;
 
   // default constructor
-  LShader() : m_handle(0) {}
+  Shader() : m_handle(0) {}
 
   // descructor
-  ~LShader();
+  ~Shader();
 
   GLuint getHandle() { return m_handle; }
   std::string getFilename() { return m_filename; }
 
-  void compile(LShaderSource source);
+  void compile(ShaderSource source);
   void compile(std::string code) {
-    compile(LShaderSource(code, "unknown-file"));
+    compile(ShaderSource(code, "unknown-file"));
   }
 
 private:

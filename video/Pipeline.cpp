@@ -26,15 +26,15 @@ void PipelineContainer::linkShaderProgram() {
     glGetProgramiv(m_program, GL_INFO_LOG_LENGTH, &logLength);
     vector<char> compileLog(logLength);
     glGetShaderInfoLog(m_program, logLength, nullptr, compileLog.data());
-    logError("[LShader] Could not link shaders <",
+    logError("[Shader] Could not link shaders <",
              m_vertexShader.getFilename(),
              ", ",
              m_fragmentShader.getFilename(),
              "> ->");
-    logError("[LShader] ", compileLog.data());
+    logError("[Shader] ", compileLog.data());
     throw GLException("Could not compile shader");
   }
-  log("[LShader] Shaders <",
+  log("[Shader] Shaders <",
       m_vertexShader.getFilename(),
       ", ",
       m_fragmentShader.getFilename(),

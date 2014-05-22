@@ -1,6 +1,6 @@
 #pragma once
-#include "LShader.hpp"
 #include "Program.fpp"
+#include "Shader.hpp"
 #include "RenderContext.fpp"
 #include "UniformSet.hpp"
 #include "../config/BaseProxy.hpp"
@@ -14,7 +14,7 @@ class Program : public config::CommonBase, public NonCopyable {
 public:
   Program();
 
-  void link(LShader<LShaderType::Vertex> vs, LShader<LShaderType::Fragment> fs);
+  void link(Shader<ShaderType::Vertex> vs, Shader<ShaderType::Fragment> fs);
 
   // TMP
   void use() { glUseProgram(m_program); }

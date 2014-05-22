@@ -19,13 +19,13 @@ struct GLFWwindow;
 
 namespace lumina {
 
-class LWindow : public config::CommonBase {
+class Window : public config::CommonBase {
 public:
-  LWindow(std::string title = "Lumina Application",
+  Window(std::string title = "Lumina Application",
               Vec2i size = Vec2i(600, 400))
     : m_window(nullptr), m_size(size), m_version(1, 1), m_title(title) {}
 
-  ~LWindow();
+  ~Window();
 
   using EventCallback = std::function<LEventResult(const LInputEvent&)>;
   using CallbackAccessor = std::vector<EventCallback>::size_type;
@@ -64,7 +64,7 @@ private:
 
   void postEvent(LInputEvent e);
 
-  static std::map<GLFWwindow*, LWindow*> s_eventReceiver;
+  static std::map<GLFWwindow*, Window*> s_eventReceiver;
 
   static void resizeCallback(GLFWwindow* win, int width, int height);
   static void keyCallback(GLFWwindow* win,

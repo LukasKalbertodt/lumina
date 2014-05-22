@@ -1,10 +1,10 @@
 #pragma once
 
-#include "LWindow.hpp"
+#include "Window.hpp"
 #include "RenderContext.hpp"
-#include "LShader.hpp"
-#include "LShaderSource.hpp"
-#include "LVertexLayout.hpp"
+#include "Shader.hpp"
+#include "ShaderSource.hpp"
+#include "VertexLayout.hpp"
 #include "Pipeline.hpp"
 #include "Mesh.hpp"
 #include "Program.hpp"

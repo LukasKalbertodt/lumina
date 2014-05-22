@@ -1,4 +1,4 @@
-#include "LShader.hpp"
+#include "Shader.hpp"
 #include "GLException.hpp"  
 
 #include <vector>
@@ -6,24 +6,24 @@ using namespace std;
 
 namespace lumina {
 
-template <LShaderType Type>
-LShader<Type>::~LShader() {
+template <ShaderType Type>
+Shader<Type>::~Shader() {
   // glDeleteShader will do nothing if m_handle is 0
   glDeleteShader(m_handle);
 }
 
 template <>
-void LShader<LShaderType::Vertex>::createShaderObject() {
+void Shader<ShaderType::Vertex>::createShaderObject() {
   m_handle = glCreateShader(GL_VERTEX_SHADER);
 }
 
 template <>
-void LShader<LShaderType::Fragment>::createShaderObject() {
+void Shader<ShaderType::Fragment>::createShaderObject() {
   m_handle = glCreateShader(GL_FRAGMENT_SHADER);
 }
 
-template <LShaderType Type>
-void LShader<Type>::compile(LShaderSource source) {
+template <ShaderType Type>
+void Shader<Type>::compile(ShaderSource source) {
   // assign filename
   m_filename = source.filename;
 
@@ -45,22 +45,22 @@ void LShader<Type>::compile(LShaderSource source) {
     glGetShaderiv(m_handle, GL_INFO_LOG_LENGTH, &logLength);
     vector<char> compileLog(logLength);
     glGetShaderInfoLog(m_handle, logLength, nullptr, compileLog.data());
-    logError("[LShader] Could not compile shader <", m_filename, "> ->");
-    logError("[LShader] ", compileLog.data());
+    logError("[Shader] Could not compile shader <", m_filename, "> ->");
+    logError("[Shader] ", compileLog.data());
     throw GLException("Could not compile shader");
   }
 
-  log("[LShader] Shader <", m_filename, "> was successfully compiled.");
+  log("[Shader] Shader <", m_filename, "> was successfully compiled.");
 }
 
 template <>
-void LShader<LShaderType::Fragment>::compile(string source) {
+void Shader<ShaderType::Fragment>::compile(string source) {
 }
 
 
 
 // explicit instantiation
-template class LShader<LShaderType::Vertex>;
-template class LShader<LShaderType::Fragment>;
+template class Shader<ShaderType::Vertex>;
+template class Shader<ShaderType::Fragment>;
 
 } // namespace lumina

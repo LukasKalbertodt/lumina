@@ -4,15 +4,15 @@
 
 namespace lumina {
 
-struct LShaderSource {
-  LShaderSource() = default;
-  LShaderSource(std::string code, std::string filename)
+struct ShaderSource {
+  ShaderSource() = default;
+  ShaderSource(std::string code, std::string filename)
     : code(code), filename(filename) {}
   
   std::string code;
   std::string filename;
 };
 
-LShaderSource loadShaderFromFile(std::string filename);
+ShaderSource loadShaderFromFile(std::string filename);
 
 } // namespace lumina

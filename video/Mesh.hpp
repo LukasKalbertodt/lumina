@@ -3,7 +3,7 @@
 #include "GLException.hpp"  
 #include "GLTools.hpp"
 #include "PrimitiveType.hpp"
-#include "LVertexLayout.hpp"
+#include "VertexLayout.hpp"
 #include "../config/BaseProxy.hpp"
 #include "../util/VariadicTools.hpp"
 

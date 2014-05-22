@@ -1,12 +1,12 @@
-#include "LShaderSource.hpp"
+#include "ShaderSource.hpp"
 
 #include <fstream>
 using namespace std;
 
 namespace lumina {
 
-LShaderSource loadShaderFromFile(std::string filename) {
-  LShaderSource out;
+ShaderSource loadShaderFromFile(std::string filename) {
+  ShaderSource out;
   out.filename = filename;
 
   ifstream file(filename.c_str());

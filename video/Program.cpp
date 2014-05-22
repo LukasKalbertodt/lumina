@@ -6,8 +6,8 @@ using namespace std;
 
 namespace lumina {
 
-void Program::link(LShader<LShaderType::Vertex> vs,
-                   LShader<LShaderType::Fragment> fs) {
+void Program::link(Shader<ShaderType::Vertex> vs,
+                   Shader<ShaderType::Fragment> fs) {
   m_program = glCreateProgram();
 
   // attach both shaders
@@ -27,15 +27,15 @@ void Program::link(LShader<LShaderType::Vertex> vs,
     glGetProgramiv(m_program, GL_INFO_LOG_LENGTH, &logLength);
     vector<char> compileLog(logLength);
     glGetShaderInfoLog(m_program, logLength, nullptr, compileLog.data());
-    logError("[LShader] Could not link shaders <",
+    logError("[Program] Could not link shaders <",
              vs.getFilename(),
              ", ",
              fs.getFilename(),
              "> ->");
-    logError("[LShader] ", compileLog.data());
+    logError("[Program] ", compileLog.data());
     throw GLException("Could not compile shader");
   }
-  log("[LShader] Shaders <",
+  log("[Program] Shaders <",
       vs.getFilename(),
       ", ",
       fs.getFilename(),
