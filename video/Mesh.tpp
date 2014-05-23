@@ -9,13 +9,14 @@ inline Mesh::Mesh()
     m_indexCount(0),
     m_primitiveType(GL_TRIANGLES) {}
 
-inline Mesh::Mesh(int vertexCount) : Mesh() { 
-  create(vertexCount); 
-}
-
-inline Mesh::Mesh(int vertexCount, int indexCount) : Mesh() {
-  create(vertexCount, indexCount);
-}
+// protected reference constructor
+inline Mesh::Mesh(Mesh& ref) 
+  : m_vertexHandle(ref.m_vertexHandle),
+    m_indexHandle(ref.m_indexHandle),
+    m_vertexArrayObject(ref.m_vertexArrayObject),
+    m_vertexCount(ref.m_vertexCount),
+    m_indexCount(ref.m_indexCount),
+    m_primitiveType(ref.m_primitiveType) {}
 
 // copy constructor and copy assignment operator
 // Mesh::Mesh(const Mesh& copy);
@@ -54,28 +55,65 @@ void Mesh::prime(L lambda) {
 
 /* HotMesh methods ************************************************************/
 template <typename... Cs>
-HotMesh<Cs...>::HotMesh(Mesh& ref) : vertex(ref.m_vertexCount) {
-  this->m_vertexHandle = ref.m_vertexHandle;
-  this->m_indexHandle = ref.m_indexHandle;
-  this->m_vertexArrayObject = ref.m_vertexArrayObject;
-  this->m_vertexCount = ref.m_vertexCount;
-  this->m_indexCount = ref.m_indexCount;
+HotMesh<Cs...>::HotMesh(Mesh& ref)
+  : Mesh(ref), vertex(ref.m_vertexCount), index(ref.m_indexCount) {
+  // check if a mesh is already primed... if not, set primed marker
+  if(Mesh::s_isPrimed) {
+    logError("[Mesh] Attempt to prime a mesh while another is already primed!");
+    throw GLException(
+      "[Mesh] Attempt to prime a mesh while another is already primed!");
+  }
+  Mesh::s_isPrimed = true;
 
-  bindVAO();
-  bindVBO();
+  // bind all objects
+  bindAll();
 
+  // map vertex buffer
+  GLbitfield vmode = GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT;
+  vertex.buffer = glMapBufferRange(GL_ARRAY_BUFFER, 0, vertexSize(), vmode);
+
+  // map index buffer, if it exists
+  // if(m_indexHandle != 0) {
+  //   GLbitfield imode = GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT;
+  //   index.m_buffer = static_cast<int*>(
+  //     glMapBufferRange(GL_ELEMENT_ARRAY_BUFFER, 0, vertexSize(), imode));
+  // }
+
+  // check for error
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
     logError("[Mesh] Error <",
              translateGLError(err),
              "> while creating hot mesh!");
-    throw GLException("Error while creating hot mesh");
+    throw GLException("Error while creating HotMesh");
   }
-
-  GLbitfield mode = GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT;
-  vertex.buffer = glMapBufferRange(GL_ARRAY_BUFFER, 0, vertexSize(), mode);
 }
 
+// set handles to 0 so ~Mesh won't delete them (dirty hack...)
+template <typename... Cs>
+HotMesh<Cs...>::~HotMesh() {
+  this->m_vertexHandle = 0;
+  this->m_indexHandle = 0;
+  this->m_vertexArrayObject = 0;
+
+  // unmap buffers and VAO
+  unbindAll();
+
+  // remove primed marker
+  Mesh::s_isPrimed = false;
+}
+
+inline void Mesh::bindAll() {
+  glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexHandle);
+  glBindVertexArray(m_vertexArrayObject);
+}
+
+inline void Mesh::unbindAll() {
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+  glBindVertexArray(0);
+}
 
 template <typename... Cs>
 void HotMesh<Cs...>::applyVertexLayout() {
@@ -85,15 +123,6 @@ void HotMesh<Cs...>::applyVertexLayout() {
                             sizeof(Cs)...>();
 }
 
-  // set handles to 0 so ~Mesh won't delete them (dirty hack...)
-template <typename... Cs>
-HotMesh<Cs...>::~HotMesh() {
-  this->m_vertexHandle = 0;
-  this->m_indexHandle = 0;
-  this->m_vertexArrayObject = 0;
 
-  // unmap vertex buffer
-  glUnmapBuffer(GL_ARRAY_BUFFER);
-}
 
 } // namespace lumina

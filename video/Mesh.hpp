@@ -1,7 +1,9 @@
 #pragma once
 
+#include "IndexSet.hpp"
 #include "GLException.hpp"  
 #include "GLTools.hpp"
+#include "Mesh.fpp"
 #include "PrimitiveType.hpp"
 #include "VertexLayout.hpp"
 #include "../config/BaseProxy.hpp"
@@ -14,18 +16,6 @@
 
 
 namespace lumina {
-// =============================================================================
-// Forward declarations for all types
-// =============================================================================
-class Mesh;
-template <typename...> class HotMesh;
-namespace internal {
-  template <typename T, typename... Ts> struct AssignBufferWriter;
-  template <typename... Cs> struct VBufferWriteHelper;
-  template <typename T, typename... Ts> struct CommaBufferWriter;
-}
-
-
 // =============================================================================
 // Definition of Mesh and HotMesh
 // =============================================================================
@@ -43,8 +33,8 @@ public:
   // default constructor
   Mesh();
 
-  Mesh(int vertexCount);
-  Mesh(int vertexCount, int indexCount);
+  // Mesh(int vertexCount);
+  // Mesh(int vertexCount, int indexCount);
 
   // copy constructor and copy assignment operator
   Mesh(const Mesh& copy);
@@ -57,10 +47,10 @@ public:
   // destructor
   ~Mesh();
 
-  void create(int vertexCount);
-  void create(int vertexCount, int indexCount);
-  template <typename... Cs, typename L>
-  void prime(L lambda);
+  void create(int vertexCount, int indexCount = 0);
+  template <typename... Cs, typename L> void prime(L lambda);
+
+  // tmp
   void sendData();
 
 
@@ -77,10 +67,14 @@ protected:
   std::size_t vertexSize() const;
   std::size_t indexSize() const;
 
+  Mesh(Mesh& ref);
+
   void setPrimitiveType(PrimitiveType type);
 
-  void bindVAO();
-  void bindVBO();
+  void bindAll();
+  void unbindAll();
+
+  static bool s_isPrimed;
 
   template <typename... Cs>
   friend class HotMesh;
@@ -116,7 +110,7 @@ public:
   void applyVertexLayout();
 
   internal::VBufferWriteHelper<Cs...> vertex;
-
+  internal::IndexSet index;
 };
 
 

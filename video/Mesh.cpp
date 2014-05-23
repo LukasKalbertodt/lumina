@@ -1,11 +1,15 @@
 #include "Mesh.hpp"
+#include <stdexcept>
 
 
 namespace lumina {
 
+bool Mesh::s_isPrimed = false;
+
 void Mesh::sendData() {
-  // TODO: need to bind buffers here?
+  bindAll();
   glDrawArrays(m_primitiveType, 0, 3);
+  unbindAll();
 }
 
 Mesh::~Mesh() {
@@ -15,51 +19,66 @@ Mesh::~Mesh() {
   glDeleteVertexArrays(1, &m_vertexArrayObject);
 }
 
-void Mesh::create(int vertexCount) {
-  m_vertexCount = vertexCount;
-
-  // Create vertex buffer
-  glGenBuffers(1, &m_vertexHandle);
-  glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
-
-  glBufferData(GL_ARRAY_BUFFER, vertexSize(), nullptr, GL_STATIC_DRAW);
-
-  // Check for error
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[Mesh] Unable to create vertex buffer <",
-             translateGLError(err),
-             "> !");
-    throw GLException("Unable to create vertex buffer");
-  }
-}
 
 void Mesh::create(int vertexCount, int indexCount) {
-  // create vertex buffer
-  create(vertexCount);
+  // check if any other Mesh is primed
+  if(s_isPrimed) {
+    logError("[Mesh] Cannot execute 'create' while another Mesh is primed!");
+    throw GLException(
+      "[Mesh] Cannot execute 'create' while another Mesh is primed");
+  }
 
+  // check arguments
+  if(vertexCount < 1 || indexCount < 0) {
+    logError("[Mesh] Invalid 'create' arguments: vertexCount<",
+             vertexCount, ">, indexCount<", indexCount, ">!");
+    throw std::invalid_argument("[Mesh] Invalid 'create' arguments");
+  }
+
+  // save arguments
+  m_vertexCount = vertexCount;
   m_indexCount = indexCount;
 
-  // TODO: create index buffer
-}
-
-
-void Mesh::bindVAO() {
-  // create new if none was created so far
-  if(m_vertexArrayObject == 0) {
-    glGenVertexArrays(1, &m_vertexArrayObject);
-  }
+  // create and bind VAO
+  glGenVertexArrays(1, &m_vertexArrayObject);
   glBindVertexArray(m_vertexArrayObject);
-}
 
-
-
-void Mesh::bindVBO() {
-  if(m_vertexHandle == 0) {
-    logError("[Mesh] Attempt to bind VBO, but it was never created!");
-    throw GLException("Attempt to bind VBO, but it was never created");
+  auto err = glGetError();
+  if(err != GL_NO_ERROR) {
+    logError("[Mesh] Error while creating VAO <", translateGLError(err), ">!");
+    throw GLException("[Mesh] Error while creating VAO");
   }
+
+  // create vertex buffer (generate, bind and allocate memory)
+  glGenBuffers(1, &m_vertexHandle);
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
+  glBufferData(GL_ARRAY_BUFFER, vertexSize(), nullptr, GL_STATIC_DRAW);
+
+  err = glGetError();
+  if(err != GL_NO_ERROR) {
+    logError("[Mesh] Error while creating vertex buffer <",
+             translateGLError(err), ">!");
+    throw GLException("[Mesh] Error while creating vertex buffer");
+  }
+
+  // create index buffer, if requested
+  if(indexCount > 0) {
+    glGenBuffers(1, &m_indexHandle);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexHandle);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize(), nullptr, GL_STATIC_DRAW);
+    
+    err = glGetError();
+    if(err != GL_NO_ERROR) {
+      logError("[Mesh] Error while creating index buffer <",
+               translateGLError(err), ">!");
+      throw GLException("[Mesh] Error while creating index buffer");
+    }
+  }
+
+  // unbind all buffers and VAO
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+  glBindVertexArray(0);
 }
 
 } // namespace lumina
