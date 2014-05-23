@@ -6,6 +6,7 @@
 #include "../config/BaseProxy.hpp"
 
 #include <GL/glew.h>
+#include <functional>
 #include <string>
 
 namespace lumina {
@@ -13,11 +14,10 @@ namespace lumina {
 class Program : public config::CommonBase, public NonCopyable {
 public:
   Program();
+  ~Program();
 
-  void link(Shader<ShaderType::Vertex> vs, Shader<ShaderType::Fragment> fs);
-
-  // TMP
-  void use() { glUseProgram(m_program); }
+  void create(VShader vs, FShader fs);
+  void prime(std::function<void(HotProgram&)> func);
 
 protected:
   Program(Program& ref);
@@ -34,7 +34,9 @@ public:
 private:
   HotProgram(Program& ref);
 
-  friend RenderContext;
+  static bool s_isPrimed;
+
+  friend Program;
 };
 
 }

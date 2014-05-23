@@ -38,8 +38,8 @@ void RenderContext::swapBuffer() {
 
 void RenderContext::execute(Program& prog,
                             std::function<void(HotProgram&)> func) {
-  HotProgram hot(prog);
-  func(hot);
+  // HotProgram hot(prog);
+  // func(hot);
 }
 
 

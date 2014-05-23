@@ -6,40 +6,57 @@ using namespace std;
 
 namespace lumina {
 
-void Program::link(Shader<ShaderType::Vertex> vs,
-                   Shader<ShaderType::Fragment> fs) {
-  m_program = glCreateProgram();
+bool HotProgram::s_isPrimed = false;
+
+
+void Program::create(VShader vs, FShader fs) {
+  auto program = glCreateProgram();
 
   // attach both shaders
-  glAttachShader(m_program, vs.getHandle());
-  glAttachShader(m_program, fs.getHandle());
+  glAttachShader(program, vs.getHandle());
+  glAttachShader(program, fs.getHandle());
 
   // link program
-  glLinkProgram(m_program);
-
-  // TODO: maybe detach shaders?
+  glLinkProgram(program);
 
   // check for errors
   GLint linkStatus;
-  glGetProgramiv(m_program, GL_LINK_STATUS, &linkStatus);
+  glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
   if(linkStatus != GL_TRUE) {
+    // obtain error message
     GLint logLength;
-    glGetProgramiv(m_program, GL_INFO_LOG_LENGTH, &logLength);
+    glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
     vector<char> compileLog(logLength);
-    glGetShaderInfoLog(m_program, logLength, nullptr, compileLog.data());
+    glGetShaderInfoLog(program, logLength, nullptr, compileLog.data());
     logError("[Program] Could not link shaders <",
              vs.getFilename(),
              ", ",
              fs.getFilename(),
              "> ->");
     logError("[Program] ", compileLog.data());
-    throw GLException("Could not compile shader");
+    throw GLException("Could not link shaders");
   }
   log("[Program] Shaders <",
       vs.getFilename(),
       ", ",
       fs.getFilename(),
       "> were successfully linked.");
+
+  // detach shaders (TODO: is this a good idea?)
+  glDetachShader(program, vs.getHandle());
+  glDetachShader(program, fs.getHandle());
+
+  // check for any error
+  auto err = glGetError();
+  if(err != GL_NO_ERROR) {
+    logError("[Program] GL error while linking program <",
+             translateGLError(err),
+             ">!");
+    throw GLException("[Program] GL error while linking program");
+  }
+
+  // linking was successful: commit changes
+  m_program = program;
 }
 
 }

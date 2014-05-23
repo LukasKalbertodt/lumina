@@ -1,15 +1,12 @@
 #pragma once
-#include "../config/BaseProxy.hpp"
+#include "Shader.fpp"
 #include "ShaderSource.hpp"
+#include "../config/BaseProxy.hpp"
 
 #include "GL/glew.h"
 #include <string>
 
 namespace lumina {
-
-enum class ShaderType {
-  Vertex, Fragment
-};
 
 template <ShaderType Type>
 class Shader : public config::CommonBase {
