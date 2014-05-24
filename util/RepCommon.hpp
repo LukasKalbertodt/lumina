@@ -9,6 +9,8 @@
  * representations, most of them for internal use only!
  */
 
+#include <string>
+
 namespace lumina {
 
 class half;
