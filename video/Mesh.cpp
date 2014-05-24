@@ -8,8 +8,20 @@ bool Mesh::s_isPrimed = false;
 
 void Mesh::sendData() {
   bindAll();
-  glDrawArrays(m_primitiveType, 0, 3);
+  glGetError();
+  if(m_indexHandle == 0) {
+    glDrawArrays(m_primitiveType, 0, 3);
+  }
+  else {
+    glDrawElements(m_primitiveType, 3, GL_UNSIGNED_INT, nullptr);
+  }
   unbindAll();
+
+  auto err = glGetError();
+  if(err != GL_NO_ERROR) {
+    logError("Error<", translateGLError(err), "> while sending mesh data!");
+    throw GLException("Error while sending mesh data!");
+  }
 }
 
 Mesh::~Mesh() {
@@ -76,9 +88,7 @@ void Mesh::create(int vertexCount, int indexCount) {
   }
 
   // unbind all buffers and VAO
-  glBindBuffer(GL_ARRAY_BUFFER, 0);
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-  glBindVertexArray(0);
+  unbindAll();
 }
 
 } // namespace lumina

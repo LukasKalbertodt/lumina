@@ -19,10 +19,14 @@ VIDEO_HPP  	:= $(wildcard video/*.hpp) $(wildcard video/gl/*.hpp)
 VIDEO_CPP 	:= $(wildcard video/*.cpp) $(wildcard video/gl/*.cpp)
 VIDEO_OBJ		:= $(VIDEO_CPP:%.cpp=obj/%.o)
 
+SCENE_HPP 	:= $(wildcard scene/*.hpp)
+SCENE_CPP		:= $(wildcard scene/*.cpp)
+SCENE_OBJ		:= $(SCENE_CPP:%.cpp=obj/%.o)
+
 # join lists
-ALL_OBJ 		:= $(CORE_OBJ) $(SERVICE_OBJ) $(VIDEO_OBJ)
+ALL_OBJ 		:= $(CORE_OBJ) $(SERVICE_OBJ) $(VIDEO_OBJ) $(SCENE_OBJ)
 ALL_HPP			:= $(CONFIG_HPP) $(INPUT_HPP) $(CORE_HPP) $(SERVICE_HPP) 
-ALL_HPP 		+= $(VIDEO_HPP) $(UTIL_HPP)
+ALL_HPP 		+= $(VIDEO_HPP) $(UTIL_HPP) $(SCENE_HPP)
 
 
 ################################################################################
@@ -55,7 +59,7 @@ obj/%.o: %.cpp $(ALL_HPP) | obj
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 obj: 
-	mkdir obj obj/core obj/service obj/util obj/video obj/video/gl
+	mkdir obj obj/core obj/service obj/util obj/video obj/video/gl obj/scene
 
 clean:
 	rm -rf obj

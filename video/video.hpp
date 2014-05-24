@@ -9,4 +9,4 @@
 #include "Mesh.hpp"
 #include "Program.hpp"
 #include "GLException.hpp"
-#include "VLayoutChannel.hpp"
+#include "VChan.hpp"

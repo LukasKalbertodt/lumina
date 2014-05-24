@@ -15,3 +15,5 @@
 
 // include video.hpp -> includes more files
 #include "video/video.hpp"
+
+#include "scene/scene.hpp"

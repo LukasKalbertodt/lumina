@@ -69,22 +69,20 @@ HotMesh<Cs...>::HotMesh(Mesh& ref)
   bindAll();
 
   // map vertex buffer
-  GLbitfield vmode = GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT;
-  vertex.buffer = glMapBufferRange(GL_ARRAY_BUFFER, 0, vertexSize(), vmode);
+  vertex.buffer = glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE);
 
   // map index buffer, if it exists
-  // if(m_indexHandle != 0) {
-  //   GLbitfield imode = GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT;
-  //   index.m_buffer = static_cast<int*>(
-  //     glMapBufferRange(GL_ELEMENT_ARRAY_BUFFER, 0, vertexSize(), imode));
-  // }
+  if(m_indexHandle != 0) {
+    index.m_buffer
+      = static_cast<int*>(glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_READ_WRITE));
+  }
 
   // check for error
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
     logError("[Mesh] Error <",
              translateGLError(err),
-             "> while creating hot mesh!");
+             "> while creating HotMesh!");
     throw GLException("Error while creating HotMesh");
   }
 }
@@ -96,8 +94,19 @@ HotMesh<Cs...>::~HotMesh() {
   this->m_indexHandle = 0;
   this->m_vertexArrayObject = 0;
 
+  glUnmapBuffer(GL_ARRAY_BUFFER);
+  if(index.m_buffer) {
+    glUnmapBuffer(GL_ELEMENT_ARRAY_BUFFER);
+  }
+
   // unmap buffers and VAO
   unbindAll();
+
+  auto err = glGetError();
+  if(err != GL_NO_ERROR) {
+    logWarning("[HotMesh] OpenGL error<", translateGLError(err), "> in "
+      "HotMesh destructor!");
+  }
 
   // remove primed marker
   Mesh::s_isPrimed = false;
@@ -105,22 +114,25 @@ HotMesh<Cs...>::~HotMesh() {
 
 inline void Mesh::bindAll() {
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexHandle);
   glBindVertexArray(m_vertexArrayObject);
 }
 
 inline void Mesh::unbindAll() {
-  glBindBuffer(GL_ARRAY_BUFFER, 0);
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 template <typename... Cs>
 void HotMesh<Cs...>::applyVertexLayout() {
-  internal::applyLayoutImpl<0,
-                            internal::LayoutTypes<Cs...>::stride,
-                            0,
-                            sizeof(Cs)...>();
+  internal::applyLayoutImpl<0, internal::LayoutTypes<Cs...>::stride,
+                            0, sizeof(Cs)...>();
+  
+  auto err = glGetError();
+  if(err != GL_NO_ERROR) {
+    logError("[HotMesh] Error<", translateGLError(err), "> while applying "
+      "vertex layout!");
+    throw GLException("[HotMesh] Error while applying vertex layout");
+  }
 }
 
 
