@@ -7,6 +7,7 @@
 #include "VertexLayout.hpp"
 #include "Pipeline.hpp"
 #include "Mesh.hpp"
+#include "HotMesh.hpp"
 #include "Program.hpp"
 #include "GLException.hpp"
 #include "VChan.hpp"

@@ -48,10 +48,19 @@ X(TexUV, Vec2f)
 template <VChan H, VChan... Cs> struct VChansHelper {
   static constexpr int size = sizeof(typename VChanHelper<H>::type) / 4
                               + VChansHelper<Cs...>::size;
+
+  template <VChan S>
+  static constexpr bool contains() {
+    return ((H == S) || VChansHelper<Cs...>::contains());
+  }
 };
 
 template <VChan C> struct VChansHelper<C> {
   static constexpr int size = sizeof(typename VChanHelper<C>::type) / 4;
+
+  template <VChan S> static constexpr bool contains() {
+    return (C == S);
+  }
 };
 
 

@@ -6,8 +6,7 @@
 
 namespace lumina {
 
-template <VChan C0 = VChan::Position,
-          VChan... Chans>
+template <VChan... Chans>
 Mesh createBox(Vec3f size);
 
 }

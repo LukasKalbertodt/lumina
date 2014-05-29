@@ -8,12 +8,12 @@ bool Mesh::s_isPrimed = false;
 
 void Mesh::sendData() {
   bindAll();
-  glGetError();
+  // glDrawArrays(GL_TRIANGLE_STRIP, 0, 20);
   if(m_indexHandle == 0) {
-    glDrawArrays(m_primitiveType, 0, 3);
+    glDrawArrays(m_primitiveType, 0, 20);
   }
   else {
-    glDrawElements(m_primitiveType, 3, GL_UNSIGNED_INT, nullptr);
+    glDrawElements(m_primitiveType, m_indexCount, GL_UNSIGNED_INT, nullptr);
   }
   unbindAll();
 
