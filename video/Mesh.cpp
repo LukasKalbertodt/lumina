@@ -1,4 +1,7 @@
 #include "Mesh.hpp"
+#include "GLException.hpp"
+#include "GLTools.hpp"
+
 #include <stdexcept>
 
 

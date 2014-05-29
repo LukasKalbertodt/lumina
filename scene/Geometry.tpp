@@ -1,7 +1,5 @@
 #include "../util/VariadicTools.hpp"
-
-#include <iostream>
-    using namespace std;
+#include "../video/PrimitiveType.hpp"
 
 namespace lumina {
 
@@ -60,16 +58,6 @@ Mesh createBox(Vec3f size) {
                     VPoint(Vec3f(size.x, size.y, size.z),
                            Vec3f(0, 0, 1),
                            Vec2f(1, 0)));
-
-    // fillData<Cs...>(hot.vertex[3],
-    //                 VPoint(Vec3f(-size.x, -size.y, size.z),
-    //                        Vec3f(0, 0, 1),
-    //                        Vec2f(0, 1)));
-    // fillData<Cs...>(hot.vertex[4],
-    //                 VPoint(Vec3f(size.x, size.y, size.z),
-    //                        Vec3f(0, 0, 1),
-    //                        Vec2f(1, 0)));
-
     fillData<Cs...>(hot.vertex[3],
                     VPoint(Vec3f(size.x, -size.y, size.z),
                            Vec3f(0, 0, 1),

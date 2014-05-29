@@ -1,12 +1,7 @@
 #pragma once
 
-#include "GLException.hpp"  
-#include "GLTools.hpp"
 #include "Mesh.fpp"
-#include "PrimitiveType.hpp"
-#include "VertexLayout.hpp"
 #include "../config/BaseProxy.hpp"
-#include "../util/VariadicTools.hpp"
 
 #include <GL/glew.h>
 #include <cstddef>

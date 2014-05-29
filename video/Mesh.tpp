@@ -10,12 +10,26 @@ inline Mesh::Mesh()
     m_primitiveType(GL_TRIANGLES) {}
 
 // copy constructor and copy assignment operator
-// Mesh::Mesh(const Mesh& copy);
-// Mesh& operator=(const Mesh& copy);
+// inline Mesh::Mesh(const Mesh& copy);
+// inline Mesh& operator=(const Mesh& copy);
 
-// // move constructor and move assignment operator
-// Mesh::Mesh(Mesh&& m);
-// Mesh& operator=(Mesh&& m);
+// move constructor and move assignment operator
+inline Mesh::Mesh(Mesh&& m)
+  : m_vertexHandle(m.m_vertexHandle),
+    m_indexHandle(m.m_indexHandle),
+    m_vertexArrayObject(m.m_vertexArrayObject),
+    m_vertexCount(m.m_vertexCount),
+    m_indexCount(m.m_indexCount),
+    m_primitiveType(m.m_primitiveType) {
+  // reset values of m
+  m.m_vertexHandle = 0;
+  m.m_indexHandle = 0;
+  m.m_vertexArrayObject = 0;
+  m.m_vertexCount = 0;
+  m.m_indexCount = 0;
+  m.m_primitiveType = GL_TRIANGLES;
+}
+// inline Mesh& operator=(Mesh&& m);
 
 
 /* Mesh methods ***************************************************************/

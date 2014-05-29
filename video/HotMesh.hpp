@@ -1,6 +1,8 @@
 #pragma once
 
+#include "GLException.hpp"
 #include "HotMesh.fpp"
+#include "GLTools.hpp"
 #include "IndexSet.hpp"
 #include "Mesh.hpp"
 #include "PrimitiveType.hpp"
@@ -17,7 +19,7 @@ namespace lumina {
  * @tparam Cs [description]
  */
 template <typename... Cs>
-class HotMesh : public config::CommonBase{
+class HotMesh : public config::CommonBase {
 private:
   Mesh& m_mesh;
 
