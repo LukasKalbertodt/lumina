@@ -17,3 +17,5 @@
 #include "video/video.hpp"
 
 #include "scene/scene.hpp"
+
+#include "io/Image.hpp"

@@ -30,7 +30,7 @@ IO_OBJ      := $(IO_CPP:%.cpp=obj/%.o)
 # join lists
 ALL_OBJ     := $(CORE_OBJ) $(SERVICE_OBJ) $(VIDEO_OBJ) $(SCENE_OBJ) $(IO_OBJ)
 ALL_HPP     := $(CONFIG_HPP) $(INPUT_HPP) $(CORE_HPP) $(SERVICE_HPP) 
-ALL_HPP     += $(VIDEO_HPP) $(UTIL_HPP) $(SCENE_HPP $(IO_HPP))
+ALL_HPP     += $(VIDEO_HPP) $(UTIL_HPP) $(SCENE_HPP) $(IO_HPP)
 
 
 ################################################################################
@@ -57,14 +57,14 @@ endif
 .PHONY: clean fancy clear
 
 lumina.a: $(ALL_OBJ)
-  $(AR) $(ARFLAGS) $@ $(ALL_OBJ)
+	$(AR) $(ARFLAGS) $@ $(ALL_OBJ)
 
 obj/%.o: %.cpp $(ALL_HPP) | obj
-  $(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 obj: 
-  mkdir obj obj/core obj/service obj/util obj/video obj/video/gl obj/scene obj/io
+	mkdir obj obj/core obj/service obj/util obj/video obj/video/gl obj/scene obj/io
 
 clean:
-  rm -rf obj
-  rm -f lumina.a
+	rm -rf obj
+	rm -f lumina.a
