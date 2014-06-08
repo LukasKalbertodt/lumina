@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../config/BaseProxy.hpp"
+#include "../config/LConfig.hpp"
 #include "../util/Vector.hpp"
 #include "../core/NotReadyEx.hpp"
 
@@ -12,8 +13,9 @@ template <typename C>
 class Image : public config::CommonBase {
 public:
   void create(Vec2i size);
-  C& pixelAt(Vec2i pos);
-
+  C& operator[](Vec2i pos);
+  C* data();
+  
 private:
   std::unique_ptr<C[]> m_data;
   Vec2i m_size;
