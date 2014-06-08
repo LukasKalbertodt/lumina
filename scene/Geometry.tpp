@@ -38,7 +38,7 @@ Mesh createBox(Vec3f size) {
   Mesh out;
 
   // 6 faces, 4 points per face
-  int bufsize = internal::VChansHelper<Cs...>::size * 6 * 4;
+  int bufsize = internal::VChansHelper<Cs...>::size * 1 * 4;
   out.create(bufsize);
 
   out.prime<typename VChanHelper<Cs>::type...>([&](
@@ -52,15 +52,15 @@ Mesh createBox(Vec3f size) {
                            Vec2f(1, 1)));
     fillData<Cs...>(hot.vertex[1],
                     VPoint(Vec3f(-size.x, -size.y, size.z),
-                           Vec3f(0, 0, 1),
+                           Vec3f(1, 1, 1),
                            Vec2f(0, 1)));
     fillData<Cs...>(hot.vertex[2],
                     VPoint(Vec3f(size.x, size.y, size.z),
-                           Vec3f(0, 0, 1),
+                           Vec3f(1, 0, 1),
                            Vec2f(1, 0)));
     fillData<Cs...>(hot.vertex[3],
                     VPoint(Vec3f(size.x, -size.y, size.z),
-                           Vec3f(0, 0, 1),
+                           Vec3f(0, 1, 1),
                            Vec2f(0, 0)));
     
     hot.setPrimitiveType(PrimitiveType::TriangleStrip);

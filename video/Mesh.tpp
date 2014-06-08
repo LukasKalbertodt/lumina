@@ -7,6 +7,7 @@ inline Mesh::Mesh()
     m_vertexArrayObject(0),
     m_vertexCount(0),
     m_indexCount(0),
+    m_drawCount(0),
     m_primitiveType(GL_TRIANGLES) {}
 
 // copy constructor and copy assignment operator
@@ -20,6 +21,7 @@ inline Mesh::Mesh(Mesh&& m)
     m_vertexArrayObject(m.m_vertexArrayObject),
     m_vertexCount(m.m_vertexCount),
     m_indexCount(m.m_indexCount),
+    m_drawCount(m.m_drawCount),
     m_primitiveType(m.m_primitiveType) {
   // reset values of m
   m.m_vertexHandle = 0;

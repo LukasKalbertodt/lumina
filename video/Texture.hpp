@@ -16,6 +16,7 @@ public:
   ~Texture();
 
   void create(Vec2i dimension, TexFormat format, void *data = nullptr);
+  void bindTexture();
 
 private:
   GLuint m_handle;
@@ -27,7 +28,6 @@ private:
                      GLenum format,
                      GLenum type,
                      void* data);
-  void bindTexture();
 };
 
 

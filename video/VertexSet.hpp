@@ -11,7 +11,7 @@ public:
 
   // subscript operator
   VertexSlotAssign<Cs...> operator[](int index) {
-    // Test if index is valid (not even asan detects overflow the memory 
+    // Test if index is valid (not even asan detects overflow: the memory 
     // after this block is somehow allocated by OpenGL anyways)
     if(index >= m_slotCount) {
       throw GLException("[VertexSet] Index out of bounds!");
@@ -24,6 +24,8 @@ public:
   }
 
   int size() { return m_slotCount; }
+
+  void* buf() const { return m_buffer; }
 
 private:
   // internal data

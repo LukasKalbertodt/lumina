@@ -13,7 +13,7 @@ void Mesh::sendData() {
   bindAll();
   // glDrawArrays(GL_TRIANGLE_STRIP, 0, 20);
   if(m_indexHandle == 0) {
-    glDrawArrays(m_primitiveType, 0, 20);
+    glDrawArrays(m_primitiveType, 0, m_drawCount);
   }
   else {
     glDrawElements(m_primitiveType, m_indexCount, GL_UNSIGNED_INT, nullptr);
