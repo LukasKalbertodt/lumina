@@ -74,19 +74,19 @@ X(D24S8, 4, 2, void, GL_DEPTH_STENCIL, 0, GL_DEPTH24_STENCIL8)
   X(D32, prop_)\
   X(D24S8, prop_)
 
-GLenum texFormatToGLFormat(TexFormat format) {
+inline GLenum texFormatToGLFormat(TexFormat format) {
   switch(format) {
     Y(glFormat);
   }
 }
 
-GLenum texFormatToGLType(TexFormat format) {
+inline GLenum texFormatToGLType(TexFormat format) {
   switch(format) {
     Y(glType);
   }
 }
 
-GLint texFormatToGLInternalFormat(TexFormat format) {
+inline GLint texFormatToGLInternalFormat(TexFormat format) {
   switch(format) {
     Y(glInternalFormat);
   }

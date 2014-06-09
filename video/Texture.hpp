@@ -2,6 +2,7 @@
 
 #include "TexFormat.hpp"
 #include "TexType.hpp"
+#include "TexParam.hpp"
 #include "../util/Vector.hpp"
 #include "../config/BaseProxy.hpp"
 
@@ -21,6 +22,9 @@ public:
 private:
   GLuint m_handle;
   Vec2i m_dimension;
+  TexParam m_params;
+
+  static bool s_isPrimed;
 
   GLenum glType() const;
   void createStorage(Vec2i dim,
@@ -28,6 +32,7 @@ private:
                      GLenum format,
                      GLenum type,
                      void* data);
+  void applyParams();
 };
 
 

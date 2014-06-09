@@ -1,6 +1,7 @@
 #include "Mesh.hpp"
 #include "GLException.hpp"
 #include "GLTools.hpp"
+#include "../core/LuminaException.hpp"
 
 #include <stdexcept>
 
@@ -36,10 +37,16 @@ Mesh::~Mesh() {
 
 
 void Mesh::create(int vertexCount, int indexCount) {
+  // check if mesh was already created
+  if(m_vertexHandle != 0) {
+    logError("[Mesh] You can create a mesh only once!");
+    throw LogicEx("[Mesh] You can create a mesh only once!");
+  }
+
   // check if any other Mesh is primed
   if(s_isPrimed) {
     logError("[Mesh] Cannot execute 'create' while another Mesh is primed!");
-    throw GLException(
+    throw LogicEx(
       "[Mesh] Cannot execute 'create' while another Mesh is primed");
   }
 
@@ -47,7 +54,7 @@ void Mesh::create(int vertexCount, int indexCount) {
   if(vertexCount < 1 || indexCount < 0) {
     logError("[Mesh] Invalid 'create' arguments: vertexCount<",
              vertexCount, ">, indexCount<", indexCount, ">!");
-    throw std::invalid_argument("[Mesh] Invalid 'create' arguments");
+    throw InvalidArgEx("[Mesh] Invalid 'create' arguments");
   }
 
   // save arguments

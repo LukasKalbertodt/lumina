@@ -10,6 +10,8 @@
  */
 #include <limits>
 #include <cstdint>
+#include <cstring>
+#include <type_traits>
 
 // check float implementation
 static_assert(
