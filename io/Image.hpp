@@ -8,17 +8,45 @@
 
 namespace lumina {
 
-template <typename C>
-class Image : public config::CommonBase {
+namespace internal {
+
+class ImageBase {
+
+public:
+  virtual void* data() = 0;
+  virtual Vec2i dimension() = 0;
+
+};
+
+}
+
+
+template <typename C = void>
+class Image : public internal::ImageBase, public config::CommonBase {
 public:
   void create(Vec2i size);
   C& operator[](Vec2i pos);
-  C* data();
+  void* data() override;
+  Vec2i dimension() override;
   
 private:
   std::unique_ptr<C[]> m_data;
   Vec2i m_size;
+};
 
+class ImageBox : public config::CommonBase {
+public:
+  template <typename C>
+  ImageBox(Image<C>&& image);
+
+  void* data();
+  Vec2i dimension();
+
+  template <typename C>
+  Color<C>& get();
+
+private:
+  std::shared_ptr<internal::ImageBase> m_img;
 };
 
 } // namespace lumina

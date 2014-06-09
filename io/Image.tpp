@@ -27,9 +27,26 @@ C& Image<C>::operator[](Vec2i pos) {
 }
 
 template <typename C>
-C* Image<C>::data() {
+void* Image<C>::data() {
   return m_data.get();
 }
+template <typename C>
+Vec2i Image<C>::dimension() {
+  return m_size;
+}
+
+template <typename C>
+ImageBox::ImageBox(Image<C>&& image) : m_img(new Image<C>(image)) {}
+
+
+void* ImageBox::data() { return m_img->data(); }
+Vec2i ImageBox::dimension() { return m_img->dimension(); }
+
+template <typename C>
+Color<C>& ImageBox::get() {
+  return dynamic_cast<Color<C>&>(*m_img);
+}
+
 
 } // namespace lumina
 
