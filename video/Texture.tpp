@@ -26,4 +26,9 @@ void Texture<TT>::bindTexture() {
   glBindTexture(glType(), m_handle);
 }
 
+template <TexType TT> 
+void Texture<TT>::unbind() {
+  glBindTexture(glType(), 0);
+}
+
 }

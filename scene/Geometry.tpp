@@ -1,8 +1,8 @@
 #include "../util/VariadicTools.hpp"
 #include "../video/PrimitiveType.hpp"
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
 namespace lumina {
 
@@ -69,11 +69,11 @@ Mesh createBox(Vec3f size) {
     hot.setPrimitiveType(PrimitiveType::TriangleStrip);
     hot.applyVertexLayout();
 
-    auto* buf = static_cast<float*>(hot.vertex.buf());
-    for(int i = 0; i < 20; i++) {
-      cout << *buf << endl;
-      buf++;
-    }
+    // auto* buf = static_cast<float*>(hot.vertex.buf());
+    // for(int i = 0; i < 20; i++) {
+    //   cout << *buf << endl;
+    //   buf++;
+    // }
 
 
   });

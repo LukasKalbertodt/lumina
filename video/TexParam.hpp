@@ -18,6 +18,7 @@ struct TexParam {
   TexWrapMode wrapMode;
   TexFilterMode filterMode;
   uint8_t anisotropyLevel;
+  bool useMipMaps;
 
   TexParam()
     : wrapMode(TexWrapMode::Repeat),

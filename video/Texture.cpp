@@ -1,6 +1,7 @@
 #include "Texture.hpp"
 #include "GLException.hpp"
 #include "GLTools.hpp"
+#include "HotTexture.hpp"
 
 
 namespace lumina {
@@ -36,6 +37,10 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
     logWarning("[Texture] dimension<", dimension, "> is not MOD 2!");
   }
 
+  // save properties
+  m_format = format;
+  m_dimension = dimension;
+
   // create texture and storage for it
   glGenTextures(1, &m_handle);
   glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
@@ -56,6 +61,9 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
              " while creating texture!");
     throw GLException("[Texture] Error while creating texture");
   }
+
+  // unbind texture to not leak state
+  unbind();
 }
 
 template <>
@@ -88,6 +96,14 @@ void Texture<TexType::Cube>::createStorage(Vec2i dim,
 
 template <TexType TT>
 void Texture<TT>::applyParams() {
+  // check parameter for mistakes
+  if((m_params.filterMode == TexFilterMode::Trilinear
+      || m_params.filterMode == TexFilterMode::Bilinear)
+     && m_params.useMipMaps == false) {
+    logWarning(
+      "[Texture] Filtermode was set to bi/trilinear but mipmaps are disabled!");
+  }
+
   // apply wrap mode
   GLint wrapMode;
   switch(m_params.wrapMode) {
@@ -136,6 +152,35 @@ void Texture<TT>::applyParams() {
 
   // TODO: apply anisotropic filtering
 }
+
+template <TexType TT>
+void Texture<TT>::prime(std::function<void(HotTexture<TT>&)> func) {
+  bool usedMipMapsBefore = m_params.useMipMaps;
+
+  HotTexture<TT> hot(*this);
+  func(hot);
+
+  // commit changes
+  if((m_params.useMipMaps && !usedMipMapsBefore) || hot.m_genMipMaps) {
+    // generate mip maps 
+    glGenerateMipmap(glType());
+
+    auto err = glGetError();
+    if(err != GL_NO_ERROR) {
+      logError("[Texture] Error<",
+               translateGLError(err),
+               "> while generating mip maps!");
+      throw GLException("[Texture] Error while generating mip maps");
+    }
+  }
+
+  if(!m_params.useMipMaps && usedMipMapsBefore) {
+    // TODO: clean up mip maps
+  }
+
+  applyParams();
+}
+
 
 // explicit instantiation
 template class Texture<TexType::Tex2D>;

@@ -11,3 +11,5 @@
 #include "Program.hpp"
 #include "GLException.hpp"
 #include "VChan.hpp"
+#include "Texture.hpp"
+#include "HotTexture.hpp"
