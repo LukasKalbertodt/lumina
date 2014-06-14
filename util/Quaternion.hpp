@@ -3,7 +3,7 @@
  * \file Quaternion.hpp
  * This file is part of the Lumina Graphics Framework.
  *
- * \author Julian Kniephoff <Julian.Kniephoff@gmail.com>
+ * \author Julian Kniephoff <julian.kniephoff@gmail.com>
  *
  * This file will define Quaternion.
  */
@@ -188,4 +188,4 @@ auto operator/(S s, const Quaternion<T>& q)
   return s * q.inverse();
 }
 
-};
+}
