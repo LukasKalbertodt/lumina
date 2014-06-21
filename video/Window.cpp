@@ -25,10 +25,12 @@ RenderContext* Window::getRenderContext() {
 }
 
 void Window::open() {
-   // Init GLFW (TODO: do this just once)
-  if(!glfwInit()) {
-    logError("[Window] GLFW initialization failed!");
-    throw runtime_error("GLFW initialization failed");
+   // If this is the first window -> init GLFW
+  if(s_eventReceiver.empty()) {
+    if(!glfwInit()) {
+      logError("[Window] GLFW initialization failed!");
+      throw runtime_error("GLFW initialization failed");
+    }
   }
 
   // set window hints
@@ -42,7 +44,12 @@ void Window::open() {
   m_window
       = glfwCreateWindow(m_size.x, m_size.y, m_title.c_str(), nullptr, nullptr);
   if(!m_window) {
-    // glfwTerminate();  // TODO: cleanup neccessary?
+    // if this is the first window, call glfwTerminate to clean up resources
+    if(s_eventReceiver.empty()) {
+      glfwTerminate();
+    }
+
+    // log error and throw
     logError("[Window] GLFW window creation failed");
     throw runtime_error("GLFW window creation failed");
   }
