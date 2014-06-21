@@ -36,11 +36,15 @@ Vec2i Image<C>::dimension() {
 }
 
 template <typename C>
-ImageBox::ImageBox(Image<C>&& image) : m_img(new Image<C>(image)) {}
+ImageBox::ImageBox(Image<C>&& image) : m_img(new Image<C>(std::move(image))) {}
+
+// ImageBox& operator=(Image<C>&& image) {
+  
+// }
 
 
-void* ImageBox::data() { return m_img->data(); }
-Vec2i ImageBox::dimension() { return m_img->dimension(); }
+inline void* ImageBox::data() { return m_img->data(); }
+inline Vec2i ImageBox::dimension() { return m_img->dimension(); }
 
 template <typename C>
 Color<C>& ImageBox::get() {

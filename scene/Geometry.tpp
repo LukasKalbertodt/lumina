@@ -52,19 +52,19 @@ Mesh createBox(Vec3f size) {
     fillData<Cs...>(hot.vertex[0],
                     VPoint(Vec3f(-size.x, size.y, size.z),
                            Vec3f(0, 0, 1),
-                           Vec2f(1, 1)));
+                           Vec2f(0, 0)));
     fillData<Cs...>(hot.vertex[1],
                     VPoint(Vec3f(-size.x, -size.y, size.z),
                            Vec3f(1, 1, 1),
-                           Vec2f(1, 0)));
+                           Vec2f(0, 1)));
     fillData<Cs...>(hot.vertex[2],
                     VPoint(Vec3f(size.x, size.y, size.z),
                            Vec3f(1, 0, 1),
-                           Vec2f(0, 1)));
+                           Vec2f(1, 0)));
     fillData<Cs...>(hot.vertex[3],
                     VPoint(Vec3f(size.x, -size.y, size.z),
                            Vec3f(0, 1, 1),
-                           Vec2f(0, 0)));
+                           Vec2f(1, 1)));
     
     hot.setPrimitiveType(PrimitiveType::TriangleStrip);
     hot.applyVertexLayout();

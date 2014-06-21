@@ -19,6 +19,7 @@ X(NotReadyEx, LuminaException)
 X(LogicEx, LuminaException)
 X(InvalidArgEx, LuminaException)
 X(CriticalEx, LuminaException)
+X(IOEx, LuminaException)
 
 #undef X
 
