@@ -1,8 +1,4 @@
-obj
-test
 *.sublime-workspace
-*.bin
 
-
-lumina/lumina.a
-lumina/obj
+obj
+lumina.a
