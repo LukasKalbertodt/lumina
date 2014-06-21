@@ -56,39 +56,39 @@ void skip_input_data(j_decompress_ptr cinfo, long num_bytes_l) {
 
 void term_source(j_decompress_ptr cinfo) {}
 
-// // Custom JPEG write functions
-// struct jpeg_write_stream
-// {
-//   jpeg_destination_mgr pub;
-//   JOCTET* buffer;
-//   std::ostream* stream;
-// };
 
-// void init_destination(j_compress_ptr cinfo)
-// {
-//   // Initialize jpeg_destination_mgr
-//   jpeg_write_stream* dest = reinterpret_cast<jpeg_write_stream*>(cinfo->dest);
-//   dest->pub.next_output_byte = dest->buffer;
-//   dest->pub.free_in_buffer = bufferSize;
-// }
 
-// boolean empty_output_buffer(j_compress_ptr cinfo)
-// {
-//   // Write data to stream and reset jpeg_destination_mgr
-//   jpeg_write_stream* dest = reinterpret_cast<jpeg_write_stream*>(cinfo->dest);
-//   dest->stream->write(reinterpret_cast<char*>(dest->buffer), bufferSize);
-//   dest->pub.next_output_byte = dest->buffer;
-//   dest->pub.free_in_buffer = bufferSize;
-//   return TRUE;
-// }
+// =============================================================================
+// Helper functions and struct for writing
+// =============================================================================
+struct jpeg_write_stream {
+  jpeg_destination_mgr pub;
+  JOCTET* buffer;
+  std::ostream* stream;
+};
 
-// void term_destination(j_compress_ptr cinfo)
-// {
-//   // Flush remaining data
-//   jpeg_write_stream* dest = reinterpret_cast<jpeg_write_stream*>(cinfo->dest);
-//   dest->stream->write(reinterpret_cast<char*>(dest->buffer),
-//                       bufferSize - dest->pub.free_in_buffer);
-// }
+void init_destination(j_compress_ptr cinfo) {
+  // Initialize jpeg_destination_mgr
+  jpeg_write_stream* dest = reinterpret_cast<jpeg_write_stream*>(cinfo->dest);
+  dest->pub.next_output_byte = dest->buffer;
+  dest->pub.free_in_buffer = bufferSize;
+}
+
+boolean empty_output_buffer(j_compress_ptr cinfo) {
+  // Write data to stream and reset jpeg_destination_mgr
+  jpeg_write_stream* dest = reinterpret_cast<jpeg_write_stream*>(cinfo->dest);
+  dest->stream->write(reinterpret_cast<char*>(dest->buffer), bufferSize);
+  dest->pub.next_output_byte = dest->buffer;
+  dest->pub.free_in_buffer = bufferSize;
+  return TRUE;
+}
+
+void term_destination(j_compress_ptr cinfo) {
+  // Flush remaining data
+  jpeg_write_stream* dest = reinterpret_cast<jpeg_write_stream*>(cinfo->dest);
+  dest->stream->write(reinterpret_cast<char*>(dest->buffer),
+                      bufferSize - dest->pub.free_in_buffer);
+}
 
 
 
@@ -246,6 +246,60 @@ ImageBox loadJPEGImage(std::string filename) {
   jpeg_finish_decompress(&cinfo);
   jpeg_destroy_decompress(&cinfo);
   return ImageBox(std::move(img));
+}
+
+void saveJPEGImage(std::string filename, ImageBox img) {
+  // try to open file
+  ofstream file(filename.c_str());
+  if(!file) {
+    slogError("[saveJPEGImage] Unable to open file<", filename, ">!");
+    throw IOEx("[saveJPEGImage] Unable to open file!");
+  }
+
+  // // create structs
+  // jpeg_compress_struct cinfo;
+  // jpeg_error_mgr jerr;
+
+  // cinfo.err = jpeg_std_error(&jerr);
+  // jpeg_create_compress(&cinfo);
+
+  // // Set custom stream writer
+  // jpeg_write_stream dest;
+  // std::vector<JOCTET> buffer(bufferSize);
+  // dest.buffer = buffer.data();
+  // dest.stream = &stream;
+  // dest.pub.init_destination = init_destination;
+  // dest.pub.empty_output_buffer = empty_output_buffer;
+  // dest.pub.term_destination = term_destination;
+  // cinfo.dest = reinterpret_cast<jpeg_destination_mgr*>(&dest);
+
+  // // Check image format
+  // if(img->GetFormat() != SF_R8G8B8)
+  //   img = img->Copy()->Convert(SF_R8G8B8);
+
+  // // Write header
+  // Dim2i dim = img->GetDimension();
+  // cinfo.image_width = dim.width;
+  // cinfo.image_height = dim.height;
+  // cinfo.input_components = 3;
+  // cinfo.in_color_space = JCS_RGB;
+  // jpeg_set_defaults(&cinfo);
+  // jpeg_set_quality(&cinfo, 95, TRUE);
+  // jpeg_start_compress(&cinfo, TRUE);
+
+  // // Write image
+  // size_t rowbytes = img->GetPitch();
+  // JSAMPROW img_data = const_cast<JSAMPROW>(img->GetData());
+  // while(cinfo.next_scanline < cinfo.image_height)
+  // {
+  //   JSAMPROW row = img_data + cinfo.next_scanline*rowbytes;
+  //   jpeg_write_scanlines(&cinfo, &row, 1);
+  // }
+
+  // // Cleanup
+  // jpeg_finish_compress(&cinfo);
+  // jpeg_destroy_compress(&cinfo);
+  // return true;
 }
 
 }
