@@ -2,7 +2,7 @@
 
 #include "../video/Mesh.hpp"
 #include "../video/VChan.hpp"
-#include "../util/Vector.hpp"
+#include "../util/VectorCore.hpp"
 
 namespace lumina {
 

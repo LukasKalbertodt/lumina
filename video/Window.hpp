@@ -5,7 +5,7 @@
 #include "../config/BaseProxy.hpp"
 #include "../input/LInputEvent.hpp"
 #include "../input/LKeyCode.hpp"
-#include "../util/Vector.hpp"
+#include "../util/VectorCore.hpp"
 
 #include <cstdint>
 #include <functional>
@@ -15,7 +15,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-
 
 struct GLFWwindow;
 

@@ -64,8 +64,9 @@ struct VectorImpl<T, 2> {
     };
   };
 
-  VectorImpl(T x, T y)
-    : x(x), y(y) {  
+  template <typename U>
+  VectorImpl(U x, U y)
+    : x(static_cast<T>(x)), y(static_cast<T>(y)) {  
   }
 
   VectorImpl()
@@ -87,8 +88,9 @@ struct VectorImpl<T, 3> {
     };
   };
 
-  VectorImpl(T x, T y, T z)
-    : x(x), y(y), z(z) {  
+  template <typename U>
+  VectorImpl(U x, U y, U z)
+    : x(static_cast<T>(x)), y(static_cast<T>(y)), z(static_cast<T>(z)) {  
   }
 
   VectorImpl()
@@ -111,9 +113,12 @@ struct VectorImpl<T, 4> {
     };
   };
 
-  VectorImpl(T x, T y, T z, T w)
-    : x(x), y(y), z(z), w(w) {  
-  }
+  template <typename U>
+  VectorImpl(U x, U y, U z, U w)
+    : x(static_cast<T>(x)),
+      y(static_cast<T>(y)),
+      z(static_cast<T>(z)),
+      w(static_cast<T>(w)) {}
 
   VectorImpl()
     : x(static_cast<T>(0)),
@@ -163,6 +168,13 @@ struct Vector : public internal::VectorImpl<T, N> {
   /***** Constructors, typedefs, data access, conversion **********************/
   /// inheriting constructor from base class
   using internal::VectorImpl<T, N>::VectorImpl;
+  Vector() = default;
+  template <typename U>
+  Vector(Vector<U, N> other) {
+    for(int i = 0; i < N; ++i) {
+      this->data[i] = static_cast<T>(other.data[i]);
+    }
+  }
 
   /// iterator type
   using iterator = VectorIterator<T, N>;
@@ -309,31 +321,34 @@ struct Vector : public internal::VectorImpl<T, N> {
 
 
   /***** Arithmetic functions with vector output ******************************/
+  Vector<T, N>& normalize() {
+    auto lensq = lengthSquared();
+    if(lensq != 0) 
+      (*this) /= sqrt(lensq);
+    return *this;
+  }
+
   Vector<T, N> normalized() const {
     return Vector<T, N>(*this).normalize();
   }
 
-  void normalize() {
-    auto lensq = lengthSquared();
-    if(lensq != 0) 
-      (*this) /= sqrt(lensq);
-  }
-
   template <typename To>
-  void scale(const Vector<To, N>& o) {
+  Vector<T, N>& scale(const Vector<To, N>& o) {
     for(int i = 0; i < N; ++i) {
       this->data[i] *= o.data[i];
     }
+    return *this;
   }
 
   template <typename To>
   Vector<T, N> scaled(const Vector<To, N>& o) {
-    return Vector<T, N>(*this).scale();
+    return Vector<T, N>(*this).scale(o);
   }
 
   template <typename Ta>
-  void rotate(Ta phi, Ta theta) {
+  Vector<T, N>& rotate(Ta phi, Ta theta) {
     *this = rotated(phi, theta);
+    return *this;
   }
 
   template <typename Ta>
@@ -351,8 +366,9 @@ struct Vector : public internal::VectorImpl<T, N> {
   }
 
   template <typename To>
-  void reflect(const Vector<To, N>& normal) {
+  Vector<T, N>& reflect(const Vector<To, N>& normal) {
     *this -= normal * 2 * dot(*this, normal);
+    return *this;
   }
 
   template <typename To>
