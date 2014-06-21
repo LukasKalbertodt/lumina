@@ -1,7 +1,7 @@
 #pragma once
 
 #include "VChan.fpp"
-#include "../util/Vector.hpp"
+#include "../util/VectorCore.hpp"
 #include <bitset>
 
 

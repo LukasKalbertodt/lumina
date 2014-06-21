@@ -3,7 +3,7 @@
 #include "Program.fpp"
 #include "UniformSet.fpp"
 #include "../config/BaseProxy.hpp"
-#include "../util/Vector.hpp"
+#include "../util/VectorCore.hpp"
 #include "../util/NonCopyable.hpp"
 
 namespace lumina { 

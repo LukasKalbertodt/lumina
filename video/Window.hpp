@@ -12,7 +12,7 @@
 #include "../config/BaseProxy.hpp"
 #include "../input/LInputEvent.hpp"
 #include "../input/LKeyCode.hpp"
-#include "../util/Vector.hpp"
+#include "../util/VectorCore.hpp"
 #include "RenderContext.hpp"
 
 struct GLFWwindow;
