@@ -1,11 +1,12 @@
 #pragma once
 
-#include "TexFormat.hpp"
-#include "TexType.hpp"
-#include "TexParam.hpp"
-#include "../util/Vector.hpp"
-#include "../config/BaseProxy.hpp"
 #include "HotTexture.fpp"
+#include "TexFormat.hpp"
+#include "TexParam.hpp"
+#include "Texture.fpp"
+#include "TexType.hpp"
+#include "../config/BaseProxy.hpp"
+#include "../util/Vector.hpp"
 
 #include <GL/glew.h>
 #include <functional>
