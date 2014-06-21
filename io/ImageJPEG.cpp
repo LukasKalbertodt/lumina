@@ -250,7 +250,7 @@ ImageBox loadJPEGImage(std::string filename) {
 
 void saveJPEGImage(std::string filename, ImageBox img) {
   // try to open file
-  ofstream file(filename.c_str());
+  std::ofstream file(filename.c_str());
   if(!file) {
     slogError("[saveJPEGImage] Unable to open file<", filename, ">!");
     throw IOEx("[saveJPEGImage] Unable to open file!");
