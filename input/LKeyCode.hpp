@@ -126,7 +126,7 @@ enum class LKeyCode {
   OEM_8     = 0xDF,
   OEM_102   = 0xE2,
 
-  // just to make it compile
+  // just to make it compile (TODO: what does this mean?)
   Grave     = 0xDC
 };
 

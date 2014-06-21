@@ -1,19 +1,21 @@
 #pragma once
 
+#include "RenderContext.hpp"
+#include "Window.fpp"
+#include "../config/BaseProxy.hpp"
+#include "../input/LInputEvent.hpp"
+#include "../input/LKeyCode.hpp"
+#include "../util/Vector.hpp"
+
 #include <cstdint>
 #include <functional>
 #include <map>
 #include <memory>
 #include <stdexcept>
 #include <string>
-#include <vector>
 #include <utility>
+#include <vector>
 
-#include "../config/BaseProxy.hpp"
-#include "../input/LInputEvent.hpp"
-#include "../input/LKeyCode.hpp"
-#include "../util/Vector.hpp"
-#include "RenderContext.hpp"
 
 struct GLFWwindow;
 
@@ -22,18 +24,14 @@ namespace lumina {
 class Window : public config::CommonBase {
 public:
   Window(std::string title = "Lumina Application",
-              Vec2i size = Vec2i(600, 400))
-    : m_window(nullptr), m_size(size), m_version(1, 1), m_title(title) {}
-
+         Vec2i size = Vec2i(600, 400));
   ~Window();
 
   using EventCallback = std::function<LEventResult(const LInputEvent&)>;
   using CallbackAccessor = std::vector<EventCallback>::size_type;
 
   void setTitle(std::string title);
-  void setVersionHint(int major, int minor = 0) {
-    m_version = std::pair<std::int16_t, std::int16_t>(major, minor);
-  }
+  void setVersionHint(int major, int minor = 0);
   void setVSync(bool enable);
   void resize(Vec2i size);
   Vec2i getSize();
@@ -44,14 +42,8 @@ public:
   void update();
   bool isValid();
 
-  CallbackAccessor addEventCallback(EventCallback&& callback) {
-    m_eventCallbacks.push_back(std::forward<EventCallback>(callback));
-    return m_eventCallbacks.size() - 1;
-  }
-
-  void removeEventCallback(CallbackAccessor accessor) {
-    m_eventCallbacks[accessor] = EventCallback();
-  }
+  CallbackAccessor addEventCallback(EventCallback&& callback);
+  void removeEventCallback(CallbackAccessor accessor);
 
 private:
   GLFWwindow* m_window;
@@ -77,8 +69,8 @@ private:
                                   int button,
                                   int action,
                                   int mods);
-
-  static LKeyCode translateKey(int key);
 };
 
 }
+
+#include "Window.tpp"

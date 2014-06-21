@@ -9,6 +9,9 @@
 namespace lumina {
 
 void RenderContext::create() {
+  // context needs to be current to call glewInit
+  makeCurrent();
+
   // glewExperimental to use context versions above 3.2
   glewExperimental = GL_TRUE;
   GLenum status = glewInit();
@@ -23,8 +26,7 @@ void RenderContext::create() {
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
     logWarning("[RenderContext] glewInit() caused an openGL error <",
-               translateGLError(err),
-               ">.");
+               translateGLError(err), ">.");
   }
 }
 
