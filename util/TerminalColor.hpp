@@ -10,6 +10,10 @@
  */
 #include <ostream>
 
+#ifdef _WIN32
+  #include <Windows.h>
+#endif
+
 namespace lumina {
 
 // LTerminalForeGround
@@ -37,7 +41,7 @@ enum class LTBG {
 };
 
 // special values to reset colours
-enum LTC {
+enum class LTC {
   Reset,
   ResetFG,
   ResetBG
@@ -50,7 +54,7 @@ inline std::ostream& operator<<(std::ostream& out, LTFG color) {
   CONSOLE_SCREEN_BUFFER_INFO csbi;
   GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
   SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
-                          (csbi.wAttributes & 0xFFF0) | c.GetWinForeground());
+                          (csbi.wAttributes & 0xFFF0) | static_cast<int>(color));
 #else
   char code[] = "\033[1;30m";
   code[5] = static_cast<char>(color) + '0';
@@ -65,7 +69,7 @@ inline std::ostream& operator<<(std::ostream& out, LTBG color) {
   CONSOLE_SCREEN_BUFFER_INFO csbi;
   GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
   SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
-                          (csbi.wAttributes & 0xFF0F) | c.GetWinBackground());
+                          (csbi.wAttributes & 0xFF0F) | static_cast<int>(color));
 #else
   char code[] = "\033[40m";
   code[3] = static_cast<char>(color) + '0';
@@ -79,14 +83,14 @@ inline std::ostream& operator<<(std::ostream& out, const LTC control) {
 #ifdef _WIN32
   switch(control) {
     case LTC::Reset:
-      out << FG_WHITE;
-      out << BG_BLACK;
+      out << LTFG::Gray;
+      out << LTBG::Black;
       break;
     case LTC::ResetFG:
-      out << FG_WHITE;
+      out << LTFG::Gray;
       break;
     case LTC::ResetBG:
-      out << BG_BLACK;
+      out << LTBG::Black;
       break;
   }
 #else

@@ -6,6 +6,7 @@
 #include <chrono>
 #include <fstream>
 #include <iostream>
+#include <string>
 
 namespace lumina {
 
