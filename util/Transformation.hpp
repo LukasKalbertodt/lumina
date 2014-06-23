@@ -18,9 +18,9 @@ namespace lumina {
 
 // We are mostly dealing with 4x4 matrices here.
 template <typename T>
-using Mat4 = MatQ<T, 4>
+using Mat4 = MatQ<T, 4>;
 
-template typename<T>
+template <typename T>
 Mat4<T> translationMatrix(Vec4<T> translation) {
   Mat4<T> translationMatrix;
   translationMatrix.setToIdentity().setColumn(3, translation);
@@ -40,22 +40,22 @@ Mat4<T> rotationMatrix(Quaternion<T> rotation) {
   Mat4<T> rotationMatrix;
   rotationMatrix.setToIdentity();
 
-  T _2qx2 = 2 * quaternion.x * quaternion.x;
-  T _2qy2 = 2 * quaternion.y * quaternion.y;
-  T _2qz2 = 2 * quaternion.z * quaternion.z;
+  T _2qx2 = 2 * rotation.x * rotation.x;
+  T _2qy2 = 2 * rotation.y * rotation.y;
+  T _2qz2 = 2 * rotation.z * rotation.z;
 
-  T _2qxqy = 2 * quaternion.x * quaternion.y;
-  T _2qxqz = 2 * quaternion.x * quaternion.z;
-  T _2qxqw = 2 * quaternion.x * quaternion.w;
-  T _2qyqz = 2 * quaternion.y * quaternion.z;
-  T _2qyqw = 2 * quaternion.y * quaternion.w;
-  T _2qzqw = 2 * quaternion.z * quaternion.w;
+  T _2qxqy = 2 * rotation.x * rotation.y;
+  T _2qxqz = 2 * rotation.x * rotation.z;
+  T _2qxqw = 2 * rotation.x * rotation.w;
+  T _2qyqz = 2 * rotation.y * rotation.z;
+  T _2qyqw = 2 * rotation.y * rotation.w;
+  T _2qzqw = 2 * rotation.z * rotation.w;
 
   rotationMatrix.data[0][0] -= _2qy2 + _2qz2;
   rotationMatrix.data[0][1] = _2qxqy - _2qzqw;
   rotationMatrix.data[0][2] = _2qxqz + _2qyqw;
 
-  rotationMatrix.data[1][0] = _2qxqy + _2qzqw
+  rotationMatrix.data[1][0] = _2qxqy + _2qzqw;
   rotationMatrix.data[1][1] -= _2qx2 + _2qz2;
   rotationMatrix.data[1][2] = _2qyqz - _2qxqw;
 
@@ -85,7 +85,8 @@ template <typename T>
 Mat4<T> projectionMatrix(T fovy, T aspect, T near, T far) {
   Mat4<T> projectionMatrix;
   projectionMatrix.setToZero();
-  T d = static_cast<T>(std::cot(fovy / 2));
+  // cot(x) = tan(pi/2 - x)
+  T d = static_cast<T>(std::tan(M_PI_2 - fovy / 2));
   T _1_n_f = 1 / (near - far);
 
   projectionMatrix.data[0][0] = d / aspect;
