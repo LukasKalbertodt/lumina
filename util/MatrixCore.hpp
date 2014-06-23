@@ -193,7 +193,7 @@ template <typename Ta,
           std::size_t Ra,
           std::size_t CR,
           std::size_t Cb>
-void lxMatMultiply(const Ta (&lh)[Ra][CR],
+inline void lxMatMultiply(const Ta (&lh)[Ra][CR],
                    const Tb (&rh)[CR][Cb],
                    decltype(Ta(0) * Tb(0)) (&out)[Ra][Cb]) {
   for(int i = 0; i < Ra; ++i) {
@@ -207,7 +207,7 @@ void lxMatMultiply(const Ta (&lh)[Ra][CR],
 }
 
 // overload for 2x2
-void lxMatMultiply(const float (&lh)[2][2],
+inline void lxMatMultiply(const float (&lh)[2][2],
                    const float (&rh)[2][2],
                    float (&out)[2][2]) {
   out[0][0] = lh[0][0]*rh[0][0] + lh[0][1]*rh[1][0];
@@ -217,7 +217,7 @@ void lxMatMultiply(const float (&lh)[2][2],
 }
 
 // overload for 3x3
-void lxMatMultiply(const float (&lh)[3][3],
+inline void lxMatMultiply(const float (&lh)[3][3],
                    const float (&rh)[3][3],
                    float (&out)[3][3]) {
   for(int i = 0; i < 3; ++i) {
@@ -229,7 +229,7 @@ void lxMatMultiply(const float (&lh)[3][3],
 }
 
 // overload for 4x4 (uses SSE)
-void lxMatMultiply(const float (&lh)[4][4],
+inline void lxMatMultiply(const float (&lh)[4][4],
                    const float (&rh)[4][4],
                    float (&out)[4][4]) {
   const __m128 a = _mm_loadu_ps(rh[0]);
@@ -605,6 +605,20 @@ using Mat3i = MatQ<int, 3>;
 
 using Mat4f = MatQ<float, 4>;
 using Mat4i = MatQ<int, 4>; 
+
+using Mat2x3f = Matrix<float, 2, 3>;
+using Mat2x4f = Matrix<float, 2, 4>;
+using Mat3x2f = Matrix<float, 3, 2>;
+using Mat3x4f = Matrix<float, 3, 4>;
+using Mat4x2f = Matrix<float, 4, 2>;
+using Mat4x3f = Matrix<float, 4, 3>;
+
+using Mat2x3i = Matrix<int, 2, 3>;
+using Mat2x4i = Matrix<int, 2, 4>;
+using Mat3x2i = Matrix<int, 3, 2>;
+using Mat3x4i = Matrix<int, 3, 4>;
+using Mat4x2i = Matrix<int, 4, 2>;
+using Mat4x3i = Matrix<int, 4, 3>;
 
 
 

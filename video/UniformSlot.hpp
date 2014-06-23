@@ -3,6 +3,7 @@
 #include "Program.fpp"
 #include "UniformSet.fpp"
 #include "../config/BaseProxy.hpp"
+#include "../util/MatrixCore.hpp"
 #include "../util/VectorCore.hpp"
 #include "../util/NonCopyable.hpp"
 
@@ -12,9 +13,28 @@ namespace internal {
 struct UniformSlot : public config::CommonBase {
 public:
 
-  void operator=(float val);
-  template <typename T, std::size_t N>
-  void operator=(Vector<T, N> val);
+  void operator=(float);
+  void operator=(int);
+  void operator=(unsigned int);
+
+  void operator=(Vec2f);
+  void operator=(Vec3f);
+  void operator=(Vec4f);
+
+  void operator=(Vec2i);
+  void operator=(Vec3i);
+  void operator=(Vec4i);
+
+  void operator=(Mat4f);
+  void operator=(Mat3f);
+  void operator=(Mat2f);
+
+  void operator=(Mat2x3f);
+  void operator=(Mat2x4f);
+  void operator=(Mat3x2f);
+  void operator=(Mat3x4f);
+  void operator=(Mat4x2f);
+  void operator=(Mat4x3f);
 
 private:
   GLuint index;
