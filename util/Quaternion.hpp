@@ -45,7 +45,7 @@ struct Quaternion {
       this->z == other.z;
   }
 
-  bool operator!=(const Quaterion<T>& other) const {
+  bool operator!=(const Quaternion<T>& other) const {
     return !(*this == other);
   }
 
@@ -113,17 +113,17 @@ struct Quaternion {
   /***** Ring structure *********************************************************/
   template <typename OT>
   Quaternion<T>& operator*=(const Quaternion<OT>& q) {
-    return *this = Quaternion<T>(this->w*other.w - this->x*other.x - this->y*other.y - this->z*other.z,
-                                 this->w*other.x + this->x*other.w + this->y*other.z - this->z*other.y,
-                                 this->w*other.y - this->x*other.z + this->y*other.w + this->z*other.x,
-                                 this->w*other.z + this->x*other.y - this->y*other.x + this->z*other.w);
+    return *this = Quaternion<T>(this->w*q.w - this->x*q.x - this->y*q.y - this->z*q.z,
+                                 this->w*q.x + this->x*q.w + this->y*q.z - this->z*q.y,
+                                 this->w*q.y - this->x*q.z + this->y*q.w + this->z*q.x,
+                                 this->w*q.z + this->x*q.y - this->y*q.x + this->z*q.w);
   }
 
   /***** Division algebra structure *********************************************/
   Quaternion<T>& invert() {
     auto lensq = lengthSquared();
     if(lensq != 0) {
-      *this.conjugate() /= lensq;
+	    (*this).conjugate() /= lensq;
     }
     return *this;
   }
