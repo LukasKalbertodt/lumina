@@ -2,6 +2,7 @@
 #include "GLException.hpp"
 #include "GLTools.hpp"
 #include "../core/LuminaException.hpp"
+// #include "../service/StaticLogger.hpp"
 
 #include <limits>
 #include <stdexcept>
@@ -18,6 +19,7 @@ void Mesh::sendData() {
     glDrawArrays(m_primitiveType, 0, m_drawCount);
   }
   else {
+    // log("indexCOunt: ", m_indexCount);
     glDrawElements(m_primitiveType, m_indexCount, GL_UNSIGNED_INT, nullptr);
   }
   unbindAll();
@@ -38,8 +40,8 @@ Mesh::~Mesh() {
 
 void Mesh::setupOpenGL() {
   static bool wasCalled = false;
-  if(wasCalled) {
-    // configurate primitive restart
+  if(!wasCalled) {
+    // configure primitive restart
     glPrimitiveRestartIndex(std::numeric_limits<unsigned int>::max());
     glEnable(GL_PRIMITIVE_RESTART);
     wasCalled = true;

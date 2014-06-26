@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../video/Mesh.hpp"
+#include "../video/HotMesh.hpp"
 #include "../video/VChan.hpp"
 #include "../util/VectorCore.hpp"
 

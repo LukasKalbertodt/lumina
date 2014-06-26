@@ -13,3 +13,4 @@
 #include "VChan.hpp"
 #include "Texture.hpp"
 #include "HotTexture.hpp"
+#include "GLIndex.hpp"

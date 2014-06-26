@@ -1,6 +1,7 @@
 #pragma once
 
 #include "VertexSlot.hpp"
+#include "VertexLayout.hpp"
 
 namespace lumina {
 namespace internal {
