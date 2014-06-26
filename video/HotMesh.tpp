@@ -25,13 +25,7 @@ HotMesh<Cs...>::HotMesh(Mesh& ref)
   }
 
   // check for error
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[HotMesh] Error <",
-             translateGLError(err),
-             "> while creating HotMesh!");
-    throw GLException("Error while creating HotMesh");
-  }
+  checkGLError("[HotMesh] Error <", GLERR, "> while creating HotMesh!");
 }
 
 // unmap and unbind all buffers
@@ -60,13 +54,8 @@ template <typename... Cs>
 void HotMesh<Cs...>::applyVertexLayout() {
   internal::applyLayoutImpl<0, internal::LayoutTypes<Cs...>::stride,
                             0, sizeof(Cs)...>();
-  
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[HotMesh] Error<", translateGLError(err), "> while applying "
-      "vertex layout!");
-    throw GLException("[HotMesh] Error while applying vertex layout");
-  }
+
+  checkGLError("[HotMesh] Error<", GLERR, "> while applying vertex layout!");
 
   m_mesh.m_drawCount = m_mesh.m_vertexCount
                        / (internal::LayoutTypes<Cs...>::stride/4);

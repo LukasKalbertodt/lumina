@@ -24,11 +24,7 @@ void Mesh::sendData() {
   }
   unbindAll();
 
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("Error<", translateGLError(err), "> while sending mesh data!");
-    throw GLException("Error while sending mesh data!");
-  }
+  checkGLError("[Mesh] Error<", GLERR, "> while sending mesh data!");
 }
 
 Mesh::~Mesh() {
@@ -78,36 +74,23 @@ void Mesh::create(int vertexCount, int indexCount) {
   glGenVertexArrays(1, &m_vertexArrayObject);
   glBindVertexArray(m_vertexArrayObject);
 
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[Mesh] Error while creating VAO <", translateGLError(err), ">!");
-    throw GLException("[Mesh] Error while creating VAO");
-  }
+
+  checkGLError("[Mesh] Error while creating VAO <", GLERR, ">!");
 
   // create vertex buffer (generate, bind and allocate memory)
   glGenBuffers(1, &m_vertexHandle);
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
   glBufferData(GL_ARRAY_BUFFER, vertexSize(), nullptr, GL_STATIC_DRAW);
 
-  err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[Mesh] Error while creating vertex buffer <",
-             translateGLError(err), ">!");
-    throw GLException("[Mesh] Error while creating vertex buffer");
-  }
+  checkGLError("[Mesh] Error while creating vertex buffer <", GLERR, ">!");
 
   // create index buffer, if requested
   if(indexCount > 0) {
     glGenBuffers(1, &m_indexHandle);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexHandle);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize(), nullptr, GL_STATIC_DRAW);
-    
-    err = glGetError();
-    if(err != GL_NO_ERROR) {
-      logError("[Mesh] Error while creating index buffer <",
-               translateGLError(err), ">!");
-      throw GLException("[Mesh] Error while creating index buffer");
-    }
+
+    checkGLError("[Mesh] Error while creating index buffer <", GLERR, ">!");
   }
 
   // unbind all buffers and VAO

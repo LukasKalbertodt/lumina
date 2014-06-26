@@ -2,6 +2,7 @@
 
 #include "Mesh.fpp"
 #include "HotMesh.fpp"
+#include "GLObject.hpp"
 #include "../config/BaseProxy.hpp"
 
 #include <GL/glew.h>
@@ -23,7 +24,7 @@ namespace lumina {
 * * Call `create` to create the underlying data structures
 * * Call `prime` to obtain a HotMesh (the Mesh needs to be created first)
 */
-class Mesh : public config::CommonBase {
+class Mesh : public GLObject {
 public:
   // default constructor
   Mesh();
