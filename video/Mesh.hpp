@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Mesh.fpp"
+#include "HotMesh.fpp"
 #include "../config/BaseProxy.hpp"
 
 #include <GL/glew.h>
@@ -20,7 +21,7 @@ namespace lumina {
 * The typical creation cycle is: 
 * * Creating a new instance of Mesh (which is useless on it's own)
 * * Call `create` to create the underlying data structures
-* * Call `prime` to obtain a HotMesh (the Mesh need to be created first)
+* * Call `prime` to obtain a HotMesh (the Mesh needs to be created first)
 */
 class Mesh : public config::CommonBase {
 public:
@@ -66,6 +67,8 @@ private:
   void unbindAll();
 
   static bool s_isPrimed;
+
+  static void setupOpenGL();
 
   template <typename... Cs> friend class HotMesh;
 };

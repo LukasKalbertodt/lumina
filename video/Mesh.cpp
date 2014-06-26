@@ -3,6 +3,7 @@
 #include "GLTools.hpp"
 #include "../core/LuminaException.hpp"
 
+#include <limits>
 #include <stdexcept>
 
 
@@ -33,6 +34,16 @@ Mesh::~Mesh() {
   glDeleteBuffers(1, &m_vertexHandle);
   glDeleteBuffers(1, &m_indexHandle);
   glDeleteVertexArrays(1, &m_vertexArrayObject);
+}
+
+void Mesh::setupOpenGL() {
+  static bool wasCalled = false;
+  if(wasCalled) {
+    // configurate primitive restart
+    glPrimitiveRestartIndex(std::numeric_limits<unsigned int>::max());
+    glEnable(GL_PRIMITIVE_RESTART);
+    wasCalled = true;
+  }
 }
 
 

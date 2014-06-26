@@ -8,7 +8,9 @@ inline Mesh::Mesh()
     m_vertexCount(0),
     m_indexCount(0),
     m_drawCount(0),
-    m_primitiveType(GL_TRIANGLES) {}
+    m_primitiveType(GL_TRIANGLES) {
+  setupOpenGL();
+}
 
 // copy constructor and copy assignment operator
 // inline Mesh::Mesh(const Mesh& copy);
@@ -30,6 +32,8 @@ inline Mesh::Mesh(Mesh&& m)
   m.m_vertexCount = 0;
   m.m_indexCount = 0;
   m.m_primitiveType = GL_TRIANGLES;
+
+  // don't need to call setupOpenGL(), because it already was by m
 }
 // inline Mesh& operator=(Mesh&& m);
 

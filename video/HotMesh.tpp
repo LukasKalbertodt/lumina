@@ -20,8 +20,8 @@ HotMesh<Cs...>::HotMesh(Mesh& ref)
 
   // map index buffer, if it exists
   if(m_mesh.m_indexHandle != 0) {
-    index.m_buffer
-      = static_cast<int*>(glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_READ_WRITE));
+    index.m_buffer = static_cast<unsigned int*>(
+      glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_READ_WRITE));
   }
 
   // check for error
