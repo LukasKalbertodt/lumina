@@ -1,15 +1,16 @@
 #pragma once
 
+#include "IndexSlot.hpp"
 #include "GLException.hpp"
+#include "GLObject.hpp"
 #include "Mesh.fpp"
 #include "../config/BaseProxy.hpp"
-#include "IndexSlot.hpp"
 
 
 namespace lumina {
 namespace internal {
 
-class IndexSet : public config::CommonBase {
+class IndexSet : public GLObject {
 public:
   IndexSet(int indexCount) : m_buffer(nullptr), m_indexCount(indexCount) {}
 
@@ -18,7 +19,7 @@ public:
       logError("[IndexSet] Index <", index, "> out of bounds!");
       throw GLException("[IndexSet] Index out of bounds");
     }
-    return IndexSlot(*(m_buffer + index));
+    return std::move(IndexSlot(*(m_buffer + index)));
   }
 
 private:

@@ -13,12 +13,7 @@ void HotTexture<TT>::fill(void* data) {
               data);
   m_genMipMaps = true;
 
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[HotTexture] Error<", translateGLError(err),
-             "> while filling data!");
-    throw GLException("[HotTexture] Error while filling data");
-  }
+  checkGLError("[HotTexture] Error<", GLERR, "> while filling data!");
 }
 
 template <>

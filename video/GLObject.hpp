@@ -15,6 +15,9 @@ enum class PrintGL {
 
 class GLObject : public config::CommonBase {
 public:
+  // OpenGL object cannot be copied, just moved.
+  GLObject() = default;
+  GLObject(const GLObject&) = delete;
 
 protected:
   template <typename... Ts> void checkGLError(Ts...);

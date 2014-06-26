@@ -1,7 +1,8 @@
 #pragma once
+#include "GLObject.hpp"
 #include "Program.fpp"
-#include "Shader.hpp"
 #include "RenderContext.fpp"
+#include "Shader.hpp"
 #include "UniformSet.hpp"
 #include "../config/BaseProxy.hpp"
 
@@ -11,12 +12,12 @@
 
 namespace lumina {
 
-class Program : public config::CommonBase, public NonCopyable {
+class Program : public GLObject {
 public:
   Program();
   ~Program();
 
-  void create(VShader vs, FShader fs);
+  void create(VShader& vs, FShader& fs);
   void prime(std::function<void(HotProgram&)> func);
 
 protected:

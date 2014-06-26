@@ -9,7 +9,7 @@ namespace lumina {
 bool HotProgram::s_isPrimed = false;
 
 
-void Program::create(VShader vs, FShader fs) {
+void Program::create(VShader& vs, FShader& fs) {
   auto program = glCreateProgram();
 
   // attach both shaders
@@ -47,13 +47,7 @@ void Program::create(VShader vs, FShader fs) {
   glDetachShader(program, fs.getHandle());
 
   // check for any error
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[Program] GL error while linking program <",
-             translateGLError(err),
-             ">!");
-    throw GLException("[Program] GL error while linking program");
-  }
+  checkGLError("[Program] GL error while linking program <", GLERR, ">!");
 
   // linking was successful: commit changes
   m_program = program;

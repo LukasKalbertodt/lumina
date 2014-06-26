@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GLIndex.hpp"
+#include "../config/BaseProxy.hpp"
 #include <limits>
 
 namespace lumina {
