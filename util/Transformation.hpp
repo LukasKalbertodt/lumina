@@ -21,17 +21,19 @@ template <typename T>
 using Mat4 = MatQ<T, 4>;
 
 template <typename T>
-Mat4<T> translationMatrix(Vec4<T> translation) {
+Mat4<T> translationMatrix(Vec3<T> translation) {
   Mat4<T> translationMatrix;
-  translationMatrix.setToIdentity().setColumn(3, translation);
+  Vec4<T> column = Vec4<T>(translation.x, translation.y, translation.z, static_cast<T>(1));
+  translationMatrix.setToIdentity().setColumn(3, column);
   return translationMatrix;
 }
 
 template <typename T>
-Mat4<T> scalingMatrix(Vec4<T> scaling) {
+Mat4<T> scalingMatrix(Vec3<T> scaling) {
+	Vec4<T> diagonal = Vec4<T>(scaling.x, scaling.y, scaling.z, static_cast<T>(1));
   Mat4<T> scalingMatrix;
   scalingMatrix.setToZero();
-  scalingMatrix.setDiagonal(scaling);
+  scalingMatrix.setDiagonal(diagonal);
   return scalingMatrix;
 }
 
@@ -67,16 +69,16 @@ Mat4<T> rotationMatrix(Quaternion<T> rotation) {
 }
 
 template <typename T>
-Mat4<T> viewMatrix(Vec4<T> eye, Vec4<T> direction, Vec4<T> up) {
-  Vec4<T> z = -direction.normalized();
-  Vec4<T> x = cross(direction, up).normalized();
-  Vec4<T> y = cross(z, x);
+Mat4<T> viewMatrix(Vec3<T> eye, Vec3<T> direction, Vec3<T> up) {
+  Vec3<T> z = -direction.normalized();
+  Vec3<T> x = cross(direction, up).normalized();
+  Vec3<T> y = cross(z, x);
 
   Mat4<T> basisChangeMatrix;
   basisChangeMatrix.setToIdentity();
-  setRow(0, x);
-  setRow(1, y);
-  setRow(2, z);
+  basisChangeMatrix.setRow(0, Vec4<T>(x.x, x.y, x.z, 0.f));
+  basisChangeMatrix.setRow(1, Vec4<T>(y.x, y.y, y.z, 0.f));
+  basisChangeMatrix.setRow(2, Vec4<T>(z.x, z.y, z.z, 0.f));
 
   return translationMatrix(-eye) * basisChangeMatrix;
 }
