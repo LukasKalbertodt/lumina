@@ -44,10 +44,10 @@ template <typename T>
 std::string colorRep(Color<T, true> in) {
   std::string out(internal::ColorRepTrait<T>::name);
   out += " {";
-  out += "r => " + numberToRep(in.r) + ", ";
-  out += "g => " + numberToRep(in.g) + ", ";
-  out += "b => " + numberToRep(in.b) + ", ";
-  out += "a => " + numberToRep(in.a);
+  out += "r => " + internal::numberToRep(in.r) + ", ";
+  out += "g => " + internal::numberToRep(in.g) + ", ";
+  out += "b => " + internal::numberToRep(in.b) + ", ";
+  out += "a => " + internal::numberToRep(in.a);
   out += "}";
   return out;
 }
@@ -55,9 +55,9 @@ template <typename T>
 std::string colorRep(Color<T, false> in) {
   std::string out(internal::ColorRepTrait<T>::name);
   out += " {";
-  out += "r => " + numberToRep(in.r) + ", ";
-  out += "g => " + numberToRep(in.g) + ", ";
-  out += "b => " + numberToRep(in.b);
+  out += "r => " + internal::numberToRep(in.r) + ", ";
+  out += "g => " + internal::numberToRep(in.g) + ", ";
+  out += "b => " + internal::numberToRep(in.b);
   out += "}";
   return out;
 }

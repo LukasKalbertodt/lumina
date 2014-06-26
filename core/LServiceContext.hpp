@@ -5,13 +5,14 @@
 namespace lumina {
 
 enum class LServiceContext : uint8_t {
-  DEFAULT,
-  DEBUG,
-  EXCONTEXT0,
-  EXCONTEXT1,
-  EXCONTEXT2,
-  EXCONTEXT3,
-  EXCONTEXT4,
+  Default,
+  Static,
+  Debug,
+  ExContext0,
+  ExContext1,
+  ExContext2,
+  ExContext3,
+  ExContext4,
   NUM_VALUES
 };
 

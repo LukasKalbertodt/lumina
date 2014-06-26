@@ -23,7 +23,9 @@ namespace config {
   // enum type of the ServiceContext
   typedef LServiceContext ServiceContext;
   // default service context
-  constexpr ServiceContext defaultServiceContext = LServiceContext::DEFAULT;
+  constexpr ServiceContext defaultServiceContext = LServiceContext::Default;
+  // service context for static service uses (such as slog())
+  constexpr ServiceContext staticServiceContext = LServiceContext::Static;
   // number of possible values for the service context
   constexpr ServiceContext serviceContextNumValues =
       LServiceContext::NUM_VALUES;

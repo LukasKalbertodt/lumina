@@ -67,6 +67,9 @@ void HotMesh<Cs...>::applyVertexLayout() {
       "vertex layout!");
     throw GLException("[HotMesh] Error while applying vertex layout");
   }
+
+  m_mesh.m_drawCount = m_mesh.m_vertexCount
+                       / (internal::LayoutTypes<Cs...>::stride/4);
 }
 
 template <typename... Cs>

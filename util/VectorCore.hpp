@@ -533,16 +533,20 @@ private:
   }
 
 public:
-  T operator*() const {
-    T out = 0;
-    for(int i = 0; i < N; ++i) {
-      T add = this->data[i];
-      for(int j = i + 1; j < N; ++j) {
-        add *= m_target.data[j];
-      }
-      out += add;
-    }
-    return out;
+  // T operator*() const {
+  //   T out = 0;
+  //   for(int i = 0; i < N; ++i) {
+  //     T add = this->data[i];
+  //     for(int j = i + 1; j < N; ++j) {
+  //       add *= m_target.data[j];
+  //     }
+  //     out += add;
+  //   }
+  //   return out;
+  // }
+
+  Vector<T, N> operator*() const {
+    return static_cast<Vector<T, N>>(*this);
   }
 
   VectorIterator& operator++() {

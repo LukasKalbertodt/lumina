@@ -54,6 +54,7 @@ private:
   GLuint m_vertexArrayObject;
   std::size_t m_vertexCount;
   std::size_t m_indexCount;
+  std::size_t m_drawCount;
   GLenum m_primitiveType;
 
   std::size_t vertexCount() const;

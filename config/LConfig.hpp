@@ -7,12 +7,15 @@
 namespace lumina {
 
 
-/*******************************************************************************
- * Modifies the behavior of the logger
- */
-// control use of cout and cerr
 namespace config {
+  /*****************************************************************************
+   * Modifies the behavior of the logger
+   */
+  // control use of cout and cerr
   constexpr bool useLogStandardIO = true;
+
+  // should runtime bound checks be performed?
+  constexpr bool debugBoundChecks = true;
 }
 
 } // namespace lumina

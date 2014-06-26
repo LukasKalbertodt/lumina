@@ -46,7 +46,7 @@ std::string vectorRep(Vector<T, N> in) {
     }
 
     // append string representation of the element
-    out += numberToRep(in.data[i]);
+    out += internal::numberToRep(in.data[i]);
   }
   return out + "}";
 }
