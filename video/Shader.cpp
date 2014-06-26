@@ -50,6 +50,9 @@ void Shader<Type>::compile(ShaderSource source) {
     throw GLException("Could not compile shader");
   }
 
+  checkGLError("[Shader] OpenGL Error<", GLERR,
+               "> occured while compiling shader!");
+
   log("[Shader] Shader <", m_filename, "> was successfully compiled.");
 }
 

@@ -10,6 +10,15 @@ void GLObject::checkGLError(Ts... msgs) {
   }
 }
 
+template <typename... Ts> 
+void GLObject::checkGLWarning(Ts... msgs) {
+  auto err = glGetError();
+
+  if(err != GL_NO_ERROR) {
+    logWarning(translateErrorMsg(err, msgs)...);
+  }
+}
+
 template <typename T> 
 T& GLObject::translateErrorMsg(GLuint err, T& obj) {
   return obj;

@@ -40,11 +40,7 @@ HotMesh<Cs...>::~HotMesh() {
   m_mesh.unbindAll();
 
   // check for error (remember: never evaar throw in dtor!)
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logWarning("[HotMesh] OpenGL error<", translateGLError(err), "> in "
-      "HotMesh destructor!");
-  }
+  checkGLWarning("[HotMesh] OpenGL error<", GLERR, "> in HotMesh destructor!");
 
   // remove primed marker
   Mesh::s_isPrimed = false;

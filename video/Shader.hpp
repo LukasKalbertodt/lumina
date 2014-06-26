@@ -1,4 +1,5 @@
 #pragma once
+#include "GLObject.hpp"
 #include "Shader.fpp"
 #include "ShaderSource.hpp"
 #include "../config/BaseProxy.hpp"
@@ -9,24 +10,22 @@
 namespace lumina {
 
 template <ShaderType Type>
-class Shader : public config::CommonBase {
+class Shader : public GLObject {
 public:
   // typedefs and constexpr
   static constexpr ShaderType shaderType = Type;
 
   // default constructor
-  Shader() : m_handle(0) {}
+  Shader();
 
   // descructor
   ~Shader();
 
-  GLuint getHandle() { return m_handle; }
-  std::string getFilename() { return m_filename; }
+  GLuint getHandle() const;
+  std::string getFilename() const;
 
   void compile(ShaderSource source);
-  void compile(std::string code) {
-    compile(ShaderSource(code, "unknown-file"));
-  }
+  void compile(std::string code);
 
 private:
   GLuint m_handle;
@@ -36,3 +35,5 @@ private:
 };
 
 }
+
+#include "Shader.tpp"
