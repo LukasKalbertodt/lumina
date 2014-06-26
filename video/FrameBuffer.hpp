@@ -1,10 +1,11 @@
 #pragma once
 
 #include <GL/glew.h>
+#include "GLObject.hpp"
 
 namespace lumina {
 
-class FrameBuffer {
+class FrameBuffer : public GLObject {
 public:
   FrameBuffer();
   FrameBuffer(FrameBuffer&&);
@@ -21,3 +22,5 @@ private:
 };
 
 }
+
+#include "FrameBuffer.tpp"
