@@ -65,11 +65,58 @@ using TL = TerminalLook;
 inline std::ostream& operator<<(std::ostream& out, TL look) {
 
 #ifdef _WIN32
+
+#define SET_BIT(index_) att |= 1 << index_;
+#define UNSET_BIT(index_) att &=  ~(1 << index_);
+#define SET_TCOLOR(val_) att = (att & 0xF8) | (val_ & 0x7);
+#define SET_BGCOLOR(val_) att = (att & 0x8F) | (val_ & 0x70);
+
   CONSOLE_SCREEN_BUFFER_INFO csbi;
   GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+  WORD att = csbi.wAttributes & 0xFF;
+  switch(look) {
+    case TL::Reset: // white color, black background, thin
+      SET_TCOLOR(FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE); 
+      SET_BGCOLOR(0);
+      UNSET_BIT(3);
+      break;
+    case TL::ResetText:   // white text
+      SET_TCOLOR(FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE); 
+      break;
+    case TL::ResetBG:     // black background
+      SET_BGCOLOR(0);
+     break;
+    case TL::ResetWeight: // thin
+      UNSET_BIT(3);
+      break;
+    case TL::ResetDec:    break;
+    case TL::Bold:        SET_BIT(3); break;
+    case TL::Thin:        UNSET_BIT(3); break;
+    case TL::Underline:   break;
+    case TL::Black:       SET_TCOLOR(0); break;
+    case TL::Red:         SET_TCOLOR(FOREGROUND_RED); break;
+    case TL::Green:       SET_TCOLOR(FOREGROUND_GREEN); break;
+    case TL::Yellow:      SET_TCOLOR(FOREGROUND_GREEN | FOREGROUND_RED); break;
+    case TL::Blue:        SET_TCOLOR(FOREGROUND_BLUE); break;
+    case TL::Magenta:     SET_TCOLOR(FOREGROUND_BLUE | FOREGROUND_RED); break;
+    case TL::Cyan:        SET_TCOLOR(FOREGROUND_BLUE | FOREGROUND_GREEN); break;
+    case TL::White:       SET_TCOLOR(FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE); break;
+    case TL::BlackBG:     SET_BGCOLOR(0); break; 
+    case TL::RedBG:       SET_BGCOLOR(BACKGROUND_RED); break; 
+    case TL::GreenBG:     SET_BGCOLOR(BACKGROUND_GREEN); break; 
+    case TL::YellowBG:    SET_BGCOLOR(BACKGROUND_GREEN | BACKGROUND_RED); break; 
+    case TL::BlueBG:      SET_BGCOLOR(BACKGROUND_BLUE); break; 
+    case TL::MagentaBG:   SET_BGCOLOR(BACKGROUND_BLUE | BACKGROUND_RED); break; 
+    case TL::CyanBG:      SET_BGCOLOR(BACKGROUND_BLUE | BACKGROUND_GREEN); break; 
+    case TL::WhiteBG:     SET_BGCOLOR(BACKGROUND_GREEN | BACKGROUND_RED | BACKGROUND_BLUE); break; 
+  }
+#undef SET_BIT
+#undef UNSET_BIT
+#undef SET_TCOLOR
+#undef SET_BGCOLOR
+
   SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
-                          (csbi.wAttributes & 0xFFF0)
-                          | static_cast<int>(color));
+                          (csbi.wAttributes & 0xFF00) | att);
 
 
 #else
