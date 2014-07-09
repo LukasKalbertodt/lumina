@@ -16,18 +16,18 @@
  * - a value specifying the number of values in the enum, named 
  *   "serviceContextNumValues", also in namespace lumina::config
  */
-#include "../core/LServiceContext.hpp"
+#include "../core/ServiceContext.hpp"
 
 namespace lumina {
 namespace config {
   // enum type of the ServiceContext
-  typedef LServiceContext ServiceContext;
+  typedef ServiceContext ServiceContext;
   // default service context
-  constexpr ServiceContext defaultServiceContext = LServiceContext::Default;
+  constexpr ServiceContext defaultServiceContext = ServiceContext::Default;
   // service context for static service uses (such as slog())
-  constexpr ServiceContext staticServiceContext = LServiceContext::Static;
+  constexpr ServiceContext staticServiceContext = ServiceContext::Static;
   // number of possible values for the service context
   constexpr ServiceContext serviceContextNumValues =
-      LServiceContext::NUM_VALUES;
+      ServiceContext::NUM_VALUES;
 }
 }

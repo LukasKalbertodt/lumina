@@ -1,24 +1,24 @@
 #pragma once
 
-#include "LServiceProvider.hpp"
-#include "LLogger.hpp"
+#include "ServiceProvider.hpp"
+#include "Logger.hpp"
 #include "../config/ContextProxy.hpp"
 
 namespace lumina {
 
 template <typename... Ts>
 void slog(Ts... msgs) {
-  LServiceProvider::getLogger(config::staticServiceContext).log(msgs...);
+  getLoggerService(config::staticServiceContext).log(msgs...);
 }
 
 template <typename... Ts>
 void slogWarning(Ts... msgs) {
-  LServiceProvider::getLogger(config::staticServiceContext).logWarning(msgs...);
+  getLoggerService(config::staticServiceContext).logWarning(msgs...);
 }
 
 template <typename... Ts>
 void slogError(Ts... msgs) {
-  LServiceProvider::getLogger(config::staticServiceContext).logError(msgs...);
+  getLoggerService(config::staticServiceContext).logError(msgs...);
 }
 
 }

@@ -16,13 +16,13 @@
  * more space.
  * If you don't need to configure different services, you can use LSingleBase.
  */
-#include "../service/LServiceProvider.hpp"
+#include "../service/ServiceProvider.hpp"
 
 namespace lumina {
 
-class LContextBase {
+class ContextBase {
 public:
-  LContextBase() 
+  ContextBase() 
     : m_context(config::defaultServiceContext) 
   {}
   
@@ -34,17 +34,17 @@ public:
 protected:
   template <typename... Ts>
   void log(Ts... args) {
-    LServiceProvider::getLogger(m_context).log(args...);
+    getLoggerService(m_context).log(args...);
   }
 
   template <typename... Ts>
   void logError(Ts... args) {
-    LServiceProvider::getLogger(m_context).logError(args...);
+    getLoggerService(m_context).logError(args...);
   }
 
   template <typename... Ts>
   void logWarning(Ts... args) {
-    LServiceProvider::getLogger(m_context).logWarning(args...);
+    getLoggerService(m_context).logWarning(args...);
   }
 
 

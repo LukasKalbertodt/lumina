@@ -4,7 +4,7 @@
 
 namespace lumina {
 
-enum class LServiceContext : uint8_t {
+enum class ServiceContext : uint8_t {
   Default,
   Static,
   Debug,

@@ -1,7 +1,8 @@
 #pragma once
 
 #include "../config/LConfig.hpp"
-#include "../util/TerminalColor.hpp"
+#include "../core/LogLevel.hpp"
+#include "../util/TerminalLook.hpp"
 
 #include <chrono>
 #include <fstream>
@@ -10,16 +11,10 @@
 
 namespace lumina {
 
-// TODO: tmp, this will be any class providing an ingame console
-class LTerminal;
-
-class LLogger {
+class Logger {
 public:
-  LLogger() 
-    : m_terminal(nullptr),
-      m_stdIO(config::useLogStandardIO),
-      m_time(Clock::now()) {
-  }
+  Logger();
+    
 
   /*****************************************************************************
    * Logging functions
@@ -28,61 +23,20 @@ public:
    * @brief Log information
    * @param msgs values to log
    */
-  template <typename... Ts>
-  void log(Ts... msgs) {
-    if(m_stdIO) {
-      logStdIO("[", getTimeString(), "]", msgs...);
-      std::cout << std::endl;
-    }
-
-    if(m_logFile && m_logFile.is_open()) {
-      logFile("[", getTimeString(), "]", msgs...);
-      m_logFile << std::endl;
-    }
-
-    if(m_terminal) {
-    }
-  }
+  template <LogLevel LL = LogLevel::Info, typename... Ts>
+  void log(Ts... msgs);
 
   /**
    * @brief Log information
    * @param msgs values to log
    */
-  template <typename... Ts>
-  void logWarning(Ts... msgs) {
-    if(m_stdIO) {
-      logStdIO(LTFG::Yellow, "[", getTimeString(), " WARNING]", msgs..., LTC::Reset);
-      std::cout << std::endl;
-    }
-
-    if(m_logFile && m_logFile.is_open()) {
-      logFile("[", getTimeString(), " WARNING]", msgs...);
-      m_logFile << std::endl;
-    }
-
-    if(m_terminal) {
-    }
-  }
+  template <typename... Ts> void logWarning(Ts... msgs);
 
   /**
    * @brief Log information
    * @param msgs values to log
    */
-  template <typename... Ts>
-  void logError(Ts... msgs) {
-    if(m_stdIO) {
-      logStdIO(LTFG::Red, "[", getTimeString(), " ERROR]", msgs..., LTC::Reset);
-      std::cout << std::endl;
-    }
-
-    if(m_logFile && m_logFile.is_open()) {
-      logFile("[", getTimeString(), " ERROR]", msgs...);
-      m_logFile << std::endl;
-    }
-
-    if(m_terminal) {
-    }
-  }
+  template <typename... Ts> void logError(Ts... msgs);
 
   /**
    * @brief Set the name of the file, which is used for logging
@@ -106,7 +60,6 @@ public:
 private:
   using Clock = std::chrono::system_clock;
 
-  LTerminal* m_terminal;
   std::string m_logFileName;
   bool m_stdIO;
   Clock::time_point m_time;
@@ -151,21 +104,10 @@ private:
     m_logFile << msg;
   }
 
-  std::string getTimeString() {
-    using namespace std::chrono;
-    auto now = Clock::now();
-    auto diff = now - m_time;
-
-    int msec = duration_cast<milliseconds>(diff).count() % 10000;
-    int sec  = duration_cast<seconds>(diff).count() % 60;
-    int min  = duration_cast<minutes>(diff).count() % 100;
-
-    char out[] = "00:00.0000";
-    std::snprintf(out, 11, "%.2i:%.2i.%.4i", min, sec, msec);
-
-    return std::string(out);
-  }
+  std::string getTimeString();
 };
 
 
 } // namespace lumina
+
+#include "Logger.tpp"

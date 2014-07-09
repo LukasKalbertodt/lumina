@@ -2,6 +2,7 @@
 
 #include "HotTexture.fpp"
 #include "TexFormat.hpp"
+#include "TextureUnits.hpp"
 #include "TexParam.hpp"
 #include "Texture.fpp"
 #include "TexType.hpp"
@@ -10,6 +11,7 @@
 
 #include <GL/glew.h>
 #include <functional>
+#include <vector>
 
 namespace lumina {
 
@@ -20,10 +22,10 @@ public:
   ~Texture();
 
   void create(Vec2i dimension, TexFormat format, void *data = nullptr);
-  void prime(std::function<void(HotTexture<TT>&)> func);
+  void prime(/*int texUnit,*/ std::function<void(HotTexture<TT>&)> func);
 
 
-  void bindTexture();
+  void bindTexture(/*int texUnit*/);
   void unbind();
 
 private:
@@ -31,8 +33,6 @@ private:
   Vec2i m_dimension;
   TexParam m_params;
   TexFormat m_format;
-
-  static bool s_isPrimed;
 
   GLenum glType() const;
   void createStorage(Vec2i dim,
@@ -44,7 +44,6 @@ private:
 
   friend HotTexture<TT>;
 };
-
 
 } // namespace lumina
 

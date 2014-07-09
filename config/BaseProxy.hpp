@@ -20,21 +20,21 @@
 
 // if the service context is used, there is one service for each context
 #if BASE_PROXY_USE_CONTEXT
-  #include "../core/LContextBase.hpp"
+  #include "../core/ContextBase.hpp"
 
   namespace lumina {
   namespace config {
-    typedef LContextBase CommonBase;
+    typedef ContextBase CommonBase;
   }
   }
 
 // if the service context is not used, every service is a singleton
 #else
-  #include "../core/LSingleBase.hpp"
+  #include "../core/SingleBase.hpp"
 
   namespace lumina {
   namespace config {
-    typedef LSingleBase CommonBase;
+    typedef SingleBase CommonBase;
   }
   }
 

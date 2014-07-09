@@ -6,8 +6,6 @@
 
 namespace lumina {
 
-template <TexType TT>
-bool Texture<TT>::s_isPrimed = false;
 
 template <TexType TT>
 void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
@@ -18,18 +16,17 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
   }
 
   // check if another texture is currently primed
-  if(s_isPrimed) {
+  if(TextureUnits::isPrimed(getMaxTexUnits())) {
     logError(
-      "[Texture] Cannot execute 'create' while another texture is primed!");
+      "[Texture] Cannot execute 'create' while another texture is created!");
     throw LogicEx(
-      "[Texture] Cannot execute 'create' while another texture is primed!");
+      "[Texture] Cannot execute 'create' while another texture is created!");
   }
 
   // check arguments
   if(dimension.x <= 0 || dimension.y <= 0) {
     logError("[Texture] Invalid argument: dimension<",
-             dimension,
-             "> is negative!");
+             dimension, "> is negative!");
     throw InvalidArgEx("[Texture] Invalid argument: dimension is negative");
   }
   // show warnings when strange resolutions are used
@@ -65,6 +62,7 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
   // unbind texture to not leak state
   unbind();
 }
+
 
 template <>
 void Texture<TexType::Tex2D>::createStorage(Vec2i dim,
