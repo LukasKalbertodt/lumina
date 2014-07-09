@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 
 namespace lumina {
 
@@ -42,19 +43,23 @@ public:
    * @brief Set the name of the file, which is used for logging
    * @param filename Name of the file
    */
-  void setLogFileName(std::string filename) {
-    m_logFileName = filename;
-    if(!filename.empty())
-      openLogFile();
-  }
+  void setLogFileName(std::string filename);
+  static void setGlobalLogFileName(std::string filename);
 
   /**
    * @brief Enable or disable logging via cout and cerr
    * @param enable true if enabled
    */
-  void setStdLogging(bool enable) {
-    m_stdIO = enable;
-  }
+  void setStdLogging(bool enable);
+  static void setGlobalStdLogging(bool enable);
+
+
+  /**
+   * Don't print log messages, that are below the required log level
+   * @param required minimum log level that is printed
+   */
+  void setStdLevelFilter(LogLevel required);
+  static void setGlobalStdLevelFilter(LogLevel required);
 
 
 private:
@@ -64,7 +69,9 @@ private:
   bool m_stdIO;
   Clock::time_point m_time;
   std::ofstream m_logFile;
+  LogLevel m_requiredStdLevel;
 
+  static std::vector<Logger*> s_instances;
 
 
 

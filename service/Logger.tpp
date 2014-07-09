@@ -1,11 +1,15 @@
 namespace lumina {
 
 inline Logger::Logger()
-  : m_stdIO(config::useLogStandardIO), m_time(Clock::now()) {}
+  : m_stdIO(config::useLogStandardIO),
+    m_time(Clock::now()),
+    m_requiredStdLevel(LogLevel::Debug) {
+  s_instances.push_back(this);
+}
 
 template <LogLevel LL, typename... Ts> 
 void Logger::log(Ts... msgs) {
-  if(m_stdIO) {
+  if(m_stdIO && LL >= m_requiredStdLevel) {
     switch(LL) {
       case LogLevel::Critical:
         logStdIO(TL::RedBG, TL::White, "[", getTimeString(), " CRIT]", 
@@ -51,20 +55,39 @@ void Logger::logError(Ts... msgs) {
   log<LogLevel::Error>(msgs...);
 }
 
-
-inline std::string Logger::getTimeString() {
-  using namespace std::chrono;
-  auto now = Clock::now();
-  auto diff = now - m_time;
-
-  int msec = duration_cast<milliseconds>(diff).count() % 10000;
-  int sec  = duration_cast<seconds>(diff).count() % 60;
-  int min  = duration_cast<minutes>(diff).count() % 100;
-
-  char out[] = "00:00.0000";
-  std::snprintf(out, 11, "%.2i:%.2i.%.4i", min, sec, msec);
-
-  return std::string(out);
+inline void Logger::setLogFileName(std::string filename) {
+  m_logFileName = filename;
+  if(!filename.empty()) {
+    openLogFile();
+  }
 }
+inline void Logger::setGlobalLogFileName(std::string filename) {
+  for(Logger* logger : s_instances) {
+    logger->setLogFileName(filename);
+  }
+}
+
+
+inline void Logger::setStdLogging(bool enable) { 
+  m_stdIO = enable; 
+}
+
+inline void Logger::setGlobalStdLogging(bool enable) {
+  for(Logger* logger : s_instances) {
+    logger->setStdLogging(enable);
+  }
+}
+
+
+inline void Logger::setStdLevelFilter(LogLevel required) {
+  m_requiredStdLevel = required;
+}
+
+inline void Logger::setGlobalStdLevelFilter(LogLevel required) {
+  for(Logger* logger : s_instances) {
+    logger->setStdLevelFilter(required);
+  }
+}
+
 
 }
