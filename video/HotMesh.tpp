@@ -25,13 +25,7 @@ HotMesh<Cs...>::HotMesh(Mesh& ref)
   }
 
   // check for error
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[HotMesh] Error <",
-             translateGLError(err),
-             "> while creating HotMesh!");
-    throw GLException("Error while creating HotMesh");
-  }
+  checkGLError("[HotMesh] Error <", GLERR, "> while creating HotMesh!");
 }
 
 // unmap and unbind all buffers
@@ -46,11 +40,7 @@ HotMesh<Cs...>::~HotMesh() {
   m_mesh.unbindAll();
 
   // check for error (remember: never evaar throw in dtor!)
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logWarning("[HotMesh] OpenGL error<", translateGLError(err), "> in "
-      "HotMesh destructor!");
-  }
+  checkGLWarning("[HotMesh] OpenGL error<", GLERR, "> in HotMesh destructor!");
 
   // remove primed marker
   Mesh::s_isPrimed = false;
@@ -60,13 +50,8 @@ template <typename... Cs>
 void HotMesh<Cs...>::applyVertexLayout() {
   internal::applyLayoutImpl<0, internal::LayoutTypes<Cs...>::stride,
                             0, sizeof(Cs)...>();
-  
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[HotMesh] Error<", translateGLError(err), "> while applying "
-      "vertex layout!");
-    throw GLException("[HotMesh] Error while applying vertex layout");
-  }
+
+  checkGLError("[HotMesh] Error<", GLERR, "> while applying vertex layout!");
 
   m_mesh.m_drawCount = m_mesh.m_vertexCount
                        / (internal::LayoutTypes<Cs...>::stride/4);

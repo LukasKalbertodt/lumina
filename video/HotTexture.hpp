@@ -1,5 +1,6 @@
 #pragma once
 
+#include "GLObject.hpp"
 #include "TexType.hpp"
 #include "TexParam.hpp"
 #include "Texture.hpp"
@@ -8,7 +9,7 @@
 namespace lumina {
 
 template <TexType TT>
-class HotTexture : public config::CommonBase {
+class HotTexture : public GLObject {
 public:
   ~HotTexture(); 
 

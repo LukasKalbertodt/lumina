@@ -14,3 +14,4 @@
 #include "Texture.hpp"
 #include "HotTexture.hpp"
 #include "GLIndex.hpp"
+#include "FrameBuffer.hpp"

@@ -51,15 +51,10 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
   // apply texture parameter
   applyParams();
 
-  auto err = glGetError();
-  if(err != GL_NO_ERROR) {
-    logError("[Texture] Error<", translateGLError(err),
-             "> while creating texture!");
-    throw GLException("[Texture] Error while creating texture");
-  }
-
   // unbind texture: don't leak state
   unbind(getMaxTexUnits() - 1);
+  
+  checkGLError("[Texture] Error<", GLERR, "> while creating texture!");
 }
 
 
@@ -170,13 +165,7 @@ void Texture<TT>::prime(int texUnit,
     // generate mip maps 
     glGenerateMipmap(glType());
 
-    auto err = glGetError();
-    if(err != GL_NO_ERROR) {
-      logError("[Texture] Error<",
-               translateGLError(err),
-               "> while generating mip maps!");
-      throw GLException("[Texture] Error while generating mip maps");
-    }
+    checkGLError("[Texture] Error<", GLERR, "> while generating mip maps!");
   }
 
   if(!m_params.useMipMaps && usedMipMapsBefore) {
