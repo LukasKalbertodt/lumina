@@ -6,6 +6,7 @@
 #include "HotVertexSeq.fpp"
 #include "IndexSet.hpp"
 #include "VertexSeq.hpp"
+#include "HotProgram.fpp"
 #include "PrimitiveType.hpp"
 #include "VertexSet.hpp"
 #include "../config/BaseProxy.hpp"
@@ -27,6 +28,7 @@ private:
   HotVertexSeq(VertexSeq& ref);
 
   friend VertexSeq;
+  friend HotProgram;
 
 
 public:
@@ -39,7 +41,6 @@ public:
   // custom destructor
   ~HotVertexSeq();
 
-  void setPrimitiveType(PrimitiveType type);
   void applyVertexLayout();
 
   internal::VertexSet<Cs...> vertex;

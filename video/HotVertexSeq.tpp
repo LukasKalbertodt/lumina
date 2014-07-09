@@ -59,19 +59,4 @@ void HotVertexSeq<Cs...>::applyVertexLayout() {
                        / (internal::LayoutTypes<Cs...>::stride/4);
 }
 
-template <typename... Cs>
-void HotVertexSeq<Cs...>::setPrimitiveType(PrimitiveType type) {
-  switch(type) {
-    case PrimitiveType::Point:
-      m_cold.m_primitiveType = GL_POINTS;
-      break;
-    case PrimitiveType::Triangle:
-      m_cold.m_primitiveType = GL_TRIANGLES;
-      break;
-    case PrimitiveType::TriangleStrip:
-      m_cold.m_primitiveType = GL_TRIANGLE_STRIP;
-      break;
-  }
-}
-
 }  // namespace lumina

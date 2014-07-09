@@ -16,4 +16,21 @@ inline HotProgram::~HotProgram() {
   s_isPrimed = false;
 }
 
+
+template <typename... Ts>
+void HotProgram::draw(const HotVertexSeq<Ts...>& data,
+                      PrimitiveType type,
+                      int offset,
+                      int count) {
+  GLenum primitiveType = translatePrimitiveType(type);
+  if(data.m_cold.m_indexHandle == 0) {
+    glDrawArrays(primitiveType, offset, count);
+  }
+  else {
+    glDrawElements(primitiveType, count, GL_UNSIGNED_INT,
+                   reinterpret_cast<void*>(4 * offset));
+  }
+}
+
+
 }

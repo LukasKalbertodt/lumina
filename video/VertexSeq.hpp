@@ -2,6 +2,7 @@
 
 #include "VertexSeq.fpp"
 #include "HotVertexSeq.fpp"
+#include "HotProgram.fpp"
 #include "GLObject.hpp"
 #include "../config/BaseProxy.hpp"
 
@@ -46,9 +47,6 @@ public:
   void create(int vertexCount, int indexCount = 0);
   template <typename... Cs, typename L> void prime(L lambda);
 
-  // tmp
-  void sendData();
-
 
 private:
   GLuint m_vertexHandle;
@@ -57,7 +55,6 @@ private:
   std::size_t m_vertexCount;
   std::size_t m_indexCount;
   std::size_t m_drawCount;
-  GLenum m_primitiveType;
 
   std::size_t vertexCount() const;
   std::size_t indexCount() const;
@@ -72,6 +69,7 @@ private:
   static void setupOpenGL();
 
   template <typename... Cs> friend class HotVertexSeq;
+  friend HotProgram;
 };
 
 } // namespace lumina

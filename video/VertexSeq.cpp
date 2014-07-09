@@ -11,19 +11,6 @@ namespace lumina {
 
 bool VertexSeq::s_isPrimed = false;
 
-void VertexSeq::sendData() {
-  bindAll();
-  if(m_indexHandle == 0) {
-    glDrawArrays(m_primitiveType, 0, m_drawCount);
-  }
-  else {
-    glDrawElements(m_primitiveType, m_indexCount, GL_UNSIGNED_INT, nullptr);
-  }
-  unbindAll();
-
-  checkGLError("[VertexSeq] Error<", GLERR, "> while sending VertexSeq data!");
-}
-
 VertexSeq::~VertexSeq() {
   // glDelete* does nothing if second argument is 0
   glDeleteBuffers(1, &m_vertexHandle);
