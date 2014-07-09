@@ -2,7 +2,7 @@
 
 #include "GLException.hpp"
 #include "GLTools.hpp"
-#include "Program.fpp"
+#include "HotProgram.fpp"
 #include "UniformSlot.hpp"
 #include "../config/BaseProxy.hpp"
 #include "../util/NonCopyable.hpp"

@@ -19,7 +19,7 @@ public:
   void makeCurrent();
   void swapBuffer();
 
-  void execute(Program& prog, std::function<void(HotProgram&)> func);
+  // void execute(Program& prog, std::function<void(HotProgram&)> func);
 
 private:
   GLFWwindow* m_windowHandle;

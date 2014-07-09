@@ -1,12 +1,11 @@
 #include "Program.hpp"
+#include "HotProgram.hpp"
 #include "GLException.hpp"
 
 #include <vector>
 using namespace std;
 
 namespace lumina {
-
-bool HotProgram::s_isPrimed = false;
 
 
 void Program::create(VShader& vs, FShader& fs) {
@@ -50,7 +49,17 @@ void Program::create(VShader& vs, FShader& fs) {
   checkGLError("[Program] GL error while linking program <", GLERR, ">!");
 
   // linking was successful: commit changes
-  m_program = program;
+  m_handle = program;
+}
+
+void Program::prime(std::function<void(HotProgram&)> func) {
+  if(m_handle == 0) {
+    logError("[Program] Attempt to prime program before it was created!");
+    throw GLException(
+      "[Program] Attempt to prime program before it was created!");
+  }
+  HotProgram hot(*this);
+  func(hot);
 }
 
 }

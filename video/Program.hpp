@@ -1,9 +1,9 @@
 #pragma once
 #include "GLObject.hpp"
 #include "Program.fpp"
+#include "HotProgram.fpp"
 #include "RenderContext.fpp"
 #include "Shader.hpp"
-#include "UniformSet.hpp"
 #include "../config/BaseProxy.hpp"
 
 #include <GL/glew.h>
@@ -23,21 +23,9 @@ public:
 protected:
   Program(Program& ref);
 
-  GLuint m_program;
-};
+  GLuint m_handle;
 
-class HotProgram : public Program {
-public:
-  internal::UniformSet uniform;
-
-  ~HotProgram();
-
-private:
-  HotProgram(Program& ref);
-
-  static bool s_isPrimed;
-
-  friend Program;
+  friend HotProgram;
 };
 
 }

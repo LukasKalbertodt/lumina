@@ -38,9 +38,9 @@ void RenderContext::swapBuffer() {
   glfwSwapBuffers(m_windowHandle);
 }
 
-void RenderContext::execute(Program& prog,
-                            std::function<void(HotProgram&)> func) {
-}
+// void RenderContext::execute(Program& prog,
+//                             std::function<void(HotProgram&)> func) {
+// }
 
 
 } // namespace lumina

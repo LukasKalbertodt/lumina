@@ -13,5 +13,6 @@
 #include "VChan.hpp"
 #include "Texture.hpp"
 #include "HotTexture.hpp"
+#include "HotProgram.hpp"
 #include "GLIndex.hpp"
 #include "FrameBuffer.hpp"
