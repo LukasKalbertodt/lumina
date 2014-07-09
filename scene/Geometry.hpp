@@ -1,14 +1,14 @@
 #pragma once
 
-#include "../video/Mesh.hpp"
-#include "../video/HotMesh.hpp"
+#include "../video/VertexSeq.hpp"
+#include "../video/HotVertexSeq.hpp"
 #include "../video/VChan.hpp"
 #include "../util/VectorCore.hpp"
 
 namespace lumina {
 
 template <VChan... Chans>
-Mesh createBox(Vec3f size);
+VertexSeq createBox(Vec3f size);
 
 }
 

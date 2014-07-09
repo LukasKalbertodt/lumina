@@ -38,7 +38,7 @@ private:
       m_slotCount((vertexCount * 4) / internal::LayoutTypes<Cs...>::stride) {}
 
   // declare friends
-  friend ::lumina::HotMesh<Cs...>;
+  friend ::lumina::HotVertexSeq<Cs...>;
 };
 
 }

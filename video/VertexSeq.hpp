@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Mesh.fpp"
-#include "HotMesh.fpp"
+#include "VertexSeq.fpp"
+#include "HotVertexSeq.fpp"
 #include "GLObject.hpp"
 #include "../config/BaseProxy.hpp"
 
@@ -13,35 +13,35 @@
 
 namespace lumina {
 // =============================================================================
-// Definition of Mesh and HotMesh
+// Definition of VertexSeq and HotMesh
 // =============================================================================
 /**
 * \brief Represents a geometry mesh
-* Mesh represents a collection of vertices with arbitrary attributes, which may
+* VertexSeq represents a collection of vertices with arbitrary attributes, which may
 * be indexed. It uses an OpenGL vertex buffer and an optional index buffer. 
 * The typical creation cycle is: 
-* * Creating a new instance of Mesh (which is useless on it's own)
+* * Creating a new instance of VertexSeq (which is useless on it's own)
 * * Call `create` to create the underlying data structures
-* * Call `prime` to obtain a HotMesh (the Mesh needs to be created first)
+* * Call `prime` to obtain a HotVertexSeq (the VertexSeq needs to be created first)
 */
-class Mesh : public GLObject {
+class VertexSeq : public GLObject {
 public:
   // default constructor
-  Mesh();
+  VertexSeq();
 
-  // Mesh(int vertexCount);
-  // Mesh(int vertexCount, int indexCount);
+  // VertexSeq(int vertexCount);
+  // VertexSeq(int vertexCount, int indexCount);
 
   // copy constructor and copy assignment operator
-  Mesh(const Mesh& copy);
-  Mesh &operator=(const Mesh &copy);
+  VertexSeq(const VertexSeq& copy);
+  VertexSeq &operator=(const VertexSeq &copy);
 
   // move constructor and move assignment operator
-  Mesh(Mesh&& m);
-  Mesh& operator=(Mesh&& m);
+  VertexSeq(VertexSeq&& m);
+  VertexSeq& operator=(VertexSeq&& m);
 
   // destructor
-  ~Mesh();
+  ~VertexSeq();
 
   void create(int vertexCount, int indexCount = 0);
   template <typename... Cs, typename L> void prime(L lambda);
@@ -71,10 +71,10 @@ private:
 
   static void setupOpenGL();
 
-  template <typename... Cs> friend class HotMesh;
+  template <typename... Cs> friend class HotVertexSeq;
 };
 
 } // namespace lumina
 
 // include out of line definitions
-#include "Mesh.tpp"
+#include "VertexSeq.tpp"

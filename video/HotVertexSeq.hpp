@@ -3,9 +3,9 @@
 #include "GLException.hpp"
 #include "GLObject.hpp"
 #include "GLTools.hpp"
-#include "HotMesh.fpp"
+#include "HotVertexSeq.fpp"
 #include "IndexSet.hpp"
-#include "Mesh.hpp"
+#include "VertexSeq.hpp"
 #include "PrimitiveType.hpp"
 #include "VertexSet.hpp"
 #include "../config/BaseProxy.hpp"
@@ -14,30 +14,30 @@
 namespace lumina {
 
 /**
- * @brief Hot version of mesh
+ * @brief Hot version of VertexSeq
  * @details [long description]
  * 
  * @tparam Cs [description]
  */
 template <typename... Cs>
-class HotMesh : public GLObject {
+class HotVertexSeq : public GLObject {
 private:
-  Mesh& m_mesh;
+  VertexSeq& m_cold;
 
-  HotMesh(Mesh& ref);
+  HotVertexSeq(VertexSeq& ref);
 
-  friend Mesh;
+  friend VertexSeq;
 
 
 public:
   // delete copy and move constructors to avoid copys
-  HotMesh(const HotMesh&) = delete;
-  HotMesh& operator=(const HotMesh&) = delete;
-  HotMesh(HotMesh&&) = delete;
-  HotMesh& operator==(HotMesh&&) = delete;
+  HotVertexSeq(const HotVertexSeq&) = delete;
+  HotVertexSeq& operator=(const HotVertexSeq&) = delete;
+  HotVertexSeq(HotVertexSeq&&) = delete;
+  HotVertexSeq& operator==(HotVertexSeq&&) = delete;
 
   // custom destructor
-  ~HotMesh();
+  ~HotVertexSeq();
 
   void setPrimitiveType(PrimitiveType type);
   void applyVertexLayout();
@@ -48,4 +48,4 @@ public:
 
 } // namespace lumina
 
-#include "HotMesh.tpp"
+#include "HotVertexSeq.tpp"

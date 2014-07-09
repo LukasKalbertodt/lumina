@@ -2,6 +2,6 @@
 
 namespace lumina {
 
-class Mesh;
+class VertexSeq;
 
 }

@@ -32,13 +32,13 @@ void fillData(T slot, const VPoint& data) {
 }
 
 template <VChan... Cs> 
-Mesh createBox(Vec3f size) {
+VertexSeq createBox(Vec3f size) {
   static_assert(sizeof...(Cs) > 0,
                 "[createBox] You must specify vertex channels to be filled!");
 
   using namespace internal;
 
-  Mesh out;
+  VertexSeq out;
 
   // 6 faces, 4 points per face
   int vbufsize = internal::VChansHelper<Cs...>::size * 6 * 4;
@@ -47,7 +47,7 @@ Mesh createBox(Vec3f size) {
   out.create(vbufsize, ibufsize);
 
   out.prime<typename VChanHelper<Cs>::type...>([&](
-    HotMesh<typename VChanHelper<Cs>::type...>& hot) {
+    HotVertexSeq<typename VChanHelper<Cs>::type...>& hot) {
     // fill vertex buffer with corner-points
 
     // ---------- face positiv z ---------------

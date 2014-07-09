@@ -3,7 +3,7 @@
 #include "IndexSlot.hpp"
 #include "GLException.hpp"
 #include "GLObject.hpp"
-#include "Mesh.fpp"
+#include "VertexSeq.fpp"
 #include "../config/BaseProxy.hpp"
 
 
@@ -26,7 +26,7 @@ private:
   unsigned int* m_buffer;
   int m_indexCount;
 
-  template <typename...> friend class ::lumina::HotMesh;
+  template <typename...> friend class ::lumina::HotVertexSeq;
 };
 
 }

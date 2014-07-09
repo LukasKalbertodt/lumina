@@ -1,8 +1,7 @@
-#include "Mesh.hpp"
+#include "VertexSeq.hpp"
 #include "GLException.hpp"
 #include "GLTools.hpp"
 #include "../core/LuminaException.hpp"
-// #include "../service/StaticLogger.hpp"
 
 #include <limits>
 #include <stdexcept>
@@ -10,31 +9,29 @@
 
 namespace lumina {
 
-bool Mesh::s_isPrimed = false;
+bool VertexSeq::s_isPrimed = false;
 
-void Mesh::sendData() {
+void VertexSeq::sendData() {
   bindAll();
-  // glDrawArrays(GL_TRIANGLE_STRIP, 0, 20);
   if(m_indexHandle == 0) {
     glDrawArrays(m_primitiveType, 0, m_drawCount);
   }
   else {
-    // log("indexCOunt: ", m_indexCount);
     glDrawElements(m_primitiveType, m_indexCount, GL_UNSIGNED_INT, nullptr);
   }
   unbindAll();
 
-  checkGLError("[Mesh] Error<", GLERR, "> while sending mesh data!");
+  checkGLError("[VertexSeq] Error<", GLERR, "> while sending VertexSeq data!");
 }
 
-Mesh::~Mesh() {
+VertexSeq::~VertexSeq() {
   // glDelete* does nothing if second argument is 0
   glDeleteBuffers(1, &m_vertexHandle);
   glDeleteBuffers(1, &m_indexHandle);
   glDeleteVertexArrays(1, &m_vertexArrayObject);
 }
 
-void Mesh::setupOpenGL() {
+void VertexSeq::setupOpenGL() {
   static bool wasCalled = false;
   if(!wasCalled) {
     // configure primitive restart
@@ -45,25 +42,26 @@ void Mesh::setupOpenGL() {
 }
 
 
-void Mesh::create(int vertexCount, int indexCount) {
-  // check if mesh was already created
+void VertexSeq::create(int vertexCount, int indexCount) {
+  // check if vertex buffer was already created
   if(m_vertexHandle != 0) {
-    logError("[Mesh] You can create a mesh only once!");
-    throw LogicEx("[Mesh] You can create a mesh only once!");
+    logError("[VertexSeq] You can create a VertexSeq only once!");
+    throw LogicEx("[VertexSeq] You can create a VertexSeq only once!");
   }
 
-  // check if any other Mesh is primed
+  // check if any other VertexSeq is primed
   if(s_isPrimed) {
-    logError("[Mesh] Cannot execute 'create' while another Mesh is primed!");
+    logError(
+      "[VertexSeq] Cannot execute 'create' while another VertexSeq is primed!");
     throw LogicEx(
-      "[Mesh] Cannot execute 'create' while another Mesh is primed");
+      "[VertexSeq] Cannot execute 'create' while another VertexSeq is primed");
   }
 
   // check arguments
   if(vertexCount < 1 || indexCount < 0) {
-    logError("[Mesh] Invalid 'create' arguments: vertexCount<",
+    logError("[VertexSeq] Invalid 'create' arguments: vertexCount<",
              vertexCount, ">, indexCount<", indexCount, ">!");
-    throw InvalidArgEx("[Mesh] Invalid 'create' arguments");
+    throw InvalidArgEx("[VertexSeq] Invalid 'create' arguments");
   }
 
   // save arguments
@@ -75,14 +73,14 @@ void Mesh::create(int vertexCount, int indexCount) {
   glBindVertexArray(m_vertexArrayObject);
 
 
-  checkGLError("[Mesh] Error while creating VAO <", GLERR, ">!");
+  checkGLError("[VertexSeq] Error while creating VAO <", GLERR, ">!");
 
   // create vertex buffer (generate, bind and allocate memory)
   glGenBuffers(1, &m_vertexHandle);
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
   glBufferData(GL_ARRAY_BUFFER, vertexSize(), nullptr, GL_STATIC_DRAW);
 
-  checkGLError("[Mesh] Error while creating vertex buffer <", GLERR, ">!");
+  checkGLError("[VertexSeq] Error while creating vertex buffer <", GLERR, ">!");
 
   // create index buffer, if requested
   if(indexCount > 0) {
@@ -90,7 +88,7 @@ void Mesh::create(int vertexCount, int indexCount) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexHandle);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize(), nullptr, GL_STATIC_DRAW);
 
-    checkGLError("[Mesh] Error while creating index buffer <", GLERR, ">!");
+    checkGLError("[VertexSeq] Error while creating index buffer <", GLERR, ">!");
   }
 
   // unbind all buffers and VAO
