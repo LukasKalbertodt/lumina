@@ -18,9 +18,9 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
   // check if another texture is currently primed
   if(TextureUnits::isPrimed(getMaxTexUnits())) {
     logError(
-      "[Texture] Cannot execute 'create' while another texture is created!");
+      "[Texture] Cannot execute 'create': Last texture unit has to be unused!");
     throw LogicEx(
-      "[Texture] Cannot execute 'create' while another texture is created!");
+      "[Texture] Cannot execute 'create': Last texture unit has to be unused!");
   }
 
   // check arguments
@@ -41,7 +41,7 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
   // create texture and storage for it
   glGenTextures(1, &m_handle);
   glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-  bindTexture();
+  bindTexture(getMaxTexUnits() - 1);
   createStorage(dimension,
                 texFormatToGLInternalFormat(format),
                 texFormatToGLFormat(format),
@@ -53,14 +53,13 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
 
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
-    logError("[Texture] Error<",
-             translateGLError(err),
-             " while creating texture!");
+    logError("[Texture] Error<", translateGLError(err),
+             "> while creating texture!");
     throw GLException("[Texture] Error while creating texture");
   }
 
-  // unbind texture to not leak state
-  unbind();
+  // unbind texture: don't leak state
+  unbind(getMaxTexUnits() - 1);
 }
 
 
@@ -152,10 +151,18 @@ void Texture<TT>::applyParams() {
 }
 
 template <TexType TT>
-void Texture<TT>::prime(std::function<void(HotTexture<TT>&)> func) {
+void Texture<TT>::prime(int texUnit,
+                        std::function<void(HotTexture<TT>&)> func) {
   bool usedMipMapsBefore = m_params.useMipMaps;
 
-  HotTexture<TT> hot(*this);
+  HotTexture<TT> hot(*this, texUnit);
+  auto err0 = glGetError();
+  if(err0 != GL_NO_ERROR) {
+    logError("[Texture] Error<",
+             translateGLError(err0),
+             "> while creating HotTexture!");
+    throw GLException("[Texture] Error while creating HotTexture!");
+  }
   func(hot);
 
   // commit changes

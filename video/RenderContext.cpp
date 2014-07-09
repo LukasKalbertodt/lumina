@@ -25,8 +25,8 @@ void RenderContext::create() {
   // check for GL error (glew often causes one when using new context versions)
   auto err = glGetError();
   if(err != GL_NO_ERROR) {
-    logWarning("[RenderContext] glewInit() caused an openGL error <",
-               translateGLError(err), ">.");
+    logNotice("[RenderContext] glewInit() caused an openGL error <",
+              translateGLError(err), ">.");
   }
 }
 
@@ -40,8 +40,6 @@ void RenderContext::swapBuffer() {
 
 void RenderContext::execute(Program& prog,
                             std::function<void(HotProgram&)> func) {
-  // HotProgram hot(prog);
-  // func(hot);
 }
 
 

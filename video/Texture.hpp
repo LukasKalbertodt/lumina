@@ -22,11 +22,11 @@ public:
   ~Texture();
 
   void create(Vec2i dimension, TexFormat format, void *data = nullptr);
-  void prime(/*int texUnit,*/ std::function<void(HotTexture<TT>&)> func);
+  void prime(int texUnit, std::function<void(HotTexture<TT>&)> func);
 
 
-  void bindTexture(/*int texUnit*/);
-  void unbind();
+  void bindTexture(int texUnit);
+  void unbind(int texUnit);
 
 private:
   GLuint m_handle;

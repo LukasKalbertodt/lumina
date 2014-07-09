@@ -18,9 +18,10 @@ public:
   TexParam& param;
 private:
   Texture<TT>& m_tex;
+  int m_texUnit;
   bool m_genMipMaps;
 
-  HotTexture(Texture<TT>& ref);
+  HotTexture(Texture<TT>& ref, int texUnit);
   void fillSubData(GLenum format, GLenum type, void* data);
 
   friend Texture<TT>;

@@ -27,7 +27,8 @@ void Logger::log(Ts... msgs) {
         logStdIO("[", getTimeString(), " INFO]", msgs...);
         break;
       case LogLevel::Debug: 
-        logStdIO("[", getTimeString(), " DEBUG]", msgs...);
+        logStdIO(TL::Thin, "[", getTimeString(), " DEBUG]", msgs..., 
+                 TL::ResetWeight);
         break;
     }
 
