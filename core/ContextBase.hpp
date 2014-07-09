@@ -1,12 +1,12 @@
 #pragma once
 /**
- * \file LContextBase.hpp
- * This file is part of the Lumina Graphics Framework.
+ * \file ContextBase.hpp
+ * This file is part of the Lumina Graphic Library.
  * 
  * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
  * 
- * LContextBase is an implementation of the lumina base (see 
- * L/core/LNullBase.hpp for more information).
+ * ContextBase is an implementation of the lumina base (see 
+ * L/core/NullBase.hpp for more information).
  * Each object has a service context and it will use the service associated 
  * with that specific context. It can be used to have different windows or 
  * debug contexts. 
@@ -14,7 +14,7 @@
  * config::ServiceContext (often 8 or 16 bit). This information is at the 
  * beginning of your classes memory layout. Additional padding can consume even
  * more space.
- * If you don't need to configure different services, you can use LSingleBase.
+ * If you don't need to configure different services, you can use SingleBase.
  */
 #include "../service/ServiceProvider.hpp"
 
@@ -22,35 +22,23 @@ namespace lumina {
 
 class ContextBase {
 public:
-  ContextBase() 
-    : m_context(config::defaultServiceContext) 
-  {}
+  ContextBase();
   
-  void setServiceContext(config::ServiceContext cnt) {
-    m_context = cnt;
-  }
-
+  void setServiceContext(config::ServiceContext cnt);
 
 protected:
-  template <typename... Ts>
-  void log(Ts... args) {
-    getLoggerService(m_context).log(args...);
-  }
 
-  template <typename... Ts>
-  void logError(Ts... args) {
-    getLoggerService(m_context).logError(args...);
-  }
-
-  template <typename... Ts>
-  void logWarning(Ts... args) {
-    getLoggerService(m_context).logWarning(args...);
-  }
-
-
+  template <typename... Ts> void logCritical(Ts... args);
+  template <typename... Ts> void logError(Ts... args);
+  template <typename... Ts> void logWarning(Ts... args);
+  template <typename... Ts> void logNotice(Ts... args);
+  template <typename... Ts> void log(Ts... args);
+  template <typename... Ts> void logDebug(Ts... args);
 
 private:
   config::ServiceContext m_context;
 };
 
 }
+
+#include "ContextBase.tpp"

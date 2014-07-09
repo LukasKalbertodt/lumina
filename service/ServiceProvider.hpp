@@ -5,7 +5,7 @@
 
 namespace lumina {
 
-static Logger& getLoggerService(config::ServiceContext cnt) {
+inline Logger& getLoggerService(config::ServiceContext cnt) {
   static Logger instances[static_cast<int>(config::serviceContextNumValues)];
   return instances[static_cast<int>(cnt)];
 }

@@ -16,7 +16,7 @@
  * You can also use LNullBase as CommonBase, if you wish to disable some 
  * functionality.
  */
-#define BASE_PROXY_USE_CONTEXT 1
+#define BASE_PROXY_USE_CONTEXT 0
 
 // if the service context is used, there is one service for each context
 #if BASE_PROXY_USE_CONTEXT
