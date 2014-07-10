@@ -2,6 +2,7 @@
 
 #include "VertexSlot.hpp"
 #include "VertexLayout.hpp"
+#include "../service/StaticLogger.hpp"
 
 namespace lumina {
 namespace internal {
@@ -15,6 +16,8 @@ public:
     // Test if index is valid (not even asan detects overflow: the memory 
     // after this block is somehow allocated by OpenGL anyways)
     if(index >= m_slotCount) {
+      slogError("[VertexSet] Index <", index, "> out of bounds <", 
+                m_slotCount, ">!");
       throw GLException("[VertexSet] Index out of bounds!");
     }
 
@@ -35,7 +38,7 @@ private:
 
   VertexSet(int vertexCount)
     : m_buffer(nullptr),
-      m_slotCount((vertexCount * 4) / internal::LayoutTypes<Cs...>::stride) {}
+      m_slotCount(vertexCount) {}
 
   // declare friends
   friend ::lumina::HotVertexSeq<Cs...>;

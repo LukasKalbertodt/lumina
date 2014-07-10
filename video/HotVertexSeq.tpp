@@ -54,9 +54,6 @@ void HotVertexSeq<Cs...>::applyVertexLayout() {
                             0, sizeof(Cs)...>();
 
   checkGLError("[HotVertexSeq] Error<", GLERR, "> while applying vertex layout!");
-
-  m_cold.m_drawCount = m_cold.m_vertexCount
-                       / (internal::LayoutTypes<Cs...>::stride/4);
 }
 
 }  // namespace lumina
