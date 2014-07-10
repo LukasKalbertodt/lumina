@@ -49,6 +49,15 @@ public:
               uint32_t indexCount = 0);
   template <typename... Cs, typename L> void prime(L lambda);
 
+  GLuint nativeVertexHandle() const;
+  GLuint nativeIndexHandle() const;
+  GLuint nativeVAOHandle() const;
+
+  void bindAll();
+  void unbindAll();
+
+  void bindVAO() const;
+  void unbindVAO() const;
 
 private:
   GLuint m_vertexHandle;
@@ -57,17 +66,13 @@ private:
   uint32_t m_vertexCount;
   uint32_t m_indexCount;
   uint16_t m_vertexSize;
-  // std::size_t m_drawCount;
-
-  void bindAll();
-  void unbindAll();
 
   static bool s_isPrimed;
 
   static void setupOpenGL();
 
+  friend internal::HotVertexSeqBase;
   template <typename... Cs> friend class HotVertexSeq;
-  friend HotProgram;
 };
 
 } // namespace lumina

@@ -52,9 +52,31 @@ inline void VertexSeq::bindAll() {
   glBindVertexArray(m_vertexArrayObject);
 }
 
+inline void VertexSeq::bindVAO() const {
+  glBindVertexArray(m_vertexArrayObject);
+}
+
+inline void VertexSeq::unbindVAO() const {
+  glBindVertexArray(m_vertexArrayObject);
+}
+
+
 inline void VertexSeq::unbindAll() {
   glBindVertexArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
+
+inline GLuint VertexSeq::nativeVertexHandle() const {
+  return m_vertexHandle;
+}
+
+inline GLuint VertexSeq::nativeIndexHandle() const {
+  return m_indexHandle;
+}
+
+inline GLuint VertexSeq::nativeVAOHandle() const {
+  return m_vertexArrayObject;
+}
+
 
 } // namespace lumina

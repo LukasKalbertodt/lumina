@@ -3,7 +3,7 @@
 #include "GLObject.hpp"
 #include "UniformSet.hpp"
 #include "Program.hpp"
-#include "HotVertexSeq.fpp"
+#include "VertexSeq.fpp"
 #include "PrimitiveType.hpp"
 
 namespace lumina {
@@ -13,8 +13,7 @@ class HotProgram : public GLObject {
 public:
   internal::UniformSet uniform;
 
-  template <typename... Ts>
-  void draw(const HotVertexSeq<Ts...>& data,
+  void draw(const VertexSeq& data,
             PrimitiveType type,
             int offset,
             int count);

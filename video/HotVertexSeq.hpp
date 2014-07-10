@@ -10,9 +10,28 @@
 #include "PrimitiveType.hpp"
 #include "VertexSet.hpp"
 #include "../config/BaseProxy.hpp"
+#include "../util/NotCloneable.hpp"
 
 
 namespace lumina {
+
+namespace internal {
+
+class HotVertexSeqBase : public GLObject, public NotCloneable {
+private:
+  friend VertexSeq;
+
+public:
+  HotVertexSeqBase(VertexSeq& ref);
+  
+  // custom destructor
+  ~HotVertexSeqBase();
+
+  VertexSeq& cold;
+  internal::IndexSet index;
+};
+
+}
 
 /**
  * @brief Hot version of VertexSeq
@@ -21,30 +40,30 @@ namespace lumina {
  * @tparam Cs [description]
  */
 template <typename... Cs>
-class HotVertexSeq : public GLObject {
+class HotVertexSeq : public internal::HotVertexSeqBase {
 private:
-  VertexSeq& m_cold;
-
   HotVertexSeq(VertexSeq& ref);
 
   friend VertexSeq;
-  friend HotProgram;
-
 
 public:
-  // delete copy and move constructors to avoid copys
-  HotVertexSeq(const HotVertexSeq&) = delete;
-  HotVertexSeq& operator=(const HotVertexSeq&) = delete;
-  HotVertexSeq(HotVertexSeq&&) = delete;
-  HotVertexSeq& operator==(HotVertexSeq&&) = delete;
-
-  // custom destructor
-  ~HotVertexSeq();
-
   void applyVertexLayout();
 
   internal::VertexSet<Cs...> vertex;
-  internal::IndexSet index;
+};
+
+template <>
+class HotVertexSeq<void> : public internal::HotVertexSeqBase {
+private:
+  HotVertexSeq(VertexSeq& ref);
+
+  friend VertexSeq;
+
+public:
+  template <typename... Ts>
+  void applyVertexLayout();
+
+  internal::VertexSet<void> vertex;
 };
 
 } // namespace lumina

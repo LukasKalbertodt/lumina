@@ -26,7 +26,7 @@ private:
   unsigned int* m_buffer;
   int m_indexCount;
 
-  template <typename...> friend class ::lumina::HotVertexSeq;
+  friend HotVertexSeqBase;
 };
 
 }
