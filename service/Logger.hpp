@@ -28,18 +28,6 @@ public:
   void log(Ts... msgs);
 
   /**
-   * @brief Log information
-   * @param msgs values to log
-   */
-  template <typename... Ts> void logWarning(Ts... msgs);
-
-  /**
-   * @brief Log information
-   * @param msgs values to log
-   */
-  template <typename... Ts> void logError(Ts... msgs);
-
-  /**
    * @brief Set the name of the file, which is used for logging
    * @param filename Name of the file
    */

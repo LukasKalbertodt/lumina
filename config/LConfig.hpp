@@ -14,6 +14,10 @@ namespace config {
   // control use of cout and cerr
   constexpr bool useLogStandardIO = true;
 
+  // set to true to ignore logs with level Debug (the compiler 
+  // can optimize the calls away)
+  constexpr bool ignoreDebugLogs = false;
+
   // should runtime bound checks be performed?
   constexpr bool debugBoundChecks = true;
 

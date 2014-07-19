@@ -30,9 +30,11 @@ void Logger::log(Ts... msgs) {
       case LogLevel::Info: 
         logStdIO("[", getTimeString(), " INFO]", msgs...);
         break;
-      case LogLevel::Debug: 
-        logStdIO(TL::Thin, "[", getTimeString(), " DEBUG]", msgs..., 
-                 TL::ResetWeight);
+      case LogLevel::Debug:
+        if(!config::ignoreDebugLogs) {
+          logStdIO(TL::Thin, "[", getTimeString(), " DEBUG]", msgs..., 
+                   TL::ResetWeight);
+        }
         break;
     }
 
@@ -43,16 +45,6 @@ void Logger::log(Ts... msgs) {
     logFile("[", getTimeString(), "]", msgs...);
     m_logFile << std::endl;
   }
-}
-
-template <typename... Ts> 
-void Logger::logWarning(Ts... msgs) {
-  log<LogLevel::Warning>(msgs...);
-}
-
-template <typename... Ts> 
-void Logger::logError(Ts... msgs) {
-  log<LogLevel::Error>(msgs...);
 }
 
 inline void Logger::setLogFileName(std::string filename) {
