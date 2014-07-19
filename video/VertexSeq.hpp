@@ -53,6 +53,8 @@ public:
   GLuint nativeIndexHandle() const;
   GLuint nativeVAOHandle() const;
 
+  int size() const;
+
   void bindAll();
   void unbindAll();
 

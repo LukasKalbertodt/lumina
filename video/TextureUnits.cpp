@@ -1,4 +1,5 @@
 #include "TextureUnits.hpp"
+#include "../service/StaticLogger.hpp"
 
 #include <GL/glew.h>
 
@@ -24,6 +25,7 @@ void TextureUnits::unsetPrimed(int index) {
 void TextureUnits::init() {
   static bool ready = false;
   if(!ready) {
+    slog("I'm in, Jonny!");
     s_primedUnits.resize(getMaxTexUnits());
     ready = true;
   }

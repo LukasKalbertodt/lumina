@@ -15,8 +15,8 @@ public:
 
   void draw(const VertexSeq& data,
             PrimitiveType type,
-            int offset,
-            int count);
+            int offset = 0,
+            int count = -1);
 
   ~HotProgram();
 

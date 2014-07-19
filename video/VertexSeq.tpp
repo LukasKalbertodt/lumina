@@ -78,5 +78,9 @@ inline GLuint VertexSeq::nativeVAOHandle() const {
   return m_vertexArrayObject;
 }
 
+inline int VertexSeq::size() const {
+  return (m_indexHandle == 0) ? m_vertexCount : m_indexCount;
+}
+
 
 } // namespace lumina

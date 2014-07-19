@@ -15,6 +15,11 @@ void HotProgram::draw(const VertexSeq& data,
                       int offset,
                       int count) {
   data.bindVAO();
+
+  if(count == -1) {
+    count = data.size();
+  }
+
   GLenum primitiveType = translatePrimitiveType(type);
   if(data.nativeIndexHandle() == 0) {
     glDrawArrays(primitiveType, offset, count);
