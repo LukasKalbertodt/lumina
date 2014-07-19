@@ -21,4 +21,10 @@ XGenLog(logDebug, Debug)
 
 #undef XGenLog
 
+template <typename Ex, LogLevel LL, typename... Ts> 
+void ContextBase::logAndThrow(Ts... args) {
+  getLoggerService(m_context).log<LL>(args...);
+  throw Ex(args...);
+}
+
 }
