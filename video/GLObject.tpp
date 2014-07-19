@@ -18,6 +18,11 @@ void GLObject::checkGLWarning(Ts... msgs) {
   }
 }
 
+template <typename... Ts> void logThrowGL(Ts... msgs) {
+  logAndThrow<GLException>(msgs...);
+}
+
+
 template <typename T> 
 T& GLObject::translateErrorMsg(GLuint err, T& obj) {
   return obj;
