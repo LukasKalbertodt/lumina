@@ -1,6 +1,11 @@
 #pragma once
 
 #include "VertexSlot.fpp"
+#include "GLException.hpp"
+#include "../service/StaticLogger.hpp"
+
+#include <initializer_list>
+#include <cstring>
 
 namespace lumina {
 namespace internal {
@@ -42,6 +47,34 @@ public:
 
   template <typename...> friend class VertexSet;
   template <typename, typename...> friend class VertexSlotAssign;
+};
+
+class VertexFloatSlot {
+public:
+  VertexFloatSlot(void* buf, int size) : m_buffer(buf), m_size(size) {}
+
+  float& operator[](int index) {
+    if(index >= m_size) {
+
+    }
+    return static_cast<float*>(this->m_buffer)[index];
+  }
+  void operator=(std::initializer_list<float> data) {
+    if(data.size() > m_size) {
+      slogError("[VertexSlot] Size of initializer_list <", data.size(),
+                "> bigger than size of the slot <", m_size, ">!");
+      throw GLException("[VertexSlot] Size of initializer_list bigger than "
+                        "size of the slot");
+    }
+    std::memcpy(this->m_buffer, data.begin(), data.size() * sizeof(float));
+  }
+
+  template <typename...> friend class VertexSet;
+  template <typename, typename...> friend class VertexSlotAssign;
+
+private:
+  void* m_buffer;
+  int m_size;
 };
 
 

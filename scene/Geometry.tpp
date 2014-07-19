@@ -40,11 +40,9 @@ VertexSeq createBox(Vec3f size) {
 
   VertexSeq out;
 
-  // 6 faces, 4 points per face
-  int vbufsize = internal::VChansHelper<Cs...>::size * 6 * 4;
-  // 6 faces * 4 points + 5 primitive restart
-  int ibufsize = 6 * 4 + 5;
-  out.create(vbufsize, ibufsize);
+  // vertexCount = 6 faces * 4 points per face
+  // indexCount = 6 faces * 4 points + 5 primitive restart
+  out.create(internal::VChansHelper<Cs...>::size, 6 * 4, 6 * 4 + 5);
 
   out.prime<typename VChanHelper<Cs>::type...>([&](
     HotVertexSeq<typename VChanHelper<Cs>::type...>& hot) {
@@ -194,9 +192,6 @@ VertexSeq createBox(Vec3f size) {
     hot.index[27] = 22;
     hot.index[28] = 23;
     
-
-
-    hot.setPrimitiveType(PrimitiveType::TriangleStrip);
     hot.applyVertexLayout();
 
     // auto* buf = static_cast<float*>(hot.vertex.buf());

@@ -53,7 +53,7 @@ public:
 };
 
 template <>
-class HotVertexSeq<void> : public internal::HotVertexSeqBase {
+class HotVertexSeq<> : public internal::HotVertexSeqBase {
 private:
   HotVertexSeq(VertexSeq& ref);
 
@@ -63,7 +63,7 @@ public:
   template <typename... Ts>
   void applyVertexLayout();
 
-  internal::VertexSet<void> vertex;
+  internal::VertexSet<> vertex;
 };
 
 } // namespace lumina

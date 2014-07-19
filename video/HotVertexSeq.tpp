@@ -64,8 +64,10 @@ HotVertexSeq<Cs...>::HotVertexSeq(VertexSeq& ref)
                "> while creating HotVertexSeq!");
 }
 
-HotVertexSeq<void>::HotVertexSeq(VertexSeq& ref)
-  : internal::HotVertexSeqBase(ref), vertex(ref.m_vertexCount) {
+
+HotVertexSeq<>::HotVertexSeq(VertexSeq& ref)
+  : internal::HotVertexSeqBase(ref),
+    vertex(ref.m_vertexCount, ref.m_vertexSize) {
   // map vertex buffer
   vertex.m_buffer = glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE);
 
@@ -85,7 +87,7 @@ void HotVertexSeq<Cs...>::applyVertexLayout() {
 }
 
 template <typename... Cs>
-void HotVertexSeq<void>::applyVertexLayout() {
+void HotVertexSeq<>::applyVertexLayout() {
   internal::applyLayoutImpl<0, internal::LayoutTypes<Cs...>::stride,
                             0, sizeof(Cs)...>();
 
