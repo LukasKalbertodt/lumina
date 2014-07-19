@@ -16,6 +16,10 @@ namespace config {
 
   // should runtime bound checks be performed?
   constexpr bool debugBoundChecks = true;
+
+  // should runtime checks be performed, that will check that the correct 
+  // textures are primed when drawing?
+  constexpr bool debugTextureDrawChecks = true;
 }
 
 } // namespace lumina

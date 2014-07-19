@@ -5,6 +5,7 @@
 #include "Program.hpp"
 #include "VertexSeq.fpp"
 #include "PrimitiveType.hpp"
+#include "TextureContainer.hpp"
 
 namespace lumina {
 
@@ -13,7 +14,8 @@ class HotProgram : public GLObject {
 public:
   internal::UniformSet uniform;
 
-  void draw(const VertexSeq& data,
+  void draw(const TexCont& texCont,
+            const VertexSeq& data,
             PrimitiveType type,
             int offset = 0,
             int count = -1);

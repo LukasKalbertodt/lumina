@@ -26,6 +26,7 @@ void Texture<TT>::bindTexture(int texUnit) {
   logDebug("[Texture] Binding handle <", m_handle, "> to unit <", texUnit, ">");
   glActiveTexture(GL_TEXTURE0 + texUnit);
   glBindTexture(glType(), m_handle);
+  TextureUnits::setPrimed(texUnit);
 }
 
 template <TexType TT> 
@@ -34,6 +35,7 @@ void Texture<TT>::unbind(int texUnit) {
            m_handle, ">)");
   glActiveTexture(GL_TEXTURE0 + texUnit);
   glBindTexture(glType(), 0);
+  TextureUnits::unsetPrimed(texUnit);
 }
 
 }
