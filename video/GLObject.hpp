@@ -22,6 +22,7 @@ public:
 protected:
   template <typename... Ts> void checkGLError(Ts...);
   template <typename... Ts> void checkGLWarning(Ts...);
+  template <typename... Ts> void logThrowGL(Ts...);
 
   // short name for PrintGL::Error
   static constexpr PrintGL GLERR = PrintGL::Error;
