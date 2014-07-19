@@ -1,6 +1,6 @@
 namespace lumina {
 
-HotFrameBuffer::HotFrameBuffer(FrameBuffer& cold) /*: m_cold(cold)*/ {
+HotFrameBuffer::HotFrameBuffer(FrameBuffer& cold) : m_cold(cold) {
   // FrameBuffer::prime checked if another FrameBuffer is primed...
   cold.bind();
   cold.updateState();
@@ -9,6 +9,10 @@ HotFrameBuffer::HotFrameBuffer(FrameBuffer& cold) /*: m_cold(cold)*/ {
     logThrowGL(
       "[FrameBuffer] Framebuffer status is not complete after priming!");
   }
+}
+
+HotFrameBuffer::~HotFrameBuffer() {
+  m_cold.unbind();
 }
 
 

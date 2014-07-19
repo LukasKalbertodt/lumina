@@ -52,6 +52,8 @@ void FrameBuffer::prime(std::function<void(HotFrameBuffer&)> func) {
   // create hot framebuffer
   HotFrameBuffer hot(*this);
 
+  func(hot);
+
   // check errors
   checkGLError("[FrameBuffer] Error<", GLERR, "> while priming!");
 }

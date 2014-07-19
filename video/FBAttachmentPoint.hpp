@@ -10,7 +10,7 @@ public:
   FBAttachmentPoint(GLuint& handle, bool& needsUpdate)
     : m_handle(handle), m_needsUpdate(needsUpdate) {}
 
-  void operator=(Tex2D tex) {
+  void operator=(const Tex2D& tex) {
     if(m_handle != tex.nativeHandle()) {
       m_handle = tex.nativeHandle();
       m_needsUpdate = true;

@@ -10,9 +10,10 @@ namespace lumina {
 class HotFrameBuffer : public GLObject {
 public:
   HotFrameBuffer(FrameBuffer& cold);
+  ~HotFrameBuffer();
 
 private:
-  // FrameBuffer& m_cold;
+  FrameBuffer& m_cold;
 };
 
 } // namespace lumina 
