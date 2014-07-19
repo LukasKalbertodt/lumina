@@ -148,16 +148,20 @@ void Texture<TT>::applyParams() {
 template <TexType TT>
 void Texture<TT>::prime(int texUnit,
                         std::function<void(HotTexture<TT>&)> func) {
+  // check if this texture unit is free
+  if(config::debugTexturePrimeChecks) {
+    if(TextureUnits::isPrimed(texUnit)) {
+      logThrowGL("[Texture] Cannot prime: Another Texture is already primed "
+                 "on this texture unit <", texUnit, ">!");
+    }
+  }
   bool usedMipMapsBefore = m_params.useMipMaps;
 
+  // create HotTexture and check for errors
   HotTexture<TT> hot(*this, texUnit);
-  auto err0 = glGetError();
-  if(err0 != GL_NO_ERROR) {
-    logError("[Texture] Error<",
-             translateGLError(err0),
-             "> while creating HotTexture!");
-    throw GLException("[Texture] Error while creating HotTexture!");
-  }
+  checkGLError("[Texture] Error<", GLERR, "> while creating HotTexture!");
+
+  // call given function
   func(hot);
 
   // commit changes

@@ -11,6 +11,12 @@ Texture<TT>::~Texture() {
   glDeleteTextures(1, &m_handle);
 }
 
+template <TexType TT>
+GLuint Texture<TT>::nativeHandle() const {
+  return m_handle;
+}
+
+
 template <> inline GLenum Texture<TexType::Tex2D>::glType() const {
   return GL_TEXTURE_2D;
 }
@@ -23,13 +29,6 @@ template <> inline GLenum Texture<TexType::Cube>::glType() const {
 
 template <TexType TT> 
 void Texture<TT>::bindTexture(int texUnit) {
-  if(config::debugTexturePrimeChecks) {
-    if(TextureUnits::isPrimed(texUnit)) {
-      logThrowGL("[Texture] Try to bind a texture to unit <", texUnit, 
-                 "> but it's already in use!");
-    }
-  }
-
   logDebug("[Texture] Binding handle <", m_handle, "> to unit <", texUnit, ">");
   glActiveTexture(GL_TEXTURE0 + texUnit);
   glBindTexture(glType(), m_handle);
@@ -38,6 +37,7 @@ void Texture<TT>::bindTexture(int texUnit) {
 
 template <TexType TT> 
 void Texture<TT>::unbind(int texUnit) {
+  // TODO: is unbinding a free unit really a reason to throw an exception?
   if(config::debugTexturePrimeChecks) {
     if(!TextureUnits::isPrimed(texUnit)) {
       logThrowGL("[Texture] Try to unbind a texture from unit <", texUnit, 

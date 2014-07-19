@@ -3,6 +3,7 @@
 #include "GLTools.hpp"
 #include "GLException.hpp"
 #include "../config/BaseProxy.hpp"
+#include "../util/NotCloneable.hpp"
 
 #include <GL/glew.h>
 #include <sstream>
@@ -13,11 +14,10 @@ enum class PrintGL {
   Error
 };
 
-class GLObject : public config::CommonBase {
+class GLObject : public config::CommonBase, public NotCopyable {
 public:
   // OpenGL object cannot be copied, just moved.
   GLObject() = default;
-  GLObject(const GLObject&) = delete;
 
 protected:
   template <typename... Ts> void checkGLError(Ts...);
