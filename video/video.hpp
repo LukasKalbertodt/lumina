@@ -16,4 +16,5 @@
 #include "HotProgram.hpp"
 #include "GLIndex.hpp"
 #include "FrameBuffer.hpp"
+#include "HotFrameBuffer.hpp"
 #include "TextureContainer.hpp"

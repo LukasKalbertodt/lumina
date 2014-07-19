@@ -15,6 +15,12 @@ template <TexType TT>
 GLuint Texture<TT>::nativeHandle() const {
   return m_handle;
 }
+  
+template <TexType TT>
+TexFormat Texture<TT>::getFormat() const {
+  return m_format;
+}
+
 
 
 template <> inline GLenum Texture<TexType::Tex2D>::glType() const {

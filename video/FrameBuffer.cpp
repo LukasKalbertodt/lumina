@@ -12,7 +12,7 @@ void FrameBuffer::create() {
   // prepare attachment points (TODO: Don't use glGet here directly)
   GLint numBuffers = 0;
   glGetIntegerv(GL_MAX_DRAW_BUFFERS, &numBuffers);
-  m_attachments.resize(numBuffers);
+  m_colorAtts.resize(numBuffers);
 
   // check error
   checkGLError("[FrameBuffer] Error<", GLERR, "> while creating frame buffer!");
@@ -25,22 +25,27 @@ void FrameBuffer::updateState() {
   }
 
   // prepare array for glDrawBuffers
-  std::vector<GLenum> drawBuffers(m_attachments.size(), GL_NONE);
+  std::vector<GLenum> drawBuffers(m_colorAtts.size(), GL_NONE);
 
   // check each attachment and attach it if its non-zero
-  for(int i = 0; i < m_attachments.size(); ++i) {
-    auto& tex = m_attachments[i];
-    if(tex != 0) {
-      glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i, tex, 0);
+  for(int i = 0; i < m_colorAtts.size(); ++i) {
+    auto& tex = m_colorAtts[i];
+    if(tex.handle != 0) {
+      glFramebufferTexture(GL_FRAMEBUFFER,
+                           GL_COLOR_ATTACHMENT0 + i,
+                           tex.handle, 0);
       drawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
     }
   }
 
   // specify which attachment points to use
-  glDrawBuffers(m_attachments.size(), drawBuffers.data());
+  glDrawBuffers(m_colorAtts.size(), drawBuffers.data());
 
   // check for errors
   checkGLError("[FrameBuffer] Error<", GLERR, "> while updating state!");
+
+  // reset flag
+  m_needsUpdate = false;
 }
 
 void FrameBuffer::prime(std::function<void(HotFrameBuffer&)> func) {

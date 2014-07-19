@@ -92,6 +92,12 @@ inline GLint texFormatToGLInternalFormat(TexFormat format) {
   }
 }
 
+inline int texFormatSize(TexFormat format) {
+  switch(format) {
+    Y(size);
+  }
+}
+
 #undef Y
 #undef X
 

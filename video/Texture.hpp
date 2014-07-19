@@ -26,6 +26,7 @@ public:
   void prime(int texUnit, std::function<void(HotTexture<TT>&)> func);
 
   GLuint nativeHandle() const;
+  TexFormat getFormat() const;
 
   void bindTexture(int texUnit);
   void unbind(int texUnit);

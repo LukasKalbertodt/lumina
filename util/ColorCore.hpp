@@ -100,6 +100,7 @@ struct Color : public internal::ColorImpl<T, A> {
   using internal::ColorImpl<T, A>::ColorImpl;
   using type = T;
   static constexpr bool alpha = A;
+  static constexpr int size = (A ? 4 * sizeof(T) : 3 * sizeof(T));
 
 
   bool operator==(Color<T, A> other) {

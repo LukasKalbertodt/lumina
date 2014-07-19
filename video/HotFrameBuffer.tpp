@@ -1,6 +1,7 @@
 namespace lumina {
 
-HotFrameBuffer::HotFrameBuffer(FrameBuffer& cold) : m_cold(cold) {
+inline HotFrameBuffer::HotFrameBuffer(FrameBuffer& cold)
+  : colors(cold.m_colorAtts), m_cold(cold) {
   // FrameBuffer::prime checked if another FrameBuffer is primed...
   cold.bind();
   cold.updateState();
@@ -11,7 +12,7 @@ HotFrameBuffer::HotFrameBuffer(FrameBuffer& cold) : m_cold(cold) {
   }
 }
 
-HotFrameBuffer::~HotFrameBuffer() {
+inline HotFrameBuffer::~HotFrameBuffer() {
   m_cold.unbind();
 }
 

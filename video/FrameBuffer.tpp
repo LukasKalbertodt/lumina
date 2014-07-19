@@ -1,8 +1,12 @@
 namespace lumina {
 
-inline FrameBuffer::FrameBuffer() : m_handle(0), m_needsUpdate(true) {}
+inline FrameBuffer::FrameBuffer()
+  : colors(m_colorAtts, m_needsUpdate), m_handle(0), m_needsUpdate(true) {}
+
 inline FrameBuffer::FrameBuffer(FrameBuffer&& o)
-  : m_handle(o.m_handle), m_needsUpdate(o.m_needsUpdate) {
+  : colors(o.m_colorAtts, o.m_needsUpdate),
+    m_handle(o.m_handle),
+    m_needsUpdate(o.m_needsUpdate) {
   // reset handle of moved object
   o.m_handle = 0;
   o.m_needsUpdate = true;
@@ -23,13 +27,13 @@ inline void FrameBuffer::unbind() {
   s_isPrimed = false;
 }
 
-inline internal::FBAttachmentPoint FrameBuffer::operator[](int index) {
-  if(index >= m_attachments.size()) {
-    logAndThrow<OutOfRangeEx>("[FrameBuffer] Index<", index, 
-                              "> out of bounds<", m_attachments.size(), ">!");
-  }
-  return internal::FBAttachmentPoint(m_attachments[index], m_needsUpdate);
-}
+// inline internal::FBAttachmentPoint FrameBuffer::operator[](int index) {
+//   if(index >= m_attachments.size()) {
+//     logAndThrow<OutOfRangeEx>("[FrameBuffer] Index<", index, 
+//                               "> out of bounds<", m_attachments.size(), ">!");
+//   }
+//   return internal::FBAttachmentPoint(m_attachments[index], m_needsUpdate);
+// }
 
 
 }

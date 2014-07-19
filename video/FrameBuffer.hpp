@@ -2,13 +2,14 @@
 
 #include "GLObject.hpp"
 #include "HotFrameBuffer.fpp"
-#include "FBAttachmentPoint.hpp"
+#include "FBAttPoints.hpp"
 
 #include <GL/glew.h>
 #include <functional>
 #include <vector>
 
 namespace lumina {
+
 
 class FrameBuffer : public GLObject {
 public:
@@ -20,12 +21,13 @@ public:
   void create();
   void prime(std::function<void(HotFrameBuffer&)> func);
 
-  internal::FBAttachmentPoint operator[](int index);
+
+  internal::ColorAttSet colors;
 
 
 private:
   GLuint m_handle;
-  std::vector<GLuint> m_attachments;
+  std::vector<internal::ColorAttPoint> m_colorAtts;
   bool m_needsUpdate;
 
   static bool s_isPrimed;
