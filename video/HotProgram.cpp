@@ -18,10 +18,9 @@ void HotProgram::draw(const TexCont& texCont,
                       int count) {
   if(config::debugTextureDrawChecks) {
     if(texCont.count() != TextureUnits::countPrimed()) {
-      logError("[HotProgram] Trying to draw with TextureContainer that "
-               "contains <", texCont.count(), "> textures, but <",
-               TextureUnits::countPrimed(), "> are currently primed!");
-      throw GLException("[HotProgram] Trying to draw with TextureContainer..");
+      logThrowGL("[HotProgram] Trying to draw with TextureContainer that "
+                 "contains <", texCont.count(), "> textures, but <",
+                 TextureUnits::countPrimed(), "> are currently primed!");
     }
   }
 

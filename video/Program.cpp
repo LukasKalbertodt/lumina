@@ -27,18 +27,12 @@ void Program::create(VShader& vs, FShader& fs) {
     glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
     vector<char> compileLog(logLength);
     glGetShaderInfoLog(program, logLength, nullptr, compileLog.data());
-    logError("[Program] Could not link shaders <",
-             vs.getFilename(),
-             ", ",
-             fs.getFilename(),
-             "> ->");
+    logError("[Program] Could not link shaders <", vs.getFilename(),
+             ", ", fs.getFilename(), "> ->");
     logError("[Program] ", compileLog.data());
     throw GLException("Could not link shaders");
   }
-  log("[Program] Shaders <",
-      vs.getFilename(),
-      ", ",
-      fs.getFilename(),
+  log("[Program] Shaders <", vs.getFilename(), ", ", fs.getFilename(),
       "> were successfully linked.");
 
   // detach shaders (TODO: is this a good idea?)
@@ -54,9 +48,7 @@ void Program::create(VShader& vs, FShader& fs) {
 
 void Program::prime(std::function<void(HotProgram&)> func) {
   if(m_handle == 0) {
-    logError("[Program] Attempt to prime program before it was created!");
-    throw GLException(
-      "[Program] Attempt to prime program before it was created!");
+    logThrowGL("[Program] Attempt to prime program before it was created!");
   }
   HotProgram hot(*this);
   func(hot);

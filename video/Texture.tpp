@@ -23,6 +23,13 @@ template <> inline GLenum Texture<TexType::Cube>::glType() const {
 
 template <TexType TT> 
 void Texture<TT>::bindTexture(int texUnit) {
+  if(config::debugTexturePrimeChecks) {
+    if(TextureUnits::isPrimed(texUnit)) {
+      logThrowGL("[Texture] Try to bind a texture to unit <", texUnit, 
+                 "> but it's already in use!");
+    }
+  }
+
   logDebug("[Texture] Binding handle <", m_handle, "> to unit <", texUnit, ">");
   glActiveTexture(GL_TEXTURE0 + texUnit);
   glBindTexture(glType(), m_handle);
@@ -31,6 +38,13 @@ void Texture<TT>::bindTexture(int texUnit) {
 
 template <TexType TT> 
 void Texture<TT>::unbind(int texUnit) {
+  if(config::debugTexturePrimeChecks) {
+    if(!TextureUnits::isPrimed(texUnit)) {
+      logThrowGL("[Texture] Try to unbind a texture from unit <", texUnit, 
+                 "> but it's NOT in use!");
+    }
+  }
+
   logDebug("[Texture] Unbinding from unit <", texUnit, "> (my handle: <",
            m_handle, ">)");
   glActiveTexture(GL_TEXTURE0 + texUnit);
