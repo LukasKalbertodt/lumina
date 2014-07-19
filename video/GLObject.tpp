@@ -18,7 +18,7 @@ void GLObject::checkGLWarning(Ts... msgs) {
   }
 }
 
-template <typename... Ts> void logThrowGL(Ts... msgs) {
+template <typename... Ts> void GLObject::logThrowGL(Ts... msgs) {
   logAndThrow<GLException>(msgs...);
 }
 
