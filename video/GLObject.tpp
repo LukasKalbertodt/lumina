@@ -5,8 +5,7 @@ void GLObject::checkGLError(Ts... msgs) {
   auto err = glGetError();
 
   if(err != GL_NO_ERROR) {
-    logError(translateErrorMsg(err, msgs)...);
-    throw GLException(translateErrorMsg(err, msgs)...);
+    logAndThrow<GLException>(translateErrorMsg(err, msgs)...);
   }
 }
 

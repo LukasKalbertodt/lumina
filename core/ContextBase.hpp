@@ -35,6 +35,9 @@ protected:
   template <typename... Ts> void log(Ts... args);
   template <typename... Ts> void logDebug(Ts... args);
 
+  template <typename Ex, LogLevel LL = LogLevel::Error, typename... Ts>
+  void logAndThrow(Ts... args);
+
 private:
   config::ServiceContext m_context;
 };

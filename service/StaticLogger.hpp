@@ -13,6 +13,9 @@ template <typename... Ts> void slogNotice(Ts... args);
 template <typename... Ts> void slog(Ts... args);
 template <typename... Ts> void slogDebug(Ts... args);
 
+template <typename Ex, LogLevel LL = LogLevel::Error, typename... Ts>
+void slogAndThrow(Ts... args);
+
 }
 
 #include "StaticLogger.tpp"

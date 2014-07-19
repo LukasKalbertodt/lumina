@@ -19,4 +19,10 @@ XGenLog(logDebug, Debug)
 
 #undef XGenLog
 
+template <typename Ex, LogLevel LL, typename... Ts> 
+void SingleBase::logAndThrow(Ts... args) {
+  getLoggerService(config::defaultServiceContext).log<LL>(args...);
+  throw Ex(args...);
+}
+
 }

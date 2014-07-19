@@ -17,6 +17,12 @@ XGenLog(slogDebug, Debug)
 
 #undef XGenLog
 
+template <typename Ex, LogLevel LL, typename... Ts> 
+void slogAndThrow(Ts... args) {
+  getLoggerService(config::staticServiceContext).log<LL>(args...);
+  throw Ex(args...);
+}
+
 
 
 }
