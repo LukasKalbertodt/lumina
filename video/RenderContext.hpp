@@ -1,5 +1,6 @@
 #pragma once
 #include "Program.fpp"
+#include "FrameBuffer.hpp"
 #include "RenderContext.fpp"
 #include "../config/BaseProxy.hpp"
 
@@ -18,11 +19,13 @@ public:
   void create();
   void makeCurrent();
   void swapBuffer();
+  FrameBuffer& getDefaultFrameBuffer();
 
   // void execute(Program& prog, std::function<void(HotProgram&)> func);
 
 private:
   GLFWwindow* m_windowHandle;
+  FrameBuffer m_defaultFB;
 };
 
 } // namespace lumina
