@@ -21,6 +21,7 @@ class HotFrameBuffer : public GLObject {
 public:
   HotFrameBuffer(std::shared_ptr<internal::FrameBufferInterface> cold);
 
+  void clearColor(int index, Color32fA color);
   // internal::HotColorAttSet colors;
 
 private:

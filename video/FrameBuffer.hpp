@@ -3,6 +3,7 @@
 #include "GLObject.hpp"
 #include "Texture.hpp"
 #include "HotFrameBuffer.fpp"
+#include "../util/ColorCore.hpp"
 
 #include <GL/glew.h>
 #include <functional>
@@ -29,6 +30,8 @@ public:
   virtual void attachColor(int index, const Tex2D& tex) = 0;
   virtual int countAttachments() = 0;
 
+  virtual void clearColor(int index, Color32fA color) = 0;
+
 protected:
   // true if a user defined framebuffer is primed
   static bool s_isPrimed;
@@ -47,6 +50,7 @@ public:
   void attachColor(int index, const Tex2D& tex) override final;
   int countAttachments() override final;
 
+  void clearColor(int index, Color32fA color);
 
 private:
   GLuint m_handle;
@@ -66,6 +70,8 @@ public:
              std::function<void(HotFrameBuffer&)> func) override final;
   void attachColor(int index, const Tex2D& tex) override final;
   int countAttachments() override final;
+  
+  void clearColor(int index, Color32fA color);
 };
 
 } // namespace internal

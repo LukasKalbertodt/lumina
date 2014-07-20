@@ -134,10 +134,10 @@ void UserFrameBuffer::attachColor(int index, const Tex2D& tex) {
   }
 
   // assign values if the values are distinct
-  auto& m_point = m_colorAtts[index];
-  if(m_point.handle != tex.nativeHandle()) {
-    m_point.handle = tex.nativeHandle();
-    m_point.format = f;
+  auto& point = m_colorAtts[index];
+  if(point.handle != tex.nativeHandle()) {
+    point.handle = tex.nativeHandle();
+    point.format = f;
     m_needsUpdate = true;
   }
 }
@@ -152,6 +152,26 @@ int UserFrameBuffer::countAttachments() {
   return count;
 }
 
+void UserFrameBuffer::clearColor(int index, Color32fA color) {
+  if(index >= m_colorAtts.size()) {
+    logAndThrow<OutOfRangeEx>("[FrameBuffer] Index<", index, "> of attachment "
+                              "to clear is higher than the number of "
+                              "attachements<", m_colorAtts.size(), ">!");
+  }
+  auto& point = m_colorAtts[index];
+  auto f = point.format;
+  if(!(f == TexFormat::R8 || f == TexFormat::RGB8 || f == TexFormat::RGBA8)) {
+    logAndThrow<InvalidArgEx>("[HotFrameBuffer] You can not clear a "
+                              "floating point texture with a integer color "
+                              "format!");
+  }
+
+  GLfloat d[4] = {color.r, color.g, color.b, color.a};
+  glClearBufferfv(GL_COLOR, index, d);
+
+  checkGLError("[FrameBuffer] Error while clearing attachment<", index, ">!");
+}
+
 
 
 
@@ -162,6 +182,10 @@ void DefaultFrameBuffer::prime(std::shared_ptr<FrameBufferInterface> fb,
     logThrowGL("[FrameBuffer] Cannot prime default framebuffer while another "
                "FrameBuffer is primed!");
   }
+
+  // activate back buffer for drawing
+  GLenum drawbuffers = GL_BACK_LEFT;
+  glDrawBuffers(1, &drawbuffers);
 
   // bind 0 to context to activate default framebuffer
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -208,6 +232,20 @@ void DefaultFrameBuffer::attachColor(int index, const Tex2D& tex) {
 
 int DefaultFrameBuffer::countAttachments() {
   return 4;
+}
+
+
+void DefaultFrameBuffer::clearColor(int index, Color32fA color) {
+  if(index != 0) {
+    // warn the user that index has no effect
+    logWarning("[FrameBuffer] Using an index other than 0 does not have any "
+               "effect when using the default framebuffer!");
+  }
+
+  GLfloat d[4] = {color.r, color.g, color.b, color.a};
+  glClearBufferfv(GL_COLOR, 0, d);
+
+  checkGLError("[FrameBuffer] Error while clearing attachment<", index, ">!");
 }
 
 } // namespace internal
