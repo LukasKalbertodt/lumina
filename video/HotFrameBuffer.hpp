@@ -3,7 +3,6 @@
 #include "HotFrameBuffer.fpp"
 #include "FrameBuffer.hpp"
 #include "GLObject.hpp"
-#include "HotFBAttPoints.hpp"
 #include "../util/NotCloneable.hpp"
 #include "../util/ColorCore.hpp"
 

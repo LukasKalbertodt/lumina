@@ -3,7 +3,6 @@
 #include "GLObject.hpp"
 #include "Texture.hpp"
 #include "HotFrameBuffer.fpp"
-#include "FBAttPoints.hpp"
 
 #include <GL/glew.h>
 #include <functional>
@@ -12,6 +11,13 @@
 
 namespace lumina {
 namespace internal {
+
+struct ColorAttPoint {
+  GLuint handle;
+  TexFormat format;
+
+  ColorAttPoint() : handle(0) {}
+};
 
 class FrameBufferInterface : public GLObject {
 public:
