@@ -1,39 +1,54 @@
 namespace lumina {
 
-inline FrameBuffer::FrameBuffer()
-  : colors(m_colorAtts, m_needsUpdate), m_handle(0), m_needsUpdate(true) {}
+namespace internal {
 
-inline FrameBuffer::FrameBuffer(FrameBuffer&& o)
-  : colors(o.m_colorAtts, o.m_needsUpdate),
-    m_handle(o.m_handle),
-    m_needsUpdate(o.m_needsUpdate) {
+inline UserFrameBuffer::UserFrameBuffer()
+  : m_handle(0), m_needsUpdate(true) {}
+
+inline UserFrameBuffer::UserFrameBuffer(UserFrameBuffer&& o)
+  : m_handle(o.m_handle), m_needsUpdate(o.m_needsUpdate) {
   // reset handle of moved object
   o.m_handle = 0;
   o.m_needsUpdate = true;
 }
 
-inline FrameBuffer::~FrameBuffer() {
+inline UserFrameBuffer::~UserFrameBuffer() {
   // opengl will ignore a 0-handle
   glDeleteFramebuffers(1, &m_handle);
 }
 
-inline void FrameBuffer::bind() {
+inline void UserFrameBuffer::bind() {
   glBindFramebuffer(GL_FRAMEBUFFER, m_handle);
-  s_isPrimed = true;
+  s_userPrimed = true;
 }
 
-inline void FrameBuffer::unbind() {
+inline void UserFrameBuffer::unbind() {
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
-  s_isPrimed = false;
+  s_userPrimed = false;
 }
 
-// inline internal::FBAttachmentPoint FrameBuffer::operator[](int index) {
-//   if(index >= m_attachments.size()) {
-//     logAndThrow<OutOfRangeEx>("[FrameBuffer] Index<", index, 
-//                               "> out of bounds<", m_attachments.size(), ">!");
-//   }
-//   return internal::FBAttachmentPoint(m_attachments[index], m_needsUpdate);
-// }
+} // namespace internal
+
+
+inline FrameBuffer::FrameBuffer() 
+  : m_fb(new internal::UserFrameBuffer()) {}
+
+inline FrameBuffer::FrameBuffer(
+  std::shared_ptr<internal::FrameBufferInterface> fb)
+  : m_fb(move(fb)) {}
+
+
+inline void FrameBuffer::create() {
+  m_fb->create();
+}
+inline void FrameBuffer::prime(std::function<void(HotFrameBuffer&)> func) {
+  m_fb->prime(m_fb, func);
+}
+
+inline void FrameBuffer::attachColor(int index, const Tex2D& tex) {
+  m_fb->attachColor(index, tex);
+}
+
 
 
 }

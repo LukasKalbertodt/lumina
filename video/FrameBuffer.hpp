@@ -1,28 +1,46 @@
 #pragma once
 
 #include "GLObject.hpp"
+#include "Texture.hpp"
 #include "HotFrameBuffer.fpp"
 #include "FBAttPoints.hpp"
 
 #include <GL/glew.h>
 #include <functional>
+#include <memory>
 #include <vector>
 
 namespace lumina {
+namespace internal {
 
-
-class FrameBuffer : public GLObject {
+class FrameBufferInterface : public GLObject {
 public:
-  FrameBuffer();
-  FrameBuffer(FrameBuffer&&);
+  virtual ~FrameBufferInterface() = default;
 
-  ~FrameBuffer();
+  virtual void create() = 0;
+  virtual void prime(std::shared_ptr<FrameBufferInterface> fb,
+                     std::function<void(HotFrameBuffer&)> func) = 0;
+  virtual void attachColor(int index, const Tex2D& tex) = 0;
 
-  void create();
-  void prime(std::function<void(HotFrameBuffer&)> func);
+protected:
+  // true if a user defined framebuffer is primed
+  static bool s_userPrimed;
+};
+
+class UserFrameBuffer : public FrameBufferInterface {
+public:
+  UserFrameBuffer();
+  UserFrameBuffer(UserFrameBuffer&&);
+
+  ~UserFrameBuffer();
+
+  void create() override final;
+  void prime(std::shared_ptr<FrameBufferInterface> fb,
+             std::function<void(HotFrameBuffer&)> func) override final;
+  void attachColor(int index, const Tex2D& tex) override final;
 
 
-  internal::ColorAttSet colors;
+  // internal::ColorAttSet colors;
 
 
 private:
@@ -30,13 +48,30 @@ private:
   std::vector<internal::ColorAttPoint> m_colorAtts;
   bool m_needsUpdate;
 
-  static bool s_isPrimed;
-
   void updateState();
   void bind();
   void unbind();
+};
 
-  friend HotFrameBuffer;
+} // namespace internal
+
+
+/**
+ * @brief Wrapper for either a UserFrameBuffer or the DefaultFrameBuffer 
+ *        (provides a layer of indirection)
+ * @details If created, it creates a UserFrameBuffer internally
+ */
+class FrameBuffer : public NotCopyable {
+public:
+  FrameBuffer();
+  FrameBuffer(std::shared_ptr<internal::FrameBufferInterface> fb);
+
+  void create();
+  void prime(std::function<void(HotFrameBuffer&)> func);
+  void attachColor(int index, const Tex2D& tex);
+
+private:
+  std::shared_ptr<internal::FrameBufferInterface> m_fb;
 };
 
 }

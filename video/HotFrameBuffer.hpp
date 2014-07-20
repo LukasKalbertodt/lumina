@@ -7,17 +7,25 @@
 #include "../util/NotCloneable.hpp"
 #include "../util/ColorCore.hpp"
 
+#include <memory>
+
 namespace lumina {
+
+// class HotFrameBufferInterface : public GLObject {
+// public:
+
+
+
+// };
 
 class HotFrameBuffer : public GLObject {
 public:
-  HotFrameBuffer(FrameBuffer& cold);
-  ~HotFrameBuffer();
+  HotFrameBuffer(std::shared_ptr<internal::FrameBufferInterface> cold);
 
-  internal::HotColorAttSet colors;
+  // internal::HotColorAttSet colors;
 
 private:
-  FrameBuffer& m_cold;
+  std::shared_ptr<internal::FrameBufferInterface> m_cold;
 };
 
 } // namespace lumina 

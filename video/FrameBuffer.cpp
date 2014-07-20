@@ -2,10 +2,11 @@
 #include "HotFrameBuffer.hpp"
 
 namespace lumina {
+namespace internal {
 
-bool FrameBuffer::s_isPrimed = false;
+bool FrameBufferInterface::s_userPrimed = false;
 
-void FrameBuffer::create() {
+void UserFrameBuffer::create() {
   // generate framebuffer
   glGenFramebuffers(1, &m_handle);
 
@@ -18,7 +19,7 @@ void FrameBuffer::create() {
   checkGLError("[FrameBuffer] Error<", GLERR, "> while creating frame buffer!");
 }
 
-void FrameBuffer::updateState() {
+void UserFrameBuffer::updateState() {
   // check if update is really needed
   if(!m_needsUpdate) {
     return;
@@ -48,19 +49,56 @@ void FrameBuffer::updateState() {
   m_needsUpdate = false;
 }
 
-void FrameBuffer::prime(std::function<void(HotFrameBuffer&)> func) {
-  if(s_isPrimed) {
+void UserFrameBuffer::prime(std::shared_ptr<FrameBufferInterface> fb,
+                            std::function<void(HotFrameBuffer&)> func) {
+  if(s_userPrimed) {
     logThrowGL(
       "[FrameBuffer] Cannot prime while another FrameBuffer is primed!");
   }
 
-  // create hot framebuffer
-  HotFrameBuffer hot(*this);
+  // bind to context and update state
+  bind();
+  updateState();
 
+  // check framebuffer status and GL errors
+  if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+    logThrowGL("[FrameBuffer] Incomplete framebuffer status after priming!");
+  }
+  checkGLError("[FrameBuffer] Error<", GLERR, "> while priming!");
+
+  // create HotFB and call func
+  HotFrameBuffer hot(fb);
   func(hot);
 
-  // check errors
-  checkGLError("[FrameBuffer] Error<", GLERR, "> while priming!");
+  // unbind and check errors
+  unbind();
+  checkGLError("[FrameBuffer] Error<", GLERR, "> after priming!");
 }
 
+void UserFrameBuffer::attachColor(int index, const Tex2D& tex) {
+  // check index
+  if(index >= m_colorAtts.size()) {
+    logAndThrow<OutOfRangeEx>("[FrameBuffer] Attachment-point-index<", index, 
+                              "> higher than the maximum number of available "
+                              "attachment points<", m_colorAtts.size(), ">!");
+  }
+
+  // check texture format
+  auto f = tex.getFormat();
+  if(f == TexFormat::D16 || f == TexFormat::D32 || f == TexFormat::D24S8) {
+    logAndThrow<InvalidArgEx>("[FrameBuffer] You can not attach a texture "
+                              "with depth or stencil format to a color "
+                              "attachment point!");
+  }
+
+  // assign values if the values are distinct
+  auto& m_point = m_colorAtts[index];
+  if(m_point.handle != tex.nativeHandle()) {
+    m_point.handle = tex.nativeHandle();
+    m_point.format = f;
+    m_needsUpdate = true;
+  }
 }
+
+} // namespace internal
+} // namespace lumina
