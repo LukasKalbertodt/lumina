@@ -21,6 +21,7 @@ public:
   virtual void prime(std::shared_ptr<FrameBufferInterface> fb,
                      std::function<void(HotFrameBuffer&)> func) = 0;
   virtual void attachColor(int index, const Tex2D& tex) = 0;
+  virtual int countAttachments() = 0;
 
 protected:
   // true if a user defined framebuffer is primed
@@ -38,6 +39,7 @@ public:
   void prime(std::shared_ptr<FrameBufferInterface> fb,
              std::function<void(HotFrameBuffer&)> func) override final;
   void attachColor(int index, const Tex2D& tex) override final;
+  int countAttachments() override final;
 
 
   // internal::ColorAttSet colors;
@@ -69,6 +71,7 @@ public:
   void create();
   void prime(std::function<void(HotFrameBuffer&)> func);
   void attachColor(int index, const Tex2D& tex);
+  int countAttachments();
 
 private:
   std::shared_ptr<internal::FrameBufferInterface> m_fb;

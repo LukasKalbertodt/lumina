@@ -61,8 +61,50 @@ void UserFrameBuffer::prime(std::shared_ptr<FrameBufferInterface> fb,
   updateState();
 
   // check framebuffer status and GL errors
-  if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-    logThrowGL("[FrameBuffer] Incomplete framebuffer status after priming!");
+  auto status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+  if(status != GL_FRAMEBUFFER_COMPLETE) {
+    // log error message
+    logError("[FrameBuffer] Incomplete framebuffer status<", status, 
+             "> while priming! -->");
+    
+    // print additional information about the error
+    switch(status) {
+      case GL_FRAMEBUFFER_UNDEFINED:
+        logError("[FrameBuffer] The default framebuffer does not exist...");
+        break;
+      case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
+        logError("[FrameBuffer] At least one attachment is incomplete...");
+        break;
+      case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
+        logError("[FrameBuffer] No image is attached to the framebuffer...");
+        break;
+      case GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER:
+        logError("[FrameBuffer] DrawBuffer is incorrect (internal error)...");
+        break;
+      case GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER:
+        logError("[FrameBuffer] Read buffer has not attachment point...");
+        break;
+      case GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE:
+        logError("[FrameBuffer] Not all images have the same number of "
+                  "mutisample samples...");
+        break;
+      case GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS:
+        logError("[FrameBuffer] Layered images do not fit together...");
+        break;
+      case GL_FRAMEBUFFER_UNSUPPORTED:
+        logError(
+          "[FrameBuffer] Combination of attached images is not supported...");
+        break;
+      case 0:
+        logError("[FrameBuffer] An internal error occured...");
+        break;
+      default:
+        logError("[FrameBuffer] Unknown Error... ");
+    }
+
+    // throw exception
+    throw GLException(
+      "[FrameBuffer] Incomplete framebuffer status while priming!");
   }
   checkGLError("[FrameBuffer] Error<", GLERR, "> while priming!");
 
@@ -98,6 +140,16 @@ void UserFrameBuffer::attachColor(int index, const Tex2D& tex) {
     m_point.format = f;
     m_needsUpdate = true;
   }
+}
+
+int UserFrameBuffer::countAttachments() {
+  int count = 0;
+  for(auto& point : m_colorAtts) {
+    if(point.handle != 0) {
+      count++;
+    }
+  }
+  return count;
 }
 
 } // namespace internal
