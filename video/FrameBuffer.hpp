@@ -31,7 +31,7 @@ public:
 
 protected:
   // true if a user defined framebuffer is primed
-  static bool s_userPrimed;
+  static bool s_isPrimed;
 };
 
 class UserFrameBuffer : public FrameBufferInterface {
@@ -48,9 +48,6 @@ public:
   int countAttachments() override final;
 
 
-  // internal::ColorAttSet colors;
-
-
 private:
   GLuint m_handle;
   std::vector<internal::ColorAttPoint> m_colorAtts;
@@ -59,6 +56,16 @@ private:
   void updateState();
   void bind();
   void unbind();
+};
+
+
+class DefaultFrameBuffer : public FrameBufferInterface, public NotCloneable {
+public:
+  void create() override final;
+  void prime(std::shared_ptr<FrameBufferInterface> fb,
+             std::function<void(HotFrameBuffer&)> func) override final;
+  void attachColor(int index, const Tex2D& tex) override final;
+  int countAttachments() override final;
 };
 
 } // namespace internal

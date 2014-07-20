@@ -19,13 +19,18 @@ inline UserFrameBuffer::~UserFrameBuffer() {
 
 inline void UserFrameBuffer::bind() {
   glBindFramebuffer(GL_FRAMEBUFFER, m_handle);
-  s_userPrimed = true;
+  s_isPrimed = true;
 }
 
 inline void UserFrameBuffer::unbind() {
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
-  s_userPrimed = false;
+  s_isPrimed = false;
 }
+
+
+
+
+inline void DefaultFrameBuffer::create() {}
 
 } // namespace internal
 
