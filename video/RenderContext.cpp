@@ -27,8 +27,7 @@ void RenderContext::create() {
 
   // check for errors
   if(status != GLEW_OK) {
-    logError("[RenderContext] glewInit() failed with status <", status, ">!");
-    throw GLException("glewInit() failed");
+    logThrowGL("[RenderContext] glewInit() failed with status <", status, ">!");
   }
 
   // check for GL error (glew often causes one when using new context versions)
@@ -59,15 +58,15 @@ void RenderContext::prime(std::function<void(HotRenderContext&)> func) {
                "at a time!");
   }
 
+  // make context current and create HotContext
   makeCurrent();
   HotRenderContext hot(*this);
+
+  // call function
   func(hot);
+
+  // reset state
   resetCurrent();
 }
-
-// void RenderContext::execute(Program& prog,
-//                             std::function<void(HotProgram&)> func) {
-// }
-
 
 } // namespace lumina
