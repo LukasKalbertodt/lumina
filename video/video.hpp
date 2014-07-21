@@ -18,3 +18,4 @@
 #include "FrameBuffer.hpp"
 #include "HotFrameBuffer.hpp"
 #include "TextureContainer.hpp"
+#include "HotRenderContext.hpp"

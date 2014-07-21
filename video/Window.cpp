@@ -20,9 +20,11 @@ Window::~Window() {
   }
 }
 
-RenderContext* Window::getRenderContext() {
-  m_renderContext.reset(new RenderContext(m_window));
-  return m_renderContext.get();
+RenderContext& Window::getRenderContext() {
+  if(!m_renderContext) {
+    m_renderContext.reset(new RenderContext(m_window));
+  }
+  return *m_renderContext.get();
 }
 
 void Window::open() {

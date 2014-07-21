@@ -1,6 +1,7 @@
 #include "GLException.hpp"
 #include "GLTools.hpp"
 #include "Program.hpp"
+#include "HotRenderContext.hpp"
 #include "RenderContext.hpp"
 
 #include <GL/glew.h>
@@ -8,7 +9,15 @@
 
 namespace lumina {
 
+bool RenderContext::s_contextPresent = false;
+
+
 void RenderContext::create() {
+  if(s_contextPresent) {
+    logThrowGL("[RenderContext] You cannot create a RenderContext while "
+               "another is primed!");
+  }
+
   // context needs to be current to call glewInit
   makeCurrent();
 
@@ -28,14 +37,32 @@ void RenderContext::create() {
     logNotice("[RenderContext] glewInit() caused an openGL error <",
               translateGLError(err), ">.");
   }
+
+  // reset state
+  resetCurrent();
 }
 
 void RenderContext::makeCurrent() {
   glfwMakeContextCurrent(m_windowHandle);
+  s_contextPresent = true;
 }
 
-void RenderContext::swapBuffer() {
-  glfwSwapBuffers(m_windowHandle);
+void RenderContext::resetCurrent() {
+  glfwMakeContextCurrent(0);
+  s_contextPresent = false;
+}
+
+void RenderContext::prime(std::function<void(HotRenderContext&)> func) {
+  // check if another target is already current
+  if(s_contextPresent) {
+    logThrowGL("[RenderContext] You cannot prime more than one RenderContext "
+               "at a time!");
+  }
+
+  makeCurrent();
+  HotRenderContext hot(*this);
+  func(hot);
+  resetCurrent();
 }
 
 // void RenderContext::execute(Program& prog,

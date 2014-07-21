@@ -2,6 +2,8 @@
 #include "Program.fpp"
 #include "FrameBuffer.hpp"
 #include "RenderContext.fpp"
+#include "HotRenderContext.fpp"
+#include "GLObject.hpp"
 #include "../config/BaseProxy.hpp"
 
 #include <functional>
@@ -12,20 +14,23 @@ struct GLFWwindow;
 
 namespace lumina {
 
-class RenderContext : public config::CommonBase {
+class RenderContext : public GLObject {
 public:
   RenderContext(GLFWwindow* window);
 
   void create();
-  void makeCurrent();
-  void swapBuffer();
-  FrameBuffer& getDefaultFrameBuffer();
+  void prime(std::function<void(HotRenderContext&)> func);
 
-  // void execute(Program& prog, std::function<void(HotProgram&)> func);
 
 private:
   GLFWwindow* m_windowHandle;
   FrameBuffer m_defaultFB;
+
+  static bool s_contextPresent;
+  void makeCurrent();
+  void resetCurrent();
+
+  friend HotRenderContext;
 };
 
 } // namespace lumina

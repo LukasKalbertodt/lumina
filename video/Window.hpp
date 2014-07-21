@@ -34,7 +34,7 @@ public:
   void setVSync(bool enable);
   void resize(Vec2i size);
   Vec2i getSize();
-  RenderContext* getRenderContext();
+  RenderContext& getRenderContext();
   void open();
   void close();
   void pollEvents();
