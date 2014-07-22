@@ -21,6 +21,7 @@
 
 namespace lumina {
 
+namespace internal {
 /*******************************************************************************
 * Internal Helper: The following is for internal use only!
 *******************************************************************************/
@@ -28,7 +29,7 @@ namespace lumina {
  * @brief Helper struct for various algorithms. Just for internal use!
  */
 template <typename T>
-class LXMatrixHelper {
+class MatrixHelper {
   // if a determinant is smaller than this value, it's treated as zero
   static constexpr float detEpsilon = 1E-10;
 
@@ -193,7 +194,7 @@ template <typename Ta,
           std::size_t Ra,
           std::size_t CR,
           std::size_t Cb>
-inline void lxMatMultiply(const Ta (&lh)[Ra][CR],
+inline void matrixMultiply(const Ta (&lh)[Ra][CR],
                    const Tb (&rh)[CR][Cb],
                    decltype(Ta(0) * Tb(0)) (&out)[Ra][Cb]) {
   for(int i = 0; i < Ra; ++i) {
@@ -207,7 +208,7 @@ inline void lxMatMultiply(const Ta (&lh)[Ra][CR],
 }
 
 // overload for 2x2
-inline void lxMatMultiply(const float (&lh)[2][2],
+inline void matrixMultiply(const float (&lh)[2][2],
                    const float (&rh)[2][2],
                    float (&out)[2][2]) {
   out[0][0] = lh[0][0]*rh[0][0] + lh[0][1]*rh[1][0];
@@ -217,7 +218,7 @@ inline void lxMatMultiply(const float (&lh)[2][2],
 }
 
 // overload for 3x3
-inline void lxMatMultiply(const float (&lh)[3][3],
+inline void matrixMultiply(const float (&lh)[3][3],
                    const float (&rh)[3][3],
                    float (&out)[3][3]) {
   for(int i = 0; i < 3; ++i) {
@@ -229,7 +230,7 @@ inline void lxMatMultiply(const float (&lh)[3][3],
 }
 
 // overload for 4x4 (uses SSE)
-inline void lxMatMultiply(const float (&lh)[4][4],
+inline void matrixMultiply(const float (&lh)[4][4],
                    const float (&rh)[4][4],
                    float (&out)[4][4]) {
   const __m128 a = _mm_loadu_ps(rh[0]);
@@ -284,7 +285,7 @@ inline void lxMatMultiply(const float (&lh)[4][4],
  * @brief Helper class for common Matrix stuff. Just for internal use!
  */
 template <typename T, std::size_t R, std::size_t C>
-struct LXMatrixImpl {
+struct MatrixImpl {
   // matrix data
   T data[R][C];
 
@@ -292,7 +293,7 @@ struct LXMatrixImpl {
   static constexpr std::size_t numRows = R;
   static constexpr std::size_t numColumns = C;
 
-  LXMatrixImpl() {
+  MatrixImpl() {
     setToZero();
   }
 
@@ -338,6 +339,7 @@ struct LXMatrixImpl {
 
 };
 
+} // namespace internal
 
 
 /*******************************************************************************
@@ -351,17 +353,17 @@ struct LXMatrixImpl {
  * @tparam C Number of Columns
  */
 template <typename T, std::size_t R, std::size_t C>
-struct Matrix : public LXMatrixImpl<T, R, C> {
+struct Matrix : public internal::MatrixImpl<T, R, C> {
   Matrix<T, C, R> transposed() const {
     Matrix<T, C, R> out;
-    LXMatrixHelper<T>::transpose(this->data, out.data);
+    internal::MatrixHelper<T>::transpose(this->data, out.data);
     return out;
   }
 };
 
 // specialization for quadratic matrices
 template <typename T, std::size_t N> 
-struct Matrix<T, N, N> : public LXMatrixImpl<T, N, N>{
+struct Matrix<T, N, N> : public internal::MatrixImpl<T, N, N>{
 
   Matrix<T, N, N>& setToIdentity() {
     for(int i = 0; i < N; ++i) {
@@ -386,18 +388,18 @@ struct Matrix<T, N, N> : public LXMatrixImpl<T, N, N>{
   }
 
   T determinant() const {
-    return LXMatrixHelper<T>::det(this->data);
+    return internal::MatrixHelper<T>::det(this->data);
   }
 
   Matrix<T, N, N> inverted() const {
     Matrix<T, N, N> out;
-    LXMatrixHelper<T>::invert(this->data, out.data);
+    internal::MatrixHelper<T>::invert(this->data, out.data);
     return out;
   }
 
   Matrix<T, N, N> transposed() const {
     Matrix<T, N, N> out;
-    LXMatrixHelper<T>::transpose(this->data, out.data);
+    internal::MatrixHelper<T>::transpose(this->data, out.data);
     return out;
   }
 };
@@ -456,7 +458,7 @@ Matrix<Ta, R, C>& operator-=(Matrix<Ta, R, C>& lh,
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
 Matrix<Ta, R, C>& operator*=(Matrix<Ta, R, C>& lh,
                               const Matrix<Tb, R, C>& rh) {
-  lxMatMultiply(lh.data, rh.data, lh.data);
+  matrixMultiply(lh.data, rh.data, lh.data);
   return lh;
 }
 
@@ -534,7 +536,7 @@ template <typename Ta, typename Tb, std::size_t R, std::size_t C>
 auto operator*(const Matrix<Ta, R, C>& lh, const Matrix<Tb, R, C>& rh)
   -> Matrix<decltype(Ta(0) * Tb(0)), R, C> {
   Matrix<decltype(Ta(0) * Tb(0)), R, C> out(lh);
-  lxMatMultiply(lh.data, rh.data, out.data);
+  matrixMultiply(lh.data, rh.data, out.data);
   return out;
 }
 
@@ -543,7 +545,7 @@ template <typename Ta, typename Tb, std::size_t R, std::size_t C>
 auto operator*(const Matrix<Ta, R, C>& lh, Vector<Tb, C> rh)
   -> Vector<decltype(Ta(0) + Tb(0)), R> {
   Vector<decltype(Ta(0) + Tb(0)), R> out;
-  lxMatMultiply(lh.data,
+  matrixMultiply(lh.data,
                 reinterpret_cast<Tb(&)[C][1]>(rh.data),
                 reinterpret_cast<Tb(&)[C][1]>(out.data));
   return out;
@@ -554,7 +556,7 @@ template <typename Ta, typename Tb, std::size_t R, std::size_t C>
 auto operator*(Vector<Tb, R> lh, const Matrix<Ta, R, C>& rh)
   -> Vector<decltype(Ta(0) + Tb(0)), C> {
   Vector<decltype(Ta(0) + Tb(0)), C> out;
-  lxMatMultiply(reinterpret_cast<Tb(&)[1][R]>(lh.data),
+  matrixMultiply(reinterpret_cast<Tb(&)[1][R]>(lh.data),
                 rh.data,
                 reinterpret_cast<Tb(&)[1][C]>(out.data));
   return out;
