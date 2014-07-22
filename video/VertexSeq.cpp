@@ -2,6 +2,7 @@
 #include "GLException.hpp"
 #include "GLTools.hpp"
 #include "../core/LuminaException.hpp"
+#include "HotVertexSeq.hpp"
 
 #include <limits>
 #include <stdexcept>
@@ -86,5 +87,11 @@ void VertexSeq::create(uint16_t vertexSize,
   // unbind all buffers and VAO
   unbindAll();
 }
+
+void VertexSeq::prime(std::function<void(HotVertexSeq<>&)> func) {
+  HotVertexSeq<> hot(*this);
+  func(hot);
+}
+
 
 } // namespace lumina

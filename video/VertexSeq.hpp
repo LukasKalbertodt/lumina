@@ -47,7 +47,9 @@ public:
   void create(uint16_t vertexSize,
               uint32_t vertexCount,
               uint32_t indexCount = 0);
-  template <typename... Cs, typename L> void prime(L lambda);
+  template <typename... Cs, typename L>
+  void prime(L lambda);
+  void prime(std::function<void(HotVertexSeq<>&)> func);
 
   GLuint nativeVertexHandle() const;
   GLuint nativeIndexHandle() const;

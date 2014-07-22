@@ -2,7 +2,7 @@ namespace lumina {
 
 namespace internal {
 
-HotVertexSeqBase::HotVertexSeqBase(VertexSeq& ref)
+inline HotVertexSeqBase::HotVertexSeqBase(VertexSeq& ref)
   : cold(ref), index(ref.m_indexCount) {
   // check if a vertex seq is already primed... if not, set primed marker
   if(VertexSeq::s_isPrimed) {
@@ -33,7 +33,7 @@ HotVertexSeqBase::HotVertexSeqBase(VertexSeq& ref)
 }
 
 // unmap and unbind all buffers
-HotVertexSeqBase::~HotVertexSeqBase() {
+inline HotVertexSeqBase::~HotVertexSeqBase() {
   glUnmapBuffer(GL_ARRAY_BUFFER);
   if(index.m_buffer) {
     glUnmapBuffer(GL_ELEMENT_ARRAY_BUFFER);
@@ -65,7 +65,7 @@ HotVertexSeq<Cs...>::HotVertexSeq(VertexSeq& ref)
 }
 
 
-HotVertexSeq<>::HotVertexSeq(VertexSeq& ref)
+inline HotVertexSeq<>::HotVertexSeq(VertexSeq& ref)
   : internal::HotVertexSeqBase(ref),
     vertex(ref.m_vertexCount, ref.m_vertexSize) {
   // map vertex buffer
