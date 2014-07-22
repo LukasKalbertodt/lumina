@@ -9,14 +9,15 @@
 
 namespace lumina {
 
-bool RenderContext::s_contextPresent = false;
-
+HotRenderContext* RenderContext::s_primedContext = nullptr;
+bool RenderContext::s_creationLock = false;
 
 void RenderContext::create() {
-  if(s_contextPresent) {
+  if(s_primedContext || s_creationLock) {
     logThrowGL("[RenderContext] You cannot create a RenderContext while "
-               "another is primed!");
+               "another is primed or being created!");
   }
+  s_creationLock = true;
 
   // context needs to be current to call glewInit
   makeCurrent();
@@ -39,34 +40,39 @@ void RenderContext::create() {
 
   // reset state
   resetCurrent();
+  s_creationLock = false;
 }
 
 void RenderContext::makeCurrent() {
   glfwMakeContextCurrent(m_windowHandle);
-  s_contextPresent = true;
 }
 
 void RenderContext::resetCurrent() {
   glfwMakeContextCurrent(0);
-  s_contextPresent = false;
 }
 
 void RenderContext::prime(std::function<void(HotRenderContext&)> func) {
   // check if another target is already current
-  if(s_contextPresent) {
+  if(s_primedContext) {
     logThrowGL("[RenderContext] You cannot prime more than one RenderContext "
                "at a time!");
+  }
+  if(s_creationLock) {
+    logThrowGL("[RenderContext] You cannot prime a RenderContext while another "
+               "is being create!");
   }
 
   // make context current and create HotContext
   makeCurrent();
   HotRenderContext hot(*this);
+  s_primedContext = &hot;
 
   // call function
   func(hot);
 
   // reset state
   resetCurrent();
+  s_primedContext = nullptr;
 }
 
 } // namespace lumina

@@ -9,7 +9,7 @@ void GLObject::checkGLError(Ts... msgs) {
   }
 }
 
-template <typename... Ts> 
+template <typename... Ts>
 void GLObject::checkGLWarning(Ts... msgs) {
   auto err = glGetError();
 

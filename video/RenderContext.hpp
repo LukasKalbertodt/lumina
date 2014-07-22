@@ -3,7 +3,9 @@
 #include "FrameBuffer.hpp"
 #include "RenderContext.fpp"
 #include "HotRenderContext.fpp"
+#include "GLException.hpp"
 #include "GLObject.hpp"
+#include "../service/StaticLogger.hpp"
 #include "../config/BaseProxy.hpp"
 
 #include <functional>
@@ -21,12 +23,15 @@ public:
   void create();
   void prime(std::function<void(HotRenderContext&)> func);
 
+  static HotRenderContext& getCurrentContext(); 
+
 
 private:
   GLFWwindow* m_windowHandle;
   FrameBuffer m_defaultFB;
 
-  static bool s_contextPresent;
+  static HotRenderContext* s_primedContext;
+  static bool s_creationLock;
   void makeCurrent();
   void resetCurrent();
 
