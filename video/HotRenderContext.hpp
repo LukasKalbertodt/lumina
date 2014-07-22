@@ -8,7 +8,7 @@
 
 namespace lumina {
 
-class HotRenderContext : public GLObject {
+class HotRenderContext : public GLContextFreeObject {
 public:
   HotRenderContext(RenderContext& cold);
   ~HotRenderContext();

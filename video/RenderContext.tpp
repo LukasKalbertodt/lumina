@@ -12,5 +12,8 @@ inline HotRenderContext& RenderContext::getCurrentContext() {
   return *s_primedContext;
 }
 
+inline bool RenderContext::isContextCurrent() {
+  return (s_primedContext != nullptr);
+}
 
 }

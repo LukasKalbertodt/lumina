@@ -3,6 +3,7 @@
 #include "GLTools.hpp"
 #include "GLException.hpp"
 #include "../config/BaseProxy.hpp"
+#include "../config/LConfig.hpp"
 #include "../util/NotCloneable.hpp"
 
 #include <GL/glew.h>
@@ -14,10 +15,10 @@ enum class PrintGL {
   Error
 };
 
-class GLObject : public config::CommonBase, public NotCopyable {
+class GLContextFreeObject : public config::CommonBase, public NotCopyable {
 public:
   // OpenGL object cannot be copied, just moved.
-  GLObject() = default;
+  GLContextFreeObject() = default;
 
 protected:
   template <typename... Ts> void checkGLError(Ts...);
@@ -30,6 +31,15 @@ protected:
 private:
   template <typename T> T& translateErrorMsg(GLuint err, T& obj);
   const char* translateErrorMsg(GLuint err, PrintGL obj);
+
+};
+
+class GLObject : public GLContextFreeObject {
+public:
+  GLObject();
+
+private:
+  bool isRenderContextCurrent();
 };
 
 

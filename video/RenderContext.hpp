@@ -16,14 +16,15 @@ struct GLFWwindow;
 
 namespace lumina {
 
-class RenderContext : public GLObject {
+class RenderContext : public GLContextFreeObject {
 public:
   RenderContext(GLFWwindow* window);
 
   void create();
   void prime(std::function<void(HotRenderContext&)> func);
 
-  static HotRenderContext& getCurrentContext(); 
+  static HotRenderContext& getCurrentContext();
+  static bool isContextCurrent();
 
 
 private:

@@ -28,6 +28,9 @@ namespace config {
   // Should runtime checks be performed, that will check if a texture unit
   // is primed multiple times?
   constexpr bool debugTexturePrimeChecks = true;
+
+  // When creating a GLObject, should it test if a context is current?
+  constexpr bool debugContextCurrentCheck = true;
 }
 
 } // namespace lumina

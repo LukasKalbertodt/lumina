@@ -1,7 +1,16 @@
 namespace lumina {
 
+inline GLObject::GLObject() {
+  // if(config::debugContextCurrentCheck) {
+  //   if(!isRenderContextCurrent()) {
+  //     logThrowGL("[GLObject] Trying to create a GLObject, but no render "
+  //                "context is current!");
+  //   }
+  // }
+}
+
 template <typename... Ts> 
-void GLObject::checkGLError(Ts... msgs) {
+void GLContextFreeObject::checkGLError(Ts... msgs) {
   auto err = glGetError();
 
   if(err != GL_NO_ERROR) {
@@ -10,7 +19,7 @@ void GLObject::checkGLError(Ts... msgs) {
 }
 
 template <typename... Ts>
-void GLObject::checkGLWarning(Ts... msgs) {
+void GLContextFreeObject::checkGLWarning(Ts... msgs) {
   auto err = glGetError();
 
   if(err != GL_NO_ERROR) {
@@ -18,17 +27,17 @@ void GLObject::checkGLWarning(Ts... msgs) {
   }
 }
 
-template <typename... Ts> void GLObject::logThrowGL(Ts... msgs) {
+template <typename... Ts> void GLContextFreeObject::logThrowGL(Ts... msgs) {
   logAndThrow<GLException>(msgs...);
 }
 
 
 template <typename T> 
-T& GLObject::translateErrorMsg(GLuint err, T& obj) {
+T& GLContextFreeObject::translateErrorMsg(GLuint err, T& obj) {
   return obj;
 }
 
-inline const char* GLObject::translateErrorMsg(GLuint err, PrintGL print) {
+inline const char* GLContextFreeObject::translateErrorMsg(GLuint err, PrintGL print) {
   switch(print) {
     case PrintGL::Error:
       return translateGLError(err);

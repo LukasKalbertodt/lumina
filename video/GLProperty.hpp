@@ -29,7 +29,9 @@ namespace lumina {
   X(MaxVaryingVectors, int, GL_MAX_VARYING_VECTORS)\
   X(MaxVertexAttribRelativeOffset, int, GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET)\
   X(MaxVertexAttribBindings, int, GL_MAX_VERTEX_ATTRIB_BINDINGS)\
-  X(MaxVertexAttribStride, int, GL_MAX_VERTEX_ATTRIB_STRIDE)
+  X(MaxVertexAttribStride, int, GL_MAX_VERTEX_ATTRIB_STRIDE)\
+  X(MaxCombinedTextureImageUnits, int, GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS)
+
 
 
 
