@@ -5,7 +5,6 @@
 #include "../config/BaseProxy.hpp"
 #include "../util/MatrixCore.hpp"
 #include "../util/VectorCore.hpp"
-#include "../util/NonCopyable.hpp"
 
 namespace lumina { 
 namespace internal {

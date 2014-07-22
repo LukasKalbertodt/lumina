@@ -5,14 +5,14 @@
 #include "HotProgram.fpp"
 #include "UniformSlot.hpp"
 #include "../config/BaseProxy.hpp"
-#include "../util/NonCopyable.hpp"
+#include "../util/NotCloneable.hpp"
 #include <GL/glew.h>
 #include <string>
 
 namespace lumina {
 namespace internal {
 
-struct UniformSet : public NonCopyable, public config::CommonBase {
+struct UniformSet : public NotCopyable, public config::CommonBase {
 public:
   UniformSlot operator[](std::string at) {
     auto index = glGetUniformLocation(m_program, at.c_str());

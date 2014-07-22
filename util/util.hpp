@@ -5,5 +5,5 @@
 #include "Quaternion.hpp"      // quaternion
 #include "Matrix.hpp"          // matrix
 #include "Color.hpp"           // color
-#include "TerminalColor.hpp"  // tools to write colored text to stdout
+#include "TerminalLook.hpp"    // tools to write colored text to stdout
 #include "Transformation.hpp"
