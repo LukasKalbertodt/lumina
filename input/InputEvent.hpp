@@ -1,6 +1,6 @@
 #pragma once
 /**
- * \file LInputEvent.hpp
+ * \file InputEvent.hpp
  * This file is part of the Lumina Graphics Framework.
  * 
  * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
@@ -8,20 +8,20 @@
  * This file defines some enums and structs used for input events (mouse
  * and keyboard).
  */
-#include "LKeyCode.hpp"
+#include "KeyCode.hpp"
 
 #include <cstring>
 
 namespace lumina {
 
 // type of input event
-enum class LInputType {
+enum class InputType {
   KeyInput,
   MouseInput
 };
 
 // type of mouse event
-enum class LMouseEventType {
+enum class MouseEventType {
   LButtonPressed, 
   MButtonPressed,
   RButtonPressed,
@@ -33,15 +33,15 @@ enum class LMouseEventType {
 };
 
 // data about mouse input event
-struct LMouseInput {
+struct MouseInput {
   int x;
   int y;
   int wheel;
-  LMouseEventType type;
+  MouseEventType type;
 };
 
 // type of key event
-enum LKeyEventType {
+enum KeyEventType {
   KeyReleased,
   KeyPressed,
   KeyHold,
@@ -49,28 +49,28 @@ enum LKeyEventType {
 };
 
 // data about key input event
-struct LKeyInput {
-  LKeyCode key;
+struct KeyInput {
+  KeyCode key;
   unsigned char c;
-  LKeyEventType type;
+  KeyEventType type;
 };
 
 // input event 
-struct LInputEvent {
-  LInputType type;
+struct InputEvent {
+  InputType type;
 
   union {
-    LKeyInput keyInput;
-    LMouseInput mouseInput;
+    KeyInput keyInput;
+    MouseInput mouseInput;
   };
 
-  LInputEvent() {
+  InputEvent() {
     memset(this, 0, sizeof(*this));
   }
 };
 
 // says what was done with the event
-enum class LEventResult {
+enum class EventResult {
   Skipped,
   Processed
 };

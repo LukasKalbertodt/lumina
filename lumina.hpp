@@ -7,8 +7,8 @@
 #include "core/LuminaException.hpp"
 
 // include input components
-#include "input/LKeyCode.hpp"
-#include "input/LInputEvent.hpp"
+#include "input/KeyCode.hpp"
+#include "input/InputEvent.hpp"
 
 // include utility types
 #include "util/util.hpp"

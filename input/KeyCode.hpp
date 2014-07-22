@@ -2,7 +2,7 @@
 
 namespace lumina {
 
-enum class LKeyCode {
+enum class KeyCode {
   None      = 0x00,
   Backspace = 0x08,
   Tab       = 0x09,

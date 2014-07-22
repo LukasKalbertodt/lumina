@@ -3,8 +3,7 @@
 #include "RenderContext.hpp"
 #include "Window.fpp"
 #include "../config/BaseProxy.hpp"
-#include "../input/LInputEvent.hpp"
-#include "../input/LKeyCode.hpp"
+#include "../input/InputEvent.hpp"
 #include "../util/VectorCore.hpp"
 
 #include <cstdint>
@@ -26,7 +25,7 @@ public:
          Vec2i size = Vec2i(600, 400));
   ~Window();
 
-  using EventCallback = std::function<LEventResult(const LInputEvent&)>;
+  using EventCallback = std::function<EventResult(const InputEvent&)>;
   using CallbackAccessor = std::vector<EventCallback>::size_type;
 
   void setTitle(std::string title);
@@ -50,10 +49,10 @@ private:
   std::pair<std::int16_t, std::int16_t> m_version;
   std::string m_title;  // TODO: check if we need this
   std::unique_ptr<RenderContext> m_renderContext;
-  std::vector<LInputEvent> m_eventQueue;
+  std::vector<InputEvent> m_eventQueue;
   std::vector<EventCallback> m_eventCallbacks;
 
-  void postEvent(LInputEvent e);
+  void postEvent(InputEvent e);
 
   static std::map<GLFWwindow*, Window*> s_eventReceiver;
 

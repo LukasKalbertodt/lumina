@@ -150,7 +150,7 @@ bool Window::isValid() {
   return (m_window && !glfwWindowShouldClose(m_window));
 }
 
-void Window::postEvent(LInputEvent e) {
+void Window::postEvent(InputEvent e) {
   m_eventQueue.push_back(e);
 }
 
@@ -167,18 +167,18 @@ void Window::resizeCallback(GLFWwindow* win, int width, int height) {
 void Window::keyCallback(GLFWwindow* win, int key, int scancode,
                               int action, int mods) {
   // transcode input into lumina format
-  LInputEvent e;
-  e.type = LInputType::KeyInput;
+  InputEvent e;
+  e.type = InputType::KeyInput;
   e.keyInput.key = translateGLFWKey(key);
   switch(action) {
     case GLFW_PRESS:
-      e.keyInput.type = LKeyEventType::KeyPressed;
+      e.keyInput.type = KeyEventType::KeyPressed;
       break;
     case GLFW_RELEASE:
-      e.keyInput.type = LKeyEventType::KeyReleased;
+      e.keyInput.type = KeyEventType::KeyReleased;
       break;
     case GLFW_REPEAT:
-      e.keyInput.type = LKeyEventType::KeyHold;
+      e.keyInput.type = KeyEventType::KeyHold;
       break;
   }
 
@@ -195,10 +195,10 @@ void Window::keyCallback(GLFWwindow* win, int key, int scancode,
 
 void Window::charCallback(GLFWwindow* win, unsigned int key) {
   // transcode input into lumina format
-  LInputEvent e;
-  e.type = LInputType::KeyInput;
+  InputEvent e;
+  e.type = InputType::KeyInput;
   e.keyInput.c = static_cast<char>(key);
-  e.keyInput.type = LKeyEventType::Character;
+  e.keyInput.type = KeyEventType::Character;
 
   // find the corresponding window and post event
   if(s_eventReceiver.count(win) != 0) {
@@ -213,25 +213,25 @@ void Window::charCallback(GLFWwindow* win, unsigned int key) {
 void Window::mouseButtonCallback(GLFWwindow* win, int button, int action,
                                       int mods) {
   // transcode input into lumina format
-  LInputEvent e;
-  e.type = LInputType::MouseInput;
+  InputEvent e;
+  e.type = InputType::MouseInput;
   switch(button) {
     case GLFW_MOUSE_BUTTON_LEFT:
       e.mouseInput.type = (action == GLFW_PRESS)
-                              ? LMouseEventType::LButtonPressed
-                              : LMouseEventType::LButtonReleased;
+                              ? MouseEventType::LButtonPressed
+                              : MouseEventType::LButtonReleased;
       break;
 
     case GLFW_MOUSE_BUTTON_MIDDLE:
       e.mouseInput.type = (action == GLFW_PRESS)
-                              ? LMouseEventType::MButtonPressed
-                              : LMouseEventType::MButtonReleased;
+                              ? MouseEventType::MButtonPressed
+                              : MouseEventType::MButtonReleased;
       break;
 
     case GLFW_MOUSE_BUTTON_RIGHT:
       e.mouseInput.type = (action == GLFW_PRESS)
-                              ? LMouseEventType::RButtonPressed
-                              : LMouseEventType::RButtonReleased;
+                              ? MouseEventType::RButtonPressed
+                              : MouseEventType::RButtonReleased;
       break;
   }
 
