@@ -69,7 +69,7 @@ void VertexSeq::create(uint16_t vertexSize,
   // create vertex buffer (generate, bind and allocate memory)
   glGenBuffers(1, &m_vertexHandle);
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
-  glBufferData(GL_ARRAY_BUFFER, vertexSize * vertexCount,
+  glBufferData(GL_ARRAY_BUFFER, vertexSize * vertexCount * sizeof(GLfloat),
                nullptr, GL_STATIC_DRAW);
 
   checkGLError("[VertexSeq] Error while creating vertex buffer <", GLERR, ">!");
@@ -78,7 +78,7 @@ void VertexSeq::create(uint16_t vertexSize,
   if(indexCount > 0) {
     glGenBuffers(1, &m_indexHandle);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexHandle);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * 4,
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLint),
                  nullptr, GL_STATIC_DRAW);
 
     checkGLError("[VertexSeq] Error while creating index buffer <", GLERR, ">!");

@@ -16,11 +16,9 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
   }
 
   // check if another texture is currently primed
-  if(TextureUnits::isPrimed(getMaxTexUnits())) {
-    logError(
-      "[Texture] Cannot execute 'create': Last texture unit has to be unused!");
-    throw LogicEx(
-      "[Texture] Cannot execute 'create': Last texture unit has to be unused!");
+  if(TextureUnits::isPrimed(getMaxTexUnits() - 1)) {
+    logAndThrow<LogicEx>("[Texture] Cannot execute 'create': Last texture "
+                         "unit has to be unused!");
   }
 
   // check arguments
