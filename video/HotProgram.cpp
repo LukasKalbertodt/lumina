@@ -8,7 +8,7 @@ using namespace std;
 
 namespace lumina {
 
-void HotProgram::draw(const TexCont& texCont,
+void HotProgram::draw(const HotTexCont& texCont,
                       const VertexSeq& data,
                       PrimitiveType type,
                       int offset,

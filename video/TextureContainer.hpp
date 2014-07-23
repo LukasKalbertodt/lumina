@@ -3,18 +3,20 @@
 #include "HotTexture.hpp"
 #include "../util/VariadicTools.hpp"
 #include "../util/NotCloneable.hpp"
+#include <functional>
+#include <map>
 #include <type_traits>
 
 namespace lumina {
 
 class TextureContainer : public NotCloneable {
 public:
-  template <TexType... Ts> TextureContainer(const HotTexture<Ts>&... texs);
+  TextureContainer();
 
   int count() const;
 
 private:
-  int m_count;
+  std::map<int, int> m_map;
 };
 
 using TexCont = TextureContainer;

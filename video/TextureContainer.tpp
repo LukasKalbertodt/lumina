@@ -1,12 +1,7 @@
 namespace lumina {
 
-template <TexType... Ts>
-TextureContainer::TextureContainer(const HotTexture<Ts>&... texs)
-  : m_count(sizeof...(Ts)) {}
+TextureContainer::TextureContainer() {}
 
 
-inline int TextureContainer::count() const {
-  return m_count;
-}
 
 }
