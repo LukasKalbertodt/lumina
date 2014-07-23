@@ -39,7 +39,7 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
   // create texture and storage for it
   glGenTextures(1, &m_handle);
   glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-  bindTexture(getMaxTexUnits() - 1);
+  bind(getMaxTexUnits() - 1);
   createStorage(dimension,
                 texFormatToGLInternalFormat(format),
                 texFormatToGLFormat(format),

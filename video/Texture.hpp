@@ -16,8 +16,17 @@
 
 namespace lumina {
 
+class TextureInterface : public GLObject {
+public:
+  virtual ~TextureInterface() = default;
+
+  // virtual void prime(int, std::function<void(HotTexture<TT>&)>) = 0;
+  virtual void bind(int texUnit) = 0;
+  virtual void unbind(int texUnit) = 0;
+};
+
 template <TexType TT>
-class Texture : public GLObject {
+class Texture : public TextureInterface {
 public:
   Texture();
   ~Texture();
@@ -28,8 +37,8 @@ public:
   GLuint nativeHandle() const;
   TexFormat getFormat() const;
 
-  void bindTexture(int texUnit);
-  void unbind(int texUnit);
+  void bind(int texUnit) final;
+  void unbind(int texUnit) final;
 
 private:
   GLuint m_handle;

@@ -1,6 +1,7 @@
 #pragma once
 
-#include "HotTexture.hpp"
+#include "Texture.hpp"
+#include "HotTextureContainer.hpp"
 #include "../util/VariadicTools.hpp"
 #include "../util/NotCloneable.hpp"
 #include <functional>
@@ -13,10 +14,13 @@ class TextureContainer : public NotCloneable {
 public:
   TextureContainer();
 
+  void addTexture(int texUnit, const TextureInterface& tex);
+  void prime(std::function<void(HotTexCont&)> func);
+
   int count() const;
 
 private:
-  std::map<int, int> m_map;
+  std::map<int, const TextureInterface*> m_texs;
 };
 
 using TexCont = TextureContainer;
