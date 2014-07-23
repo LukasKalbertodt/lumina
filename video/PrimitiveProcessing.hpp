@@ -23,8 +23,7 @@ class PrimitiveProcessing {
 public:
   PrimitiveProcessing();
 
-  void enableCulling();
-  void disableCulling();
+  void enableCulling(bool enable = true);
   void setFrontFace(FaceOrder order);
   void setCullFace(CullFace face);
 

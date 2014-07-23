@@ -5,6 +5,7 @@
 #include "RenderContext.fpp"
 #include "Shader.hpp"
 #include "PrimitiveProcessing.hpp"
+#include "PerFragmentProcessing.hpp"
 #include "../config/BaseProxy.hpp"
 
 #include <GL/glew.h>
@@ -21,7 +22,8 @@ public:
   void create(VShader& vs, FShader& fs);
   void prime(std::function<void(HotProgram&)> func);
 
-  PrimitiveProcessing primitiveProcessing;
+  PrimitiveProcessing primitiveProc;
+  PerFragmentProcessing perFragProc;
 
 protected:
   Program(Program& ref);
