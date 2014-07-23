@@ -4,6 +4,7 @@
 #include "HotProgram.fpp"
 #include "RenderContext.fpp"
 #include "Shader.hpp"
+#include "PrimitiveProcessing.hpp"
 #include "../config/BaseProxy.hpp"
 
 #include <GL/glew.h>
@@ -19,6 +20,8 @@ public:
 
   void create(VShader& vs, FShader& fs);
   void prime(std::function<void(HotProgram&)> func);
+
+  PrimitiveProcessing primitiveProcessing;
 
 protected:
   Program(Program& ref);

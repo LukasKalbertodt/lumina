@@ -50,8 +50,10 @@ void Program::prime(std::function<void(HotProgram&)> func) {
   if(m_handle == 0) {
     logThrowGL("[Program] Attempt to prime program before it was created!");
   }
+  primitiveProcessing.bindStage();
   HotProgram hot(*this);
   func(hot);
+  primitiveProcessing.unbindStage();
 }
 
 }

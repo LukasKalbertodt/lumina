@@ -36,7 +36,7 @@ void HotProgram::draw(const TexCont& texCont,
   }
   else {
     glDrawElements(primitiveType, count, GL_UNSIGNED_INT,
-                   reinterpret_cast<void*>(4 * offset));
+                   reinterpret_cast<void*>(sizeof(GLuint) * offset));
   }
   data.unbindVAO();
 }
