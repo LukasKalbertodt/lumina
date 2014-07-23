@@ -7,6 +7,7 @@ using namespace std;
 
 namespace lumina {
 
+bool Program::s_isPrimed = false;
 
 void Program::create(VShader& vs, FShader& fs) {
   auto program = glCreateProgram();
@@ -47,15 +48,36 @@ void Program::create(VShader& vs, FShader& fs) {
 }
 
 void Program::prime(std::function<void(HotProgram&)> func) {
+  // check if the program was created yet
   if(m_handle == 0) {
     logThrowGL("[Program] Attempt to prime program before it was created!");
   }
+
+  // check if another program is primed
+  if(s_isPrimed) {
+    logThrowGL("[Program] You can only prime one Program at a time!");
+  }
+  s_isPrimed = true;
+
+  // bind program and set necessary parameter
+  glUseProgram(m_handle);
   primitiveProc.bindStage();
   perFragProc.bindStage();
+
+  // create HotProgram and call function
   HotProgram hot(*this);
   func(hot);
+
+  // reset parameter and unbind program
   perFragProc.unbindStage();
   primitiveProc.unbindStage();
+  glUseProgram(0);
+
+  // reset primed flag
+  s_isPrimed = false;
+
+  // check if any OpenGL error occured
+  checkGLError("[Program] Error<", GLERR, "> while after priming Program!");
 }
 
 }

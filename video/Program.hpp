@@ -26,7 +26,7 @@ public:
   PerFragmentProcessing perFragProc;
 
 protected:
-  Program(Program& ref);
+  static bool s_isPrimed;
 
   GLuint m_handle;
 

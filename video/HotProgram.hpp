@@ -20,14 +20,8 @@ public:
             int offset = 0,
             int count = -1);
 
-  ~HotProgram();
-
 private:
   HotProgram(Program& ref);
-
-  Program& m_cold;
-
-  static bool s_isPrimed;
 
   friend Program;
 };

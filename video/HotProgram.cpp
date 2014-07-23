@@ -8,9 +8,6 @@ using namespace std;
 
 namespace lumina {
 
-bool HotProgram::s_isPrimed = false;
-
-
 void HotProgram::draw(const TexCont& texCont,
                       const VertexSeq& data,
                       PrimitiveType type,
@@ -41,7 +38,4 @@ void HotProgram::draw(const TexCont& texCont,
   data.unbindVAO();
 }
 
-
-
-
-}
+} // namespace lumina
