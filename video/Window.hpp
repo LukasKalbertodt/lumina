@@ -19,6 +19,11 @@ struct GLFWwindow;
 
 namespace lumina {
 
+enum class CursorMode : uint8_t {
+  Normal, Hidden, Free
+};
+
+
 class Window : public config::CommonBase {
 public:
   Window(std::string title = "Lumina Application",
@@ -31,6 +36,7 @@ public:
   void setTitle(std::string title);
   void setVersionHint(int major, int minor = 0);
   void setVSync(bool enable);
+  void setCursorMode(CursorMode mode);
   void resize(Vec2i size);
   Vec2i getSize();
   RenderContext& getRenderContext();
@@ -53,7 +59,8 @@ private:
   std::vector<EventCallback> m_eventCallbacks;
   float m_lastMouseX, m_lastMouseY;
   bool m_resetLastPos;
-  
+  CursorMode m_cursorMode;
+
 
   void postEvent(InputEvent e);
 

@@ -80,13 +80,23 @@ void Window::open() {
   glfwSetMouseButtonCallback(m_window, Window::mouseButtonCallback);
   glfwSetCursorPosCallback(m_window, Window::mousePosCallback);
 
-  glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
   log("[Window] Opened new GLFW window: Success! (Handle: ", m_window, ")");
 }
 
 void Window::setVSync(bool enable) {
   glfwSwapInterval(enable ? 1 : 0);
+}
+
+void Window::setCursorMode(CursorMode mode) {
+  m_cursorMode = mode;
+  int value = 0;
+  switch(mode) {
+    case CursorMode::Normal: value = GLFW_CURSOR_NORMAL; break;
+    case CursorMode::Hidden: value = GLFW_CURSOR_HIDDEN; break;
+    case CursorMode::Free: value = GLFW_CURSOR_DISABLED; break;
+  }
+  glfwSetInputMode(m_window, GLFW_CURSOR, value);
+  m_resetLastPos = true;
 }
 
 
@@ -223,20 +233,20 @@ void Window::mouseButtonCallback(GLFWwindow* win, int button, int action,
   switch(button) {
     case GLFW_MOUSE_BUTTON_LEFT:
       e.mouseInput.type = (action == GLFW_PRESS)
-                              ? MouseEventType::LButtonPressed
-                              : MouseEventType::LButtonReleased;
+                              ? MouseInputType::LButtonPressed
+                              : MouseInputType::LButtonReleased;
       break;
 
     case GLFW_MOUSE_BUTTON_MIDDLE:
       e.mouseInput.type = (action == GLFW_PRESS)
-                              ? MouseEventType::MButtonPressed
-                              : MouseEventType::MButtonReleased;
+                              ? MouseInputType::MButtonPressed
+                              : MouseInputType::MButtonReleased;
       break;
 
     case GLFW_MOUSE_BUTTON_RIGHT:
       e.mouseInput.type = (action == GLFW_PRESS)
-                              ? MouseEventType::RButtonPressed
-                              : MouseEventType::RButtonReleased;
+                              ? MouseInputType::RButtonPressed
+                              : MouseInputType::RButtonReleased;
       break;
   }
 
@@ -266,17 +276,26 @@ void Window::mousePosCallback(GLFWwindow* w, double xpos, double ypos) {
   InputEvent e;
   e.type = InputType::Mouse;
 
-  if(win->m_resetLastPos) {
-    win->m_lastMouseX = static_cast<float>(xpos);
-    win->m_lastMouseY = static_cast<float>(ypos);
-    e.mouseInput.x = 0.f;
-    e.mouseInput.y = 0.f;
+  if(win->m_cursorMode == CursorMode::Free) {
+    if(win->m_resetLastPos) {
+      win->m_lastMouseX = static_cast<float>(xpos);
+      win->m_lastMouseY = static_cast<float>(ypos);
+      e.mouseInput.x = 0.f;
+      e.mouseInput.y = 0.f;
+      win->m_resetLastPos = false;
+    }
+    else {
+      e.mouseInput.x = static_cast<float>(xpos) - win->m_lastMouseX;
+      e.mouseInput.y = static_cast<float>(ypos) - win->m_lastMouseY;
+      win->m_lastMouseX = static_cast<float>(xpos);
+      win->m_lastMouseY = static_cast<float>(ypos);
+    }
+    e.mouseInput.type = MouseInputType::MoveDirection;
   }
   else {
-    e.mouseInput.x = static_cast<float>(xpos) - win->m_lastMouseX;
-    e.mouseInput.y = static_cast<float>(ypos) - win->m_lastMouseY;
-    win->m_lastMouseX = static_cast<float>(xpos);
-    win->m_lastMouseY = static_cast<float>(ypos);
+    e.mouseInput.x = static_cast<float>(xpos);
+    e.mouseInput.y = static_cast<float>(ypos);
+    e.mouseInput.type = MouseInputType::MovePosition;
   }
 
   win->postEvent(e);  

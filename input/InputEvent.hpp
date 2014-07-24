@@ -21,15 +21,15 @@ enum class InputType {
 };
 
 // type of mouse event
-enum class MouseEventType {
+enum class MouseInputType {
   LButtonPressed, 
   MButtonPressed,
   RButtonPressed,
   LButtonReleased,
   MButtonReleased,
   RButtonReleased,
-  MouseMoveDirection,
-  MouseMovePosition
+  MoveDirection,
+  MovePosition
 };
 
 // data about mouse input event
@@ -37,7 +37,7 @@ struct MouseInput {
   float x;
   float y;
   int wheel;
-  MouseEventType type;
+  MouseInputType type;
 };
 
 // type of key event
