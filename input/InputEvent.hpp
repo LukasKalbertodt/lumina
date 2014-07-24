@@ -30,7 +30,8 @@ enum class MouseInputType : uint8_t {
   MButtonReleased,
   RButtonReleased,
   MoveDirection,
-  MovePosition
+  MovePosition,
+  Scroll
 };
 
 // data about mouse input event
@@ -40,7 +41,10 @@ struct MouseInput {
       float x;
       float y;
     }; 
-    int wheel;
+    struct {
+      float scrollX;
+      float scrollY;
+    };
   };
   MouseInputType type;
 };

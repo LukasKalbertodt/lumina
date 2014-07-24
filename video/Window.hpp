@@ -77,7 +77,8 @@ private:
                                   int button,
                                   int action,
                                   int mods);
-  static void mousePosCallback(GLFWwindow* win, double xpos, double ypos);
+  static void mousePosCallback(GLFWwindow* w, double xpos, double ypos);
+  static void mouseScrollCallback(GLFWwindow* win, double x, double y);
 };
 
 }

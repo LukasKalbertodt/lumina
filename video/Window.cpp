@@ -79,6 +79,7 @@ void Window::open() {
   glfwSetCharCallback(m_window, Window::charCallback);
   glfwSetMouseButtonCallback(m_window, Window::mouseButtonCallback);
   glfwSetCursorPosCallback(m_window, Window::mousePosCallback);
+  glfwSetScrollCallback(m_window, Window::mouseScrollCallback);
 
   log("[Window] Opened new GLFW window: Success! (Handle: ", m_window, ")");
 }
@@ -261,8 +262,6 @@ void Window::mouseButtonCallback(GLFWwindow* win, int button, int action,
 }
 
 void Window::mousePosCallback(GLFWwindow* w, double xpos, double ypos) {
-  // slog("x: ", xpos, ", \ty: ", ypos);
-
   // find the corresponding window and post event
   if(s_eventReceiver.count(w) == 0) {
     slogAndThrow<WinEx>("A mouse pos input was received on a window, which "
@@ -298,7 +297,28 @@ void Window::mousePosCallback(GLFWwindow* w, double xpos, double ypos) {
     e.mouseInput.type = MouseInputType::MovePosition;
   }
 
-  win->postEvent(e);  
+  win->postEvent(e);
 }
+
+void Window::mouseScrollCallback(GLFWwindow* w, double x, double y) {
+  // find the corresponding window and post event
+  if(s_eventReceiver.count(w) == 0) {
+    slogAndThrow<WinEx>("A mouse scroll input was received on a window, which "
+                        "has no managing Window");
+  }
+
+  // get corresponding window
+  auto* win = s_eventReceiver[w];
+
+  // prepare input struct
+  InputEvent e;
+  e.type = InputType::Mouse;
+  e.mouseInput.type = MouseInputType::Scroll;
+  e.mouseInput.scrollX = static_cast<float>(x);
+  e.mouseInput.scrollY = static_cast<float>(y);
+
+  win->postEvent(e);
+}
+
 
 }
