@@ -51,6 +51,9 @@ private:
   std::unique_ptr<RenderContext> m_renderContext;
   std::vector<InputEvent> m_eventQueue;
   std::vector<EventCallback> m_eventCallbacks;
+  float m_lastMouseX, m_lastMouseY;
+  bool m_resetLastPos;
+  
 
   void postEvent(InputEvent e);
 
@@ -67,6 +70,7 @@ private:
                                   int button,
                                   int action,
                                   int mods);
+  static void mousePosCallback(GLFWwindow* win, double xpos, double ypos);
 };
 
 }

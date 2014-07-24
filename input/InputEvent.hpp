@@ -16,8 +16,8 @@ namespace lumina {
 
 // type of input event
 enum class InputType {
-  KeyInput,
-  MouseInput
+  Key,
+  Mouse
 };
 
 // type of mouse event
@@ -34,8 +34,8 @@ enum class MouseEventType {
 
 // data about mouse input event
 struct MouseInput {
-  int x;
-  int y;
+  float x;
+  float y;
   int wheel;
   MouseEventType type;
 };

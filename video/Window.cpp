@@ -1,5 +1,7 @@
 #include "GLFWTools.hpp"
 #include "Window.hpp"
+#include "VideoException.hpp"
+#include "../service/StaticLogger.hpp"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -76,6 +78,9 @@ void Window::open() {
   glfwSetKeyCallback(m_window, Window::keyCallback);
   glfwSetCharCallback(m_window, Window::charCallback);
   glfwSetMouseButtonCallback(m_window, Window::mouseButtonCallback);
+  glfwSetCursorPosCallback(m_window, Window::mousePosCallback);
+
+  glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
   log("[Window] Opened new GLFW window: Success! (Handle: ", m_window, ")");
 }
@@ -156,19 +161,19 @@ void Window::postEvent(InputEvent e) {
 
 void Window::resizeCallback(GLFWwindow* win, int width, int height) {
   if(s_eventReceiver.count(win) != 0) {
-    // something
+    // TODO: handle resize (#38)
   }
   else {
-    throw runtime_error("A resize event was received on a window, which has no "
-      "managing Window");
+    slogAndThrow<WinEx>("A resize event was received on a window, which "
+                        "has no managing Window");
   }
 }
 
 void Window::keyCallback(GLFWwindow* win, int key, int scancode,
-                              int action, int mods) {
+                         int action, int mods) {
   // transcode input into lumina format
   InputEvent e;
-  e.type = InputType::KeyInput;
+  e.type = InputType::Key;
   e.keyInput.key = translateGLFWKey(key);
   switch(action) {
     case GLFW_PRESS:
@@ -187,8 +192,8 @@ void Window::keyCallback(GLFWwindow* win, int key, int scancode,
     s_eventReceiver[win]->postEvent(e);
   }
   else {
-    throw runtime_error("A key input was received on a window, which has no "
-      "managing Window");
+    slogAndThrow<WinEx>("A key input was received on a window, which "
+                        "has no managing Window");
   }
 }
 
@@ -196,7 +201,7 @@ void Window::keyCallback(GLFWwindow* win, int key, int scancode,
 void Window::charCallback(GLFWwindow* win, unsigned int key) {
   // transcode input into lumina format
   InputEvent e;
-  e.type = InputType::KeyInput;
+  e.type = InputType::Key;
   e.keyInput.c = static_cast<char>(key);
   e.keyInput.type = KeyEventType::Character;
 
@@ -205,8 +210,8 @@ void Window::charCallback(GLFWwindow* win, unsigned int key) {
     s_eventReceiver[win]->postEvent(e);
   }
   else {
-    throw runtime_error("A char input was received on a window, which has no "
-      "managing Window");
+    slogAndThrow<WinEx>("A char input was received on a window, which "
+                        "has no managing Window");
   }
 }
 
@@ -214,7 +219,7 @@ void Window::mouseButtonCallback(GLFWwindow* win, int button, int action,
                                       int mods) {
   // transcode input into lumina format
   InputEvent e;
-  e.type = InputType::MouseInput;
+  e.type = InputType::Mouse;
   switch(button) {
     case GLFW_MOUSE_BUTTON_LEFT:
       e.mouseInput.type = (action == GLFW_PRESS)
@@ -240,9 +245,41 @@ void Window::mouseButtonCallback(GLFWwindow* win, int button, int action,
     s_eventReceiver[win]->postEvent(e);
   }
   else {
-    throw runtime_error("A char input was received on a window, which has no "
-      "managing Window");
+    slogAndThrow<WinEx>("A mouse button input was received on a window, which "
+                        "has no managing Window");
   }
+}
+
+void Window::mousePosCallback(GLFWwindow* w, double xpos, double ypos) {
+  // slog("x: ", xpos, ", \ty: ", ypos);
+
+  // find the corresponding window and post event
+  if(s_eventReceiver.count(w) == 0) {
+    slogAndThrow<WinEx>("A mouse pos input was received on a window, which "
+                        "has no managing Window");
+  }
+
+  // get corresponding window
+  auto* win = s_eventReceiver[w];
+
+  // prepare input struct
+  InputEvent e;
+  e.type = InputType::Mouse;
+
+  if(win->m_resetLastPos) {
+    win->m_lastMouseX = static_cast<float>(xpos);
+    win->m_lastMouseY = static_cast<float>(ypos);
+    e.mouseInput.x = 0.f;
+    e.mouseInput.y = 0.f;
+  }
+  else {
+    e.mouseInput.x = static_cast<float>(xpos) - win->m_lastMouseX;
+    e.mouseInput.y = static_cast<float>(ypos) - win->m_lastMouseY;
+    win->m_lastMouseX = static_cast<float>(xpos);
+    win->m_lastMouseY = static_cast<float>(ypos);
+  }
+
+  win->postEvent(e);  
 }
 
 }

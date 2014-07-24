@@ -1,7 +1,13 @@
 namespace lumina {
 
 inline Window::Window(std::string title, Vec2i size)
-  : m_window(nullptr), m_size(size), m_version(1, 1), m_title(title) {}
+  : m_window(nullptr),
+    m_size(size),
+    m_version(1, 1),
+    m_title(title),
+    m_lastMouseX(0.f),
+    m_lastMouseY(0.f),
+    m_resetLastPos(true) {}
 
 
 inline void Window::setVersionHint(int major, int minor) {
