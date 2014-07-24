@@ -10,18 +10,19 @@
  */
 #include "KeyCode.hpp"
 
+#include <cstdint>
 #include <cstring>
 
 namespace lumina {
 
 // type of input event
-enum class InputType {
+enum class InputType : uint8_t {
   Key,
   Mouse
 };
 
 // type of mouse event
-enum class MouseInputType {
+enum class MouseInputType : uint8_t {
   LButtonPressed, 
   MButtonPressed,
   RButtonPressed,
@@ -34,14 +35,18 @@ enum class MouseInputType {
 
 // data about mouse input event
 struct MouseInput {
-  float x;
-  float y;
-  int wheel;
+  union {
+    struct { 
+      float x;
+      float y;
+    }; 
+    int wheel;
+  };
   MouseInputType type;
 };
 
 // type of key event
-enum KeyEventType {
+enum KeyEventType : uint8_t {
   KeyReleased,
   KeyPressed,
   KeyHold,

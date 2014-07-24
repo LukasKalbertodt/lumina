@@ -30,7 +30,7 @@ public:
          Vec2i size = Vec2i(600, 400));
   ~Window();
 
-  using EventCallback = std::function<EventResult(const InputEvent&)>;
+  using EventCallback = std::function<EventResult(InputEvent)>;
   using CallbackAccessor = std::vector<EventCallback>::size_type;
 
   void setTitle(std::string title);
