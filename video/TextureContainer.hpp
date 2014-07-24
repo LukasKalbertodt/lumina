@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Texture.hpp"
+#include "TextureContainer.fpp"
 #include "HotTextureContainer.hpp"
 #include "GLObject.hpp"
 #include "../util/VariadicTools.hpp"

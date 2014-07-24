@@ -1,6 +1,7 @@
 #pragma once
 
 #include "HotTexture.hpp"
+#include "TextureContainer.fpp"
 #include "../util/VariadicTools.hpp"
 #include "../util/NotCloneable.hpp"
 #include <type_traits>
@@ -15,6 +16,10 @@ public:
 
 private:
   int m_count;
+
+  HotTextureContainer(int count);
+
+  friend TextureContainer;
 };
 
 using HotTexCont = HotTextureContainer;

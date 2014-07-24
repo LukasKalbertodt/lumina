@@ -17,6 +17,8 @@ void TextureContainer::prime(std::function<void(HotTexCont&)> func) {
   }
 
   // create HotTexCont and call function
+  HotTexCont hot(m_texs.size());
+  func(hot);
 
   // iterate through all {texUnit, tex} pairs and do cleanup/unprime
   for(auto p : m_texs) {
