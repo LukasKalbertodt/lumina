@@ -23,7 +23,8 @@ struct TexParam {
   TexParam()
     : wrapMode(TexWrapMode::Repeat),
       filterMode(TexFilterMode::Nearest),
-      anisotropyLevel(0) {}
+      anisotropyLevel(0),
+      useMipMaps(false) {}
 };
 
 

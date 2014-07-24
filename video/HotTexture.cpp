@@ -11,7 +11,7 @@ void HotTexture<TT>::fill(void* data) {
   fillSubData(texFormatToGLFormat(m_tex.m_format),
               texFormatToGLType(m_tex.m_format),
               data);
-  m_genMipMaps = true;
+  // m_genMipMaps = true;
 
   checkGLError("[HotTexture] Error<", GLERR, "> while filling data!");
 }
@@ -40,7 +40,6 @@ void HotTexture<TexType::Cube>::fillSubData(GLenum format,
                                              void* data) {
   // TODO 
 }
-
 
 
 

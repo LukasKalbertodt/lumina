@@ -46,8 +46,8 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
                 texFormatToGLType(format),
                 data);
 
-  // apply texture parameter
-  applyParams();
+  // apply texture parameter (write strange shit into params to force update)
+  applyParams(true);
 
   // unbind texture: don't leak state
   unbind(getMaxTexUnits() - 1);
@@ -85,39 +85,17 @@ void Texture<TexType::Cube>::createStorage(Vec2i dim,
 }
 
 template <TexType TT>
-void Texture<TT>::applyParams() {
-  // check parameter for mistakes
-  if((m_params.filterMode == TexFilterMode::Trilinear
-      || m_params.filterMode == TexFilterMode::Bilinear)
-     && m_params.useMipMaps == false) {
+void Texture<TT>::applyFilterMode() {
+  // check for mistakes in parameters 
+  if((params.filterMode == TexFilterMode::Trilinear
+      || params.filterMode == TexFilterMode::Bilinear)
+     && params.useMipMaps == false) {
     logWarning(
       "[Texture] Filtermode was set to bi/trilinear but mipmaps are disabled!");
   }
 
-  // apply wrap mode
-  GLint wrapMode;
-  switch(m_params.wrapMode) {
-    case TexWrapMode::Clamp:
-      wrapMode = GL_CLAMP_TO_EDGE;
-      break;
-    case TexWrapMode::Repeat:
-      wrapMode = GL_REPEAT;
-      break;
-    case TexWrapMode::MirrorRepeat:
-      wrapMode = GL_MIRRORED_REPEAT;
-      break;
-    default:
-      logError("[Texture] Invalid wrapMode<",
-               static_cast<int>(m_params.wrapMode),
-               ">!");
-      throw CriticalEx("[Texture] Invalid wrapMode");
-  }
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
-
-
   // apply filter mode
-  switch(m_params.filterMode) {
+  switch(params.filterMode) {
     case TexFilterMode::Nearest:
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -139,13 +117,71 @@ void Texture<TT>::applyParams() {
                       GL_LINEAR_MIPMAP_LINEAR);
       break;
   }
-
-  // TODO: apply anisotropic filtering
 }
 
 template <TexType TT>
-void Texture<TT>::prime(int texUnit,
-                        std::function<void(HotTexture<TT>&)> func) {
+void Texture<TT>::applyWrapMode() {
+  // apply wrap mode
+  GLint wrapMode;
+  switch(params.wrapMode) {
+    case TexWrapMode::Clamp:
+      wrapMode = GL_CLAMP_TO_EDGE;
+      break;
+    case TexWrapMode::Repeat:
+      wrapMode = GL_REPEAT;
+      break;
+    case TexWrapMode::MirrorRepeat:
+      wrapMode = GL_MIRRORED_REPEAT;
+      break;
+  }
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
+}
+
+template <TexType TT>
+void Texture<TT>::applyMipMaps() {
+  if(params.useMipMaps) {
+    // OpenGL allocates texture memory for mipmaps and generates them
+    glGenerateMipmap(glType());
+
+    // check if any error occured
+    checkGLError("[Texture] Error<", GLERR, "> while generating mip maps!");
+  }
+  else {
+    // TODO: Delete mip maps (#36)
+  }
+}
+
+
+template <TexType TT>
+void Texture<TT>::applyParams(bool force) {
+  // check if mip map settings have changed
+  if(force || m_activeParams.useMipMaps != params.useMipMaps) {
+    applyMipMaps();
+    m_activeParams.useMipMaps = params.useMipMaps;
+    logDebug("[Texture] MipMaps for texture <", m_handle, 
+             "> have been updated!");
+  }
+
+  // check if texture filter mode has changed
+  if(force || m_activeParams.filterMode != params.filterMode) {
+    applyFilterMode();
+    m_activeParams.filterMode = params.filterMode;
+    logDebug("[Texture] Filter mode for texture <", m_handle, "> was updated!");
+  }
+
+  // check if texture wrap mode has changed
+  if(force || m_activeParams.wrapMode != params.wrapMode) {
+    applyWrapMode();
+    m_activeParams.wrapMode = params.wrapMode;
+    logDebug("[Texture] Wrap mode for texture <", m_handle, "> was updated!");
+  }
+
+  // TODO: apply anisotropic filtering (#37)
+}
+
+template<TexType TT>
+void Texture<TT>::prePrime(int texUnit) {
   // check if this texture unit is free
   if(config::debugTexturePrimeChecks) {
     if(TextureUnits::isPrimed(texUnit)) {
@@ -153,28 +189,39 @@ void Texture<TT>::prime(int texUnit,
                  "on this texture unit <", texUnit, ">!");
     }
   }
-  bool usedMipMapsBefore = m_params.useMipMaps;
 
-  // create HotTexture and check for errors
+  // bind the texture to the given texture unit
+  bind(texUnit);
+
+  // update parameters
+  applyParams();
+
+  // check if any OpenGL error occured
+  checkGLError("[Texture] OpenGL error<", GLERR, "> occured while prePrime!");
+}
+
+template<TexType TT>
+void Texture<TT>::postPrime(int texUnit) {
+  // unbind texture from texture unit
+  unbind(texUnit);
+
+  // check if any OpenGL error occured
+  checkGLError("[Texture] OpenGL error<", GLERR, "> occured while postPrime!");
+}
+
+
+template <TexType TT>
+void Texture<TT>::prime(int texUnit,
+                        std::function<void(HotTexture<TT>&)> func) {
+  // prepare and bind the texture
+  prePrime(texUnit);
+  
+  // create HotTexture and call function
   HotTexture<TT> hot(*this, texUnit);
-  checkGLError("[Texture] Error<", GLERR, "> while creating HotTexture!");
-
-  // call given function
   func(hot);
 
-  // commit changes
-  if((m_params.useMipMaps && !usedMipMapsBefore) || hot.m_genMipMaps) {
-    // generate mip maps 
-    glGenerateMipmap(glType());
-
-    checkGLError("[Texture] Error<", GLERR, "> while generating mip maps!");
-  }
-
-  if(!m_params.useMipMaps && usedMipMapsBefore) {
-    // TODO: clean up mip maps
-  }
-
-  applyParams();
+  // cleanup
+  postPrime(texUnit);
 }
 
 

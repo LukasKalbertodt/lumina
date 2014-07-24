@@ -18,6 +18,11 @@ namespace config {
   // can optimize the calls away)
   constexpr bool ignoreDebugLogs = false;
 
+  // print debug logs for events that happen every frame?
+  constexpr bool logDebugEveryFrame = false;
+
+
+
   // should runtime bound checks be performed?
   constexpr bool debugBoundChecks = true;
 

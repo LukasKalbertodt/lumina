@@ -2,6 +2,7 @@
 
 #include "Texture.hpp"
 #include "HotTextureContainer.hpp"
+#include "GLObject.hpp"
 #include "../util/VariadicTools.hpp"
 #include "../util/NotCloneable.hpp"
 #include <functional>
@@ -10,17 +11,17 @@
 
 namespace lumina {
 
-class TextureContainer : public NotCloneable {
+class TextureContainer : public GLObject {
 public:
   TextureContainer();
 
-  void addTexture(int texUnit, const TextureInterface& tex);
+  void addTexture(int texUnit, TextureInterface& tex);
   void prime(std::function<void(HotTexCont&)> func);
 
   int count() const;
 
 private:
-  std::map<int, const TextureInterface*> m_texs;
+  std::map<int, TextureInterface*> m_texs;
 };
 
 using TexCont = TextureContainer;

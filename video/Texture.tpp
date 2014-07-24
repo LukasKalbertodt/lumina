@@ -35,7 +35,11 @@ template <> inline GLenum Texture<TexType::Cube>::glType() const {
 
 template <TexType TT> 
 void Texture<TT>::bind(int texUnit) {
-  logDebug("[Texture] Binding handle <", m_handle, "> to unit <", texUnit, ">");
+  if(config::logDebugEveryFrame) {
+    logDebug("[Texture] Binding handle <", m_handle, "> to unit <", 
+             texUnit, ">");
+  }
+
   glActiveTexture(GL_TEXTURE0 + texUnit);
   glBindTexture(glType(), m_handle);
   TextureUnits::setPrimed(texUnit);
@@ -51,8 +55,11 @@ void Texture<TT>::unbind(int texUnit) {
     }
   }
 
-  logDebug("[Texture] Unbinding from unit <", texUnit, "> (my handle: <",
-           m_handle, ">)");
+  if(config::logDebugEveryFrame) {
+    logDebug("[Texture] Unbinding from unit <", texUnit, "> (my handle: <",
+             m_handle, ">)");
+  }
+  
   glActiveTexture(GL_TEXTURE0 + texUnit);
   glBindTexture(glType(), 0);
   TextureUnits::unsetPrimed(texUnit);
