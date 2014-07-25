@@ -44,6 +44,10 @@ void UserFrameBuffer::updateState() {
   if(m_depthAtt != 0) {
     glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, m_depthAtt, 0);
   }
+  else if(m_depthStencilAtt != 0) {
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, 
+                         m_depthStencilAtt, 0);
+  }
 
   // specify which attachment points to use
   glDrawBuffers(m_colorAtts.size(), drawBuffers.data());
@@ -160,9 +164,35 @@ void UserFrameBuffer::attachDepth(const Tex2D& tex) {
                               "point!");
   }
 
+  if(m_depthStencilAtt != 0) {
+    logAndThrow<LogicEx>("[FrameBuffer] Trying to attach a depth image, but "
+                         "a depth-stencil image is already attached!");
+  }
+
   // assign values if the values are distinct
   if(m_depthAtt != tex.nativeHandle()) {
     m_depthAtt = tex.nativeHandle();
+    m_needsUpdate = true;
+  }
+}
+
+void UserFrameBuffer::attachDepthStencil(const Tex2D& tex) {
+  // check texture format
+  auto f = tex.getFormat();
+  if(f != TexFormat::D24S8) {
+    logAndThrow<InvalidArgEx>("[FrameBuffer] You cannot attach a texture "
+                              "without a depth-stencil format to a " 
+                              "depth-stencil attachment point!");
+  }
+
+  if(m_depthAtt != 0) {
+    logAndThrow<LogicEx>("[FrameBuffer] Trying to attach a depth-stencil image"
+                         ", but a depth image is already attached!");
+  }
+
+  // assign values if the values are distinct
+  if(m_depthStencilAtt != tex.nativeHandle()) {
+    m_depthStencilAtt = tex.nativeHandle();
     m_needsUpdate = true;
   }
 }
@@ -204,6 +234,11 @@ void UserFrameBuffer::clearDepth(float val) {
   checkGLError("[FrameBuffer] Error while clearing depth attachment!");
 }
 
+void UserFrameBuffer::clearDepthStencil(float depth, int stencil) {
+  glClearBufferfi(GL_DEPTH_STENCIL, 0, depth, stencil);
+
+  checkGLError("[FrameBuffer] Error while clearing depth-stencil attachment!");
+}
 
 
 
@@ -267,6 +302,12 @@ void DefaultFrameBuffer::attachDepth(const Tex2D& tex) {
     "[FrameBuffer] You can not attach an image to the default framebuffer!");
 }
 
+void DefaultFrameBuffer::attachDepthStencil(const Tex2D& tex) {
+  // warn the user that this operation does not make sense
+  logWarning(
+    "[FrameBuffer] You can not attach an image to the default framebuffer!");
+}
+
 int DefaultFrameBuffer::countAttachments() {
   return 4;
 }
@@ -289,6 +330,12 @@ void DefaultFrameBuffer::clearDepth(float val) {
   glClearBufferfv(GL_DEPTH, 0, &val);
 
   checkGLError("[FrameBuffer] Error while clearing depth attachment!");
+}
+
+void DefaultFrameBuffer::clearDepthStencil(float depth, int stencil) {
+  glClearBufferfi(GL_DEPTH_STENCIL, 0, depth, stencil);
+
+  checkGLError("[FrameBuffer] Error while clearing depth-stencil attachment!");
 }
 
 } // namespace internal

@@ -23,6 +23,7 @@ public:
 
   void clearColor(int index, Color32fA color);
   void clearDepth(float val);
+  void clearDepthStencil(float depth, int stencil);
   // internal::HotColorAttSet colors;
 
 private:

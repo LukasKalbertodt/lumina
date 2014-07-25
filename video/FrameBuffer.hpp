@@ -28,11 +28,14 @@ public:
   virtual void prime(std::shared_ptr<FrameBufferInterface> fb,
                      std::function<void(HotFrameBuffer&)> func) = 0;
   virtual void attachColor(int index, const Tex2D& tex) = 0;
-  virtual int countAttachments() = 0;
   virtual void attachDepth(const Tex2D& tex) = 0;
+  virtual void attachDepthStencil(const Tex2D& tex) = 0;
+
+  virtual int countAttachments() = 0;
 
   virtual void clearColor(int index, Color32fA color) = 0;
   virtual void clearDepth(float val) = 0;
+  virtual void clearDepthStencil(float depth, int stencil) = 0;
 
 
 protected:
@@ -51,16 +54,20 @@ public:
   void prime(std::shared_ptr<FrameBufferInterface> fb,
              std::function<void(HotFrameBuffer&)> func) override final;
   void attachColor(int index, const Tex2D& tex) override final;
-  int countAttachments() override final;
   void attachDepth(const Tex2D& tex) final;
+  void attachDepthStencil(const Tex2D& tex) final;
+
+  int countAttachments() override final;
 
   void clearColor(int index, Color32fA color);
   void clearDepth(float val);
+  void clearDepthStencil(float depth, int stencil);
 
 private:
   GLuint m_handle;
   std::vector<internal::ColorAttPoint> m_colorAtts;
   GLuint m_depthAtt;
+  GLuint m_depthStencilAtt;
   bool m_needsUpdate;
 
   void updateState();
@@ -75,11 +82,14 @@ public:
   void prime(std::shared_ptr<FrameBufferInterface> fb,
              std::function<void(HotFrameBuffer&)> func) override final;
   void attachColor(int index, const Tex2D& tex) override final;
-  int countAttachments() override final;
   void attachDepth(const Tex2D& tex) final;
+  void attachDepthStencil(const Tex2D& tex) final;
   
+  int countAttachments() override final;
+
   void clearColor(int index, Color32fA color);
   void clearDepth(float val);
+  void clearDepthStencil(float depth, int stencil);
 };
 
 } // namespace internal
@@ -98,8 +108,10 @@ public:
   void create();
   void prime(std::function<void(HotFrameBuffer&)> func);
   void attachColor(int index, const Tex2D& tex);
-  int countAttachments();
   void attachDepth(const Tex2D& tex);
+  void attachDepthStencil(const Tex2D& tex);
+
+  int countAttachments();
 
 private:
   std::shared_ptr<internal::FrameBufferInterface> m_fb;

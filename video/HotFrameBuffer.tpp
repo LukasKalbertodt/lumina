@@ -13,5 +13,9 @@ inline void HotFrameBuffer::clearDepth(float val) {
   m_cold->clearDepth(val);
 }
 
+inline void HotFrameBuffer::clearDepthStencil(float depth, int stencil) {
+  m_cold->clearDepthStencil(depth, stencil);
+}
+
 
 }
