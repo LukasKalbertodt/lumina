@@ -14,15 +14,27 @@ inline void Window::setVersionHint(int major, int minor) {
   m_version = std::pair<std::int16_t, std::int16_t>(major, minor);
 }
 
-inline Window::CallbackAccessor Window::addEventCallback(
+inline Window::EventCallbackIndex Window::addEventCallback(
   EventCallback&& callback) {
   m_eventCallbacks.push_back(std::forward<EventCallback>(callback));
   return m_eventCallbacks.size() - 1;
 }
 
-inline void Window::removeEventCallback(Window::CallbackAccessor accessor) {
-  m_eventCallbacks[accessor] = EventCallback();
+inline void Window::removeEventCallback(Window::EventCallbackIndex index) {
+  m_eventCallbacks[index] = EventCallback();
 }
+
+
+inline Window::WindowCallbackIndex Window::addWindowCallback(
+  WindowCallback&& callback) {
+  m_windowCallbacks.push_back(std::forward<WindowCallback>(callback));
+  return m_windowCallbacks.size() - 1;
+}
+
+inline void Window::removeWindowCallback(WindowCallbackIndex index) {
+  m_windowCallbacks[index] = WindowCallback();
+}
+
 
 
 } // namespace lumina

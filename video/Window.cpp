@@ -81,6 +81,8 @@ void Window::open() {
   glfwSetCursorPosCallback(m_window, Window::mousePosCallback);
   glfwSetScrollCallback(m_window, Window::mouseScrollCallback);
 
+  glfwSetWindowCloseCallback(m_window, Window::windowCloseCallback);
+
   log("[Window] Opened new GLFW window: Success! (Handle: ", m_window, ")");
 }
 
@@ -141,8 +143,17 @@ Vec2i Window::getSize() {
 
 void Window::update() {
   pollEvents();
+
+  static bool firstCall = true;
   if(m_window && glfwWindowShouldClose(m_window)) {
-    close();
+    if(firstCall) {
+      firstCall = false;
+    }
+    else {
+      logWarning("[Window] You should stop your application when "
+                 "Window::isValid() returns false! Now closing window...");
+      close();
+    }
   }
 }
 
@@ -159,7 +170,19 @@ void Window::pollEvents() {
       }
     }
   }
+
   m_eventQueue.clear();
+
+  // window events
+  for(auto& e : m_windowEventQueue) {
+    for(auto& callback : m_windowCallbacks) {
+      if(callback) {
+        callback(e);
+      }
+    }
+  }
+  
+  m_windowEventQueue.clear();
 }
 
 bool Window::isValid() {
@@ -169,6 +192,11 @@ bool Window::isValid() {
 void Window::postEvent(InputEvent e) {
   m_eventQueue.push_back(e);
 }
+
+void Window::postWindowEvent(WindowEvent e) {
+  m_windowEventQueue.push_back(e);
+}
+
 
 void Window::resizeCallback(GLFWwindow* win, int width, int height) {
   if(s_eventReceiver.count(win) != 0) {
@@ -318,6 +346,18 @@ void Window::mouseScrollCallback(GLFWwindow* w, double x, double y) {
   e.mouseInput.scrollY = static_cast<float>(y);
 
   win->postEvent(e);
+}
+
+void Window::windowCloseCallback(GLFWwindow* w) {
+  if(s_eventReceiver.count(w) == 0) {
+    slogAndThrow<WinEx>("A close event was received on a window, which "
+                        "has no managing Window");
+  }
+
+  WindowEvent e;
+  e.type = WindowEventType::Close;
+
+  s_eventReceiver[w]->postWindowEvent(e);
 }
 
 
