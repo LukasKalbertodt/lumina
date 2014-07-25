@@ -39,7 +39,7 @@ void Window::open() {
   }
 
   // set window hints
-  if(m_version.first != 0 && m_version.second != 0) {
+  if(m_version.first != 0) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, m_version.first);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, m_version.second);
   }
