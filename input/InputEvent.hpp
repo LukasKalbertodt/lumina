@@ -61,7 +61,7 @@ enum KeyInputType : uint8_t {
 struct KeyInput {
   KeyCode key;
   unsigned char c;
-  KeyEventType type;
+  KeyInputType type;
 };
 
 // input event 

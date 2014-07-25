@@ -218,13 +218,13 @@ void Window::keyCallback(GLFWwindow* win, int key, int scancode,
   e.keyInput.key = translateGLFWKey(key);
   switch(action) {
     case GLFW_PRESS:
-      e.keyInput.type = KeyEventType::KeyPressed;
+      e.keyInput.type = KeyInputType::Pressed;
       break;
     case GLFW_RELEASE:
-      e.keyInput.type = KeyEventType::KeyReleased;
+      e.keyInput.type = KeyInputType::Released;
       break;
     case GLFW_REPEAT:
-      e.keyInput.type = KeyEventType::KeyHold;
+      e.keyInput.type = KeyInputType::Hold;
       break;
   }
 
@@ -244,7 +244,7 @@ void Window::charCallback(GLFWwindow* win, unsigned int key) {
   InputEvent e;
   e.type = InputType::Key;
   e.keyInput.c = static_cast<char>(key);
-  e.keyInput.type = KeyEventType::Character;
+  e.keyInput.type = KeyInputType::Char;
 
   // find the corresponding window and post event
   if(s_eventReceiver.count(win) != 0) {
