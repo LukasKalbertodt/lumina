@@ -50,11 +50,11 @@ struct MouseInput {
 };
 
 // type of key event
-enum KeyEventType : uint8_t {
-  KeyReleased,
-  KeyPressed,
-  KeyHold,
-  Character
+enum KeyInputType : uint8_t {
+  Released,
+  Pressed,
+  Hold,
+  Char
 };
 
 // data about key input event
