@@ -3,7 +3,7 @@ namespace lumina {
 inline Window::Window(std::string title, Vec2i size)
   : m_window(nullptr),
     m_size(size),
-    m_version(1, 1),
+    m_version(0, 0),
     m_title(title),
     m_lastMouseX(0.f),
     m_lastMouseY(0.f),

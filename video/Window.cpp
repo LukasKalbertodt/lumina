@@ -39,8 +39,10 @@ void Window::open() {
   }
 
   // set window hints
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, m_version.first);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, m_version.second);
+  if(m_version.first != 0 && m_version.second != 0) {
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, m_version.first);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, m_version.second);
+  }
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
