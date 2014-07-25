@@ -19,9 +19,16 @@ struct VPoint {
   Vec2f texUV;
 };
 
-inline template <> Vec3f VPoint::get<VChan::Position>() const { return position; }
-inline template <> Vec3f VPoint::get<VChan::Normal>() const { return normal; }
-inline template <> Vec2f VPoint::get<VChan::TexUV>() const { return texUV; }
+template <> inline Vec3f VPoint::get<VChan::Position>() const {
+  return position;
+}
+template <> inline Vec3f VPoint::get<VChan::Normal>() const { 
+  return normal; 
+}
+template <> inline Vec2f VPoint::get<VChan::TexUV>() const { 
+  return texUV; 
+}
+
 
 
 template <VChan... Cs, typename T>
