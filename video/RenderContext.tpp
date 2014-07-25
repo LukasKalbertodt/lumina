@@ -2,7 +2,8 @@ namespace lumina {
 
 inline RenderContext::RenderContext(GLFWwindow* window)
   : m_windowHandle(window),
-    m_defaultFB(std::make_shared<internal::DefaultFrameBuffer>()) {}
+    m_defaultFB(std::make_shared<internal::DefaultFrameBuffer>()),
+    m_wasCreated(false) {}
 
 inline HotRenderContext& RenderContext::getCurrentContext() {
   if(!s_primedContext) {

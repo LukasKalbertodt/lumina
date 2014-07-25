@@ -30,6 +30,7 @@ public:
 private:
   GLFWwindow* m_windowHandle;
   FrameBuffer m_defaultFB;
+  bool m_wasCreated;
 
   static HotRenderContext* s_primedContext;
   static bool s_creationLock;

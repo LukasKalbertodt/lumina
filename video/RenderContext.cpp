@@ -23,6 +23,7 @@ void RenderContext::create() {
   makeCurrent();
 
   // glewExperimental to use context versions above 3.2
+  // TODO: call glewInit just once (???)
   glewExperimental = GL_TRUE;
   GLenum status = glewInit();
 
@@ -41,6 +42,7 @@ void RenderContext::create() {
   // reset state
   resetCurrent();
   s_creationLock = false;
+  m_wasCreated = true;
 }
 
 void RenderContext::makeCurrent() {
@@ -60,6 +62,10 @@ void RenderContext::prime(std::function<void(HotRenderContext&)> func) {
   if(s_creationLock) {
     logThrowGL("[RenderContext] You cannot prime a RenderContext while another "
                "is being create!");
+  }
+  if(!m_wasCreated) {
+    logThrowGL("[RenderContext] You cannot prime a RenderContext that was not "
+               "created yet!");
   }
 
   // make context current and create HotContext
