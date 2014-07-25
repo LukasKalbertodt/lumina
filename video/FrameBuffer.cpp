@@ -29,14 +29,20 @@ void UserFrameBuffer::updateState() {
   std::vector<GLenum> drawBuffers(m_colorAtts.size(), GL_NONE);
 
   // check each attachment and attach it if its non-zero
+  int countColor = 0;
   for(int i = 0; i < m_colorAtts.size(); ++i) {
     auto& tex = m_colorAtts[i];
     if(tex.handle != 0) {
+      countColor++;
       glFramebufferTexture(GL_FRAMEBUFFER,
                            GL_COLOR_ATTACHMENT0 + i,
                            tex.handle, 0);
       drawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
     }
+  }
+
+  if(m_depthAtt != 0) {
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, m_depthAtt, 0);
   }
 
   // specify which attachment points to use
@@ -45,7 +51,10 @@ void UserFrameBuffer::updateState() {
   // check for errors
   checkGLError("[FrameBuffer] Error<", GLERR, "> while updating state!");
 
-  // reset flag
+  // reset flag and log
+  logDebug("[FrameBuffer] Updated framebuffer<", m_handle, "> state with <", 
+           countColor, "> color attachments",
+           (m_depthAtt != 0) ? " and a custom depth attachment" : "");
   m_needsUpdate = false;
 }
 
@@ -142,6 +151,22 @@ void UserFrameBuffer::attachColor(int index, const Tex2D& tex) {
   }
 }
 
+void UserFrameBuffer::attachDepth(const Tex2D& tex) {
+  // check texture format
+  auto f = tex.getFormat();
+  if(f != TexFormat::D16 && f != TexFormat::D32) {
+    logAndThrow<InvalidArgEx>("[FrameBuffer] You cannot attach a texture "
+                              "without a depth format to a depth attachment "
+                              "point!");
+  }
+
+  // assign values if the values are distinct
+  if(m_depthAtt != tex.nativeHandle()) {
+    m_depthAtt = tex.nativeHandle();
+    m_needsUpdate = true;
+  }
+}
+
 int UserFrameBuffer::countAttachments() {
   int count = 0;
   for(auto& point : m_colorAtts) {
@@ -158,13 +183,13 @@ void UserFrameBuffer::clearColor(int index, Color32fA color) {
                               "to clear is higher than the number of "
                               "attachements<", m_colorAtts.size(), ">!");
   }
-  auto& point = m_colorAtts[index];
-  auto f = point.format;
-  if(!(f == TexFormat::R8 || f == TexFormat::RGB8 || f == TexFormat::RGBA8)) {
-    logAndThrow<InvalidArgEx>("[HotFrameBuffer] You can not clear a "
-                              "floating point texture with a integer color "
-                              "format!");
-  }
+  // auto& point = m_colorAtts[index];
+  // auto f = point.format;
+  // if(!(f == TexFormat::R8 || f == TexFormat::RGB8 || f == TexFormat::RGBA8)) {
+  //   logAndThrow<InvalidArgEx>("[HotFrameBuffer] You can not clear a "
+  //                             "floating point texture with a integer color "
+  //                             "format!");
+  // }
 
   GLfloat d[4] = {color.r, color.g, color.b, color.a};
   glClearBufferfv(GL_COLOR, index, d);
@@ -172,6 +197,12 @@ void UserFrameBuffer::clearColor(int index, Color32fA color) {
   checkGLError("[FrameBuffer] Error while clearing attachment<", index, ">!");
 }
 
+
+void UserFrameBuffer::clearDepth(float val) {
+  glClearBufferfv(GL_DEPTH, 0, &val);
+
+  checkGLError("[FrameBuffer] Error while clearing depth attachment!");
+}
 
 
 
@@ -230,6 +261,12 @@ void DefaultFrameBuffer::attachColor(int index, const Tex2D& tex) {
     "[FrameBuffer] You can not attach an image to the default framebuffer!");
 }
 
+void DefaultFrameBuffer::attachDepth(const Tex2D& tex) {
+  // warn the user that this operation does not make sense
+  logWarning(
+    "[FrameBuffer] You can not attach an image to the default framebuffer!");
+}
+
 int DefaultFrameBuffer::countAttachments() {
   return 4;
 }
@@ -246,6 +283,12 @@ void DefaultFrameBuffer::clearColor(int index, Color32fA color) {
   glClearBufferfv(GL_COLOR, 0, d);
 
   checkGLError("[FrameBuffer] Error while clearing attachment<", index, ">!");
+}
+
+void DefaultFrameBuffer::clearDepth(float val) {
+  glClearBufferfv(GL_DEPTH, 0, &val);
+
+  checkGLError("[FrameBuffer] Error while clearing depth attachment!");
 }
 
 } // namespace internal

@@ -3,7 +3,7 @@ namespace lumina {
 namespace internal {
 
 inline UserFrameBuffer::UserFrameBuffer()
-  : m_handle(0), m_needsUpdate(true) {}
+  : m_handle(0), m_depthAtt(0), m_needsUpdate(true) {}
 
 inline UserFrameBuffer::UserFrameBuffer(UserFrameBuffer&& o)
   : m_handle(o.m_handle), m_needsUpdate(o.m_needsUpdate) {
@@ -53,7 +53,9 @@ inline void FrameBuffer::prime(std::function<void(HotFrameBuffer&)> func) {
 inline void FrameBuffer::attachColor(int index, const Tex2D& tex) {
   m_fb->attachColor(index, tex);
 }
-
+inline void FrameBuffer::attachDepth(const Tex2D& tex) {
+  m_fb->attachDepth(tex);
+}
 
 
 }

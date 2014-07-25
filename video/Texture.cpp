@@ -49,10 +49,10 @@ void Texture<TT>::create(Vec2i dimension, TexFormat format, void *data) {
   // apply texture parameter (write strange shit into params to force update)
   applyParams(true);
 
+  checkGLError("[Texture] Error<", GLERR, "> while creating texture!");
+
   // unbind texture: don't leak state
   unbind(getMaxTexUnits() - 1);
-  
-  checkGLError("[Texture] Error<", GLERR, "> while creating texture!");
 }
 
 

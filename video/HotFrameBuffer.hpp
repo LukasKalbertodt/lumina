@@ -22,6 +22,7 @@ public:
   HotFrameBuffer(std::shared_ptr<internal::FrameBufferInterface> cold);
 
   void clearColor(int index, Color32fA color);
+  void clearDepth(float val);
   // internal::HotColorAttSet colors;
 
 private:

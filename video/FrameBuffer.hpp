@@ -29,8 +29,11 @@ public:
                      std::function<void(HotFrameBuffer&)> func) = 0;
   virtual void attachColor(int index, const Tex2D& tex) = 0;
   virtual int countAttachments() = 0;
+  virtual void attachDepth(const Tex2D& tex) = 0;
 
   virtual void clearColor(int index, Color32fA color) = 0;
+  virtual void clearDepth(float val) = 0;
+
 
 protected:
   // true if a user defined framebuffer is primed
@@ -49,12 +52,15 @@ public:
              std::function<void(HotFrameBuffer&)> func) override final;
   void attachColor(int index, const Tex2D& tex) override final;
   int countAttachments() override final;
+  void attachDepth(const Tex2D& tex) final;
 
   void clearColor(int index, Color32fA color);
+  void clearDepth(float val);
 
 private:
   GLuint m_handle;
   std::vector<internal::ColorAttPoint> m_colorAtts;
+  GLuint m_depthAtt;
   bool m_needsUpdate;
 
   void updateState();
@@ -70,8 +76,10 @@ public:
              std::function<void(HotFrameBuffer&)> func) override final;
   void attachColor(int index, const Tex2D& tex) override final;
   int countAttachments() override final;
+  void attachDepth(const Tex2D& tex) final;
   
   void clearColor(int index, Color32fA color);
+  void clearDepth(float val);
 };
 
 } // namespace internal
@@ -91,6 +99,7 @@ public:
   void prime(std::function<void(HotFrameBuffer&)> func);
   void attachColor(int index, const Tex2D& tex);
   int countAttachments();
+  void attachDepth(const Tex2D& tex);
 
 private:
   std::shared_ptr<internal::FrameBufferInterface> m_fb;
