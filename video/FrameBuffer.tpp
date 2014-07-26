@@ -60,5 +60,9 @@ inline void FrameBuffer::attachDepthStencil(const Tex2D& tex) {
   m_fb->attachDepthStencil(tex);
 }
 
+inline bool FrameBuffer::isPrimed() {
+  return internal::FrameBufferInterface::s_isPrimed;
+}
+
 
 }

@@ -37,6 +37,9 @@ namespace config {
   // When creating a GLObject, should it test if a context is current?
   constexpr bool debugContextCurrentCheck = true;
 
+  // check if a framebuffer is primed in draw()?
+  constexpr bool debugDrawFrameBufferCheck = true;
+
   // reset all state/unbind stuff?
   constexpr bool resetGLState = true;
 }

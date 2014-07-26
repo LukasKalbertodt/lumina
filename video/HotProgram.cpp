@@ -2,6 +2,7 @@
 #include "GLException.hpp"
 #include "VertexSeq.hpp"
 #include "TextureUnits.hpp"
+#include "FrameBuffer.hpp"
 
 #include <vector>
 using namespace std;
@@ -18,6 +19,12 @@ void HotProgram::draw(const HotTexCont& texCont,
       logThrowGL("[HotProgram] Trying to draw with TextureContainer that "
                  "contains <", texCont.count(), "> textures, but <",
                  TextureUnits::countPrimed(), "> are currently primed!");
+    }
+  }
+  if(config::debugDrawFrameBufferCheck) {
+    if(!FrameBuffer::isPrimed()) {
+      logThrowGL("[HotProgram] Attempt to call draw without a primed "
+                 "framebuffer! (forgot to prime the default FrameBuffer?)");
     }
   }
 

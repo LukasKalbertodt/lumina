@@ -2,6 +2,7 @@
 
 #include "GLObject.hpp"
 #include "Texture.hpp"
+#include "FrameBuffer.fpp"
 #include "HotFrameBuffer.fpp"
 #include "../util/ColorCore.hpp"
 
@@ -19,6 +20,7 @@ struct ColorAttPoint {
 
   ColorAttPoint() : handle(0) {}
 };
+
 
 class FrameBufferInterface : public GLObject {
 public:
@@ -41,6 +43,8 @@ public:
 protected:
   // true if a user defined framebuffer is primed
   static bool s_isPrimed;
+
+  friend ::lumina::FrameBuffer;
 };
 
 class UserFrameBuffer : public FrameBufferInterface {
@@ -112,6 +116,8 @@ public:
   void attachDepthStencil(const Tex2D& tex);
 
   int countAttachments();
+
+  static bool isPrimed();
 
 private:
   std::shared_ptr<internal::FrameBufferInterface> m_fb;
