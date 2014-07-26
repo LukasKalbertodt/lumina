@@ -19,9 +19,18 @@ public:
             PrimitiveType type,
             int offset = 0,
             int count = -1);
+  void draw(const VertexSeq& data,
+            PrimitiveType type,
+            int offset = 0,
+            int count = -1);
 
 private:
   HotProgram(Program& ref);
+
+  void drawImpl(const VertexSeq& data,
+                PrimitiveType type,
+                int offset = 0,
+                int count = -1);
 
   friend Program;
 };
