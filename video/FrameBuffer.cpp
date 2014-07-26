@@ -68,6 +68,8 @@ void UserFrameBuffer::prime(std::shared_ptr<FrameBufferInterface> fb,
     logThrowGL(
       "[FrameBuffer] Cannot prime while another FrameBuffer is primed!");
   }
+  // set primed flag
+  s_isPrimed = true;
 
   // bind to context and update state
   bind();
@@ -128,6 +130,9 @@ void UserFrameBuffer::prime(std::shared_ptr<FrameBufferInterface> fb,
   // unbind and check errors
   unbind();
   checkGLError("[FrameBuffer] Error<", GLERR, "> after priming!");
+
+  // reset primed flag
+  s_isPrimed = false;
 }
 
 void UserFrameBuffer::attachColor(int index, const Tex2D& tex) {
@@ -248,6 +253,8 @@ void DefaultFrameBuffer::prime(std::shared_ptr<FrameBufferInterface> fb,
     logThrowGL("[FrameBuffer] Cannot prime default framebuffer while another "
                "FrameBuffer is primed!");
   }
+  // set primed flag
+  s_isPrimed = true;
 
   // activate back buffer for drawing
   GLenum drawbuffers = GL_BACK_LEFT;
@@ -288,6 +295,9 @@ void DefaultFrameBuffer::prime(std::shared_ptr<FrameBufferInterface> fb,
 
   // check GL errors
   checkGLError("[FrameBuffer] Error<", GLERR, "> after priming!");
+
+  // reset primed flag
+  s_isPrimed = false;
 }
 
 void DefaultFrameBuffer::attachColor(int index, const Tex2D& tex) {
