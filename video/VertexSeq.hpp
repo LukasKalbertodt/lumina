@@ -64,6 +64,8 @@ public:
   void bindVAO() const;
   void unbindVAO() const;
 
+  static void setupOpenGL();
+
 private:
   GLuint m_vertexHandle;
   GLuint m_indexHandle;
@@ -74,8 +76,6 @@ private:
   bool m_layoutActive;
 
   static bool s_isPrimed;
-
-  static void setupOpenGL();
 
   friend internal::HotVertexSeqBase;
   template <typename... Cs> friend class HotVertexSeq;

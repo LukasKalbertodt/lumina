@@ -20,13 +20,9 @@ VertexSeq::~VertexSeq() {
 }
 
 void VertexSeq::setupOpenGL() {
-  static bool wasCalled = false;
-  if(!wasCalled) {
-    // configure primitive restart
-    glPrimitiveRestartIndex(std::numeric_limits<unsigned int>::max());
-    glEnable(GL_PRIMITIVE_RESTART);
-    wasCalled = true;
-  }
+  // configure primitive restart
+  glPrimitiveRestartIndex(std::numeric_limits<unsigned int>::max());
+  glEnable(GL_PRIMITIVE_RESTART);
 }
 
 

@@ -36,6 +36,7 @@ private:
   static bool s_creationLock;
   void makeCurrent();
   void resetCurrent();
+  void configure();
 
   friend HotRenderContext;
 };

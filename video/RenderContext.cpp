@@ -3,6 +3,7 @@
 #include "Program.hpp"
 #include "HotRenderContext.hpp"
 #include "RenderContext.hpp"
+#include "VertexSeq.hpp"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -38,6 +39,9 @@ void RenderContext::create() {
     logNotice("[RenderContext] glewInit() caused an openGL error <",
               translateGLError(err), ">.");
   }
+
+  // configure context
+  configure();
 
   // reset state
   resetCurrent();
@@ -79,6 +83,10 @@ void RenderContext::prime(std::function<void(HotRenderContext&)> func) {
   // reset state
   resetCurrent();
   s_primedContext = nullptr;
+}
+
+void RenderContext::configure() {
+  VertexSeq::setupOpenGL();
 }
 
 } // namespace lumina

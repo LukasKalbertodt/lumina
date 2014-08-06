@@ -8,9 +8,7 @@ inline VertexSeq::VertexSeq()
     m_vertexCount(0),
     m_indexCount(0),
     m_vertexSize(0),
-    m_layoutActive(false) {
-  setupOpenGL();
-}
+    m_layoutActive(false) {}
 
 // copy constructor and copy assignment operator
 // inline VertexSeq::VertexSeq(const VertexSeq& copy);
@@ -31,8 +29,6 @@ inline VertexSeq::VertexSeq(VertexSeq&& m)
   m.m_vertexArrayObject = 0;
   m.m_vertexCount = 0;
   m.m_indexCount = 0;
-
-  // don't need to call setupOpenGL(), because it already was by m
 }
 // inline VertexSeq& operator=(VertexSeq&& m);
 
