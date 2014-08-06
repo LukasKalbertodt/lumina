@@ -27,7 +27,7 @@ public:
   // custom destructor
   ~HotVertexSeqBase();
 
-  VertexSeq& cold;
+  VertexSeq& m_cold;
   internal::IndexSet index;
 };
 

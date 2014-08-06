@@ -58,6 +58,11 @@ void HotProgram::drawImpl(const VertexSeq& data,
     }
   }
 
+  if(!data.isVertexLayoutActive()) {
+    logThrowGL("[HotProgram] Attempt to call draw with a VertexSeq whose is "
+               "not active! (forgot to call applyVertexLayout?)");
+  }
+
   // bind vertex and index data
   data.bindVAO();
 

@@ -89,6 +89,7 @@ void VertexSeq::create(uint16_t vertexSize,
 }
 
 void VertexSeq::prime(std::function<void(HotVertexSeq<>&)> func) {
+  m_layoutActive = false;
   HotVertexSeq<> hot(*this);
   func(hot);
 }

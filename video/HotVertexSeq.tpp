@@ -3,7 +3,7 @@ namespace lumina {
 namespace internal {
 
 inline HotVertexSeqBase::HotVertexSeqBase(VertexSeq& ref)
-  : cold(ref), index(ref.m_indexCount) {
+  : m_cold(ref), index(ref.m_indexCount) {
   // check if a vertex seq is already primed... if not, set primed marker
   if(VertexSeq::s_isPrimed) {
     logError(
@@ -16,11 +16,11 @@ inline HotVertexSeqBase::HotVertexSeqBase(VertexSeq& ref)
   VertexSeq::s_isPrimed = true;
 
   // bind all objects
-  cold.bindAll();
-  // cold.bindVAO();
+  m_cold.bindAll();
+  // m_cold.bindVAO();
 
   // map index buffer, if it exists
-  if(cold.nativeIndexHandle() != 0) {
+  if(m_cold.nativeIndexHandle() != 0) {
     index.m_buffer = static_cast<unsigned int*>(
       glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_READ_WRITE));
     if(index.m_buffer == nullptr) {
@@ -40,7 +40,7 @@ inline HotVertexSeqBase::~HotVertexSeqBase() {
   }
 
   // unmap buffers and VAO
-  cold.unbindAll();
+  m_cold.unbindAll();
 
   // check for error (remember: never evaar throw in dtor!)
   checkGLWarning("[HotVertexSeq] OpenGL error<", GLERR, 
@@ -84,6 +84,7 @@ void HotVertexSeq<Cs...>::applyVertexLayout() {
 
   checkGLError("[HotVertexSeq] Error<", GLERR, 
                "> while applying vertex layout!");
+  m_cold.m_layoutActive = true;
 }
 
 template <typename... Cs>
@@ -93,6 +94,7 @@ void HotVertexSeq<>::applyVertexLayout() {
 
   checkGLError("[HotVertexSeq] Error<", GLERR, 
                "> while applying vertex layout!");
+  m_cold.m_layoutActive = true;
 }
 
 }  // namespace lumina

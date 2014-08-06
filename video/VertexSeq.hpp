@@ -56,6 +56,7 @@ public:
   GLuint nativeVAOHandle() const;
 
   int size() const;
+  bool isVertexLayoutActive() const;
 
   void bindAll();
   void unbindAll();
@@ -70,6 +71,7 @@ private:
   uint32_t m_vertexCount;
   uint32_t m_indexCount;
   uint16_t m_vertexSize;
+  bool m_layoutActive;
 
   static bool s_isPrimed;
 

@@ -7,7 +7,8 @@ inline VertexSeq::VertexSeq()
     m_vertexArrayObject(0),
     m_vertexCount(0),
     m_indexCount(0),
-    m_vertexSize(0) {
+    m_vertexSize(0),
+    m_layoutActive(false) {
   setupOpenGL();
 }
 
@@ -22,7 +23,8 @@ inline VertexSeq::VertexSeq(VertexSeq&& m)
     m_vertexArrayObject(m.m_vertexArrayObject),
     m_vertexCount(m.m_vertexCount),
     m_indexCount(m.m_indexCount),
-    m_vertexSize(m.m_vertexSize) {
+    m_vertexSize(m.m_vertexSize),
+    m_layoutActive(m.m_layoutActive) {
   // reset values of m
   m.m_vertexHandle = 0;
   m.m_indexHandle = 0;
@@ -82,5 +84,8 @@ inline int VertexSeq::size() const {
   return (m_indexHandle == 0) ? m_vertexCount : m_indexCount;
 }
 
+inline bool VertexSeq::isVertexLayoutActive() const {
+  return m_layoutActive;
+}
 
 } // namespace lumina
