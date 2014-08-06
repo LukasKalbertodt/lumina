@@ -46,6 +46,7 @@ inline VertexSeq::VertexSeq(VertexSeq&& m)
 template <typename... Cs, typename L>
 void VertexSeq::prime(L lambda) {
   HotVertexSeq<Cs...> hot(*this);
+  hot.applyVertexLayout();
   lambda(hot);
 }
 
