@@ -24,5 +24,4 @@ void slogAndThrow(Ts... args) {
 }
 
 
-
 }

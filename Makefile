@@ -1,29 +1,29 @@
 ################################################################################
 #generate file lists
 ################################################################################
-CONFIG_HPP  := $(wildcard config/*.hpp)
+CONFIG_HPP  := $(wildcard config/*.hpp) $(wildcard config/*.tpp)
 
-INPUT_HPP   := $(wildcard input/*.hpp)
+INPUT_HPP   := $(wildcard input/*.hpp) $(wildcard input/*.tpp)
 
-UTIL_HPP    := $(wildcard util/*.hpp)
+UTIL_HPP    := $(wildcard util/*.hpp) $(wildcard util/*.tpp)
 
-CORE_HPP    := $(wildcard core/*.hpp)
+CORE_HPP    := $(wildcard core/*.hpp) $(wildcard core/*.tpp)
 CORE_CPP    := $(wildcard core/*.cpp)
 CORE_OBJ    := $(CORE_CPP:%.cpp=obj/%.o)
 
-SERVICE_HPP := $(wildcard service/*.hpp)
+SERVICE_HPP := $(wildcard service/*.hpp) $(wildcard service/*.tpp)
 SERVICE_CPP := $(wildcard service/*.cpp)
 SERVICE_OBJ := $(SERVICE_CPP:%.cpp=obj/%.o)
 
-VIDEO_HPP   := $(wildcard video/*.hpp) $(wildcard video/gl/*.hpp)
-VIDEO_CPP   := $(wildcard video/*.cpp) $(wildcard video/gl/*.cpp)
+VIDEO_HPP   := $(wildcard video/*.hpp) $(wildcard video/*.tpp)
+VIDEO_CPP   := $(wildcard video/*.cpp)
 VIDEO_OBJ   := $(VIDEO_CPP:%.cpp=obj/%.o)
 
-SCENE_HPP   := $(wildcard scene/*.hpp)
+SCENE_HPP   := $(wildcard scene/*.hpp) $(wildcard scene/*.tpp)
 SCENE_CPP   := $(wildcard scene/*.cpp)
 SCENE_OBJ   := $(SCENE_CPP:%.cpp=obj/%.o)
 
-IO_HPP      := $(wildcard io/*.hpp)
+IO_HPP      := $(wildcard io/*.hpp) $(wildcard io/*.tpp)
 IO_CPP      := $(wildcard io/*.cpp)
 IO_OBJ      := $(IO_CPP:%.cpp=obj/%.o)
 
