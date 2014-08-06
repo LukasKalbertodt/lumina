@@ -168,7 +168,10 @@ void Window::pollEvents() {
   for(auto& e : m_eventQueue) {
     for(auto& callback : m_eventCallbacks) {
       if(callback) {
-        callback(e);
+        auto res = callback(e);
+        if(res == EventResult::Processed) {
+          break;
+        }
       }
     }
   }
@@ -179,7 +182,10 @@ void Window::pollEvents() {
   for(auto& e : m_windowEventQueue) {
     for(auto& callback : m_windowCallbacks) {
       if(callback) {
-        callback(e);
+        auto res = callback(e);
+        if(res == EventResult::Processed) {
+          break;
+        }
       }
     }
   }
