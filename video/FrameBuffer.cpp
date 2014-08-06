@@ -56,7 +56,7 @@ void UserFrameBuffer::updateState() {
   checkGLError("[FrameBuffer] Error<", GLERR, "> while updating state!");
 
   // reset flag and log
-  if(logDebugEveryFrame) {
+  if(config::logDebugEveryFrame) {
     logDebug("[FrameBuffer] Updated framebuffer<", m_handle, "> state with <", 
              countColor, "> color attachments",
              (m_depthAtt != 0) ? " and a custom depth attachment" : "");
