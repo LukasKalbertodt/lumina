@@ -1,5 +1,4 @@
-Lumina Graphics Library
-======
+![alt](https://raw.githubusercontent.com/LukasKalbertodt/lumina/release-0.1/_media/GitHubHeader.png)
 
 Lumina is a C++ OpenGL graphics library with the following design principles:
 * *lightweight*: Just provide features which are necessary 
