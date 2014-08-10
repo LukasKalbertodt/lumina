@@ -53,39 +53,14 @@ inline void Logger::setLogFileName(std::string filename) {
     openLogFile();
   }
 }
-inline void Logger::setGlobalLogFileName(std::string filename) {
-  // generate all loggers
-  getLoggerService(config::defaultServiceContext);
-  for(Logger* logger : s_instances) {
-    logger->setLogFileName(filename);
-  }
-}
-
 
 inline void Logger::setStdLogging(bool enable) { 
   m_stdIO = enable; 
 }
 
-inline void Logger::setGlobalStdLogging(bool enable) {
-  // generate all loggers
-  getLoggerService(config::defaultServiceContext);
-  for(Logger* logger : s_instances) {
-    logger->setStdLogging(enable);
-  }
-}
-
-
 inline void Logger::setStdLevelFilter(LogLevel required) {
   m_requiredStdLevel = required;
 }
 
-inline void Logger::setGlobalStdLevelFilter(LogLevel required) {
-  // generate all loggers
-  getLoggerService(config::defaultServiceContext);
-  for(Logger* logger : s_instances) {
-    logger->setStdLevelFilter(required);
-  }
-}
 
-
-}
+} // namespace lumina

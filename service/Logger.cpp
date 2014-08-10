@@ -1,4 +1,5 @@
 #include "Logger.hpp"
+#include "ServiceProvider.hpp"
 
 namespace lumina {
 
@@ -18,5 +19,31 @@ std::string Logger::getTimeString() {
 
   return std::string(out);
 }
+
+void Logger::setGlobalStdLevelFilter(LogLevel required) {
+  // generate all loggers
+  getLoggerService(config::defaultServiceContext);
+  for(Logger* logger : s_instances) {
+    logger->setStdLevelFilter(required);
+  }
+}
+
+void Logger::setGlobalStdLogging(bool enable) {
+  // generate all loggers
+  getLoggerService(config::defaultServiceContext);
+  for(Logger* logger : s_instances) {
+    logger->setStdLogging(enable);
+  }
+}
+
+void Logger::setGlobalLogFileName(std::string filename) {
+  // generate all loggers
+  getLoggerService(config::defaultServiceContext);
+  for(Logger* logger : s_instances) {
+    logger->setLogFileName(filename);
+  }
+}
+
+
 
 }
