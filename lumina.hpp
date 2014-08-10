@@ -19,3 +19,7 @@
 #include "scene/scene.hpp"
 
 #include "io/Image.hpp"
+
+
+// namespace alias
+namespace lum = lumina;
