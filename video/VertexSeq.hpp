@@ -25,6 +25,9 @@ namespace lumina {
 * * Call `create` to create the underlying data structures
 * * Call `prime` to obtain a HotVertexSeq (the VertexSeq needs to be 
 * created first)
+*
+* \see HotVertexSeq
+* \see HotVertexSeq<>
 */
 class VertexSeq : public GLObject {
 public:
