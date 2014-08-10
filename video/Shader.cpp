@@ -56,11 +56,6 @@ void Shader<Type>::compile(ShaderSource source) {
   log("[Shader] Shader <", m_filename, "> was successfully compiled.");
 }
 
-template <>
-void Shader<ShaderType::Fragment>::compile(string source) {
-}
-
-
 
 // explicit instantiation
 template class Shader<ShaderType::Vertex>;

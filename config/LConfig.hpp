@@ -1,6 +1,6 @@
 #pragma once
 /**
- * File: LConfig.hpp
+ * \file: LConfig.hpp
  * Is included after LCommon.hpp
  */
 
