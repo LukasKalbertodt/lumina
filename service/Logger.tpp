@@ -54,6 +54,8 @@ inline void Logger::setLogFileName(std::string filename) {
   }
 }
 inline void Logger::setGlobalLogFileName(std::string filename) {
+  // generate all loggers
+  getLoggerService(config::defaultServiceContext);
   for(Logger* logger : s_instances) {
     logger->setLogFileName(filename);
   }
@@ -65,6 +67,8 @@ inline void Logger::setStdLogging(bool enable) {
 }
 
 inline void Logger::setGlobalStdLogging(bool enable) {
+  // generate all loggers
+  getLoggerService(config::defaultServiceContext);
   for(Logger* logger : s_instances) {
     logger->setStdLogging(enable);
   }
@@ -76,6 +80,8 @@ inline void Logger::setStdLevelFilter(LogLevel required) {
 }
 
 inline void Logger::setGlobalStdLevelFilter(LogLevel required) {
+  // generate all loggers
+  getLoggerService(config::defaultServiceContext);
   for(Logger* logger : s_instances) {
     logger->setStdLevelFilter(required);
   }
