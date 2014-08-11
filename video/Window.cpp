@@ -220,17 +220,16 @@ void Window::keyCallback(GLFWwindow* win, int key, int scancode,
                          int action, int mods) {
   // transcode input into lumina format
   InputEvent e;
-  e.type = InputType::Key;
   e.keyInput.key = translateGLFWKey(key);
   switch(action) {
     case GLFW_PRESS:
-      e.keyInput.type = KeyInputType::Pressed;
+      e.type = InputType::KeyPressed;
       break;
     case GLFW_RELEASE:
-      e.keyInput.type = KeyInputType::Released;
+      e.type = InputType::KeyReleased;
       break;
     case GLFW_REPEAT:
-      e.keyInput.type = KeyInputType::Hold;
+      e.type = InputType::KeyHold;
       break;
   }
 
@@ -248,9 +247,8 @@ void Window::keyCallback(GLFWwindow* win, int key, int scancode,
 void Window::charCallback(GLFWwindow* win, unsigned int key) {
   // transcode input into lumina format
   InputEvent e;
-  e.type = InputType::Key;
+  e.type = InputType::Char;
   e.keyInput.c = static_cast<char>(key);
-  e.keyInput.type = KeyInputType::Char;
 
   // find the corresponding window and post event
   if(s_eventReceiver.count(win) != 0) {
@@ -266,24 +264,20 @@ void Window::mouseButtonCallback(GLFWwindow* win, int button, int action,
                                       int mods) {
   // transcode input into lumina format
   InputEvent e;
-  e.type = InputType::Mouse;
   switch(button) {
     case GLFW_MOUSE_BUTTON_LEFT:
-      e.mouseInput.type = (action == GLFW_PRESS)
-                              ? MouseInputType::LButtonPressed
-                              : MouseInputType::LButtonReleased;
+      e.type = (action == GLFW_PRESS) ? InputType::LMousePressed
+                                      : InputType::LMouseReleased;
       break;
 
     case GLFW_MOUSE_BUTTON_MIDDLE:
-      e.mouseInput.type = (action == GLFW_PRESS)
-                              ? MouseInputType::MButtonPressed
-                              : MouseInputType::MButtonReleased;
+      e.type = (action == GLFW_PRESS) ? InputType::MMousePressed
+                                      : InputType::MMouseReleased;
       break;
 
     case GLFW_MOUSE_BUTTON_RIGHT:
-      e.mouseInput.type = (action == GLFW_PRESS)
-                              ? MouseInputType::RButtonPressed
-                              : MouseInputType::RButtonReleased;
+      e.type = (action == GLFW_PRESS) ? InputType::RMousePressed
+                                      : InputType::RMouseReleased;
       break;
   }
 
@@ -309,7 +303,6 @@ void Window::mousePosCallback(GLFWwindow* w, double xpos, double ypos) {
 
   // prepare input struct
   InputEvent e;
-  e.type = InputType::Mouse;
 
   if(win->m_cursorMode == CursorMode::Free) {
     if(win->m_resetLastPos) {
@@ -325,12 +318,12 @@ void Window::mousePosCallback(GLFWwindow* w, double xpos, double ypos) {
       win->m_lastMouseX = static_cast<float>(xpos);
       win->m_lastMouseY = static_cast<float>(ypos);
     }
-    e.mouseInput.type = MouseInputType::MoveDirection;
+    e.type = InputType::MouseMoveDir;
   }
   else {
     e.mouseInput.x = static_cast<float>(xpos);
     e.mouseInput.y = static_cast<float>(ypos);
-    e.mouseInput.type = MouseInputType::MovePosition;
+    e.type = InputType::MouseMovePos;
   }
 
   win->postEvent(e);
@@ -348,8 +341,7 @@ void Window::mouseScrollCallback(GLFWwindow* w, double x, double y) {
 
   // prepare input struct
   InputEvent e;
-  e.type = InputType::Mouse;
-  e.mouseInput.type = MouseInputType::Scroll;
+  e.type = InputType::MouseScroll;
   e.mouseInput.scrollX = static_cast<float>(x);
   e.mouseInput.scrollY = static_cast<float>(y);
 

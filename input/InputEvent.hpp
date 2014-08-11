@@ -16,7 +16,7 @@ namespace lumina {
 
 /// Type of input event
 enum class InputType : uint8_t {
-  KeyRelease,     ///< A key was released
+  KeyReleased,    ///< A key was released
   KeyPressed,     ///< A key was pressed
   KeyHold,        ///< A key was hold (repeated by operating system)
   Char,           ///< A charachter input
