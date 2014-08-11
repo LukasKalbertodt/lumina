@@ -26,7 +26,7 @@ std::string matrixRep(const Matrix<T, Z, S>& m) {
       if(j != 0) {
         out += ", ";
       }
-      out += numberToRep(m.data[i][j]);
+      out += internal::numberToRep(m.data[i][j]);
     }
 
     out += "}";
