@@ -9,7 +9,7 @@
 #include "HotVertexSeq.hpp"
 #include "Program.hpp"
 #include "GLException.hpp"
-#include "VChan.hpp"
+#include "VertexAttribute.hpp"
 #include "Texture.hpp"
 #include "HotTexture.hpp"
 #include "HotProgram.hpp"
