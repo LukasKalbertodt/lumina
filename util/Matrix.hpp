@@ -4,41 +4,43 @@
 #include "RepCommon.hpp"
 
 #include <string>
+#include <sstream>
 #include <ostream>
 
 namespace lumina {
+namespace internal {
 
 template <typename T, std::size_t Z, std::size_t S>
 std::string matrixRep(const Matrix<T, Z, S>& m) {
-  std::string out = "Matrix<0x0> {";
-
-  // TODO: maybe fix this ugly %10 hack
-  out[8] += Z % 10;
-  out[10] += S % 10;
+  std::stringstream ss;
+  ss << "Matrix<" << Z << "x" << S << ">" 
+     << internal::typeCharRep<T>() << " {";
 
   for(int i = 0; i < Z; ++i) {
     if(i != 0) {
-      out += ", ";
+      ss << ", ";
     }
-    out += "{";
+    ss <<"{";
 
     for(int j = 0; j < S; ++j) {
       if(j != 0) {
-        out += ", ";
+        ss <<", ";
       }
-      out += internal::numberToRep(m.data[i][j]);
+      ss << internal::numberToRep(m.data[i][j]);
     }
 
-    out += "}";
+    ss << "}";
   }
 
-  out += "}";
-  return out;
+  ss << "}";
+  return ss.str();
 }
+
+} // namespace internal
 
 template <typename T, std::size_t Z, std::size_t S>
 std::ostream& operator<<(std::ostream& out, const Matrix<T, Z, S>& m) {
   return (out << matrixRep(m));
 }
 
-};
+} // namespace lumina

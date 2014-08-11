@@ -1,9 +1,6 @@
 #include "../util/VariadicTools.hpp"
 #include "../video/PrimitiveType.hpp"
 
-// #include <iostream>
-// using namespace std;
-
 namespace lumina {
 
 namespace internal {
@@ -12,33 +9,35 @@ struct VPoint {
   VPoint(Vec3f pos, Vec3f nor, Vec2f tex)
     : position(pos), normal(nor), texUV(tex) {}
 
-  template <VChan C> typename VChanHelper<C>::type get() const;
+  template <VAttr C> typename VAttrHelper<C>::type get() const;
 
   Vec3f position;
   Vec3f normal;
   Vec2f texUV;
 };
 
-template <> inline Vec3f VPoint::get<VChan::Position>() const {
+template <> inline Vec3f VPoint::get<VAttr::Position>() const {
   return position;
 }
-template <> inline Vec3f VPoint::get<VChan::Normal>() const { 
+template <> inline Vec3f VPoint::get<VAttr::Normal>() const { 
   return normal; 
 }
-template <> inline Vec2f VPoint::get<VChan::TexUV>() const { 
+template <> inline Vec2f VPoint::get<VAttr::TexUV>() const { 
   return texUV; 
 }
 
 
 
-template <VChan... Cs, typename T>
+template <VAttr... Cs, typename T>
 void fillData(T slot, const VPoint& data) {
   slot.set(data.get<Cs>()...);
 }
 
 }
 
-template <VChan... Cs> 
+
+
+template <VAttr... Cs> 
 VertexSeq createBox(Vec3f size) {
   static_assert(sizeof...(Cs) > 0,
                 "[createBox] You must specify vertex channels to be filled!");
@@ -49,10 +48,10 @@ VertexSeq createBox(Vec3f size) {
 
   // vertexCount = 6 faces * 4 points per face
   // indexCount = 6 faces * 4 points + 5 primitive restart
-  out.create(internal::VChansHelper<Cs...>::size, 6 * 4, 6 * 4 + 5);
+  out.create(internal::VAttrsHelper<Cs...>::size, 6 * 4, 6 * 4 + 5);
 
-  out.prime<typename VChanHelper<Cs>::type...>([&](
-    HotVertexSeq<typename VChanHelper<Cs>::type...>& hot) {
+  out.prime<typename VAttrHelper<Cs>::type...>([&](
+    HotVertexSeq<typename VAttrHelper<Cs>::type...>& hot) {
     // fill vertex buffer with corner-points
 
     // ---------- face positiv z ---------------
@@ -198,16 +197,6 @@ VertexSeq createBox(Vec3f size) {
     hot.index[26] = 21;
     hot.index[27] = 22;
     hot.index[28] = 23;
-    
-    hot.applyVertexLayout();
-
-    // auto* buf = static_cast<float*>(hot.vertex.buf());
-    // for(int i = 0; i < 20; i++) {
-    //   cout << *buf << endl;
-    //   buf++;
-    // }
-
-
   });
 
   return out;

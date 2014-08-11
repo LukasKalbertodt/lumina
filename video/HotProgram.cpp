@@ -74,7 +74,7 @@ void HotProgram::drawImpl(const VertexSeq& data,
   // get the GL type
   GLenum primitiveType = translatePrimitiveType(type);
 
-  // if there is no index buffer -> use gldrawArrays, glDrawElements otherwise
+  // if there is no index buffer -> use glDrawArrays, glDrawElements otherwise
   if(data.nativeIndexHandle() == 0) {
     glDrawArrays(primitiveType, offset, count);
   }

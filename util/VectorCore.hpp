@@ -64,16 +64,8 @@ struct VectorImpl<T, 2> {
     };
   };
 
-  template <typename U>
-  VectorImpl(U x, U y)
-    : x(static_cast<T>(x)), y(static_cast<T>(y)) {  
-  }
-
-  VectorImpl()
-    : x(static_cast<T>(0)),
-      y(static_cast<T>(0)) {
-  }
-
+  VectorImpl(T x, T y) : x(x), y(y) {}
+  VectorImpl() : VectorImpl(0, 0) {}
 };
 
 // specialization for 3d
@@ -88,16 +80,8 @@ struct VectorImpl<T, 3> {
     };
   };
 
-  template <typename U>
-  VectorImpl(U x, U y, U z)
-    : x(static_cast<T>(x)), y(static_cast<T>(y)), z(static_cast<T>(z)) {  
-  }
-
-  VectorImpl()
-    : x(static_cast<T>(0)),
-      y(static_cast<T>(0)),
-      z(static_cast<T>(0)) {
-  }
+  VectorImpl(T x, T y, T z) : x(x), y(y), z(z) {}
+  VectorImpl() : VectorImpl(0, 0, 0) {}
 };
 
 // specialization for 4d
@@ -113,19 +97,8 @@ struct VectorImpl<T, 4> {
     };
   };
 
-  template <typename U>
-  VectorImpl(U x, U y, U z, U w)
-    : x(static_cast<T>(x)),
-      y(static_cast<T>(y)),
-      z(static_cast<T>(z)),
-      w(static_cast<T>(w)) {}
-
-  VectorImpl()
-    : x(static_cast<T>(0)),
-      y(static_cast<T>(0)),
-      z(static_cast<T>(0)),
-      w(static_cast<T>(0)) {
-  }
+  VectorImpl(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
+  VectorImpl() : VectorImpl(0, 0, 0, 0) {}
 };
 
 

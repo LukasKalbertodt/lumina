@@ -1,12 +1,13 @@
 #pragma once
 /**
- * \file LRepCommon.hpp
- * This file is part of the Lumina Graphics Framework.
+ * \file RepCommon.hpp
  * 
  * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
  * 
  * This file defines some helper functions for generating string 
  * representations, most of them for internal use only!
+
+ * This file is part of the Lumina Graphics Framework.
  */
 
 #include <string>
@@ -59,6 +60,14 @@ typename std::enable_if<!std::is_arithmetic<T>::value, std::string>::type
 numberToRep(const T& in) {
   return static_cast<std::string>(in);
 }
+
+
+template <typename T> const char* typeCharRep() { return "?"; }
+template <> constexpr const char* typeCharRep<int>() { return "i"; }
+template <> constexpr const char* typeCharRep<unsigned int>() { return "ui"; }
+template <> constexpr const char* typeCharRep<float>() { return "f"; }
+template <> constexpr const char* typeCharRep<double>() { return "d"; }
+
 
 }
 }
