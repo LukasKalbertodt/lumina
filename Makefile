@@ -54,7 +54,7 @@ endif
 ################################################################################
 # define targets and dependencies
 ################################################################################
-.PHONY: clean fancy clear
+.PHONY: clean fancy clear doc
 
 lumina.a: $(ALL_OBJ)
 	$(AR) $(ARFLAGS) $@ $(ALL_OBJ)
@@ -68,3 +68,6 @@ obj:
 clean:
 	rm -rf obj
 	rm -f lumina.a
+
+doc:
+	cd _docs && doxygen

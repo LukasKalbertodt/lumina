@@ -1,4 +1,12 @@
 #pragma once
+/**
+ * \file KeyCode.hpp
+ * Provides enum class for all keys.
+ * 
+ * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
+ * 
+ * This file is part of the Lumina Graphics Library.
+ */
 
 namespace lumina {
 
