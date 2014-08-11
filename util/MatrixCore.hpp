@@ -458,7 +458,7 @@ Matrix<Ta, R, C>& operator-=(Matrix<Ta, R, C>& lh,
 template <typename Ta, typename Tb, std::size_t R, std::size_t C>
 Matrix<Ta, R, C>& operator*=(Matrix<Ta, R, C>& lh,
                               const Matrix<Tb, R, C>& rh) {
-  matrixMultiply(lh.data, rh.data, lh.data);
+  internal::matrixMultiply(lh.data, rh.data, lh.data);
   return lh;
 }
 
@@ -536,7 +536,7 @@ template <typename Ta, typename Tb, std::size_t R, std::size_t C>
 auto operator*(const Matrix<Ta, R, C>& lh, const Matrix<Tb, R, C>& rh)
   -> Matrix<decltype(Ta(0) * Tb(0)), R, C> {
   Matrix<decltype(Ta(0) * Tb(0)), R, C> out(lh);
-  matrixMultiply(lh.data, rh.data, out.data);
+  internal::matrixMultiply(lh.data, rh.data, out.data);
   return out;
 }
 
@@ -545,7 +545,7 @@ template <typename Ta, typename Tb, std::size_t R, std::size_t C>
 auto operator*(const Matrix<Ta, R, C>& lh, Vector<Tb, C> rh)
   -> Vector<decltype(Ta(0) + Tb(0)), R> {
   Vector<decltype(Ta(0) + Tb(0)), R> out;
-  matrixMultiply(lh.data,
+  internal::matrixMultiply(lh.data,
                 reinterpret_cast<Tb(&)[C][1]>(rh.data),
                 reinterpret_cast<Tb(&)[C][1]>(out.data));
   return out;
@@ -556,7 +556,7 @@ template <typename Ta, typename Tb, std::size_t R, std::size_t C>
 auto operator*(Vector<Tb, R> lh, const Matrix<Ta, R, C>& rh)
   -> Vector<decltype(Ta(0) + Tb(0)), C> {
   Vector<decltype(Ta(0) + Tb(0)), C> out;
-  matrixMultiply(reinterpret_cast<Tb(&)[1][R]>(lh.data),
+  internal::matrixMultiply(reinterpret_cast<Tb(&)[1][R]>(lh.data),
                 rh.data,
                 reinterpret_cast<Tb(&)[1][C]>(out.data));
   return out;
