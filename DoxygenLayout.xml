@@ -14,10 +14,7 @@
     <tab type="classindex" visible="$ALPHABETICAL_INDEX" title="Class Index"/> 
     <tab type="hierarchy" visible="yes" title="" intro=""/>
 
-    <tab type="files" visible="yes" title="">
-      <tab type="filelist" visible="yes" title="" intro=""/>
-      <tab type="globals" visible="yes" title="" intro=""/>
-    </tab>
+    <tab type="files" visible="yes" title="" />
     <tab type="examples" visible="yes" title="" intro=""/>  
   </navindex>
 
@@ -106,7 +103,8 @@
 
   <!-- Layout definition for a file page -->
   <file>
-    <briefdescription visible="yes"/>
+    <briefdescription visible="no"/>
+    <detaileddescription title=""/>
     <includes visible="$SHOW_INCLUDE_FILES"/>
     <includegraph visible="$INCLUDE_GRAPH"/>
     <includedbygraph visible="$INCLUDED_BY_GRAPH"/>
@@ -122,7 +120,6 @@
       <variables title=""/>
       <membergroups visible="yes"/>
     </memberdecl>
-    <detaileddescription title=""/>
     <memberdef>
       <inlineclasses title=""/>
       <defines title=""/>
