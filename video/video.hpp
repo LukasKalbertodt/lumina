@@ -5,7 +5,6 @@
 #include "Shader.hpp"
 #include "ShaderSource.hpp"
 #include "VertexLayout.hpp"
-#include "Pipeline.hpp"
 #include "VertexSeq.hpp"
 #include "HotVertexSeq.hpp"
 #include "Program.hpp"
