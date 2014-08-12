@@ -30,7 +30,32 @@ inline VertexSeq::VertexSeq(VertexSeq&& m)
   m.m_vertexCount = 0;
   m.m_indexCount = 0;
 }
-// inline VertexSeq& operator=(VertexSeq&& m);
+
+inline VertexSeq& VertexSeq::operator=(VertexSeq&& m) {
+  // delete OpenGL data
+  // glDelete* does nothing if second argument is 0
+  glDeleteBuffers(1, &m_vertexHandle);
+  glDeleteBuffers(1, &m_indexHandle);
+  glDeleteVertexArrays(1, &m_vertexArrayObject);
+
+  // copy data
+  m_vertexHandle = m.m_vertexHandle;
+  m_indexHandle = m.m_indexHandle;
+  m_vertexArrayObject = m.m_vertexArrayObject;
+  m_vertexCount = m.m_vertexCount;
+  m_indexCount = m.m_indexCount;
+  m_vertexSize = m.m_vertexSize;
+  m_layoutActive = m.m_layoutActive;
+
+  // reset old values
+  m.m_vertexHandle = 0;
+  m.m_indexHandle = 0;
+  m.m_vertexArrayObject = 0;
+  m.m_vertexCount = 0;
+  m.m_indexCount = 0;
+
+  return *this;
+}
 
 
 /* VertexSeq methods ***************************************************************/
