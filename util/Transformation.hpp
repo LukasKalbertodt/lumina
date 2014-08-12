@@ -80,7 +80,7 @@ Mat4<T> viewMatrix(Vec3<T> eye, Vec3<T> direction, Vec3<T> up) {
   basisChangeMatrix.setRow(1, Vec4<T>(y.x, y.y, y.z, 0.f));
   basisChangeMatrix.setRow(2, Vec4<T>(z.x, z.y, z.z, 0.f));
 
-  return translationMatrix(-eye) * basisChangeMatrix;
+  return basisChangeMatrix * translationMatrix(-eye);
 }
 
 template <typename T>
