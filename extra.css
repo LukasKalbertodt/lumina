@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'MankSans';
+    src: url('manksans-webfont.eot');
+    src: url('manksans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('manksans-webfont.woff') format('woff'),
+         url('manksans-webfont.ttf') format('truetype'),
+         url('manksans-webfont.svg#manksansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.tablist li, .tablist a {
+  color: #fff;
+  background: none;
+  text-shadow: none;
+  font-weight: normal;
+  border-bottom: 4px solid transparent;
+  margin-bottom: -2px;
+  font-size: 18pt;
+  font-family: "MankSans", Arial;
+}
+
+.tablist a:hover {
+  background: #31314d;
+  border-bottom: 4px solid #ffba00;
+  text-shadow: none;
+}
+.tablist li.current a {
+  background: #43436f;
+  border-bottom: 4px solid #ffba00;
+}
+
+li.current {
+  background: none;
+}
+
+#navrow2 {
+  display: none;
+}
+
+ul.tablist, #navrow1 {
+  background: none; !important
+}
