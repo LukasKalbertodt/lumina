@@ -2,9 +2,9 @@ var searchData=
 [
   ['variadictools',['VariadicTools',['../structlumina_1_1VariadicTools.html',1,'lumina']]],
   ['variadictools_3c_20t_20_3e',['VariadicTools&lt; T &gt;',['../structlumina_1_1VariadicTools_3_01T_01_4.html',1,'lumina']]],
-  ['vchanhelper',['VChanHelper',['../structlumina_1_1internal_1_1VChanHelper.html',1,'lumina::internal']]],
-  ['vchanshelper',['VChansHelper',['../structlumina_1_1internal_1_1VChansHelper.html',1,'lumina::internal']]],
-  ['vchanshelper_3c_20c_20_3e',['VChansHelper&lt; C &gt;',['../structlumina_1_1internal_1_1VChansHelper_3_01C_01_4.html',1,'lumina::internal']]],
+  ['vattrhelper',['VAttrHelper',['../structlumina_1_1internal_1_1VAttrHelper.html',1,'lumina::internal']]],
+  ['vattrshelper',['VAttrsHelper',['../structlumina_1_1internal_1_1VAttrsHelper.html',1,'lumina::internal']]],
+  ['vattrshelper_3c_20c_20_3e',['VAttrsHelper&lt; C &gt;',['../structlumina_1_1internal_1_1VAttrsHelper_3_01C_01_4.html',1,'lumina::internal']]],
   ['vector',['Vector',['../structlumina_1_1Vector.html',1,'lumina']]],
   ['vector_3c_20float_2c_202_20_3e',['Vector&lt; float, 2 &gt;',['../structlumina_1_1Vector.html',1,'lumina']]],
   ['vector_3c_20float_2c_203_20_3e',['Vector&lt; float, 3 &gt;',['../structlumina_1_1Vector.html',1,'lumina']]],

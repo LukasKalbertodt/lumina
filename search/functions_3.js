@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['getfilename',['getFilename',['../classlumina_1_1Shader.html#a7d716ffb5c7e784c1ac9071c4ed223b9',1,'lumina::Shader']]],
-  ['gethandle',['getHandle',['../classlumina_1_1Shader.html#ac32d6a18f90e565b32feb5324ce7c735',1,'lumina::Shader']]],
-  ['getrendercontext',['getRenderContext',['../classlumina_1_1Window.html#a8be20d6a96656fa6ac7494804a363c1e',1,'lumina::Window']]],
-  ['getsize',['getSize',['../classlumina_1_1Window.html#ac3712710474436591d9ac4c79c3c3c08',1,'lumina::Window']]]
+  ['data',['data',['../classlumina_1_1internal_1_1ImageBase.html#a7b9b598e34fc23298bdeb268e7878291',1,'lumina::internal::ImageBase::data()'],['../classlumina_1_1Image.html#a6c41f38a94745066f60a95433c0b3200',1,'lumina::Image::data()'],['../classlumina_1_1ImageBox.html#a0189be0971a32a0171c51b90a1ab1020',1,'lumina::ImageBox::data()']]],
+  ['det',['det',['../classlumina_1_1internal_1_1MatrixHelper.html#a7ef864af4ff488836781b4d64467a90a',1,'lumina::internal::MatrixHelper::det(const T(&amp;m)[N][N])'],['../classlumina_1_1internal_1_1MatrixHelper.html#ae2908967cf2f18e29450e17c34168fcb',1,'lumina::internal::MatrixHelper::det(const T(&amp;m)[2][2])'],['../classlumina_1_1internal_1_1MatrixHelper.html#a7d91982cd6bcdea69417a943a5804b79',1,'lumina::internal::MatrixHelper::det(const T(&amp;m)[3][3])'],['../classlumina_1_1internal_1_1MatrixHelper.html#ab9f4f0caf4ff83d987646f6f209b39c3',1,'lumina::internal::MatrixHelper::det(const T(&amp;m)[4][4])']]],
+  ['determinant',['determinant',['../structlumina_1_1Matrix_3_01T_00_01N_00_01N_01_4.html#ad63d8c6ee5cc87d7bf1fc88451500da2',1,'lumina::Matrix&lt; T, N, N &gt;']]],
+  ['dimension',['dimension',['../classlumina_1_1internal_1_1ImageBase.html#ae61ba810a729f8162a5f96ed88785328',1,'lumina::internal::ImageBase::dimension()'],['../classlumina_1_1Image.html#a7f790f4ef4f5f97276d6df78a64ef635',1,'lumina::Image::dimension()'],['../classlumina_1_1ImageBox.html#af401368bbbeffcb0b672be53ec71c53c',1,'lumina::ImageBox::dimension()']]],
+  ['distance',['distance',['../namespacelumina.html#ad997191fc1eeb9f122c1cced4ca35a83',1,'lumina']]],
+  ['dot',['dot',['../namespacelumina.html#af282c530ee05c9535d59f6005c69f4d7',1,'lumina']]],
+  ['draw',['draw',['../classlumina_1_1HotProgram.html#a44bfafd1a1053556adb5f49b83ff9ec2',1,'lumina::HotProgram::draw(const HotTexCont &amp;texCont, const VertexSeq &amp;data, PrimitiveType type, int offset=0, int count=-1)'],['../classlumina_1_1HotProgram.html#ad507b10bf91556303c373cd956d3fab0',1,'lumina::HotProgram::draw(const VertexSeq &amp;data, PrimitiveType type, int offset=0, int count=-1)']]]
 ];

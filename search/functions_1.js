@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['close',['close',['../classlumina_1_1Window.html#a5ae591df94fc66ccb85cbb6565368bca',1,'lumina::Window']]],
-  ['compile',['compile',['../classlumina_1_1Shader.html#ad80a04a2ed4e51d79db519fdf7d38844',1,'lumina::Shader::compile(ShaderSource source)'],['../classlumina_1_1Shader.html#a8bf47aa510bde6ccd4aaf6084d210da6',1,'lumina::Shader::compile(std::string code)']]],
-  ['create',['create',['../classlumina_1_1Program.html#a53809b194a5f40d7eae691c1537711a4',1,'lumina::Program::create()'],['../classlumina_1_1VertexSeq.html#ab48f0cbbc056f552242e98b50de89a1d',1,'lumina::VertexSeq::create()']]]
+  ['begin',['begin',['../namespacelumina.html#a14b075e7060ba3b2e22d22f556aa4f5c',1,'lumina']]],
+  ['blendadditive',['blendAdditive',['../namespacelumina.html#a45b243da379f9c5cf80c56a0d58bb274',1,'lumina']]],
+  ['blendalpha',['blendAlpha',['../namespacelumina.html#a9bc73d8ec033fc6e74051a55c33546a2',1,'lumina']]],
+  ['buf',['buf',['../classlumina_1_1internal_1_1VertexSet.html#af93f0eeedaf84f86e8c855c9834aa471',1,'lumina::internal::VertexSet::buf()'],['../classlumina_1_1internal_1_1VertexSet_3_4.html#af93f0eeedaf84f86e8c855c9834aa471',1,'lumina::internal::VertexSet&lt;&gt;::buf()']]]
 ];

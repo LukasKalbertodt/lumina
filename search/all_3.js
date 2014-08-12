@@ -1,5 +1,31 @@
 var searchData=
 [
-  ['eventcallback',['EventCallback',['../classlumina_1_1Window.html#a0b0eba778a6b8a00aa0df91af0802323',1,'lumina::Window']]],
-  ['eventcallbackindex',['EventCallbackIndex',['../classlumina_1_1Window.html#a15a32eb61d35364df5cf035ffb1f92fb',1,'lumina::Window']]]
+  ['d',['D',['../namespacelumina.html#a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5',1,'lumina']]],
+  ['d16',['D16',['../namespacelumina.html#a8beebfae31c90a370f59cc204d5f123ba6fd9ec81643ee5a57f85a71951bfe13d',1,'lumina']]],
+  ['d24s8',['D24S8',['../namespacelumina.html#a8beebfae31c90a370f59cc204d5f123ba2468f278a5fb00d246360a43b4c39f31',1,'lumina']]],
+  ['d32',['D32',['../namespacelumina.html#a8beebfae31c90a370f59cc204d5f123baa6b2eecc4252564f599b9a979e4e0602',1,'lumina']]],
+  ['data',['data',['../structlumina_1_1internal_1_1ColorImpl_3_01T_00_01true_01_4.html#a550e70dea91629c1006853436aee838f',1,'lumina::internal::ColorImpl&lt; T, true &gt;::data()'],['../structlumina_1_1internal_1_1ColorImpl_3_01T_00_01false_01_4.html#ad18ac2a0610b02c9ffb44f56cf70870c',1,'lumina::internal::ColorImpl&lt; T, false &gt;::data()'],['../structlumina_1_1internal_1_1MatrixImpl.html#ae2bfe554352705e2985240bfc2fbcafa',1,'lumina::internal::MatrixImpl::data()'],['../structlumina_1_1internal_1_1VectorImpl.html#a6896f24464ed35248eb0bc5cf32e8616',1,'lumina::internal::VectorImpl::data()'],['../structlumina_1_1internal_1_1VectorImpl_3_01T_00_012_01_4.html#aedb01a5fa306aa1aadff5d86af0290a6',1,'lumina::internal::VectorImpl&lt; T, 2 &gt;::data()'],['../structlumina_1_1internal_1_1VectorImpl_3_01T_00_013_01_4.html#ad18ac2a0610b02c9ffb44f56cf70870c',1,'lumina::internal::VectorImpl&lt; T, 3 &gt;::data()'],['../structlumina_1_1internal_1_1VectorImpl_3_01T_00_014_01_4.html#a550e70dea91629c1006853436aee838f',1,'lumina::internal::VectorImpl&lt; T, 4 &gt;::data()'],['../classlumina_1_1internal_1_1ImageBase.html#a7b9b598e34fc23298bdeb268e7878291',1,'lumina::internal::ImageBase::data()'],['../classlumina_1_1Image.html#a6c41f38a94745066f60a95433c0b3200',1,'lumina::Image::data()'],['../classlumina_1_1ImageBox.html#a0189be0971a32a0171c51b90a1ab1020',1,'lumina::ImageBox::data()']]],
+  ['debug',['Debug',['../namespacelumina.html#aa012a6071707a5b9b0e83589249bfcf6aa603905470e2a5b8c13e96b579ef0dba',1,'lumina::Debug()'],['../namespacelumina.html#aec566eae3195cee0afb96248609778d9aa603905470e2a5b8c13e96b579ef0dba',1,'lumina::Debug()']]],
+  ['debugboundchecks',['debugBoundChecks',['../namespacelumina_1_1config.html#aa842ed3a1f2a801cc6d30353c22324b4',1,'lumina::config']]],
+  ['debugcontextcurrentcheck',['debugContextCurrentCheck',['../namespacelumina_1_1config.html#acf8f0eda05073f53e23ec5039a810454',1,'lumina::config']]],
+  ['debugdrawframebuffercheck',['debugDrawFrameBufferCheck',['../namespacelumina_1_1config.html#a2b0a3258e82065addd65791f89f0d311',1,'lumina::config']]],
+  ['debugtexturedrawchecks',['debugTextureDrawChecks',['../namespacelumina_1_1config.html#a944844368d59f8813c2890d188218211',1,'lumina::config']]],
+  ['debugtextureprimechecks',['debugTexturePrimeChecks',['../namespacelumina_1_1config.html#a9fca87f3fd79c4a710b634c352e36f6e',1,'lumina::config']]],
+  ['decimal',['Decimal',['../namespacelumina.html#a7885f47644a0388f981f416fa20389b2a937504f318f04eaf0f1d701df4c4d7f3',1,'lumina']]],
+  ['default',['Default',['../namespacelumina.html#aec566eae3195cee0afb96248609778d9a7a1920d61156abc05a60135aefe8bc67',1,'lumina']]],
+  ['defaultcullenable',['DefaultCullEnable',['../namespacelumina_1_1constants.html#a8284ddfe7e7979a5dd60f50a14b13997',1,'lumina::constants']]],
+  ['defaultcullface',['DefaultCullFace',['../namespacelumina_1_1constants.html#a150ded146d41c2bc64c8871e0e5c4ca8',1,'lumina::constants']]],
+  ['defaultframebuffer',['DefaultFrameBuffer',['../classlumina_1_1internal_1_1DefaultFrameBuffer.html',1,'lumina::internal']]],
+  ['defaultfrontface',['DefaultFrontFace',['../namespacelumina_1_1constants.html#a12064054eee3526f715680464afb92de',1,'lumina::constants']]],
+  ['defaultservicecontext',['defaultServiceContext',['../namespacelumina_1_1config.html#a7694ee8c0b1373baf0792d6c0c4a3853',1,'lumina::config']]],
+  ['delete',['Delete',['../namespacelumina.html#a7885f47644a0388f981f416fa20389b2af2a6c498fb90ee345d997f888fce3b18',1,'lumina']]],
+  ['depthfunction',['DepthFunction',['../namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5',1,'lumina']]],
+  ['det',['det',['../classlumina_1_1internal_1_1MatrixHelper.html#a7ef864af4ff488836781b4d64467a90a',1,'lumina::internal::MatrixHelper::det(const T(&amp;m)[N][N])'],['../classlumina_1_1internal_1_1MatrixHelper.html#ae2908967cf2f18e29450e17c34168fcb',1,'lumina::internal::MatrixHelper::det(const T(&amp;m)[2][2])'],['../classlumina_1_1internal_1_1MatrixHelper.html#a7d91982cd6bcdea69417a943a5804b79',1,'lumina::internal::MatrixHelper::det(const T(&amp;m)[3][3])'],['../classlumina_1_1internal_1_1MatrixHelper.html#ab9f4f0caf4ff83d987646f6f209b39c3',1,'lumina::internal::MatrixHelper::det(const T(&amp;m)[4][4])']]],
+  ['determinant',['determinant',['../structlumina_1_1Matrix_3_01T_00_01N_00_01N_01_4.html#ad63d8c6ee5cc87d7bf1fc88451500da2',1,'lumina::Matrix&lt; T, N, N &gt;']]],
+  ['dimension',['dimension',['../classlumina_1_1internal_1_1ImageBase.html#ae61ba810a729f8162a5f96ed88785328',1,'lumina::internal::ImageBase::dimension()'],['../classlumina_1_1Image.html#a7f790f4ef4f5f97276d6df78a64ef635',1,'lumina::Image::dimension()'],['../classlumina_1_1ImageBox.html#af401368bbbeffcb0b672be53ec71c53c',1,'lumina::ImageBox::dimension()']]],
+  ['distance',['distance',['../namespacelumina.html#ad997191fc1eeb9f122c1cced4ca35a83',1,'lumina']]],
+  ['divide',['Divide',['../namespacelumina.html#a7885f47644a0388f981f416fa20389b2a0b914e196182d02615487e9793ecff3d',1,'lumina']]],
+  ['dot',['dot',['../namespacelumina.html#af282c530ee05c9535d59f6005c69f4d7',1,'lumina']]],
+  ['down',['Down',['../namespacelumina.html#a7885f47644a0388f981f416fa20389b2a08a38277b0309070706f6652eeae9a53',1,'lumina']]],
+  ['draw',['draw',['../classlumina_1_1HotProgram.html#a44bfafd1a1053556adb5f49b83ff9ec2',1,'lumina::HotProgram::draw(const HotTexCont &amp;texCont, const VertexSeq &amp;data, PrimitiveType type, int offset=0, int count=-1)'],['../classlumina_1_1HotProgram.html#ad507b10bf91556303c373cd956d3fab0',1,'lumina::HotProgram::draw(const VertexSeq &amp;data, PrimitiveType type, int offset=0, int count=-1)']]]
 ];
