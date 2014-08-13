@@ -1,0 +1,56 @@
+/**
+\page s_window Open a window and creating a context
+A window is necessary for most things in lumina. This is always the first step
+when creating an application.
+
+The class \ref lumina::Window "Window" represents a window. Before we can open
+the window we need to configure some aspects. One important thing is to give
+a OpenGL version hint. Without this hint OpenGL doesn't know which version to
+use. It's called "hint" for a reason: The implementation can ignore the hint 
+and use another version. Most of the time OpenGL tries to match the hint as
+best as possible. If we use a version that is too old, we may not have all
+features we need. If we use a version that is too new, it can happen that our
+hardware does not support all features of the requested version and the context
+creation will fail. Currently lumina uses just OpenGL 3.3 features. So we go 
+with 3.3 for now.
+
+Our first code looks like this:
+\code
+Window win("My first application");
+win.setVersionHint(3, 3);
+win.resize(Vec2i(600, 400));
+\endcode
+
+We have specified a version hint, window size and title. Now we are ready to
+open the window:
+\code
+win.open()
+\endcode
+
+The next step is to obtain the render context from our window. OpenGL needs a
+render context in order to do anything. Therefore we cannot use most of the
+OpenGL classes until we have context. Obtaining the context is easy, but we
+also need to create the context:
+\code
+auto& renderContext = win.getRenderContext();
+renderContext.create();
+\endcode
+
+Our render context is ready now. But to use it, we have to prime it. In most
+cases we only have one render context and all of the other application uses
+this context. So it's clever to prime the context just once and pass a function
+to prime() that does everything else in the application. Lets call that
+function "runGame".
+\code
+renderContext.prime(runGame);
+\endcode
+
+
+With this basic setup we can move on to actually do something. Maybe continue
+with \ref s_vertexseq ?
+
+
+\see \ref lumina::RenderContext "RenderContext"
+\see \ref lumina::Window "Window"
+
+*/

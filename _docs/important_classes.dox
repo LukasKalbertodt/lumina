@@ -1,0 +1,19 @@
+/**
+\page important_classes Important classes
+\section opengl OpenGL
+- \ref lumina::VertexSeq "VertexSeq" - Represents a sequence of vertices 
+- \ref lumina::Window "Window" - A window with OpenGL context
+- \ref lumina::Shader "Shader" - Vertex or Fragment Shader
+- \ref lumina::Program "Program" - All stages of the OpenGL pipeline
+- \ref lumina::FrameBuffer "FrameBuffer" - Container for render targets
+- \ref lumina::Texture "Texture" - A OpenGL texture
+- \ref lumina::RenderContext "RenderContext" - The OpenGL render context
+
+\section imp_util Utilities
+- \ref lumina::Vector "Vector"
+- \ref lumina::Matrix "Matrix"
+- \ref lumina::Matrix "Quaternion"
+- \ref lumina::Color "Color"
+- \ref lumina::half "half"
+
+*/
