@@ -110,4 +110,8 @@ inline bool VertexSeq::isVertexLayoutActive() const {
   return m_layoutActive;
 }
 
+inline VertexSeq::operator bool() const {
+   return (m_vertexHandle != 0);
+}
+
 } // namespace lumina

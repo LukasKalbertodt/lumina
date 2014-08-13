@@ -103,6 +103,9 @@ public:
 
   static void setupOpenGL();
 
+  /// Returns true if the VertexSeq was created
+  explicit operator bool() const;
+
 private:
   GLuint m_vertexHandle;
   GLuint m_indexHandle;
