@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,11 +100,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file is part of the Lumina Graphics Framework. </p>
-<dl class="section author"><dt>Author</dt><dd>Lukas Kalbertodt <a href="#" onclick="location.href='mai'+'lto:'+'luk'+'as'+'.ka'+'lb'+'ert'+'od'+'t@g'+'ma'+'il.'+'co'+'m'; return false;">lukas<span style="display: none;">.nosp@m.</span>.kal<span style="display: none;">.nosp@m.</span>berto<span style="display: none;">.nosp@m.</span>dt@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a></dd></dl>
-<p>This file will define Vector and various vector functions. In most cases you should include <a class="el" href="Vector_8hpp.html">Vector.hpp</a> instead, which provides additional helper functions (but has more dependencies). </p>
-
-<p>Definition in file <a class="el" href="VectorCore_8hpp_source.html">VectorCore.hpp</a>.</p>
+<div class="textblock"><p>This file will define Vector and various vector functions. </p>
+<p>In most cases you should include <a class="el" href="Vector_8hpp.html">Vector.hpp</a> instead, which provides additional helper functions (but has more dependencies).</p>
+<p>This file is part of the Lumina Graphics Framework. </p>
+<dl class="section author"><dt>Author</dt><dd>Lukas Kalbertodt <a href="#" onclick="location.href='mai'+'lto:'+'luk'+'as'+'.ka'+'lb'+'ert'+'od'+'t@g'+'ma'+'il.'+'co'+'m'; return false;">lukas<span style="display: none;">.nosp@m.</span>.kal<span style="display: none;">.nosp@m.</span>berto<span style="display: none;">.nosp@m.</span>dt@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a> </dd></dl>
 </div>
 <p><a href="VectorCore_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -130,83 +128,108 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a91d143c45602474243dcb48a020320a7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a91d143c45602474243dcb48a020320a7"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a91d143c45602474243dcb48a020320a7">Vec2</a> = Vector&lt; T, 2 &gt;</td></tr>
+<tr class="memitem:a91d143c45602474243dcb48a020320a7"><td class="memTemplParams" colspan="2"><a class="anchor" id="a91d143c45602474243dcb48a020320a7"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a91d143c45602474243dcb48a020320a7"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Vec2</b> = Vector&lt; T, 2 &gt;</td></tr>
 <tr class="separator:a91d143c45602474243dcb48a020320a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09c53ac0c735b623a51dd8bd5c51d5e5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a09c53ac0c735b623a51dd8bd5c51d5e5">Vec2f</a> = Vector&lt; float, 2 &gt;</td></tr>
+<tr class="memitem:a09c53ac0c735b623a51dd8bd5c51d5e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09c53ac0c735b623a51dd8bd5c51d5e5"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Vec2f</b> = Vector&lt; float, 2 &gt;</td></tr>
 <tr class="separator:a09c53ac0c735b623a51dd8bd5c51d5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5365328ead12db869f151177e976c819"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a5365328ead12db869f151177e976c819">Vec2i</a> = Vector&lt; int, 2 &gt;</td></tr>
+<tr class="memitem:a5365328ead12db869f151177e976c819"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5365328ead12db869f151177e976c819"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Vec2i</b> = Vector&lt; int, 2 &gt;</td></tr>
 <tr class="separator:a5365328ead12db869f151177e976c819"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ab60f903715a30af27a311573e6e102"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a7ab60f903715a30af27a311573e6e102"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a7ab60f903715a30af27a311573e6e102">Vec3</a> = Vector&lt; T, 3 &gt;</td></tr>
+<tr class="memitem:a7ab60f903715a30af27a311573e6e102"><td class="memTemplParams" colspan="2"><a class="anchor" id="a7ab60f903715a30af27a311573e6e102"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7ab60f903715a30af27a311573e6e102"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Vec3</b> = Vector&lt; T, 3 &gt;</td></tr>
 <tr class="separator:a7ab60f903715a30af27a311573e6e102"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8445c4b87623ef0f5af95861374cc0ef"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a8445c4b87623ef0f5af95861374cc0ef">Vec3f</a> = Vector&lt; float, 3 &gt;</td></tr>
+<tr class="memitem:a8445c4b87623ef0f5af95861374cc0ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8445c4b87623ef0f5af95861374cc0ef"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Vec3f</b> = Vector&lt; float, 3 &gt;</td></tr>
 <tr class="separator:a8445c4b87623ef0f5af95861374cc0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa125a7b4a37a8ac8ea53e90a69309c48"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina.html#aa125a7b4a37a8ac8ea53e90a69309c48">Vec3i</a> = Vector&lt; int, 3 &gt;</td></tr>
+<tr class="memitem:aa125a7b4a37a8ac8ea53e90a69309c48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa125a7b4a37a8ac8ea53e90a69309c48"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Vec3i</b> = Vector&lt; int, 3 &gt;</td></tr>
 <tr class="separator:aa125a7b4a37a8ac8ea53e90a69309c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa22731dfffeefae0adb4ef6176ff10cc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aa22731dfffeefae0adb4ef6176ff10cc"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#aa22731dfffeefae0adb4ef6176ff10cc">Vec4</a> = Vector&lt; T, 4 &gt;</td></tr>
+<tr class="memitem:aa22731dfffeefae0adb4ef6176ff10cc"><td class="memTemplParams" colspan="2"><a class="anchor" id="aa22731dfffeefae0adb4ef6176ff10cc"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa22731dfffeefae0adb4ef6176ff10cc"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Vec4</b> = Vector&lt; T, 4 &gt;</td></tr>
 <tr class="separator:aa22731dfffeefae0adb4ef6176ff10cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43916ebe62cf7f9f8ff1f9c57cacd317"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a43916ebe62cf7f9f8ff1f9c57cacd317">Vec4f</a> = Vector&lt; float, 4 &gt;</td></tr>
+<tr class="memitem:a43916ebe62cf7f9f8ff1f9c57cacd317"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43916ebe62cf7f9f8ff1f9c57cacd317"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Vec4f</b> = Vector&lt; float, 4 &gt;</td></tr>
 <tr class="separator:a43916ebe62cf7f9f8ff1f9c57cacd317"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30638c27e041d7a9acd2fe909e9ad14a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a30638c27e041d7a9acd2fe909e9ad14a">Vec4i</a> = Vector&lt; int, 4 &gt;</td></tr>
+<tr class="memitem:a30638c27e041d7a9acd2fe909e9ad14a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30638c27e041d7a9acd2fe909e9ad14a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Vec4i</b> = Vector&lt; int, 4 &gt;</td></tr>
 <tr class="separator:a30638c27e041d7a9acd2fe909e9ad14a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8e1ad74d20f3f607fccdd0f6842f1d69"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1internal.html#a8e1ad74d20f3f607fccdd0f6842f1d69">vecMin</a> (std::size_t a, std::size_t b)</td></tr>
+<tr class="memitem:a8e1ad74d20f3f607fccdd0f6842f1d69"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>vecMin</b> (std::size_t a, std::size_t b)</td></tr>
 <tr class="memdesc:a8e1ad74d20f3f607fccdd0f6842f1d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the smaller number at compile time.  <a href="#a8e1ad74d20f3f607fccdd0f6842f1d69">More...</a><br/></td></tr>
 <tr class="separator:a8e1ad74d20f3f607fccdd0f6842f1d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab650e881836914f306bf26bc4c9c8a49"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
-<tr class="memitem:ab650e881836914f306bf26bc4c9c8a49"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#ab650e881836914f306bf26bc4c9c8a49">operator+</a> (const Vector&lt; T1, N &gt; &amp;v1, const Vector&lt; T2, N &gt; &amp;v2) -&gt; Vector&lt; decltype(T1(0)+T2(0)), N &gt;</td></tr>
+<tr class="memitem:ab650e881836914f306bf26bc4c9c8a49"><td class="memTemplParams" colspan="2"><a class="anchor" id="ab650e881836914f306bf26bc4c9c8a49"></a>
+template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
+<tr class="memitem:ab650e881836914f306bf26bc4c9c8a49"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator+</b> (const Vector&lt; T1, N &gt; &amp;v1, const Vector&lt; T2, N &gt; &amp;v2) -&gt; Vector&lt; decltype(T1(0)+T2(0)), N &gt;</td></tr>
 <tr class="separator:ab650e881836914f306bf26bc4c9c8a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a64ab80d267ff96f0407d4cae908b4e"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
-<tr class="memitem:a1a64ab80d267ff96f0407d4cae908b4e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a1a64ab80d267ff96f0407d4cae908b4e">operator-</a> (const Vector&lt; T1, N &gt; &amp;v1, const Vector&lt; T2, N &gt; &amp;v2) -&gt; Vector&lt; decltype(T1(0)-T2(0)), N &gt;</td></tr>
+<tr class="memitem:a1a64ab80d267ff96f0407d4cae908b4e"><td class="memTemplParams" colspan="2"><a class="anchor" id="a1a64ab80d267ff96f0407d4cae908b4e"></a>
+template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
+<tr class="memitem:a1a64ab80d267ff96f0407d4cae908b4e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator-</b> (const Vector&lt; T1, N &gt; &amp;v1, const Vector&lt; T2, N &gt; &amp;v2) -&gt; Vector&lt; decltype(T1(0)-T2(0)), N &gt;</td></tr>
 <tr class="separator:a1a64ab80d267ff96f0407d4cae908b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad751d45d936b0b45acb41992380865e"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
-<tr class="memitem:aad751d45d936b0b45acb41992380865e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#aad751d45d936b0b45acb41992380865e">operator*</a> (const Vector&lt; T1, N &gt; &amp;v, T2 scalar) -&gt; Vector&lt; decltype(T1(0)*T2(0)), N &gt;</td></tr>
+<tr class="memitem:aad751d45d936b0b45acb41992380865e"><td class="memTemplParams" colspan="2"><a class="anchor" id="aad751d45d936b0b45acb41992380865e"></a>
+template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
+<tr class="memitem:aad751d45d936b0b45acb41992380865e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (const Vector&lt; T1, N &gt; &amp;v, T2 scalar) -&gt; Vector&lt; decltype(T1(0)*T2(0)), N &gt;</td></tr>
 <tr class="separator:aad751d45d936b0b45acb41992380865e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7855aa8b8c8719c3dc678cf556f3aa7c"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
-<tr class="memitem:a7855aa8b8c8719c3dc678cf556f3aa7c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a7855aa8b8c8719c3dc678cf556f3aa7c">operator*</a> (T2 scalar, const Vector&lt; T1, N &gt; &amp;v) -&gt; Vector&lt; decltype(T1(0)*T2(0)), N &gt;</td></tr>
+<tr class="memitem:a7855aa8b8c8719c3dc678cf556f3aa7c"><td class="memTemplParams" colspan="2"><a class="anchor" id="a7855aa8b8c8719c3dc678cf556f3aa7c"></a>
+template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
+<tr class="memitem:a7855aa8b8c8719c3dc678cf556f3aa7c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (T2 scalar, const Vector&lt; T1, N &gt; &amp;v) -&gt; Vector&lt; decltype(T1(0)*T2(0)), N &gt;</td></tr>
 <tr class="separator:a7855aa8b8c8719c3dc678cf556f3aa7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd5588e10899ffab9f9ba6479295e30d"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
-<tr class="memitem:afd5588e10899ffab9f9ba6479295e30d"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#afd5588e10899ffab9f9ba6479295e30d">operator/</a> (const Vector&lt; T1, N &gt; &amp;v, T2 scalar) -&gt; Vector&lt; decltype(T1(0)/T2(0)), N &gt;</td></tr>
+<tr class="memitem:afd5588e10899ffab9f9ba6479295e30d"><td class="memTemplParams" colspan="2"><a class="anchor" id="afd5588e10899ffab9f9ba6479295e30d"></a>
+template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
+<tr class="memitem:afd5588e10899ffab9f9ba6479295e30d"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator/</b> (const Vector&lt; T1, N &gt; &amp;v, T2 scalar) -&gt; Vector&lt; decltype(T1(0)/T2(0)), N &gt;</td></tr>
 <tr class="separator:afd5588e10899ffab9f9ba6479295e30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98977506f77c3fa319fef67b8ff1d9e3"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
-<tr class="memitem:a98977506f77c3fa319fef67b8ff1d9e3"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a98977506f77c3fa319fef67b8ff1d9e3">operator/</a> (T2 scalar, const Vector&lt; T1, N &gt; &amp;v) -&gt; Vector&lt; decltype(T1(0)/T2(0)), N &gt;</td></tr>
+<tr class="memitem:a98977506f77c3fa319fef67b8ff1d9e3"><td class="memTemplParams" colspan="2"><a class="anchor" id="a98977506f77c3fa319fef67b8ff1d9e3"></a>
+template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
+<tr class="memitem:a98977506f77c3fa319fef67b8ff1d9e3"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator/</b> (T2 scalar, const Vector&lt; T1, N &gt; &amp;v) -&gt; Vector&lt; decltype(T1(0)/T2(0)), N &gt;</td></tr>
 <tr class="separator:a98977506f77c3fa319fef67b8ff1d9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af282c530ee05c9535d59f6005c69f4d7"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
-<tr class="memitem:af282c530ee05c9535d59f6005c69f4d7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#af282c530ee05c9535d59f6005c69f4d7">dot</a> (const Vector&lt; T1, N &gt; &amp;lh, const Vector&lt; T2, N &gt; &amp;rh) -&gt; decltype(T1(0)+T2(0))</td></tr>
+<tr class="memitem:af282c530ee05c9535d59f6005c69f4d7"><td class="memTemplParams" colspan="2"><a class="anchor" id="af282c530ee05c9535d59f6005c69f4d7"></a>
+template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
+<tr class="memitem:af282c530ee05c9535d59f6005c69f4d7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>dot</b> (const Vector&lt; T1, N &gt; &amp;lh, const Vector&lt; T2, N &gt; &amp;rh) -&gt; decltype(T1(0)+T2(0))</td></tr>
 <tr class="separator:af282c530ee05c9535d59f6005c69f4d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb72556aa9f0f9f765fad98e532b8caa"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; </td></tr>
-<tr class="memitem:afb72556aa9f0f9f765fad98e532b8caa"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#afb72556aa9f0f9f765fad98e532b8caa">cross</a> (const Vector&lt; T1, 3 &gt; &amp;lh, const Vector&lt; T2, 3 &gt; &amp;rh) -&gt; Vector&lt; decltype(T1(0)*T2(0)), 3 &gt;</td></tr>
+<tr class="memitem:afb72556aa9f0f9f765fad98e532b8caa"><td class="memTemplParams" colspan="2"><a class="anchor" id="afb72556aa9f0f9f765fad98e532b8caa"></a>
+template&lt;typename T1 , typename T2 &gt; </td></tr>
+<tr class="memitem:afb72556aa9f0f9f765fad98e532b8caa"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>cross</b> (const Vector&lt; T1, 3 &gt; &amp;lh, const Vector&lt; T2, 3 &gt; &amp;rh) -&gt; Vector&lt; decltype(T1(0)*T2(0)), 3 &gt;</td></tr>
 <tr class="separator:afb72556aa9f0f9f765fad98e532b8caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad997191fc1eeb9f122c1cced4ca35a83"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
-<tr class="memitem:ad997191fc1eeb9f122c1cced4ca35a83"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#ad997191fc1eeb9f122c1cced4ca35a83">distance</a> (const Vector&lt; T1, N &gt; &amp;a, const Vector&lt; T2, N &gt; &amp;b) -&gt; decltype((a-b).length())</td></tr>
+<tr class="memitem:ad997191fc1eeb9f122c1cced4ca35a83"><td class="memTemplParams" colspan="2"><a class="anchor" id="ad997191fc1eeb9f122c1cced4ca35a83"></a>
+template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
+<tr class="memitem:ad997191fc1eeb9f122c1cced4ca35a83"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>distance</b> (const Vector&lt; T1, N &gt; &amp;a, const Vector&lt; T2, N &gt; &amp;b) -&gt; decltype((a-b).length())</td></tr>
 <tr class="separator:ad997191fc1eeb9f122c1cced4ca35a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a8a11ea8f3b06e071b1caefdeb0bf1f"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
-<tr class="memitem:a4a8a11ea8f3b06e071b1caefdeb0bf1f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a4a8a11ea8f3b06e071b1caefdeb0bf1f">angle</a> (const Vector&lt; T1, N &gt; &amp;a, const Vector&lt; T2, N &gt; &amp;b) -&gt; decltype(acos(a.length()*b.length()))</td></tr>
+<tr class="memitem:a4a8a11ea8f3b06e071b1caefdeb0bf1f"><td class="memTemplParams" colspan="2"><a class="anchor" id="a4a8a11ea8f3b06e071b1caefdeb0bf1f"></a>
+template&lt;typename T1 , typename T2 , std::size_t N&gt; </td></tr>
+<tr class="memitem:a4a8a11ea8f3b06e071b1caefdeb0bf1f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>angle</b> (const Vector&lt; T1, N &gt; &amp;a, const Vector&lt; T2, N &gt; &amp;b) -&gt; decltype(acos(a.length()*b.length()))</td></tr>
 <tr class="separator:a4a8a11ea8f3b06e071b1caefdeb0bf1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77ffb55f458110708e84b3393937591a"><td class="memTemplParams" colspan="2">template&lt;typename Tdst , typename Tsrc , std::size_t N&gt; </td></tr>
-<tr class="memitem:a77ffb55f458110708e84b3393937591a"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; Tdst, N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a77ffb55f458110708e84b3393937591a">vector_cast</a> (const Vector&lt; Tsrc, N &gt; &amp;in)</td></tr>
+<tr class="memitem:a77ffb55f458110708e84b3393937591a"><td class="memTemplParams" colspan="2"><a class="anchor" id="a77ffb55f458110708e84b3393937591a"></a>
+template&lt;typename Tdst , typename Tsrc , std::size_t N&gt; </td></tr>
+<tr class="memitem:a77ffb55f458110708e84b3393937591a"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; Tdst, N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>vector_cast</b> (const Vector&lt; Tsrc, N &gt; &amp;in)</td></tr>
 <tr class="separator:a77ffb55f458110708e84b3393937591a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a3843eecd350988c6bac45b90053125"><td class="memTemplParams" colspan="2">template&lt;std::size_t Ndst, std::size_t Nsrc, typename T &gt; </td></tr>
-<tr class="memitem:a6a3843eecd350988c6bac45b90053125"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; T, Ndst &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a6a3843eecd350988c6bac45b90053125">vector_cast</a> (const Vector&lt; T, Nsrc &gt; &amp;in)</td></tr>
+<tr class="memitem:a6a3843eecd350988c6bac45b90053125"><td class="memTemplParams" colspan="2"><a class="anchor" id="a6a3843eecd350988c6bac45b90053125"></a>
+template&lt;std::size_t Ndst, std::size_t Nsrc, typename T &gt; </td></tr>
+<tr class="memitem:a6a3843eecd350988c6bac45b90053125"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; T, Ndst &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>vector_cast</b> (const Vector&lt; T, Nsrc &gt; &amp;in)</td></tr>
 <tr class="separator:a6a3843eecd350988c6bac45b90053125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07aa2381fe13bccf133d1d2911b37c5d"><td class="memTemplParams" colspan="2">template&lt;typename Tdst , std::size_t Ndst, typename Tsrc , std::size_t Nsrc&gt; </td></tr>
-<tr class="memitem:a07aa2381fe13bccf133d1d2911b37c5d"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; Tdst, Ndst &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a07aa2381fe13bccf133d1d2911b37c5d">vector_cast</a> (const Vector&lt; Tsrc, Nsrc &gt; &amp;in)</td></tr>
+<tr class="memitem:a07aa2381fe13bccf133d1d2911b37c5d"><td class="memTemplParams" colspan="2"><a class="anchor" id="a07aa2381fe13bccf133d1d2911b37c5d"></a>
+template&lt;typename Tdst , std::size_t Ndst, typename Tsrc , std::size_t Nsrc&gt; </td></tr>
+<tr class="memitem:a07aa2381fe13bccf133d1d2911b37c5d"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; Tdst, Ndst &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>vector_cast</b> (const Vector&lt; Tsrc, Nsrc &gt; &amp;in)</td></tr>
 <tr class="separator:a07aa2381fe13bccf133d1d2911b37c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14b075e7060ba3b2e22d22f556aa4f5c"><td class="memTemplParams" colspan="2">template&lt;typename T , std::size_t N&gt; </td></tr>
-<tr class="memitem:a14b075e7060ba3b2e22d22f556aa4f5c"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; T, N &gt;::iterator&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a14b075e7060ba3b2e22d22f556aa4f5c">begin</a> (Vector&lt; T, N &gt; v)</td></tr>
+<tr class="memitem:a14b075e7060ba3b2e22d22f556aa4f5c"><td class="memTemplParams" colspan="2"><a class="anchor" id="a14b075e7060ba3b2e22d22f556aa4f5c"></a>
+template&lt;typename T , std::size_t N&gt; </td></tr>
+<tr class="memitem:a14b075e7060ba3b2e22d22f556aa4f5c"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; T, N &gt;::iterator&#160;</td><td class="memTemplItemRight" valign="bottom"><b>begin</b> (Vector&lt; T, N &gt; v)</td></tr>
 <tr class="separator:a14b075e7060ba3b2e22d22f556aa4f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3aa040fbc6ae69d90bdc8e24f4ce4811"><td class="memTemplParams" colspan="2">template&lt;typename T , std::size_t N&gt; </td></tr>
-<tr class="memitem:a3aa040fbc6ae69d90bdc8e24f4ce4811"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; T, N &gt;::iterator&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a3aa040fbc6ae69d90bdc8e24f4ce4811">end</a> (Vector&lt; T, N &gt; v)</td></tr>
+<tr class="memitem:a3aa040fbc6ae69d90bdc8e24f4ce4811"><td class="memTemplParams" colspan="2"><a class="anchor" id="a3aa040fbc6ae69d90bdc8e24f4ce4811"></a>
+template&lt;typename T , std::size_t N&gt; </td></tr>
+<tr class="memitem:a3aa040fbc6ae69d90bdc8e24f4ce4811"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; T, N &gt;::iterator&#160;</td><td class="memTemplItemRight" valign="bottom"><b>end</b> (Vector&lt; T, N &gt; v)</td></tr>
 <tr class="separator:a3aa040fbc6ae69d90bdc8e24f4ce4811"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a165a2039e5ff61800ae183c67df7e97a"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1internal.html#a165a2039e5ff61800ae183c67df7e97a">vecPI</a> = 3.14159265359</td></tr>
-<tr class="memdesc:a165a2039e5ff61800ae183c67df7e97a"><td class="mdescLeft">&#160;</td><td class="mdescRight">definition of PI  <a href="#a165a2039e5ff61800ae183c67df7e97a">More...</a><br/></td></tr>
+<tr class="memitem:a165a2039e5ff61800ae183c67df7e97a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a165a2039e5ff61800ae183c67df7e97a"></a>
+constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>vecPI</b> = 3.14159265359</td></tr>
+<tr class="memdesc:a165a2039e5ff61800ae183c67df7e97a"><td class="mdescLeft">&#160;</td><td class="mdescRight">definition of PI <br/></td></tr>
 <tr class="separator:a165a2039e5ff61800ae183c67df7e97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -216,7 +239,7 @@ Variables</h2></td></tr>
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

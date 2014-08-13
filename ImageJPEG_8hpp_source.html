@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,24 +94,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ImageJPEG.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="ImageJPEG_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Image_8fpp.html">Image.fpp</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Image.fpp&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;ImageBox <a class="code" href="namespacelumina.html#a7f849b17ac7885416c03354d49f163c8">loadJPEGImage</a>(std::string filename);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacelumina.html#a461e1927f3f1919591ac90dae80923d7">isJPEGFile</a>(std::string filename);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacelumina.html#a8d786769bd13b84b1dc2dc9ba6574167">isJPEGExtension</a>(std::string filename);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacelumina.html#a279fce7a4f7136f702b1f3e54ba8b361">saveJPEGImage</a>(std::string filename, ImageBox img);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;ImageBox loadJPEGImage(std::string filename);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> isJPEGFile(std::string filename);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> isJPEGExtension(std::string filename);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> saveJPEGImage(std::string filename, ImageBox img);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
-<div class="ttc" id="namespacelumina_html_a7f849b17ac7885416c03354d49f163c8"><div class="ttname"><a href="namespacelumina.html#a7f849b17ac7885416c03354d49f163c8">lumina::loadJPEGImage</a></div><div class="ttdeci">ImageBox loadJPEGImage(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="ImageJPEG_8cpp_source.html#l00184">ImageJPEG.cpp:184</a></div></div>
-<div class="ttc" id="Image_8fpp_html"><div class="ttname"><a href="Image_8fpp.html">Image.fpp</a></div></div>
-<div class="ttc" id="namespacelumina_html_a8d786769bd13b84b1dc2dc9ba6574167"><div class="ttname"><a href="namespacelumina.html#a8d786769bd13b84b1dc2dc9ba6574167">lumina::isJPEGExtension</a></div><div class="ttdeci">bool isJPEGExtension(std::string filename)</div></div>
-<div class="ttc" id="namespacelumina_html_a279fce7a4f7136f702b1f3e54ba8b361"><div class="ttname"><a href="namespacelumina.html#a279fce7a4f7136f702b1f3e54ba8b361">lumina::saveJPEGImage</a></div><div class="ttdeci">void saveJPEGImage(std::string filename, ImageBox img)</div><div class="ttdef"><b>Definition:</b> <a href="ImageJPEG_8cpp_source.html#l00251">ImageJPEG.cpp:251</a></div></div>
-<div class="ttc" id="namespacelumina_html_a461e1927f3f1919591ac90dae80923d7"><div class="ttname"><a href="namespacelumina.html#a461e1927f3f1919591ac90dae80923d7">lumina::isJPEGFile</a></div><div class="ttdeci">bool isJPEGFile(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="ImageJPEG_8cpp_source.html#l00171">ImageJPEG.cpp:171</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -120,7 +114,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

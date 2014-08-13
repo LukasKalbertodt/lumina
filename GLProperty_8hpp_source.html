@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,13 +94,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">GLProperty.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="GLProperty_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;GL/glew.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="GLProperty_8hpp.html#a392c4463891fcbce9c7f0b9c35d87e6b">    7</a></span>&#160;<span class="preprocessor">#define PROPS\</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define PROPS\</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">  X(MaxColorAttachments, int, GL_MAX_COLOR_ATTACHMENTS)\</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">  X(MaxColorTextureSamples, int, GL_MAX_COLOR_TEXTURE_SAMPLES)\</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">  X(MaxDepthTextureSamples, int, GL_MAX_DEPTH_TEXTURE_SAMPLES)\</span></div>
@@ -134,34 +133,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// define enum</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define X(name_, type_, gl_) name_,</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="namespacelumina.html#a8c51ad5bdfadc0120316b10658406efc">   40</a></span>&#160;<span class="preprocessor"></span><span class="keyword">enum class</span> <a class="code" href="namespacelumina.html#a8c51ad5bdfadc0120316b10658406efc">GLProp</a> { <a class="code" href="GLProperty_8hpp.html#a392c4463891fcbce9c7f0b9c35d87e6b">PROPS</a> <a class="code" href="namespacelumina.html#a8c51ad5bdfadc0120316b10658406efca44119bf3bae5d40a8d0766b91c304aac">NUM</a> };</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="keyword">enum class</span> GLProp { PROPS NUM };</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#undef X</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// define helper functions</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define X(name_, type_, gl_) case GLProp::name_: return gl_;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="namespacelumina.html#a1993b713f3b0224f8e1fa627b5ee2e58">   45</a></span>&#160;<span class="preprocessor"></span><span class="keyword">inline</span> GLenum <a class="code" href="namespacelumina.html#a1993b713f3b0224f8e1fa627b5ee2e58">translateGLProp</a>(<a class="code" href="namespacelumina.html#a8c51ad5bdfadc0120316b10658406efc">GLProp</a> prop) { </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="keyword">inline</span> GLenum translateGLProp(GLProp prop) { </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">switch</span>(prop) { </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="GLProperty_8hpp.html#a392c4463891fcbce9c7f0b9c35d87e6b">PROPS</a> </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    PROPS </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">default</span>: <span class="keywordflow">return</span> GL_INVALID_ENUM; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  } </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#undef X</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="GLProperty_8hpp.html#a1aab216eec8c19b52be9c04b764fc78c">   53</a></span>&#160;<span class="preprocessor">#define X(name_, type_, gl_) case GLProp::name_: return #gl_;</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespacelumina.html#ad5f60fd1ab2c51bb22e5714869a1c010">   54</a></span>&#160;<span class="preprocessor"></span><span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespacelumina.html#ad5f60fd1ab2c51bb22e5714869a1c010">getGLPropName</a>(<a class="code" href="namespacelumina.html#a8c51ad5bdfadc0120316b10658406efc">GLProp</a> prop) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define X(name_, type_, gl_) case GLProp::name_: return #gl_;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span><span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* getGLPropName(GLProp prop) {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">switch</span>(prop) { </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="GLProperty_8hpp.html#a392c4463891fcbce9c7f0b9c35d87e6b">PROPS</a> </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    PROPS </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;???&quot;</span>; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  } </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#undef X</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="ttc" id="namespacelumina_html_a1993b713f3b0224f8e1fa627b5ee2e58"><div class="ttname"><a href="namespacelumina.html#a1993b713f3b0224f8e1fa627b5ee2e58">lumina::translateGLProp</a></div><div class="ttdeci">GLenum translateGLProp(GLProp prop)</div><div class="ttdef"><b>Definition:</b> <a href="GLProperty_8hpp_source.html#l00045">GLProperty.hpp:45</a></div></div>
-<div class="ttc" id="GLProperty_8hpp_html_a392c4463891fcbce9c7f0b9c35d87e6b"><div class="ttname"><a href="GLProperty_8hpp.html#a392c4463891fcbce9c7f0b9c35d87e6b">PROPS</a></div><div class="ttdeci">#define PROPS</div><div class="ttdef"><b>Definition:</b> <a href="GLProperty_8hpp_source.html#l00007">GLProperty.hpp:7</a></div></div>
-<div class="ttc" id="namespacelumina_html_a8c51ad5bdfadc0120316b10658406efca44119bf3bae5d40a8d0766b91c304aac"><div class="ttname"><a href="namespacelumina.html#a8c51ad5bdfadc0120316b10658406efca44119bf3bae5d40a8d0766b91c304aac">lumina::GLProp::NUM</a></div></div>
-<div class="ttc" id="namespacelumina_html_ad5f60fd1ab2c51bb22e5714869a1c010"><div class="ttname"><a href="namespacelumina.html#ad5f60fd1ab2c51bb22e5714869a1c010">lumina::getGLPropName</a></div><div class="ttdeci">const char * getGLPropName(GLProp prop)</div><div class="ttdef"><b>Definition:</b> <a href="GLProperty_8hpp_source.html#l00054">GLProperty.hpp:54</a></div></div>
-<div class="ttc" id="namespacelumina_html_a8c51ad5bdfadc0120316b10658406efc"><div class="ttname"><a href="namespacelumina.html#a8c51ad5bdfadc0120316b10658406efc">lumina::GLProp</a></div><div class="ttdeci">GLProp</div><div class="ttdef"><b>Definition:</b> <a href="GLProperty_8hpp_source.html#l00040">GLProperty.hpp:40</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -169,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

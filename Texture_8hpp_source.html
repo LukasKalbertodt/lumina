@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,100 +96,83 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a href="Texture_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="GLObject_8hpp.html">GLObject.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="HotTexture_8fpp.html">HotTexture.fpp</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TexFormat_8hpp.html">TexFormat.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TextureUnits_8hpp.html">TextureUnits.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TexParam_8hpp.html">TexParam.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Texture_8fpp.html">Texture.fpp</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TexType_8hpp.html">TexType.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../config/BaseProxy.hpp&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../util/Vector.hpp&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;GL/glew.h&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>lumina {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classlumina_1_1TextureInterface.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1TextureInterface.html">TextureInterface</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1GLObject.html">GLObject</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classlumina_1_1TextureInterface.html#a4947b64187fe83559ac855b90976c214">~TextureInterface</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1TextureInterface.html#a5b7fe63d51702340584d39f3e2057ffb">prePrime</a>(<span class="keywordtype">int</span> texUnit) = 0;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1TextureInterface.html#a4f565e3332b5ff8c771895cae3d27a23">postPrime</a>(<span class="keywordtype">int</span> texUnit) = 0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">template</span> &lt;TexType TT&gt;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1Texture.html">Texture</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1TextureInterface.html">TextureInterface</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classlumina_1_1Texture.html#ada91670fecd617650eb9f1a69d96a9b2">   30</a></span>&#160;  <a class="code" href="structlumina_1_1TexParam.html">TexParam</a> <a class="code" href="classlumina_1_1Texture.html#ada91670fecd617650eb9f1a69d96a9b2">params</a>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classlumina_1_1Texture.html#a5c292543baec1a3caa8a4ee3f19dbeb7">Texture</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classlumina_1_1Texture.html#ae3235551df38b957e758aedc4d6d1c27">~Texture</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1Texture.html#ae8e80dab20a9f690fd60d662a33291b0">create</a>(<a class="code" href="structlumina_1_1Vector.html">Vec2i</a> dimension, <a class="code" href="namespacelumina.html#a8beebfae31c90a370f59cc204d5f123b">TexFormat</a> format, <span class="keywordtype">void</span> *data = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1Texture.html#aee6d09da1369215912ed0fdc1719e5d7">prime</a>(<span class="keywordtype">int</span> texUnit, std::function&lt;<span class="keywordtype">void</span>(<a class="code" href="classlumina_1_1HotTexture.html">HotTexture&lt;TT&gt;</a>&amp;)&gt; func);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;GLObject.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;HotTexture.fpp&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;TexFormat.hpp&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;TexParam.hpp&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;Texture.fpp&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;TextureUnits.hpp&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;TexType.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../config/BaseProxy.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../util/Vector.hpp&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;GL/glew.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>lumina {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classlumina_1_1TextureInterface.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1TextureInterface.html">TextureInterface</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1GLObject.html">GLObject</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classlumina_1_1TextureInterface.html">TextureInterface</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> prePrime(<span class="keywordtype">int</span> texUnit) = 0;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> postPrime(<span class="keywordtype">int</span> texUnit) = 0;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  GLuint <a class="code" href="classlumina_1_1Texture.html#acb534fac1bb7c0685ff110f3b0599878">nativeHandle</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="namespacelumina.html#a8beebfae31c90a370f59cc204d5f123b">TexFormat</a> <a class="code" href="classlumina_1_1Texture.html#abb09ae93a74b53fb0807b8d7c24edb37">getFormat</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  GLuint m_handle;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="structlumina_1_1Vector.html">Vec2i</a> m_dimension;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="structlumina_1_1TexParam.html">TexParam</a> m_activeParams;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="namespacelumina.html#a8beebfae31c90a370f59cc204d5f123b">TexFormat</a> m_format;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordtype">void</span> prePrime(<span class="keywordtype">int</span> texUnit) <span class="keyword">final</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordtype">void</span> postPrime(<span class="keywordtype">int</span> texUnit) <span class="keyword">final</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">template</span> &lt;TexType TT&gt;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1Texture.html">Texture</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1TextureInterface.html">TextureInterface</a> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="structlumina_1_1TexParam.html">TexParam</a> params;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">void</span> bind(<span class="keywordtype">int</span> texUnit);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> unbind(<span class="keywordtype">int</span> texUnit);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="classlumina_1_1Texture.html">Texture</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  ~<a class="code" href="classlumina_1_1Texture.html">Texture</a>();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">void</span> applyParams(<span class="keywordtype">bool</span> force = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">void</span> applyFilterMode();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">void</span> applyWrapMode();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">void</span> applyMipMaps();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  GLenum glType() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordtype">void</span> createStorage(<a class="code" href="structlumina_1_1Vector.html">Vec2i</a> dim,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                     GLint internalFormat,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                     GLenum format,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                     GLenum type,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                     <span class="keywordtype">void</span>* data);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1Texture.html#ae8e80dab20a9f690fd60d662a33291b0">create</a>(<a class="code" href="structlumina_1_1Vector.html">Vec2i</a> dimension, TexFormat format, <span class="keywordtype">void</span> *data = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">void</span> prime(<span class="keywordtype">int</span> texUnit, std::function&lt;<span class="keywordtype">void</span>(<a class="code" href="classlumina_1_1HotTexture.html">HotTexture&lt;TT&gt;</a>&amp;)&gt; func);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">friend</span> <a class="code" href="classlumina_1_1HotTexture.html">HotTexture&lt;TT&gt;</a>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  GLuint nativeHandle() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  TexFormat getFormat() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;} <span class="comment">// namespace lumina</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Texture_8tpp.html">Texture.tpp</a>&quot;</span></div>
-<div class="ttc" id="Texture_8fpp_html"><div class="ttname"><a href="Texture_8fpp.html">Texture.fpp</a></div></div>
-<div class="ttc" id="classlumina_1_1TextureInterface_html_a4947b64187fe83559ac855b90976c214"><div class="ttname"><a href="classlumina_1_1TextureInterface.html#a4947b64187fe83559ac855b90976c214">lumina::TextureInterface::~TextureInterface</a></div><div class="ttdeci">virtual ~TextureInterface()=default</div></div>
-<div class="ttc" id="classlumina_1_1Texture_html_ae8e80dab20a9f690fd60d662a33291b0"><div class="ttname"><a href="classlumina_1_1Texture.html#ae8e80dab20a9f690fd60d662a33291b0">lumina::Texture::create</a></div><div class="ttdeci">void create(Vec2i dimension, TexFormat format, void *data=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="Texture_8cpp_source.html#l00011">Texture.cpp:11</a></div></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  GLuint m_handle;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="structlumina_1_1Vector.html">Vec2i</a> m_dimension;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="structlumina_1_1TexParam.html">TexParam</a> m_activeParams;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  TexFormat m_format;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">void</span> prePrime(<span class="keywordtype">int</span> texUnit) <span class="keyword">final</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">void</span> postPrime(<span class="keywordtype">int</span> texUnit) <span class="keyword">final</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">void</span> bind(<span class="keywordtype">int</span> texUnit);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">void</span> unbind(<span class="keywordtype">int</span> texUnit);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">void</span> applyParams(<span class="keywordtype">bool</span> force = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">void</span> applyFilterMode();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">void</span> applyWrapMode();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">void</span> applyMipMaps();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  GLenum glType() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">void</span> createStorage(<a class="code" href="structlumina_1_1Vector.html">Vec2i</a> dim,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                     GLint internalFormat,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                     GLenum format,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                     GLenum type,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                     <span class="keywordtype">void</span>* data);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keyword">friend</span> <a class="code" href="classlumina_1_1HotTexture.html">HotTexture&lt;TT&gt;</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;} <span class="comment">// namespace lumina</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#include &quot;Texture.tpp&quot;</span></div>
+<div class="ttc" id="classlumina_1_1Texture_html_ae8e80dab20a9f690fd60d662a33291b0"><div class="ttname"><a href="classlumina_1_1Texture.html#ae8e80dab20a9f690fd60d662a33291b0">lumina::Texture::create</a></div><div class="ttdeci">void create(Vec2i dimension, TexFormat format, void *data=nullptr)</div><div class="ttdoc">Creates internal storage for the texture. </div><div class="ttdef"><b>Definition:</b> Texture.cpp:11</div></div>
 <div class="ttc" id="structlumina_1_1Vector_html"><div class="ttname"><a href="structlumina_1_1Vector.html">lumina::Vector&lt; int, 2 &gt;</a></div></div>
-<div class="ttc" id="HotTexture_8fpp_html"><div class="ttname"><a href="HotTexture_8fpp.html">HotTexture.fpp</a></div></div>
-<div class="ttc" id="TexType_8hpp_html"><div class="ttname"><a href="TexType_8hpp.html">TexType.hpp</a></div></div>
-<div class="ttc" id="TextureUnits_8hpp_html"><div class="ttname"><a href="TextureUnits_8hpp.html">TextureUnits.hpp</a></div></div>
-<div class="ttc" id="classlumina_1_1Texture_html_acb534fac1bb7c0685ff110f3b0599878"><div class="ttname"><a href="classlumina_1_1Texture.html#acb534fac1bb7c0685ff110f3b0599878">lumina::Texture::nativeHandle</a></div><div class="ttdeci">GLuint nativeHandle() const </div><div class="ttdef"><b>Definition:</b> <a href="Texture_8tpp_source.html#l00015">Texture.tpp:15</a></div></div>
-<div class="ttc" id="classlumina_1_1Texture_html"><div class="ttname"><a href="classlumina_1_1Texture.html">lumina::Texture</a></div><div class="ttdef"><b>Definition:</b> <a href="Texture_8fpp_source.html#l00007">Texture.fpp:7</a></div></div>
-<div class="ttc" id="classlumina_1_1GLObject_html"><div class="ttname"><a href="classlumina_1_1GLObject.html">lumina::GLObject</a></div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8hpp_source.html#l00037">GLObject.hpp:37</a></div></div>
-<div class="ttc" id="classlumina_1_1Texture_html_ada91670fecd617650eb9f1a69d96a9b2"><div class="ttname"><a href="classlumina_1_1Texture.html#ada91670fecd617650eb9f1a69d96a9b2">lumina::Texture::params</a></div><div class="ttdeci">TexParam params</div><div class="ttdef"><b>Definition:</b> <a href="Texture_8hpp_source.html#l00030">Texture.hpp:30</a></div></div>
-<div class="ttc" id="classlumina_1_1TextureInterface_html_a5b7fe63d51702340584d39f3e2057ffb"><div class="ttname"><a href="classlumina_1_1TextureInterface.html#a5b7fe63d51702340584d39f3e2057ffb">lumina::TextureInterface::prePrime</a></div><div class="ttdeci">virtual void prePrime(int texUnit)=0</div></div>
-<div class="ttc" id="classlumina_1_1TextureInterface_html_a4f565e3332b5ff8c771895cae3d27a23"><div class="ttname"><a href="classlumina_1_1TextureInterface.html#a4f565e3332b5ff8c771895cae3d27a23">lumina::TextureInterface::postPrime</a></div><div class="ttdeci">virtual void postPrime(int texUnit)=0</div></div>
-<div class="ttc" id="classlumina_1_1Texture_html_ae3235551df38b957e758aedc4d6d1c27"><div class="ttname"><a href="classlumina_1_1Texture.html#ae3235551df38b957e758aedc4d6d1c27">lumina::Texture::~Texture</a></div><div class="ttdeci">~Texture()</div><div class="ttdef"><b>Definition:</b> <a href="Texture_8tpp_source.html#l00009">Texture.tpp:9</a></div></div>
-<div class="ttc" id="TexParam_8hpp_html"><div class="ttname"><a href="TexParam_8hpp.html">TexParam.hpp</a></div></div>
-<div class="ttc" id="classlumina_1_1Texture_html_a5c292543baec1a3caa8a4ee3f19dbeb7"><div class="ttname"><a href="classlumina_1_1Texture.html#a5c292543baec1a3caa8a4ee3f19dbeb7">lumina::Texture::Texture</a></div><div class="ttdeci">Texture()</div><div class="ttdef"><b>Definition:</b> <a href="Texture_8tpp_source.html#l00004">Texture.tpp:4</a></div></div>
-<div class="ttc" id="classlumina_1_1Texture_html_abb09ae93a74b53fb0807b8d7c24edb37"><div class="ttname"><a href="classlumina_1_1Texture.html#abb09ae93a74b53fb0807b8d7c24edb37">lumina::Texture::getFormat</a></div><div class="ttdeci">TexFormat getFormat() const </div><div class="ttdef"><b>Definition:</b> <a href="Texture_8tpp_source.html#l00020">Texture.tpp:20</a></div></div>
-<div class="ttc" id="classlumina_1_1Texture_html_aee6d09da1369215912ed0fdc1719e5d7"><div class="ttname"><a href="classlumina_1_1Texture.html#aee6d09da1369215912ed0fdc1719e5d7">lumina::Texture::prime</a></div><div class="ttdeci">void prime(int texUnit, std::function&lt; void(HotTexture&lt; TT &gt; &amp;)&gt; func)</div><div class="ttdef"><b>Definition:</b> <a href="Texture_8cpp_source.html#l00214">Texture.cpp:214</a></div></div>
-<div class="ttc" id="GLObject_8hpp_html"><div class="ttname"><a href="GLObject_8hpp.html">GLObject.hpp</a></div></div>
-<div class="ttc" id="structlumina_1_1TexParam_html"><div class="ttname"><a href="structlumina_1_1TexParam.html">lumina::TexParam</a></div><div class="ttdef"><b>Definition:</b> <a href="TexParam_8hpp_source.html#l00017">TexParam.hpp:17</a></div></div>
-<div class="ttc" id="classlumina_1_1HotTexture_html"><div class="ttname"><a href="classlumina_1_1HotTexture.html">lumina::HotTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="HotTexture_8fpp_source.html#l00007">HotTexture.fpp:7</a></div></div>
-<div class="ttc" id="namespacelumina_html_a8beebfae31c90a370f59cc204d5f123b"><div class="ttname"><a href="namespacelumina.html#a8beebfae31c90a370f59cc204d5f123b">lumina::TexFormat</a></div><div class="ttdeci">TexFormat</div><div class="ttdef"><b>Definition:</b> <a href="TexFormat_8hpp_source.html#l00010">TexFormat.hpp:10</a></div></div>
-<div class="ttc" id="TexFormat_8hpp_html"><div class="ttname"><a href="TexFormat_8hpp.html">TexFormat.hpp</a></div></div>
-<div class="ttc" id="Texture_8tpp_html"><div class="ttname"><a href="Texture_8tpp.html">Texture.tpp</a></div></div>
-<div class="ttc" id="classlumina_1_1TextureInterface_html"><div class="ttname"><a href="classlumina_1_1TextureInterface.html">lumina::TextureInterface</a></div><div class="ttdef"><b>Definition:</b> <a href="Texture_8hpp_source.html#l00019">Texture.hpp:19</a></div></div>
+<div class="ttc" id="classlumina_1_1Texture_html"><div class="ttname"><a href="classlumina_1_1Texture.html">lumina::Texture</a></div><div class="ttdoc">Represents an OpenGL texture. </div><div class="ttdef"><b>Definition:</b> Texture.fpp:7</div></div>
+<div class="ttc" id="classlumina_1_1GLObject_html"><div class="ttname"><a href="classlumina_1_1GLObject.html">lumina::GLObject</a></div><div class="ttdef"><b>Definition:</b> GLObject.hpp:37</div></div>
+<div class="ttc" id="structlumina_1_1TexParam_html"><div class="ttname"><a href="structlumina_1_1TexParam.html">lumina::TexParam</a></div><div class="ttdef"><b>Definition:</b> TexParam.hpp:17</div></div>
+<div class="ttc" id="classlumina_1_1HotTexture_html"><div class="ttname"><a href="classlumina_1_1HotTexture.html">lumina::HotTexture</a></div><div class="ttdef"><b>Definition:</b> HotTexture.fpp:7</div></div>
+<div class="ttc" id="classlumina_1_1TextureInterface_html"><div class="ttname"><a href="classlumina_1_1TextureInterface.html">lumina::TextureInterface</a></div><div class="ttdoc">Interface for all texture types (2D, 3D, Cube). </div><div class="ttdef"><b>Definition:</b> Texture.hpp:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -198,7 +180,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

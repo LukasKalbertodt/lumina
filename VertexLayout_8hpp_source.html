@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">VertexLayout.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="VertexLayout_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;GL/glew.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
@@ -112,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;          <span class="keywordtype">int</span> Offset,</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;          <span class="keywordtype">int</span> Size,</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;          <span class="keywordtype">int</span>... Tail&gt;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespacelumina_1_1internal.html#ae6c05fcfa2e3b9b6c6970fcaa8aeed38">   18</a></span>&#160;<span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(Tail) == 0&gt;::type <a class="code" href="namespacelumina_1_1internal.html#ae6c05fcfa2e3b9b6c6970fcaa8aeed38">applyLayoutImpl</a>() {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(Tail) == 0&gt;::type applyLayoutImpl() {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="comment">// std::cout &lt;&lt; Index &lt;&lt; &quot;, &quot; &lt;&lt; Stride &lt;&lt; &quot;, &quot; &lt;&lt; Offset &lt;&lt; &quot;, &quot; &lt;&lt; Size</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="comment">//           &lt;&lt; std::endl;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  static_assert(Size &gt;= 4, <span class="stringliteral">&quot;Incompatible type for vertex layout (to small!)&quot;</span>);</div>
@@ -121,7 +120,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="stringliteral">&quot;divisible by 4!)&quot;</span>);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  glVertexAttribPointer(Index,</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                        Size/4,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                        <a class="code" href="namespacelumina.html#adaae4f47a5f0c9acfac189e873b3ff02">GL_FLOAT</a>,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                        GL_FLOAT,</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        GL_FALSE,</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        Stride,</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        reinterpret_cast&lt;void*&gt;(Offset));</div>
@@ -133,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          <span class="keywordtype">int</span> Offset,</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;          <span class="keywordtype">int</span> Size,</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;          <span class="keywordtype">int</span>... Tail&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="namespacelumina_1_1internal.html#a619c77a2f1671e1094d61c27ae357aa2">   39</a></span>&#160;<span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(Tail) != 0&gt;::type <a class="code" href="namespacelumina_1_1internal.html#ae6c05fcfa2e3b9b6c6970fcaa8aeed38">applyLayoutImpl</a>() {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(Tail) != 0&gt;::type applyLayoutImpl() {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  static_assert(Size &gt;= 4, <span class="stringliteral">&quot;Incompatible type for vertex layout (to small!)&quot;</span>);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  static_assert(Size % 4 == 0,</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="stringliteral">&quot;Incompatible type for vertex layout (size not &quot;</span></div>
@@ -142,31 +141,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="comment">//           &lt;&lt; std::endl;</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  glVertexAttribPointer(Index,</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                        Size/4,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        <a class="code" href="namespacelumina.html#adaae4f47a5f0c9acfac189e873b3ff02">GL_FLOAT</a>,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        GL_FLOAT,</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        GL_FALSE,</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                        Stride,</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                        reinterpret_cast&lt;void*&gt;(Offset));</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  glEnableVertexAttribArray(Index);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="namespacelumina_1_1internal.html#ae6c05fcfa2e3b9b6c6970fcaa8aeed38">applyLayoutImpl</a>&lt;Index + 1, Stride, Offset + Size, Tail...&gt;();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  applyLayoutImpl&lt;Index + 1, Stride, Offset + Size, Tail...&gt;();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> <a class="code" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>, <span class="keyword">typename</span>... Ts&gt;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Ts&gt;</div>
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structlumina_1_1internal_1_1LayoutTypes.html">   57</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structlumina_1_1internal_1_1LayoutTypes.html">LayoutTypes</a> {</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structlumina_1_1internal_1_1LayoutTypes.html#a1deaba946ff32b67dc66f1916dfa527c">   58</a></span>&#160;  <span class="keyword">static</span> constexpr <span class="keywordtype">int</span> <a class="code" href="structlumina_1_1internal_1_1LayoutTypes.html#a1deaba946ff32b67dc66f1916dfa527c">stride</a> = <a class="code" href="structlumina_1_1internal_1_1LayoutTypes.html">LayoutTypes</a>&lt;Ts...&gt;<a class="code" href="structlumina_1_1internal_1_1LayoutTypes.html#a1deaba946ff32b67dc66f1916dfa527c">::stride</a> + <span class="keyword">sizeof</span>(<a class="code" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">static</span> constexpr <span class="keywordtype">int</span> stride = <a class="code" href="structlumina_1_1internal_1_1LayoutTypes.html">LayoutTypes</a>&lt;Ts...&gt;::stride + <span class="keyword">sizeof</span>(T);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structlumina_1_1internal_1_1LayoutTypes_3_01T_01_4.html">   61</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structlumina_1_1internal_1_1LayoutTypes.html">LayoutTypes</a>&lt;<a class="code" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt; {</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structlumina_1_1internal_1_1LayoutTypes_3_01T_01_4.html#a1deaba946ff32b67dc66f1916dfa527c">   62</a></span>&#160;  <span class="keyword">static</span> constexpr <span class="keywordtype">int</span> <a class="code" href="structlumina_1_1internal_1_1LayoutTypes.html#a1deaba946ff32b67dc66f1916dfa527c">stride</a> = <span class="keyword">sizeof</span>(<a class="code" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structlumina_1_1internal_1_1LayoutTypes_3_01T_01_4.html">   61</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structlumina_1_1internal_1_1LayoutTypes.html">LayoutTypes</a>&lt;T&gt; {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">static</span> constexpr <span class="keywordtype">int</span> stride = <span class="keyword">sizeof</span>(T);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace lumina</span></div>
-<div class="ttc" id="namespacelumina_1_1internal_html_ae6c05fcfa2e3b9b6c6970fcaa8aeed38"><div class="ttname"><a href="namespacelumina_1_1internal.html#ae6c05fcfa2e3b9b6c6970fcaa8aeed38">lumina::internal::applyLayoutImpl</a></div><div class="ttdeci">std::enable_if&lt; sizeof...(Tail)==0 &gt;::type applyLayoutImpl()</div><div class="ttdef"><b>Definition:</b> <a href="VertexLayout_8hpp_source.html#l00018">VertexLayout.hpp:18</a></div></div>
-<div class="ttc" id="structlumina_1_1internal_1_1LayoutTypes_html_a1deaba946ff32b67dc66f1916dfa527c"><div class="ttname"><a href="structlumina_1_1internal_1_1LayoutTypes.html#a1deaba946ff32b67dc66f1916dfa527c">lumina::internal::LayoutTypes::stride</a></div><div class="ttdeci">static constexpr int stride</div><div class="ttdef"><b>Definition:</b> <a href="VertexLayout_8hpp_source.html#l00058">VertexLayout.hpp:58</a></div></div>
-<div class="ttc" id="namespacelumina_html_adaae4f47a5f0c9acfac189e873b3ff02"><div class="ttname"><a href="namespacelumina.html#adaae4f47a5f0c9acfac189e873b3ff02">lumina::GL_FLOAT</a></div><div class="ttdeci">GL_RGB8 GL_R16F GL_RGBA16F GL_FLOAT</div><div class="ttdef"><b>Definition:</b> <a href="TexFormat_8hpp_source.html#l00051">TexFormat.hpp:51</a></div></div>
-<div class="ttc" id="namespacelumina_html_a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">lumina::KeyCode::T</a></div></div>
-<div class="ttc" id="structlumina_1_1internal_1_1LayoutTypes_html"><div class="ttname"><a href="structlumina_1_1internal_1_1LayoutTypes.html">lumina::internal::LayoutTypes</a></div><div class="ttdef"><b>Definition:</b> <a href="VertexLayout_8hpp_source.html#l00057">VertexLayout.hpp:57</a></div></div>
+<div class="ttc" id="structlumina_1_1internal_1_1LayoutTypes_html"><div class="ttname"><a href="structlumina_1_1internal_1_1LayoutTypes.html">lumina::internal::LayoutTypes</a></div><div class="ttdef"><b>Definition:</b> VertexLayout.hpp:57</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -174,7 +169,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logdebugeveryframe',['logDebugEveryFrame',['../namespacelumina_1_1config.html#a07eb114863201e3c4086449111d510c4',1,'lumina::config']]]
+  ['x',['x',['../structlumina_1_1MouseInput.html#ad0da36b2558901e21e7a30f6c227a45e',1,'lumina::MouseInput']]]
 ];

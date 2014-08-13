@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,36 +94,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ServiceContext.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="ServiceContext_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9">    7</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9">ServiceContext</a> : <a class="code" href="namespacelumina.html#ae1affc9ca37cfb624959c866a73f83c2">uint8_t</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a7a1920d61156abc05a60135aefe8bc67">Default</a>,</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a84a8921b25f505d0d2077aeb5db4bc16">Static</a>,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <a class="code" href="namespacelumina.html#aa012a6071707a5b9b0e83589249bfcf6aa603905470e2a5b8c13e96b579ef0dba">Debug</a>,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a54b4c5e2c473e3932e28d605be6d41de">ExContext0</a>,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9aa6042064f2526f133ad8c8e1770a1658">ExContext1</a>,</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a140466cf071ebcf7810b5b42254abe6a">ExContext2</a>,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a8ea592fc29a26ab1e86acae88cdb1785">ExContext3</a>,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a7c308a88a38927fdc6e303808b9eb4c1">ExContext4</a>,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a5d3bda6e830ebb4dcd727a41dcafc842">NUM_VALUES</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">enum class</span> ServiceContext : uint8_t {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  Default,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  Static,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  Debug,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  ExContext0,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  ExContext1,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  ExContext2,</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  ExContext3,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  ExContext4,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  NUM_VALUES</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;} <span class="comment">// namespace lumina</span></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a140466cf071ebcf7810b5b42254abe6a"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a140466cf071ebcf7810b5b42254abe6a">lumina::ServiceContext::ExContext2</a></div></div>
-<div class="ttc" id="namespacelumina_html_ae1affc9ca37cfb624959c866a73f83c2"><div class="ttname"><a href="namespacelumina.html#ae1affc9ca37cfb624959c866a73f83c2">lumina::uint8_t</a></div><div class="ttdeci">uint8_t</div><div class="ttdef"><b>Definition:</b> <a href="TexFormat_8hpp_source.html#l00045">TexFormat.hpp:45</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a8ea592fc29a26ab1e86acae88cdb1785"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a8ea592fc29a26ab1e86acae88cdb1785">lumina::ServiceContext::ExContext3</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9aa6042064f2526f133ad8c8e1770a1658"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9aa6042064f2526f133ad8c8e1770a1658">lumina::ServiceContext::ExContext1</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a5d3bda6e830ebb4dcd727a41dcafc842"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a5d3bda6e830ebb4dcd727a41dcafc842">lumina::ServiceContext::NUM_VALUES</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a7a1920d61156abc05a60135aefe8bc67"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a7a1920d61156abc05a60135aefe8bc67">lumina::ServiceContext::Default</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a84a8921b25f505d0d2077aeb5db4bc16"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a84a8921b25f505d0d2077aeb5db4bc16">lumina::ServiceContext::Static</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a54b4c5e2c473e3932e28d605be6d41de"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a54b4c5e2c473e3932e28d605be6d41de">lumina::ServiceContext::ExContext0</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a7c308a88a38927fdc6e303808b9eb4c1"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a7c308a88a38927fdc6e303808b9eb4c1">lumina::ServiceContext::ExContext4</a></div></div>
-<div class="ttc" id="namespacelumina_html_aa012a6071707a5b9b0e83589249bfcf6aa603905470e2a5b8c13e96b579ef0dba"><div class="ttname"><a href="namespacelumina.html#aa012a6071707a5b9b0e83589249bfcf6aa603905470e2a5b8c13e96b579ef0dba">lumina::LogLevel::Debug</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9">lumina::ServiceContext</a></div><div class="ttdeci">ServiceContext</div><div class="ttdef"><b>Definition:</b> <a href="ServiceContext_8hpp_source.html#l00007">ServiceContext.hpp:7</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -132,7 +120,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

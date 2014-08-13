@@ -317,156 +317,148 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                         <span class="keywordtype">int</span> action, <span class="keywordtype">int</span> mods) {</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="comment">// transcode input into lumina format</span></div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  InputEvent e;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  e.type = InputType::Key;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  e.keyInput.key = <a class="code" href="namespacelumina.html#ac5043ecc313c1fe907af1f6b4a8293e7">translateGLFWKey</a>(key);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  <span class="keywordflow">switch</span>(action) {</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">case</span> GLFW_PRESS:</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      e.keyInput.type = KeyInputType::Pressed;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">case</span> GLFW_RELEASE:</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      e.keyInput.type = KeyInputType::Released;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">case</span> GLFW_REPEAT:</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      e.keyInput.type = KeyInputType::Hold;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  }</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(win) != 0) {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    s_eventReceiver[win]-&gt;postEvent(e);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A key input was received on a window, which &quot;</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  e.keyInput.key = <a class="code" href="namespacelumina.html#ac5043ecc313c1fe907af1f6b4a8293e7">translateGLFWKey</a>(key);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  <span class="keywordflow">switch</span>(action) {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">case</span> GLFW_PRESS:</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      e.type = InputType::KeyPressed;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">case</span> GLFW_RELEASE:</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      e.type = InputType::KeyReleased;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">case</span> GLFW_REPEAT:</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;      e.type = InputType::KeyHold;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(win) != 0) {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    s_eventReceiver[win]-&gt;postEvent(e);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A key input was received on a window, which &quot;</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="keywordtype">void</span> Window::charCallback(GLFWwindow* win, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> key) {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="comment">// transcode input into lumina format</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  InputEvent e;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  e.type = InputType::Key;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  e.keyInput.c = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(key);</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  e.keyInput.type = KeyInputType::Char;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(win) != 0) {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    s_eventReceiver[win]-&gt;postEvent(e);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  }</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A char input was received on a window, which &quot;</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;}</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="keywordtype">void</span> Window::mouseButtonCallback(GLFWwindow* win, <span class="keywordtype">int</span> button, <span class="keywordtype">int</span> action,</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                      <span class="keywordtype">int</span> mods) {</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="comment">// transcode input into lumina format</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  InputEvent e;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  e.type = InputType::Mouse;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="keywordflow">switch</span>(button) {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordflow">case</span> GLFW_MOUSE_BUTTON_LEFT:</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      e.mouseInput.type = (action == GLFW_PRESS)</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                              ? MouseInputType::LButtonPressed</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                              : MouseInputType::LButtonReleased;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">case</span> GLFW_MOUSE_BUTTON_MIDDLE:</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      e.mouseInput.type = (action == GLFW_PRESS)</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                              ? MouseInputType::MButtonPressed</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                              : MouseInputType::MButtonReleased;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keywordtype">void</span> Window::charCallback(GLFWwindow* win, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> key) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="comment">// transcode input into lumina format</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  InputEvent e;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  e.type = InputType::Char;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  e.keyInput.c = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(key);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(win) != 0) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    s_eventReceiver[win]-&gt;postEvent(e);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A char input was received on a window, which &quot;</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;}</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keywordtype">void</span> Window::mouseButtonCallback(GLFWwindow* win, <span class="keywordtype">int</span> button, <span class="keywordtype">int</span> action,</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                                      <span class="keywordtype">int</span> mods) {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <span class="comment">// transcode input into lumina format</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  InputEvent e;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordflow">switch</span>(button) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">case</span> GLFW_MOUSE_BUTTON_LEFT:</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;      e.type = (action == GLFW_PRESS) ? InputType::LMousePressed</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                                      : InputType::LMouseReleased;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">case</span> GLFW_MOUSE_BUTTON_MIDDLE:</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      e.type = (action == GLFW_PRESS) ? InputType::MMousePressed</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                      : InputType::MMouseReleased;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">case</span> GLFW_MOUSE_BUTTON_RIGHT:</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      e.type = (action == GLFW_PRESS) ? InputType::RMousePressed</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                                      : InputType::RMouseReleased;</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">case</span> GLFW_MOUSE_BUTTON_RIGHT:</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      e.mouseInput.type = (action == GLFW_PRESS)</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                              ? MouseInputType::RButtonPressed</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                              : MouseInputType::RButtonReleased;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  }</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(win) != 0) {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    s_eventReceiver[win]-&gt;postEvent(e);</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A mouse button input was received on a window, which &quot;</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  }</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="keywordtype">void</span> Window::mousePosCallback(GLFWwindow* w, <span class="keywordtype">double</span> xpos, <span class="keywordtype">double</span> ypos) {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(w) == 0) {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A mouse pos input was received on a window, which &quot;</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(win) != 0) {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    s_eventReceiver[win]-&gt;postEvent(e);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A mouse button input was received on a window, which &quot;</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;}</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="keywordtype">void</span> Window::mousePosCallback(GLFWwindow* w, <span class="keywordtype">double</span> xpos, <span class="keywordtype">double</span> ypos) {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(w) == 0) {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A mouse pos input was received on a window, which &quot;</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="comment">// get corresponding window</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keyword">auto</span>* win = s_eventReceiver[w];</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <span class="comment">// prepare input struct</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  InputEvent e;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="comment">// get corresponding window</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  <span class="keyword">auto</span>* win = s_eventReceiver[w];</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="comment">// prepare input struct</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  InputEvent e;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  e.type = InputType::Mouse;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordflow">if</span>(win-&gt;m_cursorMode == CursorMode::Free) {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">if</span>(win-&gt;m_resetLastPos) {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      win-&gt;m_lastMouseX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(xpos);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;      win-&gt;m_lastMouseY = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(ypos);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      e.mouseInput.x = 0.f;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      e.mouseInput.y = 0.f;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      win-&gt;m_resetLastPos = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      e.mouseInput.x = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(xpos) - win-&gt;m_lastMouseX;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      e.mouseInput.y = static_cast&lt;float&gt;(ypos) - win-&gt;m_lastMouseY;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;      win-&gt;m_lastMouseX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(xpos);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;      win-&gt;m_lastMouseY = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(ypos);</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    e.mouseInput.type = MouseInputType::MoveDirection;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    e.mouseInput.x = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(xpos);</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    e.mouseInput.y = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(ypos);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    e.mouseInput.type = MouseInputType::MovePosition;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  }</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  win-&gt;postEvent(e);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="keywordflow">if</span>(win-&gt;m_cursorMode == CursorMode::Free) {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">if</span>(win-&gt;m_resetLastPos) {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      win-&gt;m_lastMouseX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(xpos);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      win-&gt;m_lastMouseY = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(ypos);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;      e.mouseInput.x = 0.f;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;      e.mouseInput.y = 0.f;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;      win-&gt;m_resetLastPos = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      e.mouseInput.x = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(xpos) - win-&gt;m_lastMouseX;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;      e.mouseInput.y = static_cast&lt;float&gt;(ypos) - win-&gt;m_lastMouseY;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      win-&gt;m_lastMouseX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(xpos);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      win-&gt;m_lastMouseY = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(ypos);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    e.type = InputType::MouseMoveDir;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    e.mouseInput.x = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(xpos);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    e.mouseInput.y = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(ypos);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    e.type = InputType::MouseMovePos;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  win-&gt;postEvent(e);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;}</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="keywordtype">void</span> Window::mouseScrollCallback(GLFWwindow* w, <span class="keywordtype">double</span> <a class="code" href="namespacelumina_1_1internal.html#aee2985afde6c15c6e206527f47f05180">x</a>, <span class="keywordtype">double</span> <a class="code" href="namespacelumina_1_1internal.html#a30fe0329ffe0df9e2bb24dc268358859">y</a>) {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(w) == 0) {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A mouse scroll input was received on a window, which &quot;</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  }</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="keywordtype">void</span> Window::mouseScrollCallback(GLFWwindow* w, <span class="keywordtype">double</span> <a class="code" href="namespacelumina_1_1internal.html#aee2985afde6c15c6e206527f47f05180">x</a>, <span class="keywordtype">double</span> <a class="code" href="namespacelumina_1_1internal.html#a30fe0329ffe0df9e2bb24dc268358859">y</a>) {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="comment">// find the corresponding window and post event</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(w) == 0) {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A mouse scroll input was received on a window, which &quot;</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="comment">// get corresponding window</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  <span class="keyword">auto</span>* win = s_eventReceiver[w];</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="comment">// prepare input struct</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  InputEvent e;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  e.type = InputType::Mouse;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  e.mouseInput.type = MouseInputType::Scroll;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  e.mouseInput.scrollX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code" href="namespacelumina_1_1internal.html#aee2985afde6c15c6e206527f47f05180">x</a>);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  e.mouseInput.scrollY = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code" href="namespacelumina_1_1internal.html#a30fe0329ffe0df9e2bb24dc268358859">y</a>);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  win-&gt;postEvent(e);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;}</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="keywordtype">void</span> Window::windowCloseCallback(GLFWwindow* w) {</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(w) == 0) {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A close event was received on a window, which &quot;</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  }</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  WindowEvent e;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  e.type = WindowEventType::Close;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  s_eventReceiver[w]-&gt;postWindowEvent(e);</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;}</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  <span class="comment">// get corresponding window</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="keyword">auto</span>* win = s_eventReceiver[w];</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  <span class="comment">// prepare input struct</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  InputEvent e;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  e.type = InputType::MouseScroll;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  e.mouseInput.scrollX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code" href="namespacelumina_1_1internal.html#aee2985afde6c15c6e206527f47f05180">x</a>);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  e.mouseInput.scrollY = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code" href="namespacelumina_1_1internal.html#a30fe0329ffe0df9e2bb24dc268358859">y</a>);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  win-&gt;postEvent(e);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;}</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="keywordtype">void</span> Window::windowCloseCallback(GLFWwindow* w) {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  <span class="keywordflow">if</span>(s_eventReceiver.count(w) == 0) {</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    slogAndThrow&lt;WinEx&gt;(<span class="stringliteral">&quot;A close event was received on a window, which &quot;</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                        <span class="stringliteral">&quot;has no managing Window&quot;</span>);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  WindowEvent e;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  e.type = WindowEventType::Close;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  s_eventReceiver[w]-&gt;postWindowEvent(e);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;}</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;}</div>
 <div class="ttc" id="GLFWTools_8hpp_html"><div class="ttname"><a href="GLFWTools_8hpp.html">GLFWTools.hpp</a></div></div>
 <div class="ttc" id="structlumina_1_1InputEvent_html"><div class="ttname"><a href="structlumina_1_1InputEvent.html">lumina::InputEvent</a></div><div class="ttdef"><b>Definition:</b> <a href="InputEvent_8hpp_source.html#l00056">InputEvent.hpp:56</a></div></div>
 <div class="ttc" id="structlumina_1_1Vector_html"><div class="ttname"><a href="structlumina_1_1Vector.html">lumina::Vector&lt; int, 2 &gt;</a></div></div>
@@ -484,7 +476,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

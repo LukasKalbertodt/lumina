@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -102,23 +101,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>config {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="comment">// enum type of the ServiceContext</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">   24</a></span>&#160;  <span class="keyword">typedef</span> <a class="code" href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">ServiceContext</a> <a class="code" href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">ServiceContext</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">typedef</span> ServiceContext ServiceContext;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">// default service context</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#a7694ee8c0b1373baf0792d6c0c4a3853">   26</a></span>&#160;  constexpr <a class="code" href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">ServiceContext</a> <a class="code" href="namespacelumina_1_1config.html#a7694ee8c0b1373baf0792d6c0c4a3853">defaultServiceContext</a> = <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a7a1920d61156abc05a60135aefe8bc67">ServiceContext::Default</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  constexpr ServiceContext defaultServiceContext = ServiceContext::Default;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">// service context for static service uses (such as slog())</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#acbfda073e9009e8108b4d3e7ad7402e9">   28</a></span>&#160;  constexpr <a class="code" href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">ServiceContext</a> <a class="code" href="namespacelumina_1_1config.html#acbfda073e9009e8108b4d3e7ad7402e9">staticServiceContext</a> = <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a84a8921b25f505d0d2077aeb5db4bc16">ServiceContext::Static</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  constexpr ServiceContext staticServiceContext = ServiceContext::Static;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="comment">// number of possible values for the service context</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#abd663e0d6c1eaaaf8c658bddebc2ea18">   30</a></span>&#160;  constexpr <a class="code" href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">ServiceContext</a> <a class="code" href="namespacelumina_1_1config.html#abd663e0d6c1eaaaf8c658bddebc2ea18">serviceContextNumValues</a> =</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      <a class="code" href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a5d3bda6e830ebb4dcd727a41dcafc842">ServiceContext::NUM_VALUES</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  constexpr ServiceContext serviceContextNumValues =</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      ServiceContext::NUM_VALUES;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a5d3bda6e830ebb4dcd727a41dcafc842"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a5d3bda6e830ebb4dcd727a41dcafc842">lumina::ServiceContext::NUM_VALUES</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_abd663e0d6c1eaaaf8c658bddebc2ea18"><div class="ttname"><a href="namespacelumina_1_1config.html#abd663e0d6c1eaaaf8c658bddebc2ea18">lumina::config::serviceContextNumValues</a></div><div class="ttdeci">constexpr ServiceContext serviceContextNumValues</div><div class="ttdef"><b>Definition:</b> <a href="ContextProxy_8hpp_source.html#l00030">ContextProxy.hpp:30</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_ac31145d493b73b04599c250c62ca8354"><div class="ttname"><a href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">lumina::config::ServiceContext</a></div><div class="ttdeci">ServiceContext ServiceContext</div><div class="ttdef"><b>Definition:</b> <a href="ContextProxy_8hpp_source.html#l00024">ContextProxy.hpp:24</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a7a1920d61156abc05a60135aefe8bc67"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a7a1920d61156abc05a60135aefe8bc67">lumina::ServiceContext::Default</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_a7694ee8c0b1373baf0792d6c0c4a3853"><div class="ttname"><a href="namespacelumina_1_1config.html#a7694ee8c0b1373baf0792d6c0c4a3853">lumina::config::defaultServiceContext</a></div><div class="ttdeci">constexpr ServiceContext defaultServiceContext</div><div class="ttdef"><b>Definition:</b> <a href="ContextProxy_8hpp_source.html#l00026">ContextProxy.hpp:26</a></div></div>
-<div class="ttc" id="namespacelumina_html_aec566eae3195cee0afb96248609778d9a84a8921b25f505d0d2077aeb5db4bc16"><div class="ttname"><a href="namespacelumina.html#aec566eae3195cee0afb96248609778d9a84a8921b25f505d0d2077aeb5db4bc16">lumina::ServiceContext::Static</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_acbfda073e9009e8108b4d3e7ad7402e9"><div class="ttname"><a href="namespacelumina_1_1config.html#acbfda073e9009e8108b4d3e7ad7402e9">lumina::config::staticServiceContext</a></div><div class="ttdeci">constexpr ServiceContext staticServiceContext</div><div class="ttdef"><b>Definition:</b> <a href="ContextProxy_8hpp_source.html#l00028">ContextProxy.hpp:28</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -126,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

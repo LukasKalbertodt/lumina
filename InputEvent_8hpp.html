@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -102,8 +101,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><p>This file defines some enums and structs used for input events (mouse and keyboard). </p>
 <p>This file is part of the Lumina Graphics Framework. </p>
 <dl class="section author"><dt>Author</dt><dd>Lukas Kalbertodt <a href="#" onclick="location.href='mai'+'lto:'+'luk'+'as'+'.ka'+'lb'+'ert'+'od'+'t@g'+'ma'+'il.'+'co'+'m'; return false;">lukas<span style="display: none;">.nosp@m.</span>.kal<span style="display: none;">.nosp@m.</span>berto<span style="display: none;">.nosp@m.</span>dt@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a> </dd></dl>
-
-<p>Definition in file <a class="el" href="InputEvent_8hpp_source.html">InputEvent.hpp</a>.</p>
 </div>
 <p><a href="InputEvent_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -120,43 +117,43 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a4a9e93030d53087f3067581c8b8cbe47"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47">InputType</a> : uint8_t { <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47a17ee17cec34ff017c382ba1ce8dc4cdc">KeyRelease</a>, 
+<tr class="memitem:a4a9e93030d53087f3067581c8b8cbe47"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>InputType</b> : uint8_t { <br/>
+&#160;&#160;<b>KeyReleased</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47ac17e6984c1e5a887a49831beadee6bca">KeyPressed</a>, 
+&#160;&#160;<b>KeyPressed</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47ad4fce5d35833c3acffb783e84f62fee4">KeyHold</a>, 
+&#160;&#160;<b>KeyHold</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47a8e95e84813830072b7516cfaa7dbc1a9">Char</a>, 
+&#160;&#160;<b>Char</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47ab5fe05662e3b0b1a31470f008a73eebd">LMousePressed</a>, 
+&#160;&#160;<b>LMousePressed</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47a94d4dea33b9c4589d46112b2e6e0f9bd">MMousePressed</a>, 
+&#160;&#160;<b>MMousePressed</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47a4fc338dcfa4f30d06d2065a93644cfd1">RMousePressed</a>, 
+&#160;&#160;<b>RMousePressed</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47aae5e42540d7f71bb587028e0c7ede36d">LMouseReleased</a>, 
+&#160;&#160;<b>LMouseReleased</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47a153b217941a716cb63aa1001aaccc0db">MMouseReleased</a>, 
+&#160;&#160;<b>MMouseReleased</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47a98b2b767c9fc6d9ee88f5f8e2639f346">RMouseReleased</a>, 
+&#160;&#160;<b>RMouseReleased</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47ac4b79d6cf9dc17bd415c368dd3e454c3">MouseMoveDir</a>, 
+&#160;&#160;<b>MouseMoveDir</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47a6bc0f9b1e7392ed648d390d42315e0c6">MouseMovePos</a>, 
+&#160;&#160;<b>MouseMovePos</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47ab4efa1e1d0671dddbd78735a0bd24274">MouseScroll</a>
+&#160;&#160;<b>MouseScroll</b>
 <br/>
  }</td></tr>
-<tr class="memdesc:a4a9e93030d53087f3067581c8b8cbe47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of input event.  <a href="namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47">More...</a><br/></td></tr>
+<tr class="memdesc:a4a9e93030d53087f3067581c8b8cbe47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of input event. <br/></td></tr>
 <tr class="separator:a4a9e93030d53087f3067581c8b8cbe47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0f52aa6917a8da806482200b73ba6a6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina.html#af0f52aa6917a8da806482200b73ba6a6">EventResult</a> { <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#af0f52aa6917a8da806482200b73ba6a6ad9c8f187972e6320a34e9c40b4cba605">Skipped</a>, 
+<tr class="memitem:af0f52aa6917a8da806482200b73ba6a6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>EventResult</b> { <br/>
+&#160;&#160;<b>Skipped</b>, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#af0f52aa6917a8da806482200b73ba6a6ae6f641ae8ac72385a9556588b0cac77c">Processed</a>
+&#160;&#160;<b>Processed</b>
 <br/>
  }</td></tr>
-<tr class="memdesc:af0f52aa6917a8da806482200b73ba6a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of a EventCallback: Was the event processed or skipped?  <a href="namespacelumina.html#af0f52aa6917a8da806482200b73ba6a6">More...</a><br/></td></tr>
+<tr class="memdesc:af0f52aa6917a8da806482200b73ba6a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of a EventCallback: Was the event processed or skipped? <br/></td></tr>
 <tr class="separator:af0f52aa6917a8da806482200b73ba6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -166,7 +163,7 @@ Enumerations</h2></td></tr>
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

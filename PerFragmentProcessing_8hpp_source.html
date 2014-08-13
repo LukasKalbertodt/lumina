@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,30 +94,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">PerFragmentProcessing.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="PerFragmentProcessing_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Program_8fpp.html">Program.fpp</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Program.fpp&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../util/NotCloneable.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5">    8</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5">DepthFunction</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a6e7b34fa59e1bd229b207892956dc41c">Never</a>, <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a1cfdf0e8d0c87a228c1f40d9bee7888b">Less</a>, <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5af5f286e73bda105e538310b3190f75c5">Equal</a>, <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a1883e2c3ce81e84edf478b9fbc7b5cce">Lequal</a>, <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a8768a6821cd735aea4f5b0df88c1fc6a">Greater</a>, <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a19bb0af2c3c530538cb41aff7f235b96">NotEqual</a>, <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5ae8c6f0dd7b2c0214219521853d5e4cf3">Gequal</a>, <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a68eec46437c384d8dad18d5464ebc35c">Always</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">enum class</span> DepthFunction {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  Never, Less, Equal, Lequal, Greater, NotEqual, Gequal, Always</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;};</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classlumina_1_1PerFragmentProcessing.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1PerFragmentProcessing.html">PerFragmentProcessing</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a> {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classlumina_1_1PerFragmentProcessing.html#a041269d2294a70b88814b3710c013489">PerFragmentProcessing</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classlumina_1_1PerFragmentProcessing.html">PerFragmentProcessing</a>();</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1PerFragmentProcessing.html#a7c8a0479e5cbc882640f4c47ddd24417">enableDepthTest</a>(<span class="keywordtype">bool</span> enable = <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1PerFragmentProcessing.html#a9201bd155d92f92bc86b5b3d244c70d3">enableDepthWrite</a>(<span class="keywordtype">bool</span> enable = <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1PerFragmentProcessing.html#a3a718db1391e15d4a49ff558fa8abcfd">setDepthFunction</a>(<a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5">DepthFunction</a> func);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> enableDepthTest(<span class="keywordtype">bool</span> enable = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> enableDepthWrite(<span class="keywordtype">bool</span> enable = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> setDepthFunction(DepthFunction func);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">bool</span> m_depthEnabled;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">bool</span> m_depthWrite;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <a class="code" href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5">DepthFunction</a> m_depthFunc;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  DepthFunction m_depthFunc;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">void</span> bindStage();</div>
@@ -129,25 +128,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="PerFragmentProcessing_8tpp.html">PerFragmentProcessing.tpp</a>&quot;</span></div>
-<div class="ttc" id="PerFragmentProcessing_8tpp_html"><div class="ttname"><a href="PerFragmentProcessing_8tpp.html">PerFragmentProcessing.tpp</a></div></div>
-<div class="ttc" id="Program_8fpp_html"><div class="ttname"><a href="Program_8fpp.html">Program.fpp</a></div></div>
-<div class="ttc" id="namespacelumina_html_a84a332883113590b0d5c5d76e810a5e5a8768a6821cd735aea4f5b0df88c1fc6a"><div class="ttname"><a href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a8768a6821cd735aea4f5b0df88c1fc6a">lumina::DepthFunction::Greater</a></div></div>
-<div class="ttc" id="namespacelumina_html_a84a332883113590b0d5c5d76e810a5e5a68eec46437c384d8dad18d5464ebc35c"><div class="ttname"><a href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a68eec46437c384d8dad18d5464ebc35c">lumina::DepthFunction::Always</a></div></div>
-<div class="ttc" id="namespacelumina_html_a84a332883113590b0d5c5d76e810a5e5"><div class="ttname"><a href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5">lumina::DepthFunction</a></div><div class="ttdeci">DepthFunction</div><div class="ttdef"><b>Definition:</b> <a href="PerFragmentProcessing_8hpp_source.html#l00008">PerFragmentProcessing.hpp:8</a></div></div>
-<div class="ttc" id="classlumina_1_1NotCopyable_html"><div class="ttname"><a href="classlumina_1_1NotCopyable.html">lumina::NotCopyable</a></div><div class="ttdef"><b>Definition:</b> <a href="NotCloneable_8hpp_source.html#l00005">NotCloneable.hpp:5</a></div></div>
-<div class="ttc" id="namespacelumina_html_a84a332883113590b0d5c5d76e810a5e5a19bb0af2c3c530538cb41aff7f235b96"><div class="ttname"><a href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a19bb0af2c3c530538cb41aff7f235b96">lumina::DepthFunction::NotEqual</a></div></div>
-<div class="ttc" id="classlumina_1_1PerFragmentProcessing_html_a3a718db1391e15d4a49ff558fa8abcfd"><div class="ttname"><a href="classlumina_1_1PerFragmentProcessing.html#a3a718db1391e15d4a49ff558fa8abcfd">lumina::PerFragmentProcessing::setDepthFunction</a></div><div class="ttdeci">void setDepthFunction(DepthFunction func)</div><div class="ttdef"><b>Definition:</b> <a href="PerFragmentProcessing_8tpp_source.html#l00014">PerFragmentProcessing.tpp:14</a></div></div>
-<div class="ttc" id="classlumina_1_1PerFragmentProcessing_html_a041269d2294a70b88814b3710c013489"><div class="ttname"><a href="classlumina_1_1PerFragmentProcessing.html#a041269d2294a70b88814b3710c013489">lumina::PerFragmentProcessing::PerFragmentProcessing</a></div><div class="ttdeci">PerFragmentProcessing()</div><div class="ttdef"><b>Definition:</b> <a href="PerFragmentProcessing_8tpp_source.html#l00003">PerFragmentProcessing.tpp:3</a></div></div>
-<div class="ttc" id="namespacelumina_html_a84a332883113590b0d5c5d76e810a5e5ae8c6f0dd7b2c0214219521853d5e4cf3"><div class="ttname"><a href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5ae8c6f0dd7b2c0214219521853d5e4cf3">lumina::DepthFunction::Gequal</a></div></div>
-<div class="ttc" id="namespacelumina_html_a84a332883113590b0d5c5d76e810a5e5a1883e2c3ce81e84edf478b9fbc7b5cce"><div class="ttname"><a href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a1883e2c3ce81e84edf478b9fbc7b5cce">lumina::DepthFunction::Lequal</a></div></div>
-<div class="ttc" id="namespacelumina_html_a84a332883113590b0d5c5d76e810a5e5a1cfdf0e8d0c87a228c1f40d9bee7888b"><div class="ttname"><a href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a1cfdf0e8d0c87a228c1f40d9bee7888b">lumina::DepthFunction::Less</a></div></div>
-<div class="ttc" id="classlumina_1_1PerFragmentProcessing_html_a9201bd155d92f92bc86b5b3d244c70d3"><div class="ttname"><a href="classlumina_1_1PerFragmentProcessing.html#a9201bd155d92f92bc86b5b3d244c70d3">lumina::PerFragmentProcessing::enableDepthWrite</a></div><div class="ttdeci">void enableDepthWrite(bool enable=true)</div><div class="ttdef"><b>Definition:</b> <a href="PerFragmentProcessing_8tpp_source.html#l00011">PerFragmentProcessing.tpp:11</a></div></div>
-<div class="ttc" id="namespacelumina_html_a84a332883113590b0d5c5d76e810a5e5a6e7b34fa59e1bd229b207892956dc41c"><div class="ttname"><a href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5a6e7b34fa59e1bd229b207892956dc41c">lumina::DepthFunction::Never</a></div></div>
-<div class="ttc" id="namespacelumina_html_a84a332883113590b0d5c5d76e810a5e5af5f286e73bda105e538310b3190f75c5"><div class="ttname"><a href="namespacelumina.html#a84a332883113590b0d5c5d76e810a5e5af5f286e73bda105e538310b3190f75c5">lumina::DepthFunction::Equal</a></div></div>
-<div class="ttc" id="classlumina_1_1PerFragmentProcessing_html_a7c8a0479e5cbc882640f4c47ddd24417"><div class="ttname"><a href="classlumina_1_1PerFragmentProcessing.html#a7c8a0479e5cbc882640f4c47ddd24417">lumina::PerFragmentProcessing::enableDepthTest</a></div><div class="ttdeci">void enableDepthTest(bool enable=true)</div><div class="ttdef"><b>Definition:</b> <a href="PerFragmentProcessing_8tpp_source.html#l00008">PerFragmentProcessing.tpp:8</a></div></div>
-<div class="ttc" id="classlumina_1_1PerFragmentProcessing_html"><div class="ttname"><a href="classlumina_1_1PerFragmentProcessing.html">lumina::PerFragmentProcessing</a></div><div class="ttdef"><b>Definition:</b> <a href="PerFragmentProcessing_8hpp_source.html#l00012">PerFragmentProcessing.hpp:12</a></div></div>
-<div class="ttc" id="classlumina_1_1Program_html"><div class="ttname"><a href="classlumina_1_1Program.html">lumina::Program</a></div><div class="ttdoc">Represents the configuration of an OpenGL pipeline. </div><div class="ttdef"><b>Definition:</b> <a href="Program_8hpp_source.html#l00027">Program.hpp:27</a></div></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;PerFragmentProcessing.tpp&quot;</span></div>
+<div class="ttc" id="classlumina_1_1NotCopyable_html"><div class="ttname"><a href="classlumina_1_1NotCopyable.html">lumina::NotCopyable</a></div><div class="ttdef"><b>Definition:</b> NotCloneable.hpp:5</div></div>
+<div class="ttc" id="classlumina_1_1PerFragmentProcessing_html"><div class="ttname"><a href="classlumina_1_1PerFragmentProcessing.html">lumina::PerFragmentProcessing</a></div><div class="ttdef"><b>Definition:</b> PerFragmentProcessing.hpp:12</div></div>
+<div class="ttc" id="classlumina_1_1Program_html"><div class="ttname"><a href="classlumina_1_1Program.html">lumina::Program</a></div><div class="ttdoc">Represents the configuration of an OpenGL pipeline. </div><div class="ttdef"><b>Definition:</b> Program.hpp:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -155,7 +139,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

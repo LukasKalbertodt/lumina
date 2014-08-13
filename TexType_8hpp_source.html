@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,21 +94,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">TexType.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="TexType_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="namespacelumina.html#aae6fb703bc622ce8f11ce68304ae8e69">    5</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacelumina.html#aae6fb703bc622ce8f11ce68304ae8e69">TexType</a> {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; <a class="code" href="namespacelumina.html#aae6fb703bc622ce8f11ce68304ae8e69afc2321331d63bfe17f44c7b06ff47a17">Tex2D</a>,</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; <a class="code" href="namespacelumina.html#aae6fb703bc622ce8f11ce68304ae8e69a880333d11e8b60fc26a0f3905c798293">Tex3D</a>,</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; <a class="code" href="namespacelumina.html#aae6fb703bc622ce8f11ce68304ae8e69aa296104f0c61a9cf39f4824d05315e12">Cube</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">enum class</span> TexType {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; Tex2D,</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; Tex3D,</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; Cube</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;};</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="ttc" id="namespacelumina_html_aae6fb703bc622ce8f11ce68304ae8e69a880333d11e8b60fc26a0f3905c798293"><div class="ttname"><a href="namespacelumina.html#aae6fb703bc622ce8f11ce68304ae8e69a880333d11e8b60fc26a0f3905c798293">lumina::TexType::Tex3D</a></div></div>
-<div class="ttc" id="namespacelumina_html_aae6fb703bc622ce8f11ce68304ae8e69afc2321331d63bfe17f44c7b06ff47a17"><div class="ttname"><a href="namespacelumina.html#aae6fb703bc622ce8f11ce68304ae8e69afc2321331d63bfe17f44c7b06ff47a17">lumina::TexType::Tex2D</a></div></div>
-<div class="ttc" id="namespacelumina_html_aae6fb703bc622ce8f11ce68304ae8e69"><div class="ttname"><a href="namespacelumina.html#aae6fb703bc622ce8f11ce68304ae8e69">lumina::TexType</a></div><div class="ttdeci">TexType</div><div class="ttdef"><b>Definition:</b> <a href="TexType_8hpp_source.html#l00005">TexType.hpp:5</a></div></div>
-<div class="ttc" id="namespacelumina_html_aae6fb703bc622ce8f11ce68304ae8e69aa296104f0c61a9cf39f4824d05315e12"><div class="ttname"><a href="namespacelumina.html#aae6fb703bc622ce8f11ce68304ae8e69aa296104f0c61a9cf39f4824d05315e12">lumina::TexType::Cube</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -117,7 +112,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

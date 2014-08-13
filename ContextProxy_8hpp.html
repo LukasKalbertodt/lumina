@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,27 +103,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>This file is included by several files in the engine, like LServiceProvider.hpp This file MUST:</p>
 <ul>
 <li>define a enum type which is in namespace "lumina"</li>
-<li>a typedef from the defined enum type to "ServiceContext" in namespace <a class="el" href="namespacelumina_1_1config.html">lumina::config</a></li>
-<li>a value specifying the default value for the service context, named "defaultServiceContext", in namespace <a class="el" href="namespacelumina_1_1config.html">lumina::config</a></li>
-<li>a value specifying the number of values in the enum, named "serviceContextNumValues", also in namespace <a class="el" href="namespacelumina_1_1config.html">lumina::config</a> </li>
+<li>a typedef from the defined enum type to "ServiceContext" in namespace lumina::config</li>
+<li>a value specifying the default value for the service context, named "defaultServiceContext", in namespace lumina::config</li>
+<li>a value specifying the number of values in the enum, named "serviceContextNumValues", also in namespace lumina::config </li>
 </ul>
-
-<p>Definition in file <a class="el" href="ContextProxy_8hpp_source.html">ContextProxy.hpp</a>.</p>
 </div>
 <p><a href="ContextProxy_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ac31145d493b73b04599c250c62ca8354"><td class="memItemLeft" align="right" valign="top">typedef ServiceContext&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">ServiceContext</a></td></tr>
+<tr class="memitem:ac31145d493b73b04599c250c62ca8354"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac31145d493b73b04599c250c62ca8354"></a>
+typedef ServiceContext&#160;</td><td class="memItemRight" valign="bottom"><b>ServiceContext</b></td></tr>
 <tr class="separator:ac31145d493b73b04599c250c62ca8354"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a7694ee8c0b1373baf0792d6c0c4a3853"><td class="memItemLeft" align="right" valign="top">constexpr ServiceContext&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#a7694ee8c0b1373baf0792d6c0c4a3853">defaultServiceContext</a> = ServiceContext::Default</td></tr>
+<tr class="memitem:a7694ee8c0b1373baf0792d6c0c4a3853"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7694ee8c0b1373baf0792d6c0c4a3853"></a>
+constexpr ServiceContext&#160;</td><td class="memItemRight" valign="bottom"><b>defaultServiceContext</b> = ServiceContext::Default</td></tr>
 <tr class="separator:a7694ee8c0b1373baf0792d6c0c4a3853"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbfda073e9009e8108b4d3e7ad7402e9"><td class="memItemLeft" align="right" valign="top">constexpr ServiceContext&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#acbfda073e9009e8108b4d3e7ad7402e9">staticServiceContext</a> = ServiceContext::Static</td></tr>
+<tr class="memitem:acbfda073e9009e8108b4d3e7ad7402e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acbfda073e9009e8108b4d3e7ad7402e9"></a>
+constexpr ServiceContext&#160;</td><td class="memItemRight" valign="bottom"><b>staticServiceContext</b> = ServiceContext::Static</td></tr>
 <tr class="separator:acbfda073e9009e8108b4d3e7ad7402e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd663e0d6c1eaaaf8c658bddebc2ea18"><td class="memItemLeft" align="right" valign="top">constexpr ServiceContext&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#abd663e0d6c1eaaaf8c658bddebc2ea18">serviceContextNumValues</a></td></tr>
+<tr class="memitem:abd663e0d6c1eaaaf8c658bddebc2ea18"><td class="memItemLeft" align="right" valign="top">constexpr ServiceContext&#160;</td><td class="memItemRight" valign="bottom"><b>serviceContextNumValues</b></td></tr>
 <tr class="separator:abd663e0d6c1eaaaf8c658bddebc2ea18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -134,7 +134,7 @@ Variables</h2></td></tr>
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

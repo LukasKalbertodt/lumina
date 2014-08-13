@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,24 +98,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespacelumina.html#a6fe22635c1a150712fae448cd85a86c1">   11</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacelumina.html#a6fe22635c1a150712fae448cd85a86c1">WindowEventType</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a6adf97f83acf6453d4a6a4b1070f3754">None</a>,</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="namespacelumina.html#a6fe22635c1a150712fae448cd85a86c1ad3d2e617335f08df83599665eef8a418">Close</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">enum class</span> WindowEventType {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  None,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  Close</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structlumina_1_1WindowEvent.html">   16</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structlumina_1_1WindowEvent.html">WindowEvent</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structlumina_1_1WindowEvent.html#a57a920d6f1c99b2ce1e86c90f0652361">   17</a></span>&#160;  <a class="code" href="namespacelumina.html#a6fe22635c1a150712fae448cd85a86c1">WindowEventType</a> <a class="code" href="structlumina_1_1WindowEvent.html#a57a920d6f1c99b2ce1e86c90f0652361">type</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  WindowEventType type;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structlumina_1_1WindowEvent.html#a5bbd3b13d671a1294eb7ad964e420ee2">   19</a></span>&#160;  <a class="code" href="structlumina_1_1WindowEvent.html#a5bbd3b13d671a1294eb7ad964e420ee2">WindowEvent</a>() : <a class="code" href="structlumina_1_1WindowEvent.html#a57a920d6f1c99b2ce1e86c90f0652361">type</a>(<a class="code" href="namespacelumina.html#a6fe22635c1a150712fae448cd85a86c1">WindowEventType</a>::<a class="code" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a6adf97f83acf6453d4a6a4b1070f3754">None</a>) {}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="structlumina_1_1WindowEvent.html">WindowEvent</a>() : type(WindowEventType::None) {}</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-<div class="ttc" id="namespacelumina_html_a6fe22635c1a150712fae448cd85a86c1"><div class="ttname"><a href="namespacelumina.html#a6fe22635c1a150712fae448cd85a86c1">lumina::WindowEventType</a></div><div class="ttdeci">WindowEventType</div><div class="ttdef"><b>Definition:</b> <a href="WindowEvent_8hpp_source.html#l00011">WindowEvent.hpp:11</a></div></div>
-<div class="ttc" id="structlumina_1_1WindowEvent_html_a5bbd3b13d671a1294eb7ad964e420ee2"><div class="ttname"><a href="structlumina_1_1WindowEvent.html#a5bbd3b13d671a1294eb7ad964e420ee2">lumina::WindowEvent::WindowEvent</a></div><div class="ttdeci">WindowEvent()</div><div class="ttdef"><b>Definition:</b> <a href="WindowEvent_8hpp_source.html#l00019">WindowEvent.hpp:19</a></div></div>
-<div class="ttc" id="structlumina_1_1WindowEvent_html_a57a920d6f1c99b2ce1e86c90f0652361"><div class="ttname"><a href="structlumina_1_1WindowEvent.html#a57a920d6f1c99b2ce1e86c90f0652361">lumina::WindowEvent::type</a></div><div class="ttdeci">WindowEventType type</div><div class="ttdef"><b>Definition:</b> <a href="WindowEvent_8hpp_source.html#l00017">WindowEvent.hpp:17</a></div></div>
-<div class="ttc" id="namespacelumina_html_a7885f47644a0388f981f416fa20389b2a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a6adf97f83acf6453d4a6a4b1070f3754">lumina::KeyCode::None</a></div></div>
-<div class="ttc" id="structlumina_1_1WindowEvent_html"><div class="ttname"><a href="structlumina_1_1WindowEvent.html">lumina::WindowEvent</a></div><div class="ttdef"><b>Definition:</b> <a href="WindowEvent_8hpp_source.html#l00016">WindowEvent.hpp:16</a></div></div>
-<div class="ttc" id="namespacelumina_html_a6fe22635c1a150712fae448cd85a86c1ad3d2e617335f08df83599665eef8a418"><div class="ttname"><a href="namespacelumina.html#a6fe22635c1a150712fae448cd85a86c1ad3d2e617335f08df83599665eef8a418">lumina::WindowEventType::Close</a></div></div>
+<div class="ttc" id="structlumina_1_1WindowEvent_html"><div class="ttname"><a href="structlumina_1_1WindowEvent.html">lumina::WindowEvent</a></div><div class="ttdef"><b>Definition:</b> WindowEvent.hpp:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -124,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

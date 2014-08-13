@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,21 +100,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><p>This file is part of the Lumina Graphics Framework. </p>
 <dl class="section author"><dt>Author</dt><dd>Julian Kniephoff <a href="#" onclick="location.href='mai'+'lto:'+'jul'+'ia'+'n.k'+'ni'+'eph'+'of'+'f@g'+'ma'+'il.'+'co'+'m'; return false;">julia<span style="display: none;">.nosp@m.</span>n.kn<span style="display: none;">.nosp@m.</span>iepho<span style="display: none;">.nosp@m.</span>ff@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a></dd></dl>
 <p>This file includes <a class="el" href="QuaternionCore_8hpp.html" title="This file is part of the Lumina Graphics Framework. ">QuaternionCore.hpp</a>, which defines Quaternion, and provides additional functions for generating quaternions and string representations. </p>
-
-<p>Definition in file <a class="el" href="Quaternion_8hpp_source.html">Quaternion.hpp</a>.</p>
 </div>
 <p><a href="Quaternion_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aec00f9510807c048dbd571b756ff93b7"><td class="memTemplParams" colspan="2">template&lt;typename T , typename S &gt; </td></tr>
-<tr class="memitem:aec00f9510807c048dbd571b756ff93b7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#aec00f9510807c048dbd571b756ff93b7">quaternionFromAxisAngle</a> (Vec3&lt; T &gt; axis, S angle) -&gt; Quaternion&lt; decltype(T(0)*std::sin(S(0)))&gt;</td></tr>
+<tr class="memitem:aec00f9510807c048dbd571b756ff93b7"><td class="memTemplParams" colspan="2"><a class="anchor" id="aec00f9510807c048dbd571b756ff93b7"></a>
+template&lt;typename T , typename S &gt; </td></tr>
+<tr class="memitem:aec00f9510807c048dbd571b756ff93b7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>quaternionFromAxisAngle</b> (Vec3&lt; T &gt; axis, S angle) -&gt; Quaternion&lt; decltype(T(0)*std::sin(S(0)))&gt;</td></tr>
 <tr class="separator:aec00f9510807c048dbd571b756ff93b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad179bd59b8d0a97c2c3e7f7603e43b20"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ad179bd59b8d0a97c2c3e7f7603e43b20"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#ad179bd59b8d0a97c2c3e7f7603e43b20">quaternionRep</a> (Quaternion&lt; T &gt; in)</td></tr>
+<tr class="memitem:ad179bd59b8d0a97c2c3e7f7603e43b20"><td class="memTemplParams" colspan="2"><a class="anchor" id="ad179bd59b8d0a97c2c3e7f7603e43b20"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ad179bd59b8d0a97c2c3e7f7603e43b20"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><b>quaternionRep</b> (Quaternion&lt; T &gt; in)</td></tr>
 <tr class="separator:ad179bd59b8d0a97c2c3e7f7603e43b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b137e183e6e42be54f787f7c798efe7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a9b137e183e6e42be54f787f7c798efe7"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a9b137e183e6e42be54f787f7c798efe7">operator&lt;&lt;</a> (std::ostream &amp;out, const Quaternion&lt; T &gt; q)</td></tr>
+<tr class="memitem:a9b137e183e6e42be54f787f7c798efe7"><td class="memTemplParams" colspan="2"><a class="anchor" id="a9b137e183e6e42be54f787f7c798efe7"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a9b137e183e6e42be54f787f7c798efe7"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const Quaternion&lt; T &gt; q)</td></tr>
 <tr class="separator:a9b137e183e6e42be54f787f7c798efe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -125,7 +125,7 @@ Functions</h2></td></tr>
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

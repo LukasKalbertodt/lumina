@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,34 +94,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">NotCloneable.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="NotCloneable_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classlumina_1_1NotCopyable.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a> {</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <a class="code" href="classlumina_1_1NotCopyable.html#a92c451a1b345bf0037a91659acf1f61b">NotCopyable</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <a class="code" href="classlumina_1_1NotCopyable.html#a92c451a1b345bf0037a91659acf1f61b">NotCopyable</a>(<span class="keyword">const</span> <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a>&amp; <a class="code" href="classlumina_1_1NotCopyable.html#ac646acd72538100aa382a7e1d28e1d1d">operator=</a>(<span class="keyword">const</span> <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a>(<span class="keyword">const</span> <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a>&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;};</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classlumina_1_1NotMoveable.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a> {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classlumina_1_1NotMoveable.html#a86bab94c7ea8764628b4fd1507054b96">NotMoveable</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="classlumina_1_1NotMoveable.html#a86bab94c7ea8764628b4fd1507054b96">NotMoveable</a>(<a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a>&amp; <a class="code" href="classlumina_1_1NotMoveable.html#ae6fcf480b090fac3d539ec844cc8df9f">operator==</a>(<a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a>(<a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a>&amp; operator==(<a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classlumina_1_1NotCloneable.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1NotCloneable.html">NotCloneable</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a>, <span class="keyword">public</span> <a class="code" href="classlumina_1_1NotMoveable.html">NotMoveable</a> {};</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
-<div class="ttc" id="classlumina_1_1NotCopyable_html_ac646acd72538100aa382a7e1d28e1d1d"><div class="ttname"><a href="classlumina_1_1NotCopyable.html#ac646acd72538100aa382a7e1d28e1d1d">lumina::NotCopyable::operator=</a></div><div class="ttdeci">NotCopyable &amp; operator=(const NotCopyable &amp;)=delete</div></div>
-<div class="ttc" id="classlumina_1_1NotCloneable_html"><div class="ttname"><a href="classlumina_1_1NotCloneable.html">lumina::NotCloneable</a></div><div class="ttdef"><b>Definition:</b> <a href="NotCloneable_8hpp_source.html#l00019">NotCloneable.hpp:19</a></div></div>
-<div class="ttc" id="classlumina_1_1NotMoveable_html_ae6fcf480b090fac3d539ec844cc8df9f"><div class="ttname"><a href="classlumina_1_1NotMoveable.html#ae6fcf480b090fac3d539ec844cc8df9f">lumina::NotMoveable::operator==</a></div><div class="ttdeci">NotMoveable &amp; operator==(NotMoveable &amp;&amp;)=delete</div></div>
-<div class="ttc" id="classlumina_1_1NotCopyable_html"><div class="ttname"><a href="classlumina_1_1NotCopyable.html">lumina::NotCopyable</a></div><div class="ttdef"><b>Definition:</b> <a href="NotCloneable_8hpp_source.html#l00005">NotCloneable.hpp:5</a></div></div>
-<div class="ttc" id="classlumina_1_1NotCopyable_html_a92c451a1b345bf0037a91659acf1f61b"><div class="ttname"><a href="classlumina_1_1NotCopyable.html#a92c451a1b345bf0037a91659acf1f61b">lumina::NotCopyable::NotCopyable</a></div><div class="ttdeci">NotCopyable()=default</div></div>
-<div class="ttc" id="classlumina_1_1NotMoveable_html"><div class="ttname"><a href="classlumina_1_1NotMoveable.html">lumina::NotMoveable</a></div><div class="ttdef"><b>Definition:</b> <a href="NotCloneable_8hpp_source.html#l00012">NotCloneable.hpp:12</a></div></div>
-<div class="ttc" id="classlumina_1_1NotMoveable_html_a86bab94c7ea8764628b4fd1507054b96"><div class="ttname"><a href="classlumina_1_1NotMoveable.html#a86bab94c7ea8764628b4fd1507054b96">lumina::NotMoveable::NotMoveable</a></div><div class="ttdeci">NotMoveable()=default</div></div>
+<div class="ttc" id="classlumina_1_1NotCloneable_html"><div class="ttname"><a href="classlumina_1_1NotCloneable.html">lumina::NotCloneable</a></div><div class="ttdef"><b>Definition:</b> NotCloneable.hpp:19</div></div>
+<div class="ttc" id="classlumina_1_1NotCopyable_html"><div class="ttname"><a href="classlumina_1_1NotCopyable.html">lumina::NotCopyable</a></div><div class="ttdef"><b>Definition:</b> NotCloneable.hpp:5</div></div>
+<div class="ttc" id="classlumina_1_1NotMoveable_html"><div class="ttname"><a href="classlumina_1_1NotMoveable.html">lumina::NotMoveable</a></div><div class="ttdef"><b>Definition:</b> NotCloneable.hpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -130,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

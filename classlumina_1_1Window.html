@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacelumina.html">lumina</a></li><li class="navelem"><a class="el" href="classlumina_1_1Window.html">Window</a></li>  </ul>
+<li class="navelem"><b>lumina</b></li><li class="navelem"><a class="el" href="classlumina_1_1Window.html">Window</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -97,64 +97,71 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><p>A <a class="el" href="classlumina_1_1Window.html" title="A Window from which a RenderContext can be obtained. ">Window</a> from which a <a class="el" href="classlumina_1_1RenderContext.html">RenderContext</a> can be obtained. </p>
 <p>This is the first object you need in order to do anything else. The window is responsible for polling events of all kinds, containing all window properties (as size and title), handling the OpenGL function and some more things.</p>
 <p>After creating an instance of <a class="el" href="classlumina_1_1Window.html" title="A Window from which a RenderContext can be obtained. ">Window</a> you should call <a class="el" href="classlumina_1_1Window.html#adc648c88552621ab7d4cc6846c6dff13" title="Sets a hint which OpenGL version to use to create the context. ">setVersionHint()</a> to request a specific OpenGL version. If it isn't called, <a class="el" href="classlumina_1_1Window.html#a9e8555112049fc2b4945120b3c45f8ab" title="Opens the window. ">open()</a> will fail in most cases. </p>
-
-<p>Definition at line <a class="el" href="Window_8hpp_source.html#l00036">36</a> of file <a class="el" href="Window_8hpp_source.html">Window.hpp</a>.</p>
 </div>
 <p>Inherits <a class="el" href="classlumina_1_1SingleBase.html">SingleBase</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a0b0eba778a6b8a00aa0df91af0802323"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a0b0eba778a6b8a00aa0df91af0802323">EventCallback</a> = std::function&lt; <a class="el" href="namespacelumina.html#af0f52aa6917a8da806482200b73ba6a6">EventResult</a>(<a class="el" href="structlumina_1_1InputEvent.html">InputEvent</a>)&gt;</td></tr>
-<tr class="memdesc:a0b0eba778a6b8a00aa0df91af0802323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functor type for handling InputEvents.  <a href="#a0b0eba778a6b8a00aa0df91af0802323">More...</a><br/></td></tr>
+<tr class="memitem:a0b0eba778a6b8a00aa0df91af0802323"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b0eba778a6b8a00aa0df91af0802323"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a0b0eba778a6b8a00aa0df91af0802323">EventCallback</a> = std::function&lt; EventResult(<a class="el" href="structlumina_1_1InputEvent.html">InputEvent</a>)&gt;</td></tr>
+<tr class="memdesc:a0b0eba778a6b8a00aa0df91af0802323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functor type for handling InputEvents. <br/></td></tr>
 <tr class="separator:a0b0eba778a6b8a00aa0df91af0802323"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15a32eb61d35364df5cf035ffb1f92fb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a15a32eb61d35364df5cf035ffb1f92fb">EventCallbackIndex</a> = std::vector&lt; <a class="el" href="classlumina_1_1Window.html#a0b0eba778a6b8a00aa0df91af0802323">EventCallback</a> &gt;::size_type</td></tr>
-<tr class="memdesc:a15a32eb61d35364df5cf035ffb1f92fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for accessing a specific EventCallback.  <a href="#a15a32eb61d35364df5cf035ffb1f92fb">More...</a><br/></td></tr>
+<tr class="memitem:a15a32eb61d35364df5cf035ffb1f92fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15a32eb61d35364df5cf035ffb1f92fb"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a15a32eb61d35364df5cf035ffb1f92fb">EventCallbackIndex</a> = std::vector&lt; <a class="el" href="classlumina_1_1Window.html#a0b0eba778a6b8a00aa0df91af0802323">EventCallback</a> &gt;::size_type</td></tr>
+<tr class="memdesc:a15a32eb61d35364df5cf035ffb1f92fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for accessing a specific EventCallback. <br/></td></tr>
 <tr class="separator:a15a32eb61d35364df5cf035ffb1f92fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a6700605e4f45f898fccbe68f932dea"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a1a6700605e4f45f898fccbe68f932dea">WindowCallback</a> = std::function&lt; <a class="el" href="namespacelumina.html#af0f52aa6917a8da806482200b73ba6a6">EventResult</a>(<a class="el" href="structlumina_1_1WindowEvent.html">WindowEvent</a>)&gt;</td></tr>
-<tr class="memdesc:a1a6700605e4f45f898fccbe68f932dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functor type for handling WindowEvents.  <a href="#a1a6700605e4f45f898fccbe68f932dea">More...</a><br/></td></tr>
+<tr class="memitem:a1a6700605e4f45f898fccbe68f932dea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a6700605e4f45f898fccbe68f932dea"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a1a6700605e4f45f898fccbe68f932dea">WindowCallback</a> = std::function&lt; EventResult(<a class="el" href="structlumina_1_1WindowEvent.html">WindowEvent</a>)&gt;</td></tr>
+<tr class="memdesc:a1a6700605e4f45f898fccbe68f932dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functor type for handling WindowEvents. <br/></td></tr>
 <tr class="separator:a1a6700605e4f45f898fccbe68f932dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d06aa7be809eb6255278cf836acc7be"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a9d06aa7be809eb6255278cf836acc7be">WindowCallbackIndex</a> = std::vector&lt; <a class="el" href="classlumina_1_1Window.html#a1a6700605e4f45f898fccbe68f932dea">WindowCallback</a> &gt;::size_type</td></tr>
-<tr class="memdesc:a9d06aa7be809eb6255278cf836acc7be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for accessing a specific WindowCallback.  <a href="#a9d06aa7be809eb6255278cf836acc7be">More...</a><br/></td></tr>
+<tr class="memitem:a9d06aa7be809eb6255278cf836acc7be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d06aa7be809eb6255278cf836acc7be"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a9d06aa7be809eb6255278cf836acc7be">WindowCallbackIndex</a> = std::vector&lt; <a class="el" href="classlumina_1_1Window.html#a1a6700605e4f45f898fccbe68f932dea">WindowCallback</a> &gt;::size_type</td></tr>
+<tr class="memdesc:a9d06aa7be809eb6255278cf836acc7be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for accessing a specific WindowCallback. <br/></td></tr>
 <tr class="separator:a9d06aa7be809eb6255278cf836acc7be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab9895a55cd8f75631fb10204d80ee52c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#ab9895a55cd8f75631fb10204d80ee52c">Window</a> (std::string title=&quot;Lumina Application&quot;, Vec2i size=<a class="el" href="namespacelumina.html#a5365328ead12db869f151177e976c819">Vec2i</a>(600, 400))</td></tr>
+<tr class="memitem:ab9895a55cd8f75631fb10204d80ee52c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#ab9895a55cd8f75631fb10204d80ee52c">Window</a> (std::string title=&quot;Lumina Application&quot;, Vec2i size=<a class="el" href="structlumina_1_1Vector.html">Vec2i</a>(600, 400))</td></tr>
 <tr class="memdesc:ab9895a55cd8f75631fb10204d80ee52c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classlumina_1_1Window.html" title="A Window from which a RenderContext can be obtained. ">Window</a> but does not open it.  <a href="#ab9895a55cd8f75631fb10204d80ee52c">More...</a><br/></td></tr>
 <tr class="separator:ab9895a55cd8f75631fb10204d80ee52c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a254ab61160c1cd5eaa46cc0475bb7a06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a254ab61160c1cd5eaa46cc0475bb7a06">~Window</a> ()</td></tr>
-<tr class="separator:a254ab61160c1cd5eaa46cc0475bb7a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc648c88552621ab7d4cc6846c6dff13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#adc648c88552621ab7d4cc6846c6dff13">setVersionHint</a> (int major, int minor=0)</td></tr>
+<tr class="memitem:adc648c88552621ab7d4cc6846c6dff13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#adc648c88552621ab7d4cc6846c6dff13">setVersionHint</a> (int major, int minor=0)</td></tr>
 <tr class="memdesc:adc648c88552621ab7d4cc6846c6dff13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a hint which OpenGL version to use to create the context.  <a href="#adc648c88552621ab7d4cc6846c6dff13">More...</a><br/></td></tr>
 <tr class="separator:adc648c88552621ab7d4cc6846c6dff13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a04c0bc5fb54fc4d76d1b3fa90e86d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a5a04c0bc5fb54fc4d76d1b3fa90e86d6">setVSync</a> (bool enable)</td></tr>
+<tr class="memitem:a5a04c0bc5fb54fc4d76d1b3fa90e86d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a5a04c0bc5fb54fc4d76d1b3fa90e86d6">setVSync</a> (bool enable)</td></tr>
 <tr class="memdesc:a5a04c0bc5fb54fc4d76d1b3fa90e86d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables or enables VSync If VSync is enabled RenderContext::swapBuffers will be synchronized with the screen refresh rate.  <a href="#a5a04c0bc5fb54fc4d76d1b3fa90e86d6">More...</a><br/></td></tr>
 <tr class="separator:a5a04c0bc5fb54fc4d76d1b3fa90e86d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2617f9c79768e832281213d10b24d266"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a2617f9c79768e832281213d10b24d266">setTitle</a> (std::string title)</td></tr>
-<tr class="memdesc:a2617f9c79768e832281213d10b24d266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the title of the window.  <a href="#a2617f9c79768e832281213d10b24d266">More...</a><br/></td></tr>
+<tr class="memitem:a2617f9c79768e832281213d10b24d266"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2617f9c79768e832281213d10b24d266"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a2617f9c79768e832281213d10b24d266">setTitle</a> (std::string title)</td></tr>
+<tr class="memdesc:a2617f9c79768e832281213d10b24d266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the title of the window. <br/></td></tr>
 <tr class="separator:a2617f9c79768e832281213d10b24d266"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0286db22900bd3fa9616874198ed5029"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a0286db22900bd3fa9616874198ed5029">resize</a> (<a class="el" href="namespacelumina.html#a5365328ead12db869f151177e976c819">Vec2i</a> size)</td></tr>
-<tr class="memdesc:a0286db22900bd3fa9616874198ed5029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes the window.  <a href="#a0286db22900bd3fa9616874198ed5029">More...</a><br/></td></tr>
+<tr class="memitem:a0286db22900bd3fa9616874198ed5029"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0286db22900bd3fa9616874198ed5029"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a0286db22900bd3fa9616874198ed5029">resize</a> (<a class="el" href="structlumina_1_1Vector.html">Vec2i</a> size)</td></tr>
+<tr class="memdesc:a0286db22900bd3fa9616874198ed5029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes the window. <br/></td></tr>
 <tr class="separator:a0286db22900bd3fa9616874198ed5029"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae823ce44ea9a9b61615676fa831012a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#ae823ce44ea9a9b61615676fa831012a9">setCursorMode</a> (<a class="el" href="namespacelumina.html#a2cd59cbeeffa93b4e608cf9ca4e21c92">CursorMode</a> mode)</td></tr>
-<tr class="memdesc:ae823ce44ea9a9b61615676fa831012a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mode of the mouse cursor.  <a href="#ae823ce44ea9a9b61615676fa831012a9">More...</a><br/></td></tr>
+<tr class="memitem:ae823ce44ea9a9b61615676fa831012a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae823ce44ea9a9b61615676fa831012a9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#ae823ce44ea9a9b61615676fa831012a9">setCursorMode</a> (CursorMode mode)</td></tr>
+<tr class="memdesc:ae823ce44ea9a9b61615676fa831012a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mode of the mouse cursor. <br/></td></tr>
 <tr class="separator:ae823ce44ea9a9b61615676fa831012a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3712710474436591d9ac4c79c3c3c08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#a5365328ead12db869f151177e976c819">Vec2i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#ac3712710474436591d9ac4c79c3c3c08">getSize</a> ()</td></tr>
-<tr class="memdesc:ac3712710474436591d9ac4c79c3c3c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current size of the window.  <a href="#ac3712710474436591d9ac4c79c3c3c08">More...</a><br/></td></tr>
+<tr class="memitem:ac3712710474436591d9ac4c79c3c3c08"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3712710474436591d9ac4c79c3c3c08"></a>
+<a class="el" href="structlumina_1_1Vector.html">Vec2i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#ac3712710474436591d9ac4c79c3c3c08">getSize</a> ()</td></tr>
+<tr class="memdesc:ac3712710474436591d9ac4c79c3c3c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current size of the window. <br/></td></tr>
 <tr class="separator:ac3712710474436591d9ac4c79c3c3c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8be20d6a96656fa6ac7494804a363c1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlumina_1_1RenderContext.html">RenderContext</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a8be20d6a96656fa6ac7494804a363c1e">getRenderContext</a> ()</td></tr>
-<tr class="memdesc:a8be20d6a96656fa6ac7494804a363c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the OpenGL context for this window.  <a href="#a8be20d6a96656fa6ac7494804a363c1e">More...</a><br/></td></tr>
+<tr class="memitem:a8be20d6a96656fa6ac7494804a363c1e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8be20d6a96656fa6ac7494804a363c1e"></a>
+<a class="el" href="classlumina_1_1RenderContext.html">RenderContext</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a8be20d6a96656fa6ac7494804a363c1e">getRenderContext</a> ()</td></tr>
+<tr class="memdesc:a8be20d6a96656fa6ac7494804a363c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the OpenGL context for this window. <br/></td></tr>
 <tr class="separator:a8be20d6a96656fa6ac7494804a363c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e8555112049fc2b4945120b3c45f8ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a9e8555112049fc2b4945120b3c45f8ab">open</a> ()</td></tr>
+<tr class="memitem:a9e8555112049fc2b4945120b3c45f8ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a9e8555112049fc2b4945120b3c45f8ab">open</a> ()</td></tr>
 <tr class="memdesc:a9e8555112049fc2b4945120b3c45f8ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the window.  <a href="#a9e8555112049fc2b4945120b3c45f8ab">More...</a><br/></td></tr>
 <tr class="separator:a9e8555112049fc2b4945120b3c45f8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ae591df94fc66ccb85cbb6565368bca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a5ae591df94fc66ccb85cbb6565368bca">close</a> ()</td></tr>
-<tr class="memdesc:a5ae591df94fc66ccb85cbb6565368bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes window and free resources.  <a href="#a5ae591df94fc66ccb85cbb6565368bca">More...</a><br/></td></tr>
+<tr class="memitem:a5ae591df94fc66ccb85cbb6565368bca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ae591df94fc66ccb85cbb6565368bca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a5ae591df94fc66ccb85cbb6565368bca">close</a> ()</td></tr>
+<tr class="memdesc:a5ae591df94fc66ccb85cbb6565368bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes window and free resources. <br/></td></tr>
 <tr class="separator:a5ae591df94fc66ccb85cbb6565368bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73c53a1d96697e8bebe152d402decf83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a73c53a1d96697e8bebe152d402decf83">pollEvents</a> ()</td></tr>
-<tr class="memdesc:a73c53a1d96697e8bebe152d402decf83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for new events.  <a href="#a73c53a1d96697e8bebe152d402decf83">More...</a><br/></td></tr>
+<tr class="memitem:a73c53a1d96697e8bebe152d402decf83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73c53a1d96697e8bebe152d402decf83"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a73c53a1d96697e8bebe152d402decf83">pollEvents</a> ()</td></tr>
+<tr class="memdesc:a73c53a1d96697e8bebe152d402decf83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for new events. <br/></td></tr>
 <tr class="separator:a73c53a1d96697e8bebe152d402decf83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5c54df7ed3b930268c8d7752c101725"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#ac5c54df7ed3b930268c8d7752c101725">update</a> ()</td></tr>
+<tr class="memitem:ac5c54df7ed3b930268c8d7752c101725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#ac5c54df7ed3b930268c8d7752c101725">update</a> ()</td></tr>
 <tr class="memdesc:ac5c54df7ed3b930268c8d7752c101725"><td class="mdescLeft">&#160;</td><td class="mdescRight">check for events and window status.  <a href="#ac5c54df7ed3b930268c8d7752c101725">More...</a><br/></td></tr>
 <tr class="separator:ac5c54df7ed3b930268c8d7752c101725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe93e17ac89cd97917811068ba2af214"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#afe93e17ac89cd97917811068ba2af214">isValid</a> ()</td></tr>
@@ -163,112 +170,56 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2acff7bd622cf95327948999134011fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlumina_1_1Window.html#a15a32eb61d35364df5cf035ffb1f92fb">EventCallbackIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a2acff7bd622cf95327948999134011fe">addEventCallback</a> (<a class="el" href="classlumina_1_1Window.html#a0b0eba778a6b8a00aa0df91af0802323">EventCallback</a> &amp;&amp;callback)</td></tr>
 <tr class="memdesc:a2acff7bd622cf95327948999134011fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a callback to process InputEvents.  <a href="#a2acff7bd622cf95327948999134011fe">More...</a><br/></td></tr>
 <tr class="separator:a2acff7bd622cf95327948999134011fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2435671d9d2f434fe63eaa66a533ed52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a2435671d9d2f434fe63eaa66a533ed52">removeEventCallback</a> (<a class="el" href="classlumina_1_1Window.html#a15a32eb61d35364df5cf035ffb1f92fb">EventCallbackIndex</a> index)</td></tr>
+<tr class="memitem:a2435671d9d2f434fe63eaa66a533ed52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a2435671d9d2f434fe63eaa66a533ed52">removeEventCallback</a> (<a class="el" href="classlumina_1_1Window.html#a15a32eb61d35364df5cf035ffb1f92fb">EventCallbackIndex</a> index)</td></tr>
 <tr class="memdesc:a2435671d9d2f434fe63eaa66a533ed52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an <a class="el" href="structlumina_1_1InputEvent.html">InputEvent</a> callback with the index previously returned by addEventCallback.  <a href="#a2435671d9d2f434fe63eaa66a533ed52">More...</a><br/></td></tr>
 <tr class="separator:a2435671d9d2f434fe63eaa66a533ed52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a0baeb9ebca23283778a5e3a02d58ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlumina_1_1Window.html#a9d06aa7be809eb6255278cf836acc7be">WindowCallbackIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a3a0baeb9ebca23283778a5e3a02d58ba">addWindowCallback</a> (<a class="el" href="classlumina_1_1Window.html#a1a6700605e4f45f898fccbe68f932dea">WindowCallback</a> &amp;&amp;callback)</td></tr>
 <tr class="memdesc:a3a0baeb9ebca23283778a5e3a02d58ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a callback to process WindowEvents.  <a href="#a3a0baeb9ebca23283778a5e3a02d58ba">More...</a><br/></td></tr>
 <tr class="separator:a3a0baeb9ebca23283778a5e3a02d58ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f572af191d02c4ece70c12955d3db25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a2f572af191d02c4ece70c12955d3db25">removeWindowCallback</a> (<a class="el" href="classlumina_1_1Window.html#a9d06aa7be809eb6255278cf836acc7be">WindowCallbackIndex</a> index)</td></tr>
+<tr class="memitem:a2f572af191d02c4ece70c12955d3db25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1Window.html#a2f572af191d02c4ece70c12955d3db25">removeWindowCallback</a> (<a class="el" href="classlumina_1_1Window.html#a9d06aa7be809eb6255278cf836acc7be">WindowCallbackIndex</a> index)</td></tr>
 <tr class="memdesc:a2f572af191d02c4ece70c12955d3db25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an <a class="el" href="structlumina_1_1WindowEvent.html">WindowEvent</a> callback with the index previously returned by addWindowCallback.  <a href="#a2f572af191d02c4ece70c12955d3db25">More...</a><br/></td></tr>
 <tr class="separator:a2f572af191d02c4ece70c12955d3db25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classlumina_1_1SingleBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classlumina_1_1SingleBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classlumina_1_1SingleBase.html">SingleBase</a></td></tr>
-<tr class="memitem:adfbe7c086af5e7c24f8b77b84e4f7a61 inherit pub_methods_classlumina_1_1SingleBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1SingleBase.html#adfbe7c086af5e7c24f8b77b84e4f7a61">setServiceContext</a> (<a class="el" href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">config::ServiceContext</a> cnt)</td></tr>
+<tr class="memitem:adfbe7c086af5e7c24f8b77b84e4f7a61 inherit pub_methods_classlumina_1_1SingleBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfbe7c086af5e7c24f8b77b84e4f7a61"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setServiceContext</b> (config::ServiceContext cnt)</td></tr>
 <tr class="separator:adfbe7c086af5e7c24f8b77b84e4f7a61 inherit pub_methods_classlumina_1_1SingleBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1550d2ef8cf9c9ffd7769f6db410d995 inherit pub_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2">template&lt;typename Ex , LogLevel LL, typename... Ts&gt; </td></tr>
-<tr class="memitem:a1550d2ef8cf9c9ffd7769f6db410d995 inherit pub_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#aa012a6071707a5b9b0e83589249bfcf6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a> <a class="el" href="namespacelumina.html#aa012a6071707a5b9b0e83589249bfcf6a24efa7ee4511563b16144f39706d594f">Notice</a> <a class="el" href="namespacelumina.html#aa012a6071707a5b9b0e83589249bfcf6aa603905470e2a5b8c13e96b579ef0dba">Debug</a> <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1SingleBase.html#a1550d2ef8cf9c9ffd7769f6db410d995">logAndThrow</a> (Ts...args)</td></tr>
+<tr class="memitem:a1550d2ef8cf9c9ffd7769f6db410d995 inherit pub_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2"><a class="anchor" id="a1550d2ef8cf9c9ffd7769f6db410d995"></a>
+template&lt;typename Ex , LogLevel LL, typename... Ts&gt; </td></tr>
+<tr class="memitem:a1550d2ef8cf9c9ffd7769f6db410d995 inherit pub_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top">Error Notice Debug void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>logAndThrow</b> (Ts...args)</td></tr>
 <tr class="separator:a1550d2ef8cf9c9ffd7769f6db410d995 inherit pub_methods_classlumina_1_1SingleBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classlumina_1_1SingleBase"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classlumina_1_1SingleBase')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classlumina_1_1SingleBase.html">SingleBase</a></td></tr>
-<tr class="memitem:aefebe03457ec2c13bb068c82e1133bf7 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2">template&lt;typename... Ts&gt; </td></tr>
-<tr class="memitem:aefebe03457ec2c13bb068c82e1133bf7 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1SingleBase.html#aefebe03457ec2c13bb068c82e1133bf7">logCritical</a> (Ts...args)</td></tr>
+<tr class="memitem:aefebe03457ec2c13bb068c82e1133bf7 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2"><a class="anchor" id="aefebe03457ec2c13bb068c82e1133bf7"></a>
+template&lt;typename... Ts&gt; </td></tr>
+<tr class="memitem:aefebe03457ec2c13bb068c82e1133bf7 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>logCritical</b> (Ts...args)</td></tr>
 <tr class="separator:aefebe03457ec2c13bb068c82e1133bf7 inherit pro_methods_classlumina_1_1SingleBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29556f95e4e1ca6a57672fa5344baf48 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2">template&lt;typename... Ts&gt; </td></tr>
-<tr class="memitem:a29556f95e4e1ca6a57672fa5344baf48 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1SingleBase.html#a29556f95e4e1ca6a57672fa5344baf48">logError</a> (Ts...args)</td></tr>
+<tr class="memitem:a29556f95e4e1ca6a57672fa5344baf48 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2"><a class="anchor" id="a29556f95e4e1ca6a57672fa5344baf48"></a>
+template&lt;typename... Ts&gt; </td></tr>
+<tr class="memitem:a29556f95e4e1ca6a57672fa5344baf48 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>logError</b> (Ts...args)</td></tr>
 <tr class="separator:a29556f95e4e1ca6a57672fa5344baf48 inherit pro_methods_classlumina_1_1SingleBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3b32ca032f6b1c87027513598ea78d1 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2">template&lt;typename... Ts&gt; </td></tr>
-<tr class="memitem:ae3b32ca032f6b1c87027513598ea78d1 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1SingleBase.html#ae3b32ca032f6b1c87027513598ea78d1">logWarning</a> (Ts...args)</td></tr>
+<tr class="memitem:ae3b32ca032f6b1c87027513598ea78d1 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2"><a class="anchor" id="ae3b32ca032f6b1c87027513598ea78d1"></a>
+template&lt;typename... Ts&gt; </td></tr>
+<tr class="memitem:ae3b32ca032f6b1c87027513598ea78d1 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>logWarning</b> (Ts...args)</td></tr>
 <tr class="separator:ae3b32ca032f6b1c87027513598ea78d1 inherit pro_methods_classlumina_1_1SingleBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43dbe2bd5fb955b94c15d33e4976dc62 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2">template&lt;typename... Ts&gt; </td></tr>
-<tr class="memitem:a43dbe2bd5fb955b94c15d33e4976dc62 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1SingleBase.html#a43dbe2bd5fb955b94c15d33e4976dc62">logNotice</a> (Ts...args)</td></tr>
+<tr class="memitem:a43dbe2bd5fb955b94c15d33e4976dc62 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2"><a class="anchor" id="a43dbe2bd5fb955b94c15d33e4976dc62"></a>
+template&lt;typename... Ts&gt; </td></tr>
+<tr class="memitem:a43dbe2bd5fb955b94c15d33e4976dc62 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>logNotice</b> (Ts...args)</td></tr>
 <tr class="separator:a43dbe2bd5fb955b94c15d33e4976dc62 inherit pro_methods_classlumina_1_1SingleBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaeaad1c95681764f11cca7eeb9ea74b inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2">template&lt;typename... Ts&gt; </td></tr>
-<tr class="memitem:aeaeaad1c95681764f11cca7eeb9ea74b inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1SingleBase.html#aeaeaad1c95681764f11cca7eeb9ea74b">log</a> (Ts...args)</td></tr>
+<tr class="memitem:aeaeaad1c95681764f11cca7eeb9ea74b inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2"><a class="anchor" id="aeaeaad1c95681764f11cca7eeb9ea74b"></a>
+template&lt;typename... Ts&gt; </td></tr>
+<tr class="memitem:aeaeaad1c95681764f11cca7eeb9ea74b inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>log</b> (Ts...args)</td></tr>
 <tr class="separator:aeaeaad1c95681764f11cca7eeb9ea74b inherit pro_methods_classlumina_1_1SingleBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a359fc4b8621ecce28cae8696ddb21aaa inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2">template&lt;typename... Ts&gt; </td></tr>
-<tr class="memitem:a359fc4b8621ecce28cae8696ddb21aaa inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1SingleBase.html#a359fc4b8621ecce28cae8696ddb21aaa">logDebug</a> (Ts...args)</td></tr>
+<tr class="memitem:a359fc4b8621ecce28cae8696ddb21aaa inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2"><a class="anchor" id="a359fc4b8621ecce28cae8696ddb21aaa"></a>
+template&lt;typename... Ts&gt; </td></tr>
+<tr class="memitem:a359fc4b8621ecce28cae8696ddb21aaa inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>logDebug</b> (Ts...args)</td></tr>
 <tr class="separator:a359fc4b8621ecce28cae8696ddb21aaa inherit pro_methods_classlumina_1_1SingleBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b51c989ae52f84a394b9424629e4948 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2">template&lt;typename Ex , LogLevel LL = LogLevel::Error, typename... Ts&gt; </td></tr>
-<tr class="memitem:a4b51c989ae52f84a394b9424629e4948 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1SingleBase.html#a4b51c989ae52f84a394b9424629e4948">logAndThrow</a> (Ts...args)</td></tr>
+<tr class="memitem:a4b51c989ae52f84a394b9424629e4948 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplParams" colspan="2"><a class="anchor" id="a4b51c989ae52f84a394b9424629e4948"></a>
+template&lt;typename Ex , LogLevel LL = LogLevel::Error, typename... Ts&gt; </td></tr>
+<tr class="memitem:a4b51c989ae52f84a394b9424629e4948 inherit pro_methods_classlumina_1_1SingleBase"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>logAndThrow</b> (Ts...args)</td></tr>
 <tr class="separator:a4b51c989ae52f84a394b9424629e4948 inherit pro_methods_classlumina_1_1SingleBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a0b0eba778a6b8a00aa0df91af0802323"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="classlumina_1_1Window.html#a0b0eba778a6b8a00aa0df91af0802323">EventCallback</a> =  std::function&lt;<a class="el" href="namespacelumina.html#af0f52aa6917a8da806482200b73ba6a6">EventResult</a>(<a class="el" href="structlumina_1_1InputEvent.html">InputEvent</a>)&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Functor type for handling InputEvents. </p>
-
-<p>Definition at line <a class="el" href="Window_8hpp_source.html#l00047">47</a> of file <a class="el" href="Window_8hpp_source.html">Window.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a15a32eb61d35364df5cf035ffb1f92fb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="classlumina_1_1Window.html#a15a32eb61d35364df5cf035ffb1f92fb">EventCallbackIndex</a> =  std::vector&lt;<a class="el" href="classlumina_1_1Window.html#a0b0eba778a6b8a00aa0df91af0802323">EventCallback</a>&gt;::size_type</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type for accessing a specific EventCallback. </p>
-
-<p>Definition at line <a class="el" href="Window_8hpp_source.html#l00050">50</a> of file <a class="el" href="Window_8hpp_source.html">Window.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a1a6700605e4f45f898fccbe68f932dea"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="classlumina_1_1Window.html#a1a6700605e4f45f898fccbe68f932dea">WindowCallback</a> =  std::function&lt;<a class="el" href="namespacelumina.html#af0f52aa6917a8da806482200b73ba6a6">EventResult</a>(<a class="el" href="structlumina_1_1WindowEvent.html">WindowEvent</a>)&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Functor type for handling WindowEvents. </p>
-
-<p>Definition at line <a class="el" href="Window_8hpp_source.html#l00053">53</a> of file <a class="el" href="Window_8hpp_source.html">Window.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a9d06aa7be809eb6255278cf836acc7be"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="classlumina_1_1Window.html#a9d06aa7be809eb6255278cf836acc7be">WindowCallbackIndex</a> =  std::vector&lt;<a class="el" href="classlumina_1_1Window.html#a1a6700605e4f45f898fccbe68f932dea">WindowCallback</a>&gt;::size_type</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type for accessing a specific WindowCallback. </p>
-
-<p>Definition at line <a class="el" href="Window_8hpp_source.html#l00056">56</a> of file <a class="el" href="Window_8hpp_source.html">Window.hpp</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ab9895a55cd8f75631fb10204d80ee52c"></a>
 <div class="memitem">
@@ -283,8 +234,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacelumina.html#a5365328ead12db869f151177e976c819">Vec2i</a>&#160;</td>
-          <td class="paramname"><em>size</em> = <code><a class="el" href="namespacelumina.html#a5365328ead12db869f151177e976c819">Vec2i</a>(600,&#160;400)</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="structlumina_1_1Vector.html">Vec2i</a>&#160;</td>
+          <td class="paramname"><em>size</em> = <code><a class="el" href="structlumina_1_1Vector.html">Vec2i</a>(600,&#160;400)</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -302,25 +253,6 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Definition at line <a class="el" href="Window_8tpp_source.html#l00003">3</a> of file <a class="el" href="Window_8tpp_source.html">Window.tpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a254ab61160c1cd5eaa46cc0475bb7a06"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">~<a class="el" href="classlumina_1_1Window.html">Window</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00019">19</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
 
 </div>
 </div>
@@ -342,8 +274,6 @@ Additional Inherited Members</h2></td></tr>
 <p>Add a callback to process InputEvents. </p>
 <dl class="section return"><dt>Returns</dt><dd>A callback index. It's neccessary for deleting the callback later on. </dd></dl>
 
-<p>Definition at line <a class="el" href="Window_8tpp_source.html#l00017">17</a> of file <a class="el" href="Window_8tpp_source.html">Window.tpp</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a3a0baeb9ebca23283778a5e3a02d58ba"></a>
@@ -363,65 +293,6 @@ Additional Inherited Members</h2></td></tr>
 <p>Add a callback to process WindowEvents. </p>
 <dl class="section return"><dt>Returns</dt><dd>A callback index. It's neccessary for deleting the callback later on. </dd></dl>
 
-<p>Definition at line <a class="el" href="Window_8tpp_source.html#l00028">28</a> of file <a class="el" href="Window_8tpp_source.html">Window.tpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5ae591df94fc66ccb85cbb6565368bca"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> close </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Closes window and free resources. </p>
-
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00108">108</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8be20d6a96656fa6ac7494804a363c1e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classlumina_1_1RenderContext.html">RenderContext</a> &amp; getRenderContext </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the OpenGL context for this window. </p>
-
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00025">25</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac3712710474436591d9ac4c79c3c3c08"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#a5365328ead12db869f151177e976c819">Vec2i</a> getSize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the current size of the window. </p>
-
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00140">140</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="afe93e17ac89cd97917811068ba2af214"></a>
@@ -440,8 +311,6 @@ Additional Inherited Members</h2></td></tr>
 <p>Returns if the window is valid. </p>
 <p>The window can become invalid when the X Button is pressed or for some other reasons. You should always check if the window is still valid. In case this method returns false you should close the window. If you don't close it and <a class="el" href="classlumina_1_1Window.html#ac5c54df7ed3b930268c8d7752c101725" title="check for events and window status. ">update()</a> is called twice after that, the window will close itself. </p>
 
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00196">196</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a9e8555112049fc2b4945120b3c45f8ab"></a>
@@ -449,7 +318,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> open </td>
+          <td class="memname">void open </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -460,27 +329,6 @@ Additional Inherited Members</h2></td></tr>
 <p>Opens the window. </p>
 <dl class="section note"><dt>Note</dt><dd>Currently "open window" implies "creating render context" because we use GLFW </dd></dl>
 
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00032">32</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a73c53a1d96697e8bebe152d402decf83"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> pollEvents </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for new events. </p>
-
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00162">162</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a2435671d9d2f434fe63eaa66a533ed52"></a>
@@ -488,7 +336,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> removeEventCallback </td>
+          <td class="memname">void removeEventCallback </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classlumina_1_1Window.html#a15a32eb61d35364df5cf035ffb1f92fb">Window::EventCallbackIndex</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -500,8 +348,6 @@ Additional Inherited Members</h2></td></tr>
 <p>Removes an <a class="el" href="structlumina_1_1InputEvent.html">InputEvent</a> callback with the index previously returned by addEventCallback. </p>
 <dl class="section note"><dt>Note</dt><dd>This method should not be called regularly. </dd></dl>
 
-<p>Definition at line <a class="el" href="Window_8tpp_source.html#l00023">23</a> of file <a class="el" href="Window_8tpp_source.html">Window.tpp</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a2f572af191d02c4ece70c12955d3db25"></a>
@@ -509,7 +355,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> removeWindowCallback </td>
+          <td class="memname">void removeWindowCallback </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classlumina_1_1Window.html#a9d06aa7be809eb6255278cf836acc7be">WindowCallbackIndex</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -521,68 +367,6 @@ Additional Inherited Members</h2></td></tr>
 <p>Removes an <a class="el" href="structlumina_1_1WindowEvent.html">WindowEvent</a> callback with the index previously returned by addWindowCallback. </p>
 <dl class="section note"><dt>Note</dt><dd>This method should not be called regularly. </dd></dl>
 
-<p>Definition at line <a class="el" href="Window_8tpp_source.html#l00034">34</a> of file <a class="el" href="Window_8tpp_source.html">Window.tpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0286db22900bd3fa9616874198ed5029"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> resize </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacelumina.html#a5365328ead12db869f151177e976c819">Vec2i</a>&#160;</td>
-          <td class="paramname"><em>size</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Resizes the window. </p>
-
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00133">133</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae823ce44ea9a9b61615676fa831012a9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> setCursorMode </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacelumina.html#a2cd59cbeeffa93b4e608cf9ca4e21c92">CursorMode</a>&#160;</td>
-          <td class="paramname"><em>mode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the mode of the mouse cursor. </p>
-
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00095">95</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2617f9c79768e832281213d10b24d266"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> setTitle </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>title</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Changes the title of the window. </p>
-
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00126">126</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="adc648c88552621ab7d4cc6846c6dff13"></a>
@@ -590,7 +374,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> setVersionHint </td>
+          <td class="memname">void setVersionHint </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>major</em>, </td>
@@ -620,8 +404,6 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Window_8tpp_source.html#l00013">13</a> of file <a class="el" href="Window_8tpp_source.html">Window.tpp</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a5a04c0bc5fb54fc4d76d1b3fa90e86d6"></a>
@@ -629,7 +411,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> setVSync </td>
+          <td class="memname">void setVSync </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>enable</em></td><td>)</td>
@@ -646,8 +428,6 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00091">91</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ac5c54df7ed3b930268c8d7752c101725"></a>
@@ -655,7 +435,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> update </td>
+          <td class="memname">void update </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -666,8 +446,6 @@ Additional Inherited Members</h2></td></tr>
 <p>check for events and window status. </p>
 <p>This method should be called every frame to ensure the window behaves properly. </p>
 
-<p>Definition at line <a class="el" href="Window_8cpp_source.html#l00146">146</a> of file <a class="el" href="Window_8cpp_source.html">Window.cpp</a>.</p>
-
 </div>
 </div>
 </div><!-- contents -->
@@ -677,7 +455,7 @@ Additional Inherited Members</h2></td></tr>
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

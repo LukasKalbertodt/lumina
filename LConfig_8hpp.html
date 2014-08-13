@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,30 +98,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Is included after LCommon.hpp. </p>
-
-<p>Definition in file <a class="el" href="LConfig_8hpp_source.html">LConfig.hpp</a>.</p>
 </div>
 <p><a href="LConfig_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a734926dced0426a289dc49e8ef04188a"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#a734926dced0426a289dc49e8ef04188a">useLogStandardIO</a> = true</td></tr>
+<tr class="memitem:a734926dced0426a289dc49e8ef04188a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a734926dced0426a289dc49e8ef04188a"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>useLogStandardIO</b> = true</td></tr>
 <tr class="separator:a734926dced0426a289dc49e8ef04188a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacc743a0fa7b8c6c8519a4ff35f66c13"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#aacc743a0fa7b8c6c8519a4ff35f66c13">ignoreDebugLogs</a> = false</td></tr>
+<tr class="memitem:aacc743a0fa7b8c6c8519a4ff35f66c13"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aacc743a0fa7b8c6c8519a4ff35f66c13"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>ignoreDebugLogs</b> = false</td></tr>
 <tr class="separator:aacc743a0fa7b8c6c8519a4ff35f66c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07eb114863201e3c4086449111d510c4"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#a07eb114863201e3c4086449111d510c4">logDebugEveryFrame</a> = false</td></tr>
+<tr class="memitem:a07eb114863201e3c4086449111d510c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07eb114863201e3c4086449111d510c4"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>logDebugEveryFrame</b> = false</td></tr>
 <tr class="separator:a07eb114863201e3c4086449111d510c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa842ed3a1f2a801cc6d30353c22324b4"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#aa842ed3a1f2a801cc6d30353c22324b4">debugBoundChecks</a> = true</td></tr>
+<tr class="memitem:aa842ed3a1f2a801cc6d30353c22324b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa842ed3a1f2a801cc6d30353c22324b4"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>debugBoundChecks</b> = true</td></tr>
 <tr class="separator:aa842ed3a1f2a801cc6d30353c22324b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a944844368d59f8813c2890d188218211"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#a944844368d59f8813c2890d188218211">debugTextureDrawChecks</a> = true</td></tr>
+<tr class="memitem:a944844368d59f8813c2890d188218211"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a944844368d59f8813c2890d188218211"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>debugTextureDrawChecks</b> = true</td></tr>
 <tr class="separator:a944844368d59f8813c2890d188218211"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fca87f3fd79c4a710b634c352e36f6e"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#a9fca87f3fd79c4a710b634c352e36f6e">debugTexturePrimeChecks</a> = true</td></tr>
+<tr class="memitem:a9fca87f3fd79c4a710b634c352e36f6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fca87f3fd79c4a710b634c352e36f6e"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>debugTexturePrimeChecks</b> = true</td></tr>
 <tr class="separator:a9fca87f3fd79c4a710b634c352e36f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf8f0eda05073f53e23ec5039a810454"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#acf8f0eda05073f53e23ec5039a810454">debugContextCurrentCheck</a> = true</td></tr>
+<tr class="memitem:acf8f0eda05073f53e23ec5039a810454"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf8f0eda05073f53e23ec5039a810454"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>debugContextCurrentCheck</b> = true</td></tr>
 <tr class="separator:acf8f0eda05073f53e23ec5039a810454"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b0a3258e82065addd65791f89f0d311"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#a2b0a3258e82065addd65791f89f0d311">debugDrawFrameBufferCheck</a> = true</td></tr>
+<tr class="memitem:a2b0a3258e82065addd65791f89f0d311"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b0a3258e82065addd65791f89f0d311"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>debugDrawFrameBufferCheck</b> = true</td></tr>
 <tr class="separator:a2b0a3258e82065addd65791f89f0d311"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5a2efd7d5c78df7619a8a28dfc14a17"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina_1_1config.html#ac5a2efd7d5c78df7619a8a28dfc14a17">resetGLState</a> = true</td></tr>
+<tr class="memitem:ac5a2efd7d5c78df7619a8a28dfc14a17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5a2efd7d5c78df7619a8a28dfc14a17"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>resetGLState</b> = true</td></tr>
 <tr class="separator:ac5a2efd7d5c78df7619a8a28dfc14a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -132,7 +138,7 @@ Variables</h2></td></tr>
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

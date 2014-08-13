@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,10 +94,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">GLObject.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="GLObject_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="GLTools_8hpp.html">GLTools.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="GLException_8hpp.html">GLException.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;GLTools.hpp&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;GLException.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../config/BaseProxy.hpp&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../config/LConfig.hpp&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../util/NotCloneable.hpp&quot;</span></div>
@@ -108,32 +107,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="namespacelumina.html#a4dae657a5c7a5df73ce9b4eef2f54209">   14</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacelumina.html#a4dae657a5c7a5df73ce9b4eef2f54209">PrintGL</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="namespacelumina.html#aa012a6071707a5b9b0e83589249bfcf6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">enum class</span> PrintGL {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  Error</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classlumina_1_1GLContextFreeObject.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1GLContextFreeObject.html">GLContextFreeObject</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1SingleBase.html">config::CommonBase</a>, <span class="keyword">public</span> <a class="code" href="classlumina_1_1NotCopyable.html">NotCopyable</a> {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="comment">// OpenGL object cannot be copied, just moved.</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classlumina_1_1GLContextFreeObject.html#ae2308567fe5756d74403189d0d454bf3">GLContextFreeObject</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classlumina_1_1GLContextFreeObject.html">GLContextFreeObject</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt; <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1GLContextFreeObject.html#a18e4bf71234d7508814ced7dfc3b5484">checkGLError</a>(Ts...);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt; <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1GLContextFreeObject.html#a703126d622073d00da8ecfd54b61db93">checkGLWarning</a>(Ts...);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt; <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1GLContextFreeObject.html#abb64b2ec3f6c8fd7ff696046aa04e602">logThrowGL</a>(Ts...);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt; <span class="keywordtype">void</span> checkGLError(Ts...);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt; <span class="keywordtype">void</span> checkGLWarning(Ts...);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt; <span class="keywordtype">void</span> logThrowGL(Ts...);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="comment">// short name for PrintGL::Error</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classlumina_1_1GLContextFreeObject.html#a0c1ae42da45a9e024a3c979b3de53c03">   29</a></span>&#160;  <span class="keyword">static</span> constexpr <a class="code" href="namespacelumina.html#a4dae657a5c7a5df73ce9b4eef2f54209">PrintGL</a> <a class="code" href="classlumina_1_1GLContextFreeObject.html#a0c1ae42da45a9e024a3c979b3de53c03">GLERR</a> = <a class="code" href="namespacelumina.html#aa012a6071707a5b9b0e83589249bfcf6a902b0d55fddef6f8d651fe1035b7d4bd">PrintGL::Error</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">static</span> constexpr PrintGL GLERR = PrintGL::Error;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <a class="code" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&amp; translateErrorMsg(GLuint err, <a class="code" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&amp; obj);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span>* translateErrorMsg(GLuint err, <a class="code" href="namespacelumina.html#a4dae657a5c7a5df73ce9b4eef2f54209">PrintGL</a> obj);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; T&amp; translateErrorMsg(GLuint err, T&amp; obj);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span>* translateErrorMsg(GLuint err, PrintGL obj);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classlumina_1_1GLObject.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1GLObject.html">GLObject</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1GLContextFreeObject.html">GLContextFreeObject</a> {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classlumina_1_1GLObject.html#ace2c05d128e329d0fadd64a1b5517281">GLObject</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classlumina_1_1GLObject.html">GLObject</a>();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordtype">bool</span> isRenderContextCurrent();</div>
@@ -142,23 +141,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="GLObject_8tpp.html">GLObject.tpp</a>&quot;</span></div>
-<div class="ttc" id="classlumina_1_1GLObject_html_ace2c05d128e329d0fadd64a1b5517281"><div class="ttname"><a href="classlumina_1_1GLObject.html#ace2c05d128e329d0fadd64a1b5517281">lumina::GLObject::GLObject</a></div><div class="ttdeci">GLObject()</div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8tpp_source.html#l00003">GLObject.tpp:3</a></div></div>
-<div class="ttc" id="classlumina_1_1GLContextFreeObject_html_a703126d622073d00da8ecfd54b61db93"><div class="ttname"><a href="classlumina_1_1GLContextFreeObject.html#a703126d622073d00da8ecfd54b61db93">lumina::GLContextFreeObject::checkGLWarning</a></div><div class="ttdeci">void checkGLWarning(Ts...)</div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8tpp_source.html#l00022">GLObject.tpp:22</a></div></div>
-<div class="ttc" id="GLTools_8hpp_html"><div class="ttname"><a href="GLTools_8hpp.html">GLTools.hpp</a></div></div>
-<div class="ttc" id="classlumina_1_1SingleBase_html"><div class="ttname"><a href="classlumina_1_1SingleBase.html">lumina::SingleBase</a></div><div class="ttdef"><b>Definition:</b> <a href="SingleBase_8hpp_source.html#l00019">SingleBase.hpp:19</a></div></div>
-<div class="ttc" id="classlumina_1_1NotCopyable_html"><div class="ttname"><a href="classlumina_1_1NotCopyable.html">lumina::NotCopyable</a></div><div class="ttdef"><b>Definition:</b> <a href="NotCloneable_8hpp_source.html#l00005">NotCloneable.hpp:5</a></div></div>
-<div class="ttc" id="classlumina_1_1GLObject_html"><div class="ttname"><a href="classlumina_1_1GLObject.html">lumina::GLObject</a></div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8hpp_source.html#l00037">GLObject.hpp:37</a></div></div>
-<div class="ttc" id="classlumina_1_1GLContextFreeObject_html_a18e4bf71234d7508814ced7dfc3b5484"><div class="ttname"><a href="classlumina_1_1GLContextFreeObject.html#a18e4bf71234d7508814ced7dfc3b5484">lumina::GLContextFreeObject::checkGLError</a></div><div class="ttdeci">void checkGLError(Ts...)</div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8tpp_source.html#l00013">GLObject.tpp:13</a></div></div>
-<div class="ttc" id="namespacelumina_html_aa012a6071707a5b9b0e83589249bfcf6a902b0d55fddef6f8d651fe1035b7d4bd"><div class="ttname"><a href="namespacelumina.html#aa012a6071707a5b9b0e83589249bfcf6a902b0d55fddef6f8d651fe1035b7d4bd">lumina::LogLevel::Error</a></div></div>
-<div class="ttc" id="GLException_8hpp_html"><div class="ttname"><a href="GLException_8hpp.html">GLException.hpp</a></div></div>
-<div class="ttc" id="namespacelumina_html_a4dae657a5c7a5df73ce9b4eef2f54209"><div class="ttname"><a href="namespacelumina.html#a4dae657a5c7a5df73ce9b4eef2f54209">lumina::PrintGL</a></div><div class="ttdeci">PrintGL</div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8hpp_source.html#l00014">GLObject.hpp:14</a></div></div>
-<div class="ttc" id="namespacelumina_html_a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">lumina::KeyCode::T</a></div></div>
-<div class="ttc" id="classlumina_1_1GLContextFreeObject_html_abb64b2ec3f6c8fd7ff696046aa04e602"><div class="ttname"><a href="classlumina_1_1GLContextFreeObject.html#abb64b2ec3f6c8fd7ff696046aa04e602">lumina::GLContextFreeObject::logThrowGL</a></div><div class="ttdeci">void logThrowGL(Ts...)</div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8tpp_source.html#l00030">GLObject.tpp:30</a></div></div>
-<div class="ttc" id="GLObject_8tpp_html"><div class="ttname"><a href="GLObject_8tpp.html">GLObject.tpp</a></div></div>
-<div class="ttc" id="classlumina_1_1GLContextFreeObject_html"><div class="ttname"><a href="classlumina_1_1GLContextFreeObject.html">lumina::GLContextFreeObject</a></div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8hpp_source.html#l00018">GLObject.hpp:18</a></div></div>
-<div class="ttc" id="classlumina_1_1GLContextFreeObject_html_ae2308567fe5756d74403189d0d454bf3"><div class="ttname"><a href="classlumina_1_1GLContextFreeObject.html#ae2308567fe5756d74403189d0d454bf3">lumina::GLContextFreeObject::GLContextFreeObject</a></div><div class="ttdeci">GLContextFreeObject()=default</div></div>
-<div class="ttc" id="classlumina_1_1GLContextFreeObject_html_a0c1ae42da45a9e024a3c979b3de53c03"><div class="ttname"><a href="classlumina_1_1GLContextFreeObject.html#a0c1ae42da45a9e024a3c979b3de53c03">lumina::GLContextFreeObject::GLERR</a></div><div class="ttdeci">static constexpr PrintGL GLERR</div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8hpp_source.html#l00029">GLObject.hpp:29</a></div></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;GLObject.tpp&quot;</span></div>
+<div class="ttc" id="classlumina_1_1SingleBase_html"><div class="ttname"><a href="classlumina_1_1SingleBase.html">lumina::SingleBase</a></div><div class="ttdef"><b>Definition:</b> SingleBase.hpp:19</div></div>
+<div class="ttc" id="classlumina_1_1NotCopyable_html"><div class="ttname"><a href="classlumina_1_1NotCopyable.html">lumina::NotCopyable</a></div><div class="ttdef"><b>Definition:</b> NotCloneable.hpp:5</div></div>
+<div class="ttc" id="classlumina_1_1GLObject_html"><div class="ttname"><a href="classlumina_1_1GLObject.html">lumina::GLObject</a></div><div class="ttdef"><b>Definition:</b> GLObject.hpp:37</div></div>
+<div class="ttc" id="classlumina_1_1GLContextFreeObject_html"><div class="ttname"><a href="classlumina_1_1GLContextFreeObject.html">lumina::GLContextFreeObject</a></div><div class="ttdef"><b>Definition:</b> GLObject.hpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -166,7 +153,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

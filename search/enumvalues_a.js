@@ -13,5 +13,5 @@ var searchData=
   ['k9',['K9',['../namespacelumina.html#a7885f47644a0388f981f416fa20389b2a2041f5bc5a5df10fe0d1ca3d90177e70',1,'lumina']]],
   ['keyhold',['KeyHold',['../namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47ad4fce5d35833c3acffb783e84f62fee4',1,'lumina']]],
   ['keypressed',['KeyPressed',['../namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47ac17e6984c1e5a887a49831beadee6bca',1,'lumina']]],
-  ['keyrelease',['KeyRelease',['../namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47a17ee17cec34ff017c382ba1ce8dc4cdc',1,'lumina']]]
+  ['keyreleased',['KeyReleased',['../namespacelumina.html#a4a9e93030d53087f3067581c8b8cbe47a4a77f07c8ad223b71ab4ce78a63841ab',1,'lumina']]]
 ];

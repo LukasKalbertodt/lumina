@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,24 +94,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ServiceProvider.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="ServiceProvider_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../config/ContextProxy.hpp&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Logger_8hpp.html">Logger.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Logger.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="namespacelumina.html#a9e3aacd2aa4c2d65458af348b54ded7e">    8</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classlumina_1_1Logger.html">Logger</a>&amp; <a class="code" href="namespacelumina.html#a9e3aacd2aa4c2d65458af348b54ded7e">getLoggerService</a>(<a class="code" href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">config::ServiceContext</a> cnt) {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keyword">static</span> <a class="code" href="classlumina_1_1Logger.html">Logger</a> instances[<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="namespacelumina_1_1config.html#abd663e0d6c1eaaaf8c658bddebc2ea18">config::serviceContextNumValues</a>)];</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">inline</span> Logger&amp; getLoggerService(config::ServiceContext cnt) {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keyword">static</span> Logger instances[<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(config::serviceContextNumValues)];</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordflow">return</span> instances[<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(cnt)];</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;} <span class="comment">// namespace lumina</span></div>
-<div class="ttc" id="classlumina_1_1Logger_html"><div class="ttname"><a href="classlumina_1_1Logger.html">lumina::Logger</a></div><div class="ttdef"><b>Definition:</b> <a href="Logger_8hpp_source.html#l00015">Logger.hpp:15</a></div></div>
-<div class="ttc" id="Logger_8hpp_html"><div class="ttname"><a href="Logger_8hpp.html">Logger.hpp</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_abd663e0d6c1eaaaf8c658bddebc2ea18"><div class="ttname"><a href="namespacelumina_1_1config.html#abd663e0d6c1eaaaf8c658bddebc2ea18">lumina::config::serviceContextNumValues</a></div><div class="ttdeci">constexpr ServiceContext serviceContextNumValues</div><div class="ttdef"><b>Definition:</b> <a href="ContextProxy_8hpp_source.html#l00030">ContextProxy.hpp:30</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_ac31145d493b73b04599c250c62ca8354"><div class="ttname"><a href="namespacelumina_1_1config.html#ac31145d493b73b04599c250c62ca8354">lumina::config::ServiceContext</a></div><div class="ttdeci">ServiceContext ServiceContext</div><div class="ttdef"><b>Definition:</b> <a href="ContextProxy_8hpp_source.html#l00024">ContextProxy.hpp:24</a></div></div>
-<div class="ttc" id="namespacelumina_html_a9e3aacd2aa4c2d65458af348b54ded7e"><div class="ttname"><a href="namespacelumina.html#a9e3aacd2aa4c2d65458af348b54ded7e">lumina::getLoggerService</a></div><div class="ttdeci">Logger &amp; getLoggerService(config::ServiceContext cnt)</div><div class="ttdef"><b>Definition:</b> <a href="ServiceProvider_8hpp_source.html#l00008">ServiceProvider.hpp:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -120,7 +114,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,257 +100,255 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><p>Provides enum class for all keys. </p>
 <dl class="section author"><dt>Author</dt><dd>Lukas Kalbertodt <a href="#" onclick="location.href='mai'+'lto:'+'luk'+'as'+'.ka'+'lb'+'ert'+'od'+'t@g'+'ma'+'il.'+'co'+'m'; return false;">lukas<span style="display: none;">.nosp@m.</span>.kal<span style="display: none;">.nosp@m.</span>berto<span style="display: none;">.nosp@m.</span>dt@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a></dd></dl>
 <p>This file is part of the Lumina Graphics Library. </p>
-
-<p>Definition in file <a class="el" href="KeyCode_8hpp_source.html">KeyCode.hpp</a>.</p>
 </div>
 <p><a href="KeyCode_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a7885f47644a0388f981f416fa20389b2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2">KeyCode</a> { <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a6adf97f83acf6453d4a6a4b1070f3754">None</a> = 0x00, 
+<tr class="memitem:a7885f47644a0388f981f416fa20389b2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>KeyCode</b> { <br/>
+&#160;&#160;<b>None</b> = 0x00, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2acd7d13ceea728b08555f7c818cfb13ef">Backspace</a> = 0x08, 
+&#160;&#160;<b>Backspace</b> = 0x08, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a5c6ba25104401c9ee0650230fc6ba413">Tab</a> = 0x09, 
+&#160;&#160;<b>Tab</b> = 0x09, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2adc30bc0c7914db5918da4263fce93ad2">Clear</a> = 0x0c, 
+&#160;&#160;<b>Clear</b> = 0x0c, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a988fd738de9c6d177440c5dcf69e73ce">Return</a> = 0x0d, 
+&#160;&#160;<b>Return</b> = 0x0d, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a825a3d98017bab11815ad2817201324c">Shift</a> = 0x10, 
+&#160;&#160;<b>Shift</b> = 0x10, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aa1595abbb4c3a326636dd178757cd6c1">Control</a> = 0x11, 
+&#160;&#160;<b>Control</b> = 0x11, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aa2e92861b757ab878312dd57993d60cf">Alt</a> = 0x12, 
+&#160;&#160;<b>Alt</b> = 0x12, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a105b296a83f9c105355403f3332af50f">Pause</a> = 0x13, 
+&#160;&#160;<b>Pause</b> = 0x13, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ac56ccc6a1321e66ddd94fe430b8a1f82">Capital</a> = 0x14, 
+&#160;&#160;<b>Capital</b> = 0x14, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a013ec032d3460d4be4431c6ab1f8f224">Escape</a> = 0x1b, 
+&#160;&#160;<b>Escape</b> = 0x1b, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ad511f8439ecde36647437fbba67a4394">Space</a> = 0x20, 
+&#160;&#160;<b>Space</b> = 0x20, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a6c3ed4da1857f68db50d1d91d0fca345">Pageup</a> = 0x21, 
+&#160;&#160;<b>Pageup</b> = 0x21, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a778e7127ddf764c35ad11a12e7c083cc">Pagedown</a> = 0x22, 
+&#160;&#160;<b>Pagedown</b> = 0x22, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a87557f11575c0ad78e4e28abedc13b6e">End</a> = 0x23, 
+&#160;&#160;<b>End</b> = 0x23, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a8cf04a9734132302f96da8e113e80ce5">Home</a> = 0x24, 
+&#160;&#160;<b>Home</b> = 0x24, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a945d5e233cf7d6240f6b783b36a374ff">Left</a> = 0x25, 
+&#160;&#160;<b>Left</b> = 0x25, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a258f49887ef8d14ac268c92b02503aaa">Up</a> = 0x26, 
+&#160;&#160;<b>Up</b> = 0x26, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a92b09c7c48c520c3c55e497875da437c">Right</a> = 0x27, 
+&#160;&#160;<b>Right</b> = 0x27, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a08a38277b0309070706f6652eeae9a53">Down</a> = 0x28, 
+&#160;&#160;<b>Down</b> = 0x28, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ae0626222614bdee31951d84c64e5e9ff">Select</a> = 0x29, 
+&#160;&#160;<b>Select</b> = 0x29, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a13dba24862cf9128167a59100e154c8d">Print</a> = 0x2a, 
+&#160;&#160;<b>Print</b> = 0x2a, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ad4e2713d1b1725a1592f9268589f990d">Snapshot</a> = 0x2c, 
+&#160;&#160;<b>Snapshot</b> = 0x2c, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aa458be0f08b7e4ff3c0f633c100176c0">Insert</a> = 0x2d, 
+&#160;&#160;<b>Insert</b> = 0x2d, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2af2a6c498fb90ee345d997f888fce3b18">Delete</a> = 0x2e, 
+&#160;&#160;<b>Delete</b> = 0x2e, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a6a26f548831e6a8c26bfbbd9f6ec61e0">Help</a> = 0x2f, 
+&#160;&#160;<b>Help</b> = 0x2f, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ac198bc89a4e346bb001e99acd7094348">K0</a> = 0x30, 
+&#160;&#160;<b>K0</b> = 0x30, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aa1bba9704da78d22c74f1c2b0acf4213">K1</a> = 0x31, 
+&#160;&#160;<b>K1</b> = 0x31, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aecebd75fc367b9aa41be06278689dc63">K2</a> = 0x32, 
+&#160;&#160;<b>K2</b> = 0x32, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a2c729497d91709de6bf1ccd875cf28e5">K3</a> = 0x33, 
+&#160;&#160;<b>K3</b> = 0x33, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a23ff49ed815108d610c1a75d592488dd">K4</a> = 0x34, 
+&#160;&#160;<b>K4</b> = 0x34, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a0b48b1841bf2b209986a30f9720aafd1">K5</a> = 0x35, 
+&#160;&#160;<b>K5</b> = 0x35, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2adce0eb67e20bada2f2a2ac1084c34d7d">K6</a> = 0x36, 
+&#160;&#160;<b>K6</b> = 0x36, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2abe2268c01180c5580c4be9a0c38c3686">K7</a> = 0x37, 
+&#160;&#160;<b>K7</b> = 0x37, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a70333d89c64ddd3b7291f4a54aaf9641">K8</a> = 0x38, 
+&#160;&#160;<b>K8</b> = 0x38, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a2041f5bc5a5df10fe0d1ca3d90177e70">K9</a> = 0x39, 
+&#160;&#160;<b>K9</b> = 0x39, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a7fc56270e7a70fa81a5935b72eacbe29">A</a> = 0x41, 
+&#160;&#160;<b>A</b> = 0x41, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a9d5ed678fe57bcca610140957afab571">B</a> = 0x42, 
+&#160;&#160;<b>B</b> = 0x42, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a0d61f8370cad1d412f80b84d143e1257">C</a> = 0x43, 
+&#160;&#160;<b>C</b> = 0x43, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5">D</a> = 0x44, 
+&#160;&#160;<b>D</b> = 0x44, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a3a3ea00cfc35332cedf6e5e9a32e94da">E</a> = 0x45, 
+&#160;&#160;<b>E</b> = 0x45, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a800618943025315f869e4e1f09471012">F</a> = 0x46, 
+&#160;&#160;<b>F</b> = 0x46, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2adfcf28d0734569a6a693bc8194de62bf">G</a> = 0x47, 
+&#160;&#160;<b>G</b> = 0x47, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ac1d9f50f86825a1a2302ec2449c17196">H</a> = 0x48, 
+&#160;&#160;<b>H</b> = 0x48, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2add7536794b63bf90eccfd37f9b147d7f">I</a> = 0x49, 
+&#160;&#160;<b>I</b> = 0x49, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aff44570aca8241914870afbc310cdb85">J</a> = 0x4A, 
+&#160;&#160;<b>J</b> = 0x4A, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aa5f3c6a11b03839d46af9fb43c97c188">K</a> = 0x4B, 
+&#160;&#160;<b>K</b> = 0x4B, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ad20caec3b48a1eef164cb4ca81ba2587">L</a> = 0x4C, 
+&#160;&#160;<b>L</b> = 0x4C, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a69691c7bdcc3ce6d5d8a1361f22d04ac">M</a> = 0x4D, 
+&#160;&#160;<b>M</b> = 0x4D, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a8d9c307cb7f3c4a32822a51922d1ceaa">N</a> = 0x4E, 
+&#160;&#160;<b>N</b> = 0x4E, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2af186217753c37b9b9f958d906208506e">O</a> = 0x4F, 
+&#160;&#160;<b>O</b> = 0x4F, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a44c29edb103a2872f519ad0c9a0fdaaa">P</a> = 0x50, 
+&#160;&#160;<b>P</b> = 0x50, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2af09564c9ca56850d4cd6b3319e541aee">Q</a> = 0x51, 
+&#160;&#160;<b>Q</b> = 0x51, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ae1e1d3d40573127e9ee0480caf1283d6">R</a> = 0x52, 
+&#160;&#160;<b>R</b> = 0x52, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a5dbc98dcc983a70728bd082d1a47546e">S</a> = 0x53, 
+&#160;&#160;<b>S</b> = 0x53, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> = 0x54, 
+&#160;&#160;<b>T</b> = 0x54, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a4c614360da93c0a041b22e537de151eb">U</a> = 0x55, 
+&#160;&#160;<b>U</b> = 0x55, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a5206560a306a2e085a437fd258eb57ce">V</a> = 0x56, 
+&#160;&#160;<b>V</b> = 0x56, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a61e9c06ea9a85a5088a499df6458d276">W</a> = 0x57, 
+&#160;&#160;<b>W</b> = 0x57, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a02129bb861061d1a052c592e2dc6b383">X</a> = 0x58, 
+&#160;&#160;<b>X</b> = 0x58, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a57cec4137b614c87cb4e24a3d003a3e0">Y</a> = 0x59, 
+&#160;&#160;<b>Y</b> = 0x59, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a21c2e59531c8710156d34a3c30ac81d5">Z</a> = 0x5A, 
+&#160;&#160;<b>Z</b> = 0x5A, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2abbd44482cc5275bd7b7aee1c5fa60d4a">LWin</a> = 0x5b, 
+&#160;&#160;<b>LWin</b> = 0x5b, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2af0397a08e78cd876d51ad583d3193909">RWin</a> = 0x5c, 
+&#160;&#160;<b>RWin</b> = 0x5c, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aa6f00c82b6eb55a13a1f242313aaf9c9">Apps</a> = 0x5d, 
+&#160;&#160;<b>Apps</b> = 0x5d, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a243924bfd56a682be235638b53961e09">Sleep</a> = 0x5f, 
+&#160;&#160;<b>Sleep</b> = 0x5f, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a1b1118fbe9aecd479f93d37449578365">Numpad0</a> = 0x60, 
+&#160;&#160;<b>Numpad0</b> = 0x60, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ac8e841f6b917061dd15aedb19a80cb77">Numpad1</a> = 0x61, 
+&#160;&#160;<b>Numpad1</b> = 0x61, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2af7303042267ef3576930c1f4cd79348a">Numpad2</a> = 0x62, 
+&#160;&#160;<b>Numpad2</b> = 0x62, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a5e23a433a108a85788894b705ec11cdd">Numpad3</a> = 0x63, 
+&#160;&#160;<b>Numpad3</b> = 0x63, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a50b622a0442de23f15effc7fc46f3892">Numpad4</a> = 0x64, 
+&#160;&#160;<b>Numpad4</b> = 0x64, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a6252c5b171a2982612e31042b953f558">Numpad5</a> = 0x65, 
+&#160;&#160;<b>Numpad5</b> = 0x65, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a4d9afa3da3cc40661d50a925dd3010ad">Numpad6</a> = 0x66, 
+&#160;&#160;<b>Numpad6</b> = 0x66, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a4314bbf1a297c4b03a5246a71c9c93b6">Numpad7</a> = 0x67, 
+&#160;&#160;<b>Numpad7</b> = 0x67, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a8bf3a062ba0e0fa6ef21508d15e7820e">Numpad8</a> = 0x68, 
+&#160;&#160;<b>Numpad8</b> = 0x68, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a15f7ca721fe2b648a34d498084f70919">Numpad9</a> = 0x69, 
+&#160;&#160;<b>Numpad9</b> = 0x69, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ae257376d913f3b53cbb4a9b19d770648">Multiply</a> = 0x6a, 
+&#160;&#160;<b>Multiply</b> = 0x6a, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aec211f7c20af43e742bf2570c3cb84f9">Add</a> = 0x6b, 
+&#160;&#160;<b>Add</b> = 0x6b, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a04b2e4188d4ef8051e4699da8af01335">Separator</a> = 0x6c, 
+&#160;&#160;<b>Separator</b> = 0x6c, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a1d9baf077ee87921f57a8fe42d510b65">Subtract</a> = 0x6d, 
+&#160;&#160;<b>Subtract</b> = 0x6d, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a937504f318f04eaf0f1d701df4c4d7f3">Decimal</a> = 0x6e, 
+&#160;&#160;<b>Decimal</b> = 0x6e, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a0b914e196182d02615487e9793ecff3d">Divide</a> = 0x6f, 
+&#160;&#160;<b>Divide</b> = 0x6f, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ae1dffc8709f31a4987c8a88334107e89">F1</a> = 0x70, 
+&#160;&#160;<b>F1</b> = 0x70, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2afe5c3684dce76cdd9f7f42430868aa74">F2</a> = 0x71, 
+&#160;&#160;<b>F2</b> = 0x71, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a4b6bf4b531770872d4328ce69bef5627">F3</a> = 0x72, 
+&#160;&#160;<b>F3</b> = 0x72, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ae7e0e72401a9f2718ed0f39f2861d702">F4</a> = 0x73, 
+&#160;&#160;<b>F4</b> = 0x73, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a37f438df6a6d5ba4c17ef8ca58562f00">F5</a> = 0x74, 
+&#160;&#160;<b>F5</b> = 0x74, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a1faf42f2823f184eb2c9f0dffe5d73f2">F6</a> = 0x75, 
+&#160;&#160;<b>F6</b> = 0x75, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a47489eb597b7db34caa24b1fc78fc839">F7</a> = 0x76, 
+&#160;&#160;<b>F7</b> = 0x76, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a4787509ad9f9d747a81a30e9dde3d4a7">F8</a> = 0x77, 
+&#160;&#160;<b>F8</b> = 0x77, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a892a245e287c163080b23db737d3c4c9">F9</a> = 0x78, 
+&#160;&#160;<b>F9</b> = 0x78, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ab213ce22ca6ad4eda8db82966b9b6e5a">F10</a> = 0x79, 
+&#160;&#160;<b>F10</b> = 0x79, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a643b0662422d1d0dffa3fca2e2bf28a8">F11</a> = 0x7A, 
+&#160;&#160;<b>F11</b> = 0x7A, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ae902674982fc99aa343cdd94da7476c3">F12</a> = 0x7B, 
+&#160;&#160;<b>F12</b> = 0x7B, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a95dfde4807d4d6a9eec499203b3c24a0">F13</a> = 0x7C, 
+&#160;&#160;<b>F13</b> = 0x7C, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a2468649b6215c4cdd2aef5095b3f5932">F14</a> = 0x7D, 
+&#160;&#160;<b>F14</b> = 0x7D, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ae53b55851b9ff4979f2c3ff434a4a138">F15</a> = 0x7E, 
+&#160;&#160;<b>F15</b> = 0x7E, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a56d8353718e6fdc78b8d69078a2cdb94">F16</a> = 0x7F, 
+&#160;&#160;<b>F16</b> = 0x7F, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2affa5882d1ddcf903bf0d0dbc30bfc604">F17</a> = 0x80, 
+&#160;&#160;<b>F17</b> = 0x80, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a810b30cdfc07fd7fff553a94b828ff78">F18</a> = 0x81, 
+&#160;&#160;<b>F18</b> = 0x81, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2acd7c2a221ef5d0a34acc0bcd679b2054">F19</a> = 0x82, 
+&#160;&#160;<b>F19</b> = 0x82, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2afc335adb3d69d3d8270769e1923ea4dc">F20</a> = 0x83, 
+&#160;&#160;<b>F20</b> = 0x83, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a77e9eee7c579eef5f3731ecf1053c02e">F21</a> = 0x84, 
+&#160;&#160;<b>F21</b> = 0x84, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a7fa06ead699fcbd63132370ffe13335a">F22</a> = 0x85, 
+&#160;&#160;<b>F22</b> = 0x85, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a889645d530078147e7dc69a9caadc31e">F23</a> = 0x86, 
+&#160;&#160;<b>F23</b> = 0x86, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aebd7820c520d05eca2d775c37d141273">F24</a> = 0x87, 
+&#160;&#160;<b>F24</b> = 0x87, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a19ba26a55fd08e68d9be73917f0fa0a4">Numlock</a> = 0x90, 
+&#160;&#160;<b>Numlock</b> = 0x90, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a105078d294d30c978ca2badf7f376934">Scroll</a> = 0x91, 
+&#160;&#160;<b>Scroll</b> = 0x91, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ae91938057eb9d9a998fb0c34e759cce3">OEM_1</a> = 0xBA, 
+&#160;&#160;<b>OEM_1</b> = 0xBA, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a884cedb8d5a4a577626a4bdfb23ebd19">OEM_Plus</a> = 0xBB, 
+&#160;&#160;<b>OEM_Plus</b> = 0xBB, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a5cc504483e6af5fc9ee3947ce20fffce">OEM_Comma</a> = 0xBC, 
+&#160;&#160;<b>OEM_Comma</b> = 0xBC, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a74ac97a060cca090212c268565bd413b">OEM_Minus</a> = 0xBD, 
+&#160;&#160;<b>OEM_Minus</b> = 0xBD, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ac1be66414ef4836fbd09592442d4dc27">OEM_Period</a> = 0xBE, 
+&#160;&#160;<b>OEM_Period</b> = 0xBE, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a162a5ad4411bb4afc35aa059cfd9ebbf">OEM_2</a> = 0xBF, 
+&#160;&#160;<b>OEM_2</b> = 0xBF, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2ae3755e95125ee8953e36af77261a51a1">OEM_3</a> = 0xC0, 
+&#160;&#160;<b>OEM_3</b> = 0xC0, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a9bc809e39ba8b36b7b0a2acbf071228e">OEM_4</a> = 0xDB, 
+&#160;&#160;<b>OEM_4</b> = 0xDB, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2accac03142e511444812e4c81a7502625">OEM_5</a> = 0xDC, 
+&#160;&#160;<b>OEM_5</b> = 0xDC, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a9faadd3700669319a02bdd54098c7d5c">OEM_6</a> = 0xDD, 
+&#160;&#160;<b>OEM_6</b> = 0xDD, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a1e6ab2bcef5e704ea5c213c6360bdc90">OEM_7</a> = 0xDE, 
+&#160;&#160;<b>OEM_7</b> = 0xDE, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a5c0e0a1c94c86141c47e9ae4553dadc0">OEM_8</a> = 0xDF, 
+&#160;&#160;<b>OEM_8</b> = 0xDF, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2a81dca1e879f45bf043358f933eccd4ac">OEM_102</a> = 0xE2, 
+&#160;&#160;<b>OEM_102</b> = 0xE2, 
 <br/>
-&#160;&#160;<a class="el" href="namespacelumina.html#a7885f47644a0388f981f416fa20389b2aed24ff8971b1fa43a1efbb386618ce35">Grave</a> = 0xDC
+&#160;&#160;<b>Grave</b> = 0xDC
 <br/>
  }</td></tr>
 <tr class="separator:a7885f47644a0388f981f416fa20389b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -363,7 +360,7 @@ Enumerations</h2></td></tr>
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

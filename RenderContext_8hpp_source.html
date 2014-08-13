@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,13 +94,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">RenderContext.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="RenderContext_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="Program_8fpp.html">Program.fpp</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FrameBuffer_8hpp.html">FrameBuffer.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="RenderContext_8fpp.html">RenderContext.fpp</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="HotRenderContext_8fpp.html">HotRenderContext.fpp</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="GLException_8hpp.html">GLException.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="GLObject_8hpp.html">GLObject.hpp</a>&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;Program.fpp&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;FrameBuffer.hpp&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;RenderContext.fpp&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;HotRenderContext.fpp&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;GLException.hpp&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;GLObject.hpp&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../service/StaticLogger.hpp&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../config/BaseProxy.hpp&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
@@ -115,13 +114,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classlumina_1_1RenderContext.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1RenderContext.html">RenderContext</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1GLContextFreeObject.html">GLContextFreeObject</a> {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classlumina_1_1RenderContext.html#aae27960e6f2eb70acce770932a7943ec">RenderContext</a>(GLFWwindow* window);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classlumina_1_1RenderContext.html">RenderContext</a>(GLFWwindow* window);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1RenderContext.html#ae2ee59f7cc16ee42559c87e81c433039">create</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1RenderContext.html#abd9822a82ec2329790dd5dcc257e524e">prime</a>(std::function&lt;<span class="keywordtype">void</span>(<a class="code" href="classlumina_1_1HotRenderContext.html">HotRenderContext</a>&amp;)&gt; func);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">void</span> create();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> prime(std::function&lt;<span class="keywordtype">void</span>(<a class="code" href="classlumina_1_1HotRenderContext.html">HotRenderContext</a>&amp;)&gt; func);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">static</span> <a class="code" href="classlumina_1_1HotRenderContext.html">HotRenderContext</a>&amp; <a class="code" href="classlumina_1_1RenderContext.html#a69f6ab23db079b9f6693a144c18ed667">getCurrentContext</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classlumina_1_1RenderContext.html#aff2f910df725aad6f12b97a45122a52e">isContextCurrent</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">static</span> <a class="code" href="classlumina_1_1HotRenderContext.html">HotRenderContext</a>&amp; getCurrentContext();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> isContextCurrent();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">private</span>:</div>
@@ -140,23 +139,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <span class="comment">// namespace lumina</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="RenderContext_8tpp.html">RenderContext.tpp</a>&quot;</span></div>
-<div class="ttc" id="classlumina_1_1RenderContext_html_a69f6ab23db079b9f6693a144c18ed667"><div class="ttname"><a href="classlumina_1_1RenderContext.html#a69f6ab23db079b9f6693a144c18ed667">lumina::RenderContext::getCurrentContext</a></div><div class="ttdeci">static HotRenderContext &amp; getCurrentContext()</div><div class="ttdef"><b>Definition:</b> <a href="RenderContext_8tpp_source.html#l00008">RenderContext.tpp:8</a></div></div>
-<div class="ttc" id="Program_8fpp_html"><div class="ttname"><a href="Program_8fpp.html">Program.fpp</a></div></div>
-<div class="ttc" id="classlumina_1_1RenderContext_html_aff2f910df725aad6f12b97a45122a52e"><div class="ttname"><a href="classlumina_1_1RenderContext.html#aff2f910df725aad6f12b97a45122a52e">lumina::RenderContext::isContextCurrent</a></div><div class="ttdeci">static bool isContextCurrent()</div><div class="ttdef"><b>Definition:</b> <a href="RenderContext_8tpp_source.html#l00016">RenderContext.tpp:16</a></div></div>
-<div class="ttc" id="HotRenderContext_8fpp_html"><div class="ttname"><a href="HotRenderContext_8fpp.html">HotRenderContext.fpp</a></div></div>
-<div class="ttc" id="classlumina_1_1RenderContext_html"><div class="ttname"><a href="classlumina_1_1RenderContext.html">lumina::RenderContext</a></div><div class="ttdef"><b>Definition:</b> <a href="RenderContext_8hpp_source.html#l00019">RenderContext.hpp:19</a></div></div>
-<div class="ttc" id="RenderContext_8tpp_html"><div class="ttname"><a href="RenderContext_8tpp.html">RenderContext.tpp</a></div></div>
-<div class="ttc" id="classlumina_1_1RenderContext_html_aae27960e6f2eb70acce770932a7943ec"><div class="ttname"><a href="classlumina_1_1RenderContext.html#aae27960e6f2eb70acce770932a7943ec">lumina::RenderContext::RenderContext</a></div><div class="ttdeci">RenderContext(GLFWwindow *window)</div><div class="ttdef"><b>Definition:</b> <a href="RenderContext_8tpp_source.html#l00003">RenderContext.tpp:3</a></div></div>
-<div class="ttc" id="GLException_8hpp_html"><div class="ttname"><a href="GLException_8hpp.html">GLException.hpp</a></div></div>
-<div class="ttc" id="RenderContext_8fpp_html"><div class="ttname"><a href="RenderContext_8fpp.html">RenderContext.fpp</a></div></div>
-<div class="ttc" id="classlumina_1_1RenderContext_html_abd9822a82ec2329790dd5dcc257e524e"><div class="ttname"><a href="classlumina_1_1RenderContext.html#abd9822a82ec2329790dd5dcc257e524e">lumina::RenderContext::prime</a></div><div class="ttdeci">void prime(std::function&lt; void(HotRenderContext &amp;)&gt; func)</div><div class="ttdef"><b>Definition:</b> <a href="RenderContext_8cpp_source.html#l00060">RenderContext.cpp:60</a></div></div>
-<div class="ttc" id="classlumina_1_1GLContextFreeObject_html"><div class="ttname"><a href="classlumina_1_1GLContextFreeObject.html">lumina::GLContextFreeObject</a></div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8hpp_source.html#l00018">GLObject.hpp:18</a></div></div>
-<div class="ttc" id="GLObject_8hpp_html"><div class="ttname"><a href="GLObject_8hpp.html">GLObject.hpp</a></div></div>
-<div class="ttc" id="FrameBuffer_8hpp_html"><div class="ttname"><a href="FrameBuffer_8hpp.html">FrameBuffer.hpp</a></div></div>
-<div class="ttc" id="classlumina_1_1RenderContext_html_ae2ee59f7cc16ee42559c87e81c433039"><div class="ttname"><a href="classlumina_1_1RenderContext.html#ae2ee59f7cc16ee42559c87e81c433039">lumina::RenderContext::create</a></div><div class="ttdeci">void create()</div><div class="ttdef"><b>Definition:</b> <a href="RenderContext_8cpp_source.html#l00016">RenderContext.cpp:16</a></div></div>
-<div class="ttc" id="classlumina_1_1HotRenderContext_html"><div class="ttname"><a href="classlumina_1_1HotRenderContext.html">lumina::HotRenderContext</a></div><div class="ttdef"><b>Definition:</b> <a href="HotRenderContext_8hpp_source.html#l00011">HotRenderContext.hpp:11</a></div></div>
-<div class="ttc" id="classlumina_1_1FrameBuffer_html"><div class="ttname"><a href="classlumina_1_1FrameBuffer.html">lumina::FrameBuffer</a></div><div class="ttdoc">Wrapper for either a UserFrameBuffer or the DefaultFrameBuffer (provides a layer of indirection) ...</div><div class="ttdef"><b>Definition:</b> <a href="FrameBuffer_8hpp_source.html#l00107">FrameBuffer.hpp:107</a></div></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;RenderContext.tpp&quot;</span></div>
+<div class="ttc" id="classlumina_1_1RenderContext_html"><div class="ttname"><a href="classlumina_1_1RenderContext.html">lumina::RenderContext</a></div><div class="ttdef"><b>Definition:</b> RenderContext.hpp:19</div></div>
+<div class="ttc" id="classlumina_1_1GLContextFreeObject_html"><div class="ttname"><a href="classlumina_1_1GLContextFreeObject.html">lumina::GLContextFreeObject</a></div><div class="ttdef"><b>Definition:</b> GLObject.hpp:18</div></div>
+<div class="ttc" id="classlumina_1_1HotRenderContext_html"><div class="ttname"><a href="classlumina_1_1HotRenderContext.html">lumina::HotRenderContext</a></div><div class="ttdef"><b>Definition:</b> HotRenderContext.hpp:11</div></div>
+<div class="ttc" id="classlumina_1_1FrameBuffer_html"><div class="ttname"><a href="classlumina_1_1FrameBuffer.html">lumina::FrameBuffer</a></div><div class="ttdoc">Wrapper for either a UserFrameBuffer or the DefaultFrameBuffer (provides a layer of indirection) ...</div><div class="ttdef"><b>Definition:</b> FrameBuffer.hpp:107</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -164,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

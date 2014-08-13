@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacelumina.html">lumina</a></li><li class="navelem"><a class="el" href="namespacelumina_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html">MatrixHelper</a></li>  </ul>
+<li class="navelem"><b>lumina</b></li><li class="navelem"><b>internal</b></li><li class="navelem"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html">MatrixHelper</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -98,143 +98,43 @@ class lumina::internal::MatrixHelper&lt; T &gt;</h3>
 
 <p>Helper struct for various algorithms. </p>
 <p>Just for internal use! </p>
-
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00032">32</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a7ef864af4ff488836781b4d64467a90a"><td class="memTemplParams" colspan="2">template&lt;std::size_t N&gt; </td></tr>
+<tr class="memitem:a7ef864af4ff488836781b4d64467a90a"><td class="memTemplParams" colspan="2"><a class="anchor" id="a7ef864af4ff488836781b4d64467a90a"></a>
+template&lt;std::size_t N&gt; </td></tr>
 <tr class="memitem:a7ef864af4ff488836781b4d64467a90a"><td class="memTemplItemLeft" align="right" valign="top">static T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#a7ef864af4ff488836781b4d64467a90a">det</a> (const T(&amp;m)[N][N])</td></tr>
-<tr class="memdesc:a7ef864af4ff488836781b4d64467a90a"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the determinant of the matrix  <a href="#a7ef864af4ff488836781b4d64467a90a">More...</a><br/></td></tr>
+<tr class="memdesc:a7ef864af4ff488836781b4d64467a90a"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the determinant of the matrix <br/></td></tr>
 <tr class="separator:a7ef864af4ff488836781b4d64467a90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2908967cf2f18e29450e17c34168fcb"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#ae2908967cf2f18e29450e17c34168fcb">det</a> (const T(&amp;m)[2][2])</td></tr>
+<tr class="memitem:ae2908967cf2f18e29450e17c34168fcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2908967cf2f18e29450e17c34168fcb"></a>
+static T&#160;</td><td class="memItemRight" valign="bottom"><b>det</b> (const T(&amp;m)[2][2])</td></tr>
 <tr class="separator:ae2908967cf2f18e29450e17c34168fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d91982cd6bcdea69417a943a5804b79"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#a7d91982cd6bcdea69417a943a5804b79">det</a> (const T(&amp;m)[3][3])</td></tr>
+<tr class="memitem:a7d91982cd6bcdea69417a943a5804b79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d91982cd6bcdea69417a943a5804b79"></a>
+static T&#160;</td><td class="memItemRight" valign="bottom"><b>det</b> (const T(&amp;m)[3][3])</td></tr>
 <tr class="separator:a7d91982cd6bcdea69417a943a5804b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9f4f0caf4ff83d987646f6f209b39c3"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#ab9f4f0caf4ff83d987646f6f209b39c3">det</a> (const T(&amp;m)[4][4])</td></tr>
+<tr class="memitem:ab9f4f0caf4ff83d987646f6f209b39c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9f4f0caf4ff83d987646f6f209b39c3"></a>
+static T&#160;</td><td class="memItemRight" valign="bottom"><b>det</b> (const T(&amp;m)[4][4])</td></tr>
 <tr class="separator:ab9f4f0caf4ff83d987646f6f209b39c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae739d2e3e00ac6b433eba9333c3f8298"><td class="memTemplParams" colspan="2">template&lt;std::size_t N&gt; </td></tr>
-<tr class="memitem:ae739d2e3e00ac6b433eba9333c3f8298"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#ae739d2e3e00ac6b433eba9333c3f8298">invert</a> (const T(&amp;m)[N][N], T(&amp;out)[N][N])</td></tr>
+<tr class="memitem:ae739d2e3e00ac6b433eba9333c3f8298"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#ae739d2e3e00ac6b433eba9333c3f8298">invert</a> (const T(&amp;m)[N][N], T(&amp;out)[N][N])</td></tr>
 <tr class="memdesc:ae739d2e3e00ac6b433eba9333c3f8298"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the inverted matrix and writes it to out  <a href="#ae739d2e3e00ac6b433eba9333c3f8298">More...</a><br/></td></tr>
 <tr class="separator:ae739d2e3e00ac6b433eba9333c3f8298"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90aecb3e6f9550f1d9ccf2dcde9a6637"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#a90aecb3e6f9550f1d9ccf2dcde9a6637">invert</a> (const T(&amp;m)[2][2], T(&amp;out)[2][2])</td></tr>
+<tr class="memitem:a90aecb3e6f9550f1d9ccf2dcde9a6637"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90aecb3e6f9550f1d9ccf2dcde9a6637"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>invert</b> (const T(&amp;m)[2][2], T(&amp;out)[2][2])</td></tr>
 <tr class="separator:a90aecb3e6f9550f1d9ccf2dcde9a6637"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04615eb1bde987018fe019d7b3ef7556"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#a04615eb1bde987018fe019d7b3ef7556">invert</a> (const T(&amp;m)[3][3], T(&amp;out)[3][3])</td></tr>
+<tr class="memitem:a04615eb1bde987018fe019d7b3ef7556"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04615eb1bde987018fe019d7b3ef7556"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>invert</b> (const T(&amp;m)[3][3], T(&amp;out)[3][3])</td></tr>
 <tr class="separator:a04615eb1bde987018fe019d7b3ef7556"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4971ebb7f30e91e955c3f91b1a04f492"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#a4971ebb7f30e91e955c3f91b1a04f492">invert</a> (const T(&amp;m)[4][4], T(&amp;out)[4][4])</td></tr>
+<tr class="memitem:a4971ebb7f30e91e955c3f91b1a04f492"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4971ebb7f30e91e955c3f91b1a04f492"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>invert</b> (const T(&amp;m)[4][4], T(&amp;out)[4][4])</td></tr>
 <tr class="separator:a4971ebb7f30e91e955c3f91b1a04f492"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fd0ffc5dccb3c65943a3ef94a69aecc"><td class="memTemplParams" colspan="2">template&lt;std::size_t R, std::size_t C&gt; </td></tr>
-<tr class="memitem:a6fd0ffc5dccb3c65943a3ef94a69aecc"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#a6fd0ffc5dccb3c65943a3ef94a69aecc">transpose</a> (const T(&amp;m)[R][C], const T(&amp;out)[C][R])</td></tr>
-<tr class="memdesc:a6fd0ffc5dccb3c65943a3ef94a69aecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transposes the matrix m and writes result into out.  <a href="#a6fd0ffc5dccb3c65943a3ef94a69aecc">More...</a><br/></td></tr>
+<tr class="memitem:a6fd0ffc5dccb3c65943a3ef94a69aecc"><td class="memTemplParams" colspan="2"><a class="anchor" id="a6fd0ffc5dccb3c65943a3ef94a69aecc"></a>
+template&lt;std::size_t R, std::size_t C&gt; </td></tr>
+<tr class="memitem:a6fd0ffc5dccb3c65943a3ef94a69aecc"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classlumina_1_1internal_1_1MatrixHelper.html#a6fd0ffc5dccb3c65943a3ef94a69aecc">transpose</a> (const T(&amp;m)[R][C], const T(&amp;out)[C][R])</td></tr>
+<tr class="memdesc:a6fd0ffc5dccb3c65943a3ef94a69aecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transposes the matrix m and writes result into out. <br/></td></tr>
 <tr class="separator:a6fd0ffc5dccb3c65943a3ef94a69aecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a7ef864af4ff488836781b4d64467a90a"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static T det </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>m</em>[N][N]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>calculates the determinant of the matrix </p>
-
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00041">41</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae2908967cf2f18e29450e17c34168fcb"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static T det </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>m</em>[2][2]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00046">46</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7d91982cd6bcdea69417a943a5804b79"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static T det </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>m</em>[3][3]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00051">51</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab9f4f0caf4ff83d987646f6f209b39c3"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static T det </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>m</em>[4][4]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00058">58</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="ae739d2e3e00ac6b433eba9333c3f8298"></a>
 <div class="memitem">
 <div class="memproto">
@@ -243,7 +143,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> invert </td>
+          <td class="memname">static void invert </td>
           <td>(</td>
           <td class="paramtype">const T(&amp;)&#160;</td>
           <td class="paramname"><em>m</em>[N][N], </td>
@@ -276,154 +176,6 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00083">83</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a90aecb3e6f9550f1d9ccf2dcde9a6637"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> invert </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>m</em>[2][2], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T(&amp;)&#160;</td>
-          <td class="paramname"><em>out</em>[2][2]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00088">88</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a04615eb1bde987018fe019d7b3ef7556"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> invert </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>m</em>[3][3], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T(&amp;)&#160;</td>
-          <td class="paramname"><em>out</em>[3][3]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00104">104</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a4971ebb7f30e91e955c3f91b1a04f492"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> invert </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>m</em>[4][4], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T(&amp;)&#160;</td>
-          <td class="paramname"><em>out</em>[4][4]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00127">127</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6fd0ffc5dccb3c65943a3ef94a69aecc"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> transpose </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>m</em>[R][C], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>out</em>[C][R]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Transposes the matrix m and writes result into out. </p>
-
-<p>Definition at line <a class="el" href="MatrixCore_8hpp_source.html#l00175">175</a> of file <a class="el" href="MatrixCore_8hpp_source.html">MatrixCore.hpp</a>.</p>
-
 </div>
 </div>
 </div><!-- contents -->
@@ -433,7 +185,7 @@ Static Public Member Functions</h2></td></tr>
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

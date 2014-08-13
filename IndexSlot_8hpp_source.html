@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,9 +94,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">IndexSlot.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="IndexSlot_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="GLIndex_8hpp.html">GLIndex.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;GLIndex.hpp&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../config/BaseProxy.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
@@ -106,17 +105,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classlumina_1_1internal_1_1IndexSlot.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1SingleBase.html">config::CommonBase</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classlumina_1_1internal_1_1IndexSlot.html#a1d57cedccbc6c9b76d5833698655982f">   12</a></span>&#160;  <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html#a1d57cedccbc6c9b76d5833698655982f">IndexSlot</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; data) : m_data(data) {}</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; data) : m_data(data) {}</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classlumina_1_1internal_1_1IndexSlot.html#a9fd309dc5df557ed25b68e44aabbdfd4">   14</a></span>&#160;  <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a>&amp; <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html#a9fd309dc5df557ed25b68e44aabbdfd4">operator=</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v) {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a>&amp; operator=(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> v) {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    m_data = v;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  }</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classlumina_1_1internal_1_1IndexSlot.html#a02dbda3798ba961f0e99f5ed2d125035">   18</a></span>&#160;  <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a>&amp; <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html#a02dbda3798ba961f0e99f5ed2d125035">operator=</a>(<a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a>&amp; copy) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a>&amp; operator=(<a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a>&amp; copy) {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    m_data = copy.m_data;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  }</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classlumina_1_1internal_1_1IndexSlot.html#a026a8127f77ad1fadd566c3b9c1a857f">   22</a></span>&#160;  <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a>&amp; <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html#a026a8127f77ad1fadd566c3b9c1a857f">operator=</a>(<a class="code" href="namespacelumina.html#a9f491d2b62670f7aec0f73c8ec1c2a0a">GLIndex</a>) {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classlumina_1_1internal_1_1IndexSlot.html">IndexSlot</a>&amp; operator=(GLIndex) {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    m_data = std::numeric_limits&lt;unsigned int&gt;::max();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  }</div>
@@ -128,14 +127,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="ttc" id="GLIndex_8hpp_html"><div class="ttname"><a href="GLIndex_8hpp.html">GLIndex.hpp</a></div></div>
-<div class="ttc" id="classlumina_1_1internal_1_1IndexSlot_html"><div class="ttname"><a href="classlumina_1_1internal_1_1IndexSlot.html">lumina::internal::IndexSlot</a></div><div class="ttdef"><b>Definition:</b> <a href="IndexSlot_8hpp_source.html#l00010">IndexSlot.hpp:10</a></div></div>
-<div class="ttc" id="classlumina_1_1internal_1_1IndexSlot_html_a026a8127f77ad1fadd566c3b9c1a857f"><div class="ttname"><a href="classlumina_1_1internal_1_1IndexSlot.html#a026a8127f77ad1fadd566c3b9c1a857f">lumina::internal::IndexSlot::operator=</a></div><div class="ttdeci">IndexSlot &amp; operator=(GLIndex)</div><div class="ttdef"><b>Definition:</b> <a href="IndexSlot_8hpp_source.html#l00022">IndexSlot.hpp:22</a></div></div>
-<div class="ttc" id="classlumina_1_1SingleBase_html"><div class="ttname"><a href="classlumina_1_1SingleBase.html">lumina::SingleBase</a></div><div class="ttdef"><b>Definition:</b> <a href="SingleBase_8hpp_source.html#l00019">SingleBase.hpp:19</a></div></div>
-<div class="ttc" id="classlumina_1_1internal_1_1IndexSlot_html_a1d57cedccbc6c9b76d5833698655982f"><div class="ttname"><a href="classlumina_1_1internal_1_1IndexSlot.html#a1d57cedccbc6c9b76d5833698655982f">lumina::internal::IndexSlot::IndexSlot</a></div><div class="ttdeci">IndexSlot(unsigned int &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="IndexSlot_8hpp_source.html#l00012">IndexSlot.hpp:12</a></div></div>
-<div class="ttc" id="classlumina_1_1internal_1_1IndexSlot_html_a02dbda3798ba961f0e99f5ed2d125035"><div class="ttname"><a href="classlumina_1_1internal_1_1IndexSlot.html#a02dbda3798ba961f0e99f5ed2d125035">lumina::internal::IndexSlot::operator=</a></div><div class="ttdeci">IndexSlot &amp; operator=(IndexSlot &amp;copy)</div><div class="ttdef"><b>Definition:</b> <a href="IndexSlot_8hpp_source.html#l00018">IndexSlot.hpp:18</a></div></div>
-<div class="ttc" id="namespacelumina_html_a9f491d2b62670f7aec0f73c8ec1c2a0a"><div class="ttname"><a href="namespacelumina.html#a9f491d2b62670f7aec0f73c8ec1c2a0a">lumina::GLIndex</a></div><div class="ttdeci">GLIndex</div><div class="ttdef"><b>Definition:</b> <a href="GLIndex_8hpp_source.html#l00005">GLIndex.hpp:5</a></div></div>
-<div class="ttc" id="classlumina_1_1internal_1_1IndexSlot_html_a9fd309dc5df557ed25b68e44aabbdfd4"><div class="ttname"><a href="classlumina_1_1internal_1_1IndexSlot.html#a9fd309dc5df557ed25b68e44aabbdfd4">lumina::internal::IndexSlot::operator=</a></div><div class="ttdeci">IndexSlot &amp; operator=(unsigned int v)</div><div class="ttdef"><b>Definition:</b> <a href="IndexSlot_8hpp_source.html#l00014">IndexSlot.hpp:14</a></div></div>
+<div class="ttc" id="classlumina_1_1internal_1_1IndexSlot_html"><div class="ttname"><a href="classlumina_1_1internal_1_1IndexSlot.html">lumina::internal::IndexSlot</a></div><div class="ttdef"><b>Definition:</b> IndexSlot.hpp:10</div></div>
+<div class="ttc" id="classlumina_1_1SingleBase_html"><div class="ttname"><a href="classlumina_1_1SingleBase.html">lumina::SingleBase</a></div><div class="ttdef"><b>Definition:</b> SingleBase.hpp:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -143,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

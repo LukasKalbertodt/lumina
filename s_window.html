@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -85,12 +85,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Open a window and creating a context </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>A window is necessary for most things in lumina. This is always the first step when creating an application.</p>
+<div class="textblock"><p>A window is necessary for most things in lumina.</p>
+<p>This is always the first step when creating an application.</p>
 <p>The class <a class="el" href="classlumina_1_1Window.html">Window</a> represents a window. Before we can open the window we need to configure some aspects. One important thing is to give a OpenGL version hint. Without this hint OpenGL doesn't know which version to use. It's called "hint" for a reason: The implementation can ignore the hint and use another version. Most of the time OpenGL tries to match the hint as best as possible. If we use a version that is too old, we may not have all features we need. If we use a version that is too new, it can happen that our hardware does not support all features of the requested version and the context creation will fail. Currently lumina uses just OpenGL 3.3 features. So we go with 3.3 for now.</p>
 <p>Our first code looks like this: </p>
 <div class="fragment"><div class="line">Window win(<span class="stringliteral">&quot;My first application&quot;</span>);</div>
 <div class="line">win.setVersionHint(3, 3);</div>
-<div class="line">win.resize(<a class="code" href="namespacelumina.html#a5365328ead12db869f151177e976c819">Vec2i</a>(600, 400));</div>
+<div class="line">win.resize(Vec2i(600, 400));</div>
 </div><!-- fragment --><p>We have specified a version hint, window size and title. Now we are ready to open the window: </p>
 <div class="fragment"><div class="line">win.open()</div>
 </div><!-- fragment --><p>The next step is to obtain the render context from our window. OpenGL needs a render context in order to do anything. Therefore we cannot use most of the OpenGL classes until we have context. Obtaining the context is easy, but we also need to create the context: </p>
@@ -109,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

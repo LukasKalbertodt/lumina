@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,15 +111,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classlumina_1_1half.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1half.html">half</a> {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">// constructors</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classlumina_1_1half.html#a9ad784b33194675d84a59bd1e7f3fc67">   26</a></span>&#160;  <a class="code" href="classlumina_1_1half.html#a9ad784b33194675d84a59bd1e7f3fc67">half</a>() : m_data(0) {}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="classlumina_1_1half.html">half</a>() : m_data(0) {}</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classlumina_1_1half.html#a61c561d3eab5b4ca469c1a3c8185ac39">   28</a></span>&#160;  <a class="code" href="classlumina_1_1half.html#a61c561d3eab5b4ca469c1a3c8185ac39">half</a>(<span class="keywordtype">float</span> v) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="classlumina_1_1half.html">half</a>(<span class="keywordtype">float</span> v) {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    uint32_t in;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    memcpy(&amp;in, &amp;v, 4);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// extract components</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    m_data = (in &gt;&gt; 16) &amp; 0x8000;   <span class="comment">// sign bit</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="namespacelumina.html#ae1affc9ca37cfb624959c866a73f83c2">uint8_t</a> ex = (in &gt;&gt; 23) &amp; 0xFF; <span class="comment">// exponent</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    uint8_t ex = (in &gt;&gt; 23) &amp; 0xFF; <span class="comment">// exponent</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    uint32_t ma = in &amp; 0x007FFFFF;  <span class="comment">// mantissa</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span>(ex == 255 &amp;&amp; ma != 0) {  <span class="comment">// NaN</span></div>
@@ -143,10 +142,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// conversion to float</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classlumina_1_1half.html#ae80f6077a5ac6ce1710cda5b30039890">   57</a></span>&#160;  <span class="keyword">operator</span> <a class="code" href="namespacelumina.html#a371481bfee2380aebc547bd62098801a">float</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">operator</span> float()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// extract components</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    uint32_t out = (m_data &amp; 0x8000) &lt;&lt; 16; <span class="comment">// sign bit</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="namespacelumina.html#ae1affc9ca37cfb624959c866a73f83c2">uint8_t</a> ex = (m_data &gt;&gt; 10) &amp; 0x1F;     <span class="comment">// exponent</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    uint8_t ex = (m_data &gt;&gt; 10) &amp; 0x1F;     <span class="comment">// exponent</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    uint16_t ma = m_data &amp; 0x03FF;          <span class="comment">// mantissa</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span>(ex == 0x1F) {  <span class="comment">// inf or NaN</span></div>
@@ -180,14 +179,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">// traits</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">namespace </span>std {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>is_floating_point&lt;lumina::<a class="code" href="namespacelumina.html#ac679f7d301fed091af828bc1a67aaebb">half</a>&gt; : true_type {};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>is_floating_point&lt;lumina::half&gt; : true_type {};</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
-<div class="ttc" id="classlumina_1_1half_html"><div class="ttname"><a href="classlumina_1_1half.html">lumina::half</a></div><div class="ttdef"><b>Definition:</b> <a href="half_8hpp_source.html#l00023">half.hpp:23</a></div></div>
-<div class="ttc" id="namespacelumina_html_ae1affc9ca37cfb624959c866a73f83c2"><div class="ttname"><a href="namespacelumina.html#ae1affc9ca37cfb624959c866a73f83c2">lumina::uint8_t</a></div><div class="ttdeci">uint8_t</div><div class="ttdef"><b>Definition:</b> <a href="TexFormat_8hpp_source.html#l00045">TexFormat.hpp:45</a></div></div>
-<div class="ttc" id="namespacelumina_html_ac679f7d301fed091af828bc1a67aaebb"><div class="ttname"><a href="namespacelumina.html#ac679f7d301fed091af828bc1a67aaebb">lumina::half</a></div><div class="ttdeci">GL_RGB8 half</div><div class="ttdef"><b>Definition:</b> <a href="TexFormat_8hpp_source.html#l00047">TexFormat.hpp:47</a></div></div>
-<div class="ttc" id="classlumina_1_1half_html_a9ad784b33194675d84a59bd1e7f3fc67"><div class="ttname"><a href="classlumina_1_1half.html#a9ad784b33194675d84a59bd1e7f3fc67">lumina::half::half</a></div><div class="ttdeci">half()</div><div class="ttdef"><b>Definition:</b> <a href="half_8hpp_source.html#l00026">half.hpp:26</a></div></div>
-<div class="ttc" id="namespacelumina_html_a371481bfee2380aebc547bd62098801a"><div class="ttname"><a href="namespacelumina.html#a371481bfee2380aebc547bd62098801a">lumina::float</a></div><div class="ttdeci">GL_RGB8 GL_R16F GL_RGBA16F float</div><div class="ttdef"><b>Definition:</b> <a href="TexFormat_8hpp_source.html#l00051">TexFormat.hpp:51</a></div></div>
-<div class="ttc" id="classlumina_1_1half_html_a61c561d3eab5b4ca469c1a3c8185ac39"><div class="ttname"><a href="classlumina_1_1half.html#a61c561d3eab5b4ca469c1a3c8185ac39">lumina::half::half</a></div><div class="ttdeci">half(float v)</div><div class="ttdef"><b>Definition:</b> <a href="half_8hpp_source.html#l00028">half.hpp:28</a></div></div>
+<div class="ttc" id="classlumina_1_1half_html"><div class="ttname"><a href="classlumina_1_1half.html">lumina::half</a></div><div class="ttdef"><b>Definition:</b> half.hpp:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -195,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

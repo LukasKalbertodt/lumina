@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacelumina.html">lumina</a></li><li class="navelem"><a class="el" href="classlumina_1_1FrameBuffer.html">FrameBuffer</a></li>  </ul>
+<li class="navelem"><b>lumina</b></li><li class="navelem"><a class="el" href="classlumina_1_1FrameBuffer.html">FrameBuffer</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -96,221 +96,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <div class="textblock"><p>Wrapper for either a UserFrameBuffer or the DefaultFrameBuffer (provides a layer of indirection) </p>
 <p>If created, it creates a UserFrameBuffer internally </p>
-
-<p>Definition at line <a class="el" href="FrameBuffer_8hpp_source.html#l00107">107</a> of file <a class="el" href="FrameBuffer_8hpp_source.html">FrameBuffer.hpp</a>.</p>
 </div>
 <p>Inherits <a class="el" href="classlumina_1_1NotCopyable.html">NotCopyable</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8a3631f3360a26204e9ed3e4e68ff5fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1FrameBuffer.html#a8a3631f3360a26204e9ed3e4e68ff5fa">FrameBuffer</a> ()</td></tr>
-<tr class="separator:a8a3631f3360a26204e9ed3e4e68ff5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7f1c712e8cd2a10f56948ad5ca19d6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1FrameBuffer.html#ac7f1c712e8cd2a10f56948ad5ca19d6c">FrameBuffer</a> (std::shared_ptr&lt; <a class="el" href="classlumina_1_1internal_1_1FrameBufferInterface.html">internal::FrameBufferInterface</a> &gt; fb)</td></tr>
+<tr class="memitem:ac7f1c712e8cd2a10f56948ad5ca19d6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7f1c712e8cd2a10f56948ad5ca19d6c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FrameBuffer</b> (std::shared_ptr&lt; <a class="el" href="classlumina_1_1internal_1_1FrameBufferInterface.html">internal::FrameBufferInterface</a> &gt; fb)</td></tr>
 <tr class="separator:ac7f1c712e8cd2a10f56948ad5ca19d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2ee59f7cc16ee42559c87e81c433039"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1FrameBuffer.html#ae2ee59f7cc16ee42559c87e81c433039">create</a> ()</td></tr>
+<tr class="memitem:ae2ee59f7cc16ee42559c87e81c433039"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2ee59f7cc16ee42559c87e81c433039"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>create</b> ()</td></tr>
 <tr class="separator:ae2ee59f7cc16ee42559c87e81c433039"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afceab84f7eb4edc4089084bdec7135ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1FrameBuffer.html#afceab84f7eb4edc4089084bdec7135ed">prime</a> (std::function&lt; <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>(<a class="el" href="classlumina_1_1HotFrameBuffer.html">HotFrameBuffer</a> &amp;)&gt; func)</td></tr>
+<tr class="memitem:afceab84f7eb4edc4089084bdec7135ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afceab84f7eb4edc4089084bdec7135ed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>prime</b> (std::function&lt; void(<a class="el" href="classlumina_1_1HotFrameBuffer.html">HotFrameBuffer</a> &amp;)&gt; func)</td></tr>
 <tr class="separator:afceab84f7eb4edc4089084bdec7135ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add0f65f0d847b24090436a68e8a804af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1FrameBuffer.html#add0f65f0d847b24090436a68e8a804af">attachColor</a> (int index, const <a class="el" href="namespacelumina.html#a1dbcb5b97b494a5fd26af873fff6c659">Tex2D</a> &amp;tex)</td></tr>
+<tr class="memitem:add0f65f0d847b24090436a68e8a804af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add0f65f0d847b24090436a68e8a804af"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>attachColor</b> (int index, const <a class="el" href="classlumina_1_1Texture.html">Tex2D</a> &amp;tex)</td></tr>
 <tr class="separator:add0f65f0d847b24090436a68e8a804af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4775518e514d720d90fb4f19db462ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1FrameBuffer.html#af4775518e514d720d90fb4f19db462ab">attachDepth</a> (const <a class="el" href="namespacelumina.html#a1dbcb5b97b494a5fd26af873fff6c659">Tex2D</a> &amp;tex)</td></tr>
+<tr class="memitem:af4775518e514d720d90fb4f19db462ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4775518e514d720d90fb4f19db462ab"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>attachDepth</b> (const <a class="el" href="classlumina_1_1Texture.html">Tex2D</a> &amp;tex)</td></tr>
 <tr class="separator:af4775518e514d720d90fb4f19db462ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89b0c8d30812a4714c2387959a87b508"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1FrameBuffer.html#a89b0c8d30812a4714c2387959a87b508">attachDepthStencil</a> (const <a class="el" href="namespacelumina.html#a1dbcb5b97b494a5fd26af873fff6c659">Tex2D</a> &amp;tex)</td></tr>
+<tr class="memitem:a89b0c8d30812a4714c2387959a87b508"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89b0c8d30812a4714c2387959a87b508"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>attachDepthStencil</b> (const <a class="el" href="classlumina_1_1Texture.html">Tex2D</a> &amp;tex)</td></tr>
 <tr class="separator:a89b0c8d30812a4714c2387959a87b508"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accfc5ed134715088dfd661ff342f396a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1FrameBuffer.html#accfc5ed134715088dfd661ff342f396a">countAttachments</a> ()</td></tr>
+<tr class="memitem:accfc5ed134715088dfd661ff342f396a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accfc5ed134715088dfd661ff342f396a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>countAttachments</b> ()</td></tr>
 <tr class="separator:accfc5ed134715088dfd661ff342f396a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a41f72954780f2b6c28a26043a7c30a80"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1FrameBuffer.html#a41f72954780f2b6c28a26043a7c30a80">isPrimed</a> ()</td></tr>
+<tr class="memitem:a41f72954780f2b6c28a26043a7c30a80"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41f72954780f2b6c28a26043a7c30a80"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>isPrimed</b> ()</td></tr>
 <tr class="separator:a41f72954780f2b6c28a26043a7c30a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classlumina_1_1NotCopyable"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classlumina_1_1NotCopyable')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classlumina_1_1NotCopyable.html">NotCopyable</a></td></tr>
-<tr class="memitem:a92c451a1b345bf0037a91659acf1f61b inherit pro_methods_classlumina_1_1NotCopyable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1NotCopyable.html#a92c451a1b345bf0037a91659acf1f61b">NotCopyable</a> ()=default</td></tr>
-<tr class="separator:a92c451a1b345bf0037a91659acf1f61b inherit pro_methods_classlumina_1_1NotCopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd05377210cbec07ea3307b0f1b9b411 inherit pro_methods_classlumina_1_1NotCopyable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1NotCopyable.html#acd05377210cbec07ea3307b0f1b9b411">NotCopyable</a> (const <a class="el" href="classlumina_1_1NotCopyable.html">NotCopyable</a> &amp;)=delete</td></tr>
+<tr class="memitem:acd05377210cbec07ea3307b0f1b9b411 inherit pro_methods_classlumina_1_1NotCopyable"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd05377210cbec07ea3307b0f1b9b411"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>NotCopyable</b> (const <a class="el" href="classlumina_1_1NotCopyable.html">NotCopyable</a> &amp;)=delete</td></tr>
 <tr class="separator:acd05377210cbec07ea3307b0f1b9b411 inherit pro_methods_classlumina_1_1NotCopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac646acd72538100aa382a7e1d28e1d1d inherit pro_methods_classlumina_1_1NotCopyable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlumina_1_1NotCopyable.html">NotCopyable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlumina_1_1NotCopyable.html#ac646acd72538100aa382a7e1d28e1d1d">operator=</a> (const <a class="el" href="classlumina_1_1NotCopyable.html">NotCopyable</a> &amp;)=delete</td></tr>
+<tr class="memitem:ac646acd72538100aa382a7e1d28e1d1d inherit pro_methods_classlumina_1_1NotCopyable"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac646acd72538100aa382a7e1d28e1d1d"></a>
+<a class="el" href="classlumina_1_1NotCopyable.html">NotCopyable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classlumina_1_1NotCopyable.html">NotCopyable</a> &amp;)=delete</td></tr>
 <tr class="separator:ac646acd72538100aa382a7e1d28e1d1d inherit pro_methods_classlumina_1_1NotCopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a8a3631f3360a26204e9ed3e4e68ff5fa"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classlumina_1_1FrameBuffer.html">FrameBuffer</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="FrameBuffer_8tpp_source.html#l00038">38</a> of file <a class="el" href="FrameBuffer_8tpp_source.html">FrameBuffer.tpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac7f1c712e8cd2a10f56948ad5ca19d6c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classlumina_1_1FrameBuffer.html">FrameBuffer</a> </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classlumina_1_1internal_1_1FrameBufferInterface.html">internal::FrameBufferInterface</a> &gt;&#160;</td>
-          <td class="paramname"><em>fb</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="FrameBuffer_8tpp_source.html#l00041">41</a> of file <a class="el" href="FrameBuffer_8tpp_source.html">FrameBuffer.tpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="add0f65f0d847b24090436a68e8a804af"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> attachColor </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="namespacelumina.html#a1dbcb5b97b494a5fd26af873fff6c659">Tex2D</a> &amp;&#160;</td>
-          <td class="paramname"><em>tex</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="FrameBuffer_8tpp_source.html#l00053">53</a> of file <a class="el" href="FrameBuffer_8tpp_source.html">FrameBuffer.tpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="af4775518e514d720d90fb4f19db462ab"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> attachDepth </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacelumina.html#a1dbcb5b97b494a5fd26af873fff6c659">Tex2D</a> &amp;&#160;</td>
-          <td class="paramname"><em>tex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="FrameBuffer_8tpp_source.html#l00056">56</a> of file <a class="el" href="FrameBuffer_8tpp_source.html">FrameBuffer.tpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a89b0c8d30812a4714c2387959a87b508"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> attachDepthStencil </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacelumina.html#a1dbcb5b97b494a5fd26af873fff6c659">Tex2D</a> &amp;&#160;</td>
-          <td class="paramname"><em>tex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="FrameBuffer_8tpp_source.html#l00059">59</a> of file <a class="el" href="FrameBuffer_8tpp_source.html">FrameBuffer.tpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="accfc5ed134715088dfd661ff342f396a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int countAttachments </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ae2ee59f7cc16ee42559c87e81c433039"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> create </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="FrameBuffer_8tpp_source.html#l00046">46</a> of file <a class="el" href="FrameBuffer_8tpp_source.html">FrameBuffer.tpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a41f72954780f2b6c28a26043a7c30a80"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isPrimed </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="FrameBuffer_8tpp_source.html#l00063">63</a> of file <a class="el" href="FrameBuffer_8tpp_source.html">FrameBuffer.tpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="afceab84f7eb4edc4089084bdec7135ed"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a> prime </td>
-          <td>(</td>
-          <td class="paramtype">std::function&lt; <a class="el" href="namespacelumina.html#af9682c26b1641f9b5b144977fc59f81f">void</a>(<a class="el" href="classlumina_1_1HotFrameBuffer.html">HotFrameBuffer</a> &amp;)&gt;&#160;</td>
-          <td class="paramname"><em>func</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="FrameBuffer_8tpp_source.html#l00049">49</a> of file <a class="el" href="FrameBuffer_8tpp_source.html">FrameBuffer.tpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 <address class="footer">
 <p>
@@ -318,7 +146,7 @@ Additional Inherited Members</h2></td></tr>
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

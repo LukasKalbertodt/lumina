@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,34 +94,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">PrimitiveType.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="PrimitiveType_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;GL/glew.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9">    7</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9">PrimitiveType</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <a class="code" href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a2a3cd5946cfd317eb99c3d32e35e2d4c">Point</a> = GL_POINTS,</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <a class="code" href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a4803e6b9e63dabf04de980788d6a13c4">Line</a> = GL_LINES,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <a class="code" href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2">LineStrip</a> = GL_LINE_STRIP, </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a5e5500cb2b82eb72d550de644bd1b64b">Triangle</a> = GL_TRIANGLES,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c">TriangleStrip</a> = GL_TRIANGLE_STRIP,</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047">TriangleFan</a> = GL_TRIANGLE_FAN</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">enum class</span> PrimitiveType {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  Point = GL_POINTS,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  Line = GL_LINES,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  LineStrip = GL_LINE_STRIP, </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  Triangle = GL_TRIANGLES,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  TriangleStrip = GL_TRIANGLE_STRIP,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  TriangleFan = GL_TRIANGLE_FAN</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespacelumina.html#a9dd8483b48d9628ff7413d5939efe57b">   16</a></span>&#160;<span class="keyword">inline</span> GLenum <a class="code" href="namespacelumina.html#a9dd8483b48d9628ff7413d5939efe57b">translatePrimitiveType</a>(<a class="code" href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9">PrimitiveType</a> type) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">inline</span> GLenum translatePrimitiveType(PrimitiveType type) {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>GLenum<span class="keyword">&gt;</span>(type);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="ttc" id="namespacelumina_html_a240c1924416689e5700ff0d9f30539d9"><div class="ttname"><a href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9">lumina::PrimitiveType</a></div><div class="ttdeci">PrimitiveType</div><div class="ttdef"><b>Definition:</b> <a href="PrimitiveType_8hpp_source.html#l00007">PrimitiveType.hpp:7</a></div></div>
-<div class="ttc" id="namespacelumina_html_a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c"><div class="ttname"><a href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c">lumina::PrimitiveType::TriangleStrip</a></div></div>
-<div class="ttc" id="namespacelumina_html_a9dd8483b48d9628ff7413d5939efe57b"><div class="ttname"><a href="namespacelumina.html#a9dd8483b48d9628ff7413d5939efe57b">lumina::translatePrimitiveType</a></div><div class="ttdeci">GLenum translatePrimitiveType(PrimitiveType type)</div><div class="ttdef"><b>Definition:</b> <a href="PrimitiveType_8hpp_source.html#l00016">PrimitiveType.hpp:16</a></div></div>
-<div class="ttc" id="namespacelumina_html_a240c1924416689e5700ff0d9f30539d9a4803e6b9e63dabf04de980788d6a13c4"><div class="ttname"><a href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a4803e6b9e63dabf04de980788d6a13c4">lumina::PrimitiveType::Line</a></div></div>
-<div class="ttc" id="namespacelumina_html_a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047"><div class="ttname"><a href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047">lumina::PrimitiveType::TriangleFan</a></div></div>
-<div class="ttc" id="namespacelumina_html_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2"><div class="ttname"><a href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2">lumina::PrimitiveType::LineStrip</a></div></div>
-<div class="ttc" id="namespacelumina_html_a240c1924416689e5700ff0d9f30539d9a2a3cd5946cfd317eb99c3d32e35e2d4c"><div class="ttname"><a href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a2a3cd5946cfd317eb99c3d32e35e2d4c">lumina::PrimitiveType::Point</a></div></div>
-<div class="ttc" id="namespacelumina_html_a240c1924416689e5700ff0d9f30539d9a5e5500cb2b82eb72d550de644bd1b64b"><div class="ttname"><a href="namespacelumina.html#a240c1924416689e5700ff0d9f30539d9a5e5500cb2b82eb72d550de644bd1b64b">lumina::PrimitiveType::Triangle</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -130,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

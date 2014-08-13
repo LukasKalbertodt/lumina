@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,48 +104,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">   * Modifies the behavior of the logger</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">   */</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="comment">// control use of cout and cerr</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#a734926dced0426a289dc49e8ef04188a">   15</a></span>&#160;  constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacelumina_1_1config.html#a734926dced0426a289dc49e8ef04188a">useLogStandardIO</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  constexpr <span class="keywordtype">bool</span> useLogStandardIO = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="comment">// set to true to ignore logs with level Debug (the compiler </span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="comment">// can optimize the calls away)</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#aacc743a0fa7b8c6c8519a4ff35f66c13">   19</a></span>&#160;  constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacelumina_1_1config.html#aacc743a0fa7b8c6c8519a4ff35f66c13">ignoreDebugLogs</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  constexpr <span class="keywordtype">bool</span> ignoreDebugLogs = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment">// print debug logs for events that happen every frame?</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#a07eb114863201e3c4086449111d510c4">   22</a></span>&#160;  constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacelumina_1_1config.html#a07eb114863201e3c4086449111d510c4">logDebugEveryFrame</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  constexpr <span class="keywordtype">bool</span> logDebugEveryFrame = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// should runtime bound checks be performed?</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#aa842ed3a1f2a801cc6d30353c22324b4">   27</a></span>&#160;  constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacelumina_1_1config.html#aa842ed3a1f2a801cc6d30353c22324b4">debugBoundChecks</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  constexpr <span class="keywordtype">bool</span> debugBoundChecks = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="comment">// Should runtime checks be performed, that will check that the correct </span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">// textures are primed when drawing?</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#a944844368d59f8813c2890d188218211">   31</a></span>&#160;  constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacelumina_1_1config.html#a944844368d59f8813c2890d188218211">debugTextureDrawChecks</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  constexpr <span class="keywordtype">bool</span> debugTextureDrawChecks = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="comment">// Should runtime checks be performed, that will check if a texture unit</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// is primed multiple times?</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#a9fca87f3fd79c4a710b634c352e36f6e">   35</a></span>&#160;  constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacelumina_1_1config.html#a9fca87f3fd79c4a710b634c352e36f6e">debugTexturePrimeChecks</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  constexpr <span class="keywordtype">bool</span> debugTexturePrimeChecks = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="comment">// When creating a GLObject, should it test if a context is current?</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#acf8f0eda05073f53e23ec5039a810454">   38</a></span>&#160;  constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacelumina_1_1config.html#acf8f0eda05073f53e23ec5039a810454">debugContextCurrentCheck</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  constexpr <span class="keywordtype">bool</span> debugContextCurrentCheck = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">// check if a framebuffer is primed in draw()?</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#a2b0a3258e82065addd65791f89f0d311">   41</a></span>&#160;  constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacelumina_1_1config.html#a2b0a3258e82065addd65791f89f0d311">debugDrawFrameBufferCheck</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  constexpr <span class="keywordtype">bool</span> debugDrawFrameBufferCheck = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// reset all state/unbind stuff?</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="namespacelumina_1_1config.html#ac5a2efd7d5c78df7619a8a28dfc14a17">   44</a></span>&#160;  constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacelumina_1_1config.html#ac5a2efd7d5c78df7619a8a28dfc14a17">resetGLState</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  constexpr <span class="keywordtype">bool</span> resetGLState = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <span class="comment">// namespace lumina</span></div>
-<div class="ttc" id="namespacelumina_1_1config_html_ac5a2efd7d5c78df7619a8a28dfc14a17"><div class="ttname"><a href="namespacelumina_1_1config.html#ac5a2efd7d5c78df7619a8a28dfc14a17">lumina::config::resetGLState</a></div><div class="ttdeci">constexpr bool resetGLState</div><div class="ttdef"><b>Definition:</b> <a href="LConfig_8hpp_source.html#l00044">LConfig.hpp:44</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_aa842ed3a1f2a801cc6d30353c22324b4"><div class="ttname"><a href="namespacelumina_1_1config.html#aa842ed3a1f2a801cc6d30353c22324b4">lumina::config::debugBoundChecks</a></div><div class="ttdeci">constexpr bool debugBoundChecks</div><div class="ttdef"><b>Definition:</b> <a href="LConfig_8hpp_source.html#l00027">LConfig.hpp:27</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_a9fca87f3fd79c4a710b634c352e36f6e"><div class="ttname"><a href="namespacelumina_1_1config.html#a9fca87f3fd79c4a710b634c352e36f6e">lumina::config::debugTexturePrimeChecks</a></div><div class="ttdeci">constexpr bool debugTexturePrimeChecks</div><div class="ttdef"><b>Definition:</b> <a href="LConfig_8hpp_source.html#l00035">LConfig.hpp:35</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_aacc743a0fa7b8c6c8519a4ff35f66c13"><div class="ttname"><a href="namespacelumina_1_1config.html#aacc743a0fa7b8c6c8519a4ff35f66c13">lumina::config::ignoreDebugLogs</a></div><div class="ttdeci">constexpr bool ignoreDebugLogs</div><div class="ttdef"><b>Definition:</b> <a href="LConfig_8hpp_source.html#l00019">LConfig.hpp:19</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_a07eb114863201e3c4086449111d510c4"><div class="ttname"><a href="namespacelumina_1_1config.html#a07eb114863201e3c4086449111d510c4">lumina::config::logDebugEveryFrame</a></div><div class="ttdeci">constexpr bool logDebugEveryFrame</div><div class="ttdef"><b>Definition:</b> <a href="LConfig_8hpp_source.html#l00022">LConfig.hpp:22</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_a2b0a3258e82065addd65791f89f0d311"><div class="ttname"><a href="namespacelumina_1_1config.html#a2b0a3258e82065addd65791f89f0d311">lumina::config::debugDrawFrameBufferCheck</a></div><div class="ttdeci">constexpr bool debugDrawFrameBufferCheck</div><div class="ttdef"><b>Definition:</b> <a href="LConfig_8hpp_source.html#l00041">LConfig.hpp:41</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_a944844368d59f8813c2890d188218211"><div class="ttname"><a href="namespacelumina_1_1config.html#a944844368d59f8813c2890d188218211">lumina::config::debugTextureDrawChecks</a></div><div class="ttdeci">constexpr bool debugTextureDrawChecks</div><div class="ttdef"><b>Definition:</b> <a href="LConfig_8hpp_source.html#l00031">LConfig.hpp:31</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_a734926dced0426a289dc49e8ef04188a"><div class="ttname"><a href="namespacelumina_1_1config.html#a734926dced0426a289dc49e8ef04188a">lumina::config::useLogStandardIO</a></div><div class="ttdeci">constexpr bool useLogStandardIO</div><div class="ttdef"><b>Definition:</b> <a href="LConfig_8hpp_source.html#l00015">LConfig.hpp:15</a></div></div>
-<div class="ttc" id="namespacelumina_1_1config_html_acf8f0eda05073f53e23ec5039a810454"><div class="ttname"><a href="namespacelumina_1_1config.html#acf8f0eda05073f53e23ec5039a810454">lumina::config::debugContextCurrentCheck</a></div><div class="ttdeci">constexpr bool debugContextCurrentCheck</div><div class="ttdef"><b>Definition:</b> <a href="LConfig_8hpp_source.html#l00038">LConfig.hpp:38</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -154,7 +144,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

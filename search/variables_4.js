@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['filename',['filename',['../structlumina_1_1ShaderSource.html#ae80f820219e45772366a2a68de6a54c4',1,'lumina::ShaderSource']]],
-  ['filtermode',['filterMode',['../structlumina_1_1TexParam.html#a3a7f457c193b3d34a3fbef5f32b47203',1,'lumina::TexParam']]],
-  ['float',['float',['../namespacelumina.html#a371481bfee2380aebc547bd62098801a',1,'lumina']]],
-  ['format',['format',['../structlumina_1_1internal_1_1ColorAttPoint.html#a51e3a6eba57dbb285b901aed82833a66',1,'lumina::internal::ColorAttPoint']]]
+  ['perfragproc',['perFragProc',['../classlumina_1_1Program.html#ac5c5ce369033cf99413d8df73be91569',1,'lumina::Program']]],
+  ['primitiveproc',['primitiveProc',['../classlumina_1_1Program.html#a957615e052f19a161b3ad94bbb3eaf34',1,'lumina::Program']]]
 ];

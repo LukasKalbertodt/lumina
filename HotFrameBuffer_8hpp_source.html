@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,11 +94,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">HotFrameBuffer.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="HotFrameBuffer_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="HotFrameBuffer_8fpp.html">HotFrameBuffer.fpp</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FrameBuffer_8hpp.html">FrameBuffer.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="GLObject_8hpp.html">GLObject.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;HotFrameBuffer.fpp&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;FrameBuffer.hpp&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;GLObject.hpp&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../util/NotCloneable.hpp&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../util/ColorCore.hpp&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
@@ -116,11 +115,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classlumina_1_1HotFrameBuffer.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlumina_1_1HotFrameBuffer.html">HotFrameBuffer</a> : <span class="keyword">public</span> <a class="code" href="classlumina_1_1GLObject.html">GLObject</a> {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classlumina_1_1HotFrameBuffer.html#a767c3f282a95978ce85d444bbb3e9216">HotFrameBuffer</a>(std::shared_ptr&lt;internal::FrameBufferInterface&gt; cold);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classlumina_1_1HotFrameBuffer.html">HotFrameBuffer</a>(std::shared_ptr&lt;internal::FrameBufferInterface&gt; cold);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1HotFrameBuffer.html#af27975d214bc3f08ec6473a0b2d10932">clearColor</a>(<span class="keywordtype">int</span> index, <a class="code" href="structlumina_1_1Color.html">Color32fA</a> color);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1HotFrameBuffer.html#a2a015c7c03e98860ff2264caff0eab08">clearDepth</a>(<span class="keywordtype">float</span> val);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlumina_1_1HotFrameBuffer.html#a2fa313d25f018d0ad3736b457925b3b7">clearDepthStencil</a>(<span class="keywordtype">float</span> depth, <span class="keywordtype">int</span> stencil);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> clearColor(<span class="keywordtype">int</span> index, <a class="code" href="structlumina_1_1Color.html">Color32fA</a> color);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">void</span> clearDepth(<span class="keywordtype">float</span> val);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">void</span> clearDepthStencil(<span class="keywordtype">float</span> depth, <span class="keywordtype">int</span> stencil);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">// internal::HotColorAttSet colors;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">private</span>:</div>
@@ -129,18 +128,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;} <span class="comment">// namespace lumina </span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="HotFrameBuffer_8tpp.html">HotFrameBuffer.tpp</a>&quot;</span></div>
-<div class="ttc" id="classlumina_1_1HotFrameBuffer_html_a767c3f282a95978ce85d444bbb3e9216"><div class="ttname"><a href="classlumina_1_1HotFrameBuffer.html#a767c3f282a95978ce85d444bbb3e9216">lumina::HotFrameBuffer::HotFrameBuffer</a></div><div class="ttdeci">HotFrameBuffer(std::shared_ptr&lt; internal::FrameBufferInterface &gt; cold)</div><div class="ttdef"><b>Definition:</b> <a href="HotFrameBuffer_8tpp_source.html#l00003">HotFrameBuffer.tpp:3</a></div></div>
-<div class="ttc" id="structlumina_1_1Color_html"><div class="ttname"><a href="structlumina_1_1Color.html">lumina::Color</a></div><div class="ttdef"><b>Definition:</b> <a href="ColorCore_8hpp_source.html#l00099">ColorCore.hpp:99</a></div></div>
-<div class="ttc" id="classlumina_1_1HotFrameBuffer_html_a2fa313d25f018d0ad3736b457925b3b7"><div class="ttname"><a href="classlumina_1_1HotFrameBuffer.html#a2fa313d25f018d0ad3736b457925b3b7">lumina::HotFrameBuffer::clearDepthStencil</a></div><div class="ttdeci">void clearDepthStencil(float depth, int stencil)</div><div class="ttdef"><b>Definition:</b> <a href="HotFrameBuffer_8tpp_source.html#l00016">HotFrameBuffer.tpp:16</a></div></div>
-<div class="ttc" id="classlumina_1_1HotFrameBuffer_html_af27975d214bc3f08ec6473a0b2d10932"><div class="ttname"><a href="classlumina_1_1HotFrameBuffer.html#af27975d214bc3f08ec6473a0b2d10932">lumina::HotFrameBuffer::clearColor</a></div><div class="ttdeci">void clearColor(int index, Color32fA color)</div><div class="ttdef"><b>Definition:</b> <a href="HotFrameBuffer_8tpp_source.html#l00008">HotFrameBuffer.tpp:8</a></div></div>
-<div class="ttc" id="classlumina_1_1HotFrameBuffer_html"><div class="ttname"><a href="classlumina_1_1HotFrameBuffer.html">lumina::HotFrameBuffer</a></div><div class="ttdef"><b>Definition:</b> <a href="HotFrameBuffer_8hpp_source.html#l00020">HotFrameBuffer.hpp:20</a></div></div>
-<div class="ttc" id="classlumina_1_1GLObject_html"><div class="ttname"><a href="classlumina_1_1GLObject.html">lumina::GLObject</a></div><div class="ttdef"><b>Definition:</b> <a href="GLObject_8hpp_source.html#l00037">GLObject.hpp:37</a></div></div>
-<div class="ttc" id="classlumina_1_1HotFrameBuffer_html_a2a015c7c03e98860ff2264caff0eab08"><div class="ttname"><a href="classlumina_1_1HotFrameBuffer.html#a2a015c7c03e98860ff2264caff0eab08">lumina::HotFrameBuffer::clearDepth</a></div><div class="ttdeci">void clearDepth(float val)</div><div class="ttdef"><b>Definition:</b> <a href="HotFrameBuffer_8tpp_source.html#l00012">HotFrameBuffer.tpp:12</a></div></div>
-<div class="ttc" id="HotFrameBuffer_8fpp_html"><div class="ttname"><a href="HotFrameBuffer_8fpp.html">HotFrameBuffer.fpp</a></div></div>
-<div class="ttc" id="HotFrameBuffer_8tpp_html"><div class="ttname"><a href="HotFrameBuffer_8tpp.html">HotFrameBuffer.tpp</a></div></div>
-<div class="ttc" id="GLObject_8hpp_html"><div class="ttname"><a href="GLObject_8hpp.html">GLObject.hpp</a></div></div>
-<div class="ttc" id="FrameBuffer_8hpp_html"><div class="ttname"><a href="FrameBuffer_8hpp.html">FrameBuffer.hpp</a></div></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;HotFrameBuffer.tpp&quot;</span></div>
+<div class="ttc" id="structlumina_1_1Color_html"><div class="ttname"><a href="structlumina_1_1Color.html">lumina::Color</a></div><div class="ttdef"><b>Definition:</b> ColorCore.hpp:99</div></div>
+<div class="ttc" id="classlumina_1_1HotFrameBuffer_html"><div class="ttname"><a href="classlumina_1_1HotFrameBuffer.html">lumina::HotFrameBuffer</a></div><div class="ttdef"><b>Definition:</b> HotFrameBuffer.hpp:20</div></div>
+<div class="ttc" id="classlumina_1_1GLObject_html"><div class="ttname"><a href="classlumina_1_1GLObject.html">lumina::GLObject</a></div><div class="ttdef"><b>Definition:</b> GLObject.hpp:37</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -148,7 +139,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>

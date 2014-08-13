@@ -68,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -76,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -102,23 +101,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>lumina {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structlumina_1_1ShaderSource.html">   17</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structlumina_1_1ShaderSource.html">ShaderSource</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="structlumina_1_1ShaderSource.html#ad1e7b2c5a161c867a5d89b6e83e54249">ShaderSource</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structlumina_1_1ShaderSource.html#ad3c13df2c5d80ad19ec9bbbed747ce10">   19</a></span>&#160;  <a class="code" href="structlumina_1_1ShaderSource.html#ad3c13df2c5d80ad19ec9bbbed747ce10">ShaderSource</a>(std::string <a class="code" href="structlumina_1_1ShaderSource.html#a40036ceeca10849cabe2f0d92ffda83d">code</a>, std::string <a class="code" href="structlumina_1_1ShaderSource.html#ae80f820219e45772366a2a68de6a54c4">filename</a>)</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="structlumina_1_1ShaderSource.html">ShaderSource</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="structlumina_1_1ShaderSource.html">ShaderSource</a>(std::string code, std::string filename)</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    : code(code), filename(filename) {}</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structlumina_1_1ShaderSource.html#a40036ceeca10849cabe2f0d92ffda83d">   22</a></span>&#160;  std::string <a class="code" href="structlumina_1_1ShaderSource.html#a40036ceeca10849cabe2f0d92ffda83d">code</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structlumina_1_1ShaderSource.html#ae80f820219e45772366a2a68de6a54c4">   23</a></span>&#160;  std::string <a class="code" href="structlumina_1_1ShaderSource.html#ae80f820219e45772366a2a68de6a54c4">filename</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  std::string code;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  std::string filename;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="structlumina_1_1ShaderSource.html">ShaderSource</a> <a class="code" href="namespacelumina.html#a6da9d84b141cabe483d5b0ef6ccf76df">loadShaderFromFile</a>(std::string filename);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="structlumina_1_1ShaderSource.html">ShaderSource</a> loadShaderFromFile(std::string filename);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <span class="comment">// namespace lumina</span></div>
-<div class="ttc" id="structlumina_1_1ShaderSource_html_a40036ceeca10849cabe2f0d92ffda83d"><div class="ttname"><a href="structlumina_1_1ShaderSource.html#a40036ceeca10849cabe2f0d92ffda83d">lumina::ShaderSource::code</a></div><div class="ttdeci">std::string code</div><div class="ttdef"><b>Definition:</b> <a href="ShaderSource_8hpp_source.html#l00022">ShaderSource.hpp:22</a></div></div>
-<div class="ttc" id="structlumina_1_1ShaderSource_html"><div class="ttname"><a href="structlumina_1_1ShaderSource.html">lumina::ShaderSource</a></div><div class="ttdef"><b>Definition:</b> <a href="ShaderSource_8hpp_source.html#l00017">ShaderSource.hpp:17</a></div></div>
-<div class="ttc" id="namespacelumina_html_a6da9d84b141cabe483d5b0ef6ccf76df"><div class="ttname"><a href="namespacelumina.html#a6da9d84b141cabe483d5b0ef6ccf76df">lumina::loadShaderFromFile</a></div><div class="ttdeci">ShaderSource loadShaderFromFile(std::string filename)</div><div class="ttdoc">Loads a file and returns a ShaderSource. </div><div class="ttdef"><b>Definition:</b> <a href="ShaderSource_8cpp_source.html#l00010">ShaderSource.cpp:10</a></div></div>
-<div class="ttc" id="structlumina_1_1ShaderSource_html_ad3c13df2c5d80ad19ec9bbbed747ce10"><div class="ttname"><a href="structlumina_1_1ShaderSource.html#ad3c13df2c5d80ad19ec9bbbed747ce10">lumina::ShaderSource::ShaderSource</a></div><div class="ttdeci">ShaderSource(std::string code, std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="ShaderSource_8hpp_source.html#l00019">ShaderSource.hpp:19</a></div></div>
-<div class="ttc" id="structlumina_1_1ShaderSource_html_ae80f820219e45772366a2a68de6a54c4"><div class="ttname"><a href="structlumina_1_1ShaderSource.html#ae80f820219e45772366a2a68de6a54c4">lumina::ShaderSource::filename</a></div><div class="ttdeci">std::string filename</div><div class="ttdef"><b>Definition:</b> <a href="ShaderSource_8hpp_source.html#l00023">ShaderSource.hpp:23</a></div></div>
-<div class="ttc" id="structlumina_1_1ShaderSource_html_ad1e7b2c5a161c867a5d89b6e83e54249"><div class="ttname"><a href="structlumina_1_1ShaderSource.html#ad1e7b2c5a161c867a5d89b6e83e54249">lumina::ShaderSource::ShaderSource</a></div><div class="ttdeci">ShaderSource()=default</div></div>
+<div class="ttc" id="structlumina_1_1ShaderSource_html"><div class="ttname"><a href="structlumina_1_1ShaderSource.html">lumina::ShaderSource</a></div><div class="ttdef"><b>Definition:</b> ShaderSource.hpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <address class="footer">
 <p>
@@ -126,7 +120,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <br />
 <br />
 <hr />
-Last update on Mon Aug 11 2014 for Lumina v0.1
+Last update on Wed Aug 13 2014 for Lumina v0.1
 </center>
 </p>
 </address>
