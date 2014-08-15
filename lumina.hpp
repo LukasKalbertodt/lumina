@@ -9,24 +9,37 @@
  */
 
 // include config
+#include "config/BaseProxy.hpp"
+#include "config/ContextProxy.hpp"
 #include "config/LConfig.hpp"
 
 // include core components
+#include "core/LogLevel.hpp"
 #include "core/LuminaException.hpp"
+#include "core/ServiceContext.hpp"
 
 // include input components
-#include "input/KeyCode.hpp"
 #include "input/InputEvent.hpp"
+#include "input/KeyCode.hpp"
+#include "input/WindowEvent.hpp"
 
-// include utility types
-#include "util/util.hpp"
+// include io components
+#include "io/Image.hpp"
+#include "io/ImageJPEG.hpp" 
+
+// include scene components
+#include "scene/scene.hpp"
+
+// include service components
+#include "service/Logger.hpp"
+#include "service/ServiceProvider.hpp"
+#include "service/StaticLogger.hpp"
 
 // include video.hpp -> includes more files
 #include "video/video.hpp"
 
-#include "scene/scene.hpp"
-
-#include "io/Image.hpp"
+ // include utility types
+#include "util/util.hpp"
 
 
 // namespace alias

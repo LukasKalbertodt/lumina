@@ -1,13 +1,12 @@
 #pragma once
 /**
  * \file VectorCore.hpp
- * This file is part of the Lumina Graphics Framework.
- *
- * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
- *
  * This file will define Vector and various vector functions. In most cases you
  * should include Vector.hpp instead, which provides additional helper
  * functions (but has more dependencies).
+ *
+ * This file is part of the Lumina Graphics Framework.
+ * \author Lukas Kalbertodt <lukas.kalbertodt@gmail.com>
  */
 #include <cmath>
 #include <cstddef>
