@@ -3,7 +3,11 @@ namespace lumina {
 namespace internal {
 
 inline UserFrameBuffer::UserFrameBuffer()
-  : m_handle(0), m_depthAtt(0), m_depthStencilAtt(0), m_needsUpdate(true) {}
+  : m_handle(0),
+    m_depthAtt(0),
+    m_depthStencilAtt(0),
+    m_renderBuffer(0),
+    m_needsUpdate(true) {}
 
 inline UserFrameBuffer::UserFrameBuffer(UserFrameBuffer&& o)
   : m_handle(o.m_handle), m_needsUpdate(o.m_needsUpdate) {
@@ -30,7 +34,7 @@ inline void UserFrameBuffer::unbind() {
 
 
 
-inline void DefaultFrameBuffer::create() {}
+inline void DefaultFrameBuffer::create(Vec2i size) {}
 
 } // namespace internal
 
@@ -43,8 +47,8 @@ inline FrameBuffer::FrameBuffer(
   : m_fb(move(fb)) {}
 
 
-inline void FrameBuffer::create() {
-  m_fb->create();
+inline void FrameBuffer::create(Vec2i size) {
+  m_fb->create(size);
 }
 inline void FrameBuffer::prime(std::function<void(HotFrameBuffer&)> func) {
   m_fb->prime(m_fb, func);
@@ -64,5 +68,8 @@ inline bool FrameBuffer::isPrimed() {
   return internal::FrameBufferInterface::s_isPrimed;
 }
 
+inline void FrameBuffer::addDefaultBuffer(RenderBufferType type) {
+  m_fb->addDefaultBuffer(type);
+}
 
 }

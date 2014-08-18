@@ -12,6 +12,11 @@
 #include <vector>
 
 namespace lumina {
+
+enum class RenderBufferType {
+  Depth16, Depth32, Depth24Stencil8
+};
+
 namespace internal {
 
 struct ColorAttPoint {
@@ -26,12 +31,14 @@ class FrameBufferInterface : public GLObject {
 public:
   virtual ~FrameBufferInterface() = default;
 
-  virtual void create() = 0;
+  virtual void create(Vec2i size) = 0;
   virtual void prime(std::shared_ptr<FrameBufferInterface> fb,
                      std::function<void(HotFrameBuffer&)> func) = 0;
   virtual void attachColor(int index, const Tex2D& tex) = 0;
   virtual void attachDepth(const Tex2D& tex) = 0;
   virtual void attachDepthStencil(const Tex2D& tex) = 0;
+
+  virtual void addDefaultBuffer(RenderBufferType type) = 0;
 
   virtual int countAttachments() = 0;
 
@@ -54,12 +61,14 @@ public:
 
   ~UserFrameBuffer();
 
-  void create() override final;
+  void create(Vec2i size) override final;
   void prime(std::shared_ptr<FrameBufferInterface> fb,
              std::function<void(HotFrameBuffer&)> func) override final;
   void attachColor(int index, const Tex2D& tex) override final;
   void attachDepth(const Tex2D& tex) final;
   void attachDepthStencil(const Tex2D& tex) final;
+
+  void addDefaultBuffer(RenderBufferType type);
 
   int countAttachments() override final;
 
@@ -72,7 +81,12 @@ private:
   std::vector<internal::ColorAttPoint> m_colorAtts;
   GLuint m_depthAtt;
   GLuint m_depthStencilAtt;
+  GLuint m_renderBuffer;
+  Vec2i m_size;
+  RenderBufferType m_bufferType;
   bool m_needsUpdate;
+
+  static bool s_renderBufferBound;
 
   void updateState();
   void bind();
@@ -82,12 +96,14 @@ private:
 
 class DefaultFrameBuffer : public FrameBufferInterface, public NotCloneable {
 public:
-  void create() override final;
+  void create(Vec2i size) override final;
   void prime(std::shared_ptr<FrameBufferInterface> fb,
              std::function<void(HotFrameBuffer&)> func) override final;
   void attachColor(int index, const Tex2D& tex) override final;
   void attachDepth(const Tex2D& tex) final;
   void attachDepthStencil(const Tex2D& tex) final;
+
+  void addDefaultBuffer(RenderBufferType type);
   
   int countAttachments() override final;
 
@@ -109,11 +125,12 @@ public:
   FrameBuffer();
   FrameBuffer(std::shared_ptr<internal::FrameBufferInterface> fb);
 
-  void create();
+  void create(Vec2i size);
   void prime(std::function<void(HotFrameBuffer&)> func);
   void attachColor(int index, const Tex2D& tex);
   void attachDepth(const Tex2D& tex);
   void attachDepthStencil(const Tex2D& tex);
+  void addDefaultBuffer(RenderBufferType type);
 
   int countAttachments();
 

@@ -5,8 +5,23 @@ namespace lumina {
 namespace internal {
 
 bool FrameBufferInterface::s_isPrimed = false;
+bool UserFrameBuffer::s_renderBufferBound = false;
 
-void UserFrameBuffer::create() {
+static GLenum renderBufferGLType(RenderBufferType type) {
+  switch(type) {
+    case RenderBufferType::Depth32:
+      return GL_DEPTH_COMPONENT32;
+    case RenderBufferType::Depth16:
+      return GL_DEPTH_COMPONENT16;
+    case RenderBufferType::Depth24Stencil8:
+      return GL_DEPTH24_STENCIL8;
+  }
+}
+
+void UserFrameBuffer::create(Vec2i size) {
+  // set size
+  m_size = size;
+
   // generate framebuffer
   glGenFramebuffers(1, &m_handle);
 
@@ -47,6 +62,10 @@ void UserFrameBuffer::updateState() {
   else if(m_depthStencilAtt != 0) {
     glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, 
                          m_depthStencilAtt, 0);
+  }
+  else if(m_renderBuffer != 0) {
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, renderBufferGLType(m_bufferType),
+                              GL_RENDERBUFFER, m_renderBuffer);
   }
 
   // specify which attachment points to use
@@ -204,6 +223,32 @@ void UserFrameBuffer::attachDepthStencil(const Tex2D& tex) {
   }
 }
 
+
+void UserFrameBuffer::addDefaultBuffer(RenderBufferType type) {
+  // check if another renderbuffer is bound (that should never occur)
+  if(s_renderBufferBound) {
+    logThrowGL("[FrameBuffer] Cannot add a default buffer while another "
+               "renderbuffer is currently bound!");
+  }
+
+  // check if another depth or stencil buffer is attached
+  if(m_depthAtt != 0 || m_depthStencilAtt != 0) {
+    logWarning("[FrameBuffer] Attempt to add a default renderbuffer, but there "
+               "is already a depth/stencil attachment!");
+  }
+
+  // generate new renderbuffer with the given type
+  glGenRenderbuffers(1, &m_renderBuffer);
+  glBindRenderbuffer(GL_RENDERBUFFER, m_renderBuffer);
+
+  glRenderbufferStorage(GL_RENDERBUFFER, renderBufferGLType(type),
+                        m_size.x, m_size.y);
+
+  checkGLError("[FrameBuffer] Error<", GLERR,
+               "> while creating default renderbuffer!");
+
+}
+
 int UserFrameBuffer::countAttachments() {
   int count = 0;
   for(auto& point : m_colorAtts) {
@@ -322,6 +367,12 @@ void DefaultFrameBuffer::attachDepthStencil(const Tex2D& tex) {
 
 int DefaultFrameBuffer::countAttachments() {
   return 4;
+}
+
+void DefaultFrameBuffer::addDefaultBuffer(RenderBufferType type) {
+  // this doesn't make sense (the default framebuffer already has a depth buf)
+  logWarning("[FrameBuffer] You cannot add a default depth buffer to the "
+             "default framebuffer!");
 }
 
 
