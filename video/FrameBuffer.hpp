@@ -46,6 +46,8 @@ public:
   virtual void clearDepth(float val) = 0;
   virtual void clearDepthStencil(float depth, int stencil) = 0;
 
+  virtual explicit operator bool() const = 0;
+
 
 protected:
   // true if a user defined framebuffer is primed
@@ -75,6 +77,8 @@ public:
   void clearColor(int index, Color32fA color);
   void clearDepth(float val);
   void clearDepthStencil(float depth, int stencil);
+
+  explicit operator bool() const;
 
 private:
   GLuint m_handle;
@@ -110,6 +114,8 @@ public:
   void clearColor(int index, Color32fA color);
   void clearDepth(float val);
   void clearDepthStencil(float depth, int stencil);
+  
+  explicit operator bool() const;
 };
 
 } // namespace internal
@@ -131,6 +137,9 @@ public:
   void attachDepth(const Tex2D& tex);
   void attachDepthStencil(const Tex2D& tex);
   void addDefaultBuffer(RenderBufferType type);
+
+  explicit operator bool() const;
+
 
   int countAttachments();
 

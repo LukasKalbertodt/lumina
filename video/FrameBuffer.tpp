@@ -31,10 +31,18 @@ inline void UserFrameBuffer::unbind() {
   s_isPrimed = false;
 }
 
+inline UserFrameBuffer::operator bool() const {
+  return m_handle != 0;
+}
+
 
 
 
 inline void DefaultFrameBuffer::create(Vec2i size) {}
+
+inline DefaultFrameBuffer::operator bool() const {
+  return true;
+}
 
 } // namespace internal
 
@@ -71,5 +79,11 @@ inline bool FrameBuffer::isPrimed() {
 inline void FrameBuffer::addDefaultBuffer(RenderBufferType type) {
   m_fb->addDefaultBuffer(type);
 }
+
+inline FrameBuffer::operator bool() const {
+  return static_cast<bool>(*m_fb);
+}
+
+
 
 }
