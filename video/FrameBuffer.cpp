@@ -64,7 +64,11 @@ void UserFrameBuffer::updateState() {
                          m_depthStencilAtt, 0);
   }
   else if(m_renderBuffer != 0) {
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, renderBufferGLType(m_bufferType),
+    GLenum att
+      = (m_bufferType == RenderBufferType::Depth24Stencil8)
+          ? GL_DEPTH_STENCIL_ATTACHMENT
+          : GL_DEPTH_ATTACHMENT;
+    glFramebufferRenderbuffer(GL_DRAW_FRAMEBUFFER, att,
                               GL_RENDERBUFFER, m_renderBuffer);
   }
 
@@ -247,6 +251,7 @@ void UserFrameBuffer::addDefaultBuffer(RenderBufferType type) {
   checkGLError("[FrameBuffer] Error<", GLERR,
                "> while creating default renderbuffer!");
 
+  m_bufferType = type;
 }
 
 int UserFrameBuffer::countAttachments() {
@@ -276,20 +281,37 @@ void UserFrameBuffer::clearColor(int index, Color32fA color) {
   GLfloat d[4] = {color.r, color.g, color.b, color.a};
   glClearBufferfv(GL_COLOR, index, d);
 
-  checkGLError("[FrameBuffer] Error while clearing attachment<", index, ">!");
+  checkGLError("[FrameBuffer] Error<", GLERR, 
+               "> while clearing attachment<", index, ">!");
 }
 
 
 void UserFrameBuffer::clearDepth(float val) {
+  if(m_depthAtt == 0 && m_depthStencilAtt == 0
+     && (m_renderBuffer == 0
+         || m_bufferType == RenderBufferType::Depth24Stencil8)) {
+    logThrowGL("[FrameBuffer] You cannot clear the depth when you don't have a "
+               "depth or depth-stencil attachment!");
+  }
+
   glClearBufferfv(GL_DEPTH, 0, &val);
 
-  checkGLError("[FrameBuffer] Error while clearing depth attachment!");
+  checkGLError("[FrameBuffer] Error<", GLERR,
+               "> while clearing depth attachment!");
 }
 
 void UserFrameBuffer::clearDepthStencil(float depth, int stencil) {
+  if(m_depthStencilAtt == 0
+     && (m_renderBuffer == 0
+         || m_bufferType != RenderBufferType::Depth24Stencil8)) {
+    logThrowGL("[FrameBuffer] You cannot clear the depth-stencil when you "
+               "don't have a depth-stencil attachment!");
+  }
+
   glClearBufferfi(GL_DEPTH_STENCIL, 0, depth, stencil);
 
-  checkGLError("[FrameBuffer] Error while clearing depth-stencil attachment!");
+  checkGLError("[FrameBuffer] Error<", GLERR, 
+               "> while clearing depth-stencil attachment!");
 }
 
 
