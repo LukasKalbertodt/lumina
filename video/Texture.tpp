@@ -22,6 +22,11 @@ TexFormat Texture<TT>::getFormat() const {
 }
 
 template <TexType TT>
+Vec2i Texture<TT>::getDimension() const {
+  return m_dimension;
+}
+
+template <TexType TT>
 Texture<TT>::operator bool() const {
   return m_handle != 0;
 }

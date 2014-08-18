@@ -176,6 +176,11 @@ void UserFrameBuffer::attachColor(int index, const Tex2D& tex) {
                               "attachment point!");
   }
 
+  if(tex.getDimension() != m_size) {
+    logAndThrow<InvalidArgEx>("[FrameBuffer] Attempt to attach a texture that "
+                              "has a different size than the FrameBuffer!");
+  }
+
   // assign values if the values are distinct
   auto& point = m_colorAtts[index];
   if(point.handle != tex.nativeHandle()) {
@@ -199,6 +204,11 @@ void UserFrameBuffer::attachDepth(const Tex2D& tex) {
                          "a depth-stencil image is already attached!");
   }
 
+  if(tex.getDimension() != m_size) {
+    logAndThrow<InvalidArgEx>("[FrameBuffer] Attempt to attach a texture that "
+                              "has a different size than the FrameBuffer!");
+  }
+
   // assign values if the values are distinct
   if(m_depthAtt != tex.nativeHandle()) {
     m_depthAtt = tex.nativeHandle();
@@ -218,6 +228,11 @@ void UserFrameBuffer::attachDepthStencil(const Tex2D& tex) {
   if(m_depthAtt != 0) {
     logAndThrow<LogicEx>("[FrameBuffer] Trying to attach a depth-stencil image"
                          ", but a depth image is already attached!");
+  }
+
+  if(tex.getDimension() != m_size) {
+    logAndThrow<InvalidArgEx>("[FrameBuffer] Attempt to attach a texture that "
+                              "has a different size than the FrameBuffer!");
   }
 
   // assign values if the values are distinct

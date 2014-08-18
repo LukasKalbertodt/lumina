@@ -65,6 +65,7 @@ public:
 
   GLuint nativeHandle() const;
   TexFormat getFormat() const;
+  Vec2i getDimension() const;
 
   explicit operator bool() const;
 
