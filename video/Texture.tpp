@@ -21,6 +21,10 @@ TexFormat Texture<TT>::getFormat() const {
   return m_format;
 }
 
+template <TexType TT>
+Texture<TT>::operator bool() const {
+  return m_handle != 0;
+}
 
 
 template <> inline GLenum Texture<TexType::Tex2D>::glType() const {

@@ -66,6 +66,8 @@ public:
   GLuint nativeHandle() const;
   TexFormat getFormat() const;
 
+  explicit operator bool() const;
+
 
 private:
   GLuint m_handle;
