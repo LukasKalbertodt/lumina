@@ -51,6 +51,8 @@ public:
   /// PerFragmentProcessing pipeline stage
   PerFragmentProcessing perFragProc;
 
+  explicit operator bool() const;
+
 protected:
   static bool s_isPrimed;
 

@@ -7,4 +7,8 @@ inline Program::~Program() {
   glDeleteProgram(m_handle);
 }
 
+inline Program::operator bool() const {
+  return m_handle != 0;
+}
+
 }
