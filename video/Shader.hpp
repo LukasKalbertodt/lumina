@@ -39,6 +39,8 @@ public:
   /// Compiles the shader from raw GLSL code (filename is set to unknown-file)
   void compile(std::string code);
 
+  explicit operator bool() const;
+
 private:
   GLuint m_handle;
   std::string m_filename;

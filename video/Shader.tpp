@@ -13,4 +13,9 @@ void Shader<Type>::compile(std::string code) {
   compile(ShaderSource(code, "unknown-file"));
 }
 
+template <ShaderType Type>
+Shader<Type>::operator bool() const {
+  return m_handle != 0;
+}
+
 }
