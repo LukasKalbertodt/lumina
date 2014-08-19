@@ -30,5 +30,6 @@ private:
   static bool s_primed;
 };
 
+} // namespace lumina
 
-}
+#include "RenderBuffer.tpp"

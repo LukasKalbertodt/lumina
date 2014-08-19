@@ -19,3 +19,4 @@
 #include "TextureContainer.hpp"
 #include "HotTextureContainer.hpp"
 #include "HotRenderContext.hpp"
+#include "RenderBuffer.hpp"
