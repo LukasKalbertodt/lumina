@@ -1,7 +1,7 @@
 namespace lumina {
 
 
-RenderBufferType::RenderBufferType() : m_handle(0) {}
+RenderBuffer::RenderBuffer() : m_handle(0) {}
 
 RenderBufferType RenderBuffer::getType() const {
   return m_type;
