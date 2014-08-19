@@ -13,8 +13,8 @@ public:
 
   template <typename T = float>
   T getTime() {
-    auto diff = chrono::system_clock::now() - m_start;
-    float s = chrono::duration_cast<std::chrono::microseconds>(diff).count()
+    auto diff = std::chrono::system_clock::now() - m_start;
+    float s = std::chrono::duration_cast<std::chrono::microseconds>(diff).count()
               / 10000000.f;
     return s;
   }
