@@ -11,5 +11,9 @@ inline GLuint RenderBuffer::nativeHandle() const {
   return m_handle;
 }
 
+inline RenderBuffer::operator bool() const {
+  return m_handle != 0;
+}
+
 
 }

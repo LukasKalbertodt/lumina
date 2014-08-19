@@ -238,6 +238,11 @@ void UserFrameBuffer::attachRenderBuffer(const RenderBuffer& buf) {
                "is already a depth/stencil attachment!");
   }
 
+  if(!buf) {
+    logThrowGL("[FrameBuffer] You cannot attach a renderbuffer that was not "
+               "created yet!");
+  }
+
   m_renderBuffer = buf.nativeHandle();
   m_bufferType = buf.getType();
 }

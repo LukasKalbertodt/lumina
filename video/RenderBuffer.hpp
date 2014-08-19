@@ -21,6 +21,7 @@ public:
   RenderBufferType getType() const;
   GLuint nativeHandle() const;
 
+  operator bool() const;
 
 private:
   RenderBufferType m_type;
