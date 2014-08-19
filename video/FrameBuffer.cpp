@@ -7,17 +7,6 @@ namespace internal {
 bool FrameBufferInterface::s_isPrimed = false;
 bool UserFrameBuffer::s_renderBufferBound = false;
 
-static GLenum renderBufferGLType(RenderBufferType type) {
-  switch(type) {
-    case RenderBufferType::Depth32:
-      return GL_DEPTH_COMPONENT32;
-    case RenderBufferType::Depth16:
-      return GL_DEPTH_COMPONENT16;
-    case RenderBufferType::Depth24Stencil8:
-      return GL_DEPTH24_STENCIL8;
-  }
-}
-
 void UserFrameBuffer::create(Vec2i size) {
   // set size
   m_size = size;
@@ -242,31 +231,15 @@ void UserFrameBuffer::attachDepthStencil(const Tex2D& tex) {
   }
 }
 
-
-void UserFrameBuffer::addDefaultBuffer(RenderBufferType type) {
-  // check if another renderbuffer is bound (that should never occur)
-  if(s_renderBufferBound) {
-    logThrowGL("[FrameBuffer] Cannot add a default buffer while another "
-               "renderbuffer is currently bound!");
-  }
-
+void UserFrameBuffer::attachRenderBuffer(const RenderBuffer& buf) {
   // check if another depth or stencil buffer is attached
   if(m_depthAtt != 0 || m_depthStencilAtt != 0) {
-    logWarning("[FrameBuffer] Attempt to add a default renderbuffer, but there "
+    logWarning("[FrameBuffer] Attempt to attach a renderbuffer, but there "
                "is already a depth/stencil attachment!");
   }
 
-  // generate new renderbuffer with the given type
-  glGenRenderbuffers(1, &m_renderBuffer);
-  glBindRenderbuffer(GL_RENDERBUFFER, m_renderBuffer);
-
-  glRenderbufferStorage(GL_RENDERBUFFER, renderBufferGLType(type),
-                        m_size.x, m_size.y);
-
-  checkGLError("[FrameBuffer] Error<", GLERR,
-               "> while creating default renderbuffer!");
-
-  m_bufferType = type;
+  m_renderBuffer = buf.nativeHandle();
+  m_bufferType = buf.getType();
 }
 
 int UserFrameBuffer::countAttachments() {
@@ -406,7 +379,7 @@ int DefaultFrameBuffer::countAttachments() {
   return 4;
 }
 
-void DefaultFrameBuffer::addDefaultBuffer(RenderBufferType type) {
+void DefaultFrameBuffer::attachRenderBuffer(const RenderBuffer& buf) {
   // this doesn't make sense (the default framebuffer already has a depth buf)
   logWarning("[FrameBuffer] You cannot add a default depth buffer to the "
              "default framebuffer!");

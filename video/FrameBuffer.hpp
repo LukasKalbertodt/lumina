@@ -4,6 +4,7 @@
 #include "Texture.hpp"
 #include "FrameBuffer.fpp"
 #include "HotFrameBuffer.fpp"
+#include "RenderBuffer.hpp"
 #include "../util/ColorCore.hpp"
 
 #include <GL/glew.h>
@@ -12,10 +13,6 @@
 #include <vector>
 
 namespace lumina {
-
-enum class RenderBufferType {
-  Depth16, Depth32, Depth24Stencil8
-};
 
 namespace internal {
 
@@ -38,7 +35,7 @@ public:
   virtual void attachDepth(const Tex2D& tex) = 0;
   virtual void attachDepthStencil(const Tex2D& tex) = 0;
 
-  virtual void addDefaultBuffer(RenderBufferType type) = 0;
+  virtual void attachRenderBuffer(const RenderBuffer& buf) = 0;
 
   virtual int countAttachments() = 0;
 
@@ -70,7 +67,7 @@ public:
   void attachDepth(const Tex2D& tex) final;
   void attachDepthStencil(const Tex2D& tex) final;
 
-  void addDefaultBuffer(RenderBufferType type);
+  void attachRenderBuffer(const RenderBuffer& buf) override final;
 
   int countAttachments() override final;
 
@@ -107,7 +104,7 @@ public:
   void attachDepth(const Tex2D& tex) final;
   void attachDepthStencil(const Tex2D& tex) final;
 
-  void addDefaultBuffer(RenderBufferType type);
+  void attachRenderBuffer(const RenderBuffer& buf) override final;
   
   int countAttachments() override final;
 
@@ -136,10 +133,9 @@ public:
   void attachColor(int index, const Tex2D& tex);
   void attachDepth(const Tex2D& tex);
   void attachDepthStencil(const Tex2D& tex);
-  void addDefaultBuffer(RenderBufferType type);
+  void attachRenderBuffer(const RenderBuffer& buf);
 
   explicit operator bool() const;
-
 
   int countAttachments();
 

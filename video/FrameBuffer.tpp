@@ -76,14 +76,12 @@ inline bool FrameBuffer::isPrimed() {
   return internal::FrameBufferInterface::s_isPrimed;
 }
 
-inline void FrameBuffer::addDefaultBuffer(RenderBufferType type) {
-  m_fb->addDefaultBuffer(type);
-}
-
 inline FrameBuffer::operator bool() const {
   return static_cast<bool>(*m_fb);
 }
 
-
+inline void FrameBuffer::attachRenderBuffer(const RenderBuffer& buf) {
+  m_fb->attachRenderBuffer(buf);
+}
 
 }
