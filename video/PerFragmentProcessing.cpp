@@ -6,7 +6,27 @@
 
 namespace lumina {
 
+static GLenum blendParamGL(BlendParam param) {
+  switch(param) {
+    case BlendParam::Zero:      return GL_ZERO;
+    case BlendParam::One:       return GL_ONE;
+    case BlendParam::SrcColor:  return GL_SRC_COLOR;
+    case BlendParam::DstColor:  return GL_DST_COLOR;
+  }
+}
+
+static GLenum blendFuncGL(BlendFunction func) {
+  switch(func) {
+    case BlendFunction::Add:                return GL_FUNC_ADD;
+    case BlendFunction::Subtract:           return GL_FUNC_SUBTRACT;
+    case BlendFunction::ReverseSubtract:    return GL_FUNC_REVERSE_SUBTRACT;
+    case BlendFunction::Min:                return GL_MIN;
+    case BlendFunction::Max:                return GL_MAX;
+  }
+}
+
 void PerFragmentProcessing::bindStage() {
+  // --------- Set depth test params ------------
   // enable or disable depth test
   if(m_depthEnabled) {
     glEnable(GL_DEPTH_TEST);
@@ -36,6 +56,14 @@ void PerFragmentProcessing::bindStage() {
     case DepthFunction::Always:   depthFunc = GL_ALWAYS; break;
   }
   glDepthFunc(depthFunc);
+
+
+  // --------- Set blending params ------------
+  glBlendEquationSeparate(blendFuncGL(blendFuncRGB), blendFuncGL(blendFuncA));
+  glBlendFuncSeparate(blendParamGL(srcRGBParam),
+                      blendParamGL(dstRGBParam),
+                      blendParamGL(srcAParam),
+                      blendParamGL(dstAParam));
 
 }
 
