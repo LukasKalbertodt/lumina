@@ -307,6 +307,16 @@ void UserFrameBuffer::clearDepthStencil(float depth, int stencil) {
                "> while clearing depth-stencil attachment!");
 }
 
+void UserFrameBuffer::enableBlending(int index, bool enable) {
+  if(index >= countAttachments()) {
+    logThrowGL("[FrameBuffer] Tried to enable blending on an index<",
+               index, "> that has no attached image!");
+  }
+
+  glEnablei(GL_BLEND, index);
+
+  checkGLError("[FrameBuffer] Error<", GLERR, "> while enable blending!");
+}
 
 
 void DefaultFrameBuffer::prime(std::shared_ptr<FrameBufferInterface> fb,
@@ -415,6 +425,19 @@ void DefaultFrameBuffer::clearDepthStencil(float depth, int stencil) {
 
   checkGLError("[FrameBuffer] Error while clearing depth-stencil attachment!");
 }
+
+void DefaultFrameBuffer::enableBlending(int index, bool enable) {
+  if(index >= countAttachments()) {
+    logThrowGL("[FrameBuffer] Tried to enable blending on an index<",
+               index, "> that has no attached image!");
+  }
+
+  glEnablei(GL_BLEND, index);
+
+  checkGLError("[FrameBuffer] Error<", GLERR, "> while enable blending!");
+}
+
+
 
 } // namespace internal
 } // namespace lumina

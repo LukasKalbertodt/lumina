@@ -84,4 +84,8 @@ inline void FrameBuffer::attachRenderBuffer(const RenderBuffer& buf) {
   m_fb->attachRenderBuffer(buf);
 }
 
+inline void FrameBuffer::enableBlending(int index, bool enable) {
+  m_fb->enableBlending(index, enable);
+}
+
 }

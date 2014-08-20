@@ -43,6 +43,8 @@ public:
   virtual void clearDepth(float val) = 0;
   virtual void clearDepthStencil(float depth, int stencil) = 0;
 
+  virtual void enableBlending(int index, bool enable) = 0;
+
   virtual explicit operator bool() const = 0;
 
 
@@ -74,6 +76,8 @@ public:
   void clearColor(int index, Color32fA color);
   void clearDepth(float val);
   void clearDepthStencil(float depth, int stencil);
+
+  void enableBlending(int index, bool enable);
 
   explicit operator bool() const;
 
@@ -112,6 +116,8 @@ public:
   void clearDepth(float val);
   void clearDepthStencil(float depth, int stencil);
   
+  void enableBlending(int index, bool enable);
+  
   explicit operator bool() const;
 };
 
@@ -134,6 +140,8 @@ public:
   void attachDepth(const Tex2D& tex);
   void attachDepthStencil(const Tex2D& tex);
   void attachRenderBuffer(const RenderBuffer& buf);
+
+  void enableBlending(int index, bool enable = true);
 
   explicit operator bool() const;
 
