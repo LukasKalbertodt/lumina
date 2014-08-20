@@ -16,7 +16,16 @@ enum class BlendFunction : std::uint8_t {
 };
 
 enum class BlendParam : std::uint8_t {
-  Zero, One, SrcColor, DstColor
+  Zero,
+  One,
+  SrcAlpha,
+  SrcColor,
+  DstAlpha,
+  DstColor,
+  OneMinusSrcAlpha,
+  OneMinusSrcColor,
+  OneMinusDstAlpha,
+  OneMinusDstColor
 };
 
 

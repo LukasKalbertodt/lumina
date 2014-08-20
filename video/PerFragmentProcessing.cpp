@@ -8,10 +8,16 @@ namespace lumina {
 
 static GLenum blendParamGL(BlendParam param) {
   switch(param) {
-    case BlendParam::Zero:      return GL_ZERO;
-    case BlendParam::One:       return GL_ONE;
-    case BlendParam::SrcColor:  return GL_SRC_COLOR;
-    case BlendParam::DstColor:  return GL_DST_COLOR;
+    case BlendParam::Zero:              return GL_ZERO;
+    case BlendParam::One:               return GL_ONE;
+    case BlendParam::SrcAlpha:          return GL_SRC_ALPHA;
+    case BlendParam::SrcColor:          return GL_SRC_COLOR;
+    case BlendParam::DstAlpha:          return GL_DST_ALPHA;
+    case BlendParam::DstColor:          return GL_DST_COLOR;
+    case BlendParam::OneMinusSrcAlpha:  return GL_ONE_MINUS_SRC_ALPHA;
+    case BlendParam::OneMinusSrcColor:  return GL_ONE_MINUS_SRC_COLOR;
+    case BlendParam::OneMinusDstAlpha:  return GL_ONE_MINUS_DST_ALPHA;
+    case BlendParam::OneMinusDstColor:  return GL_ONE_MINUS_DST_COLOR;
   }
 }
 
