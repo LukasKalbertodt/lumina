@@ -335,6 +335,8 @@ void DefaultFrameBuffer::prime(std::shared_ptr<FrameBufferInterface> fb,
   // bind 0 to context to activate default framebuffer
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+  glViewport(0, 0, m_size.x, m_size.y);
+
   // check framebuffer status and GL errors
   auto status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
   if(status != GL_FRAMEBUFFER_COMPLETE) {

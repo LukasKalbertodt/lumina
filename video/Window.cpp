@@ -24,7 +24,8 @@ Window::~Window() {
 
 RenderContext& Window::getRenderContext() {
   if(!m_renderContext) {
-    m_renderContext.reset(new RenderContext(m_window));
+    Vec2i size = vector_cast<int>(m_size * m_sizeMultiplier);
+    m_renderContext.reset(new RenderContext(m_window, size));
   }
   return *m_renderContext.get();
 }

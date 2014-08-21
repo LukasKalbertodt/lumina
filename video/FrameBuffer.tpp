@@ -22,6 +22,7 @@ inline UserFrameBuffer::~UserFrameBuffer() {
 }
 
 inline void UserFrameBuffer::bind() {
+  glViewport(0, 0, m_size.x, m_size.y);
   glBindFramebuffer(GL_FRAMEBUFFER, m_handle);
   s_isPrimed = true;
 }
@@ -38,7 +39,9 @@ inline UserFrameBuffer::operator bool() const {
 
 
 
-inline void DefaultFrameBuffer::create(Vec2i size) {}
+inline void DefaultFrameBuffer::create(Vec2i size) {
+  m_size = size;
+}
 
 inline DefaultFrameBuffer::operator bool() const {
   return true;

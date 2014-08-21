@@ -18,7 +18,7 @@ namespace lumina {
 
 class RenderContext : public GLContextFreeObject {
 public:
-  RenderContext(GLFWwindow* window);
+  RenderContext(GLFWwindow* window, Vec2i size);
 
   void create();
   void prime(std::function<void(HotRenderContext&)> func);

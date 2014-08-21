@@ -7,6 +7,7 @@ inline Window::Window(std::string title, Vec2i size)
     m_title(title),
     m_lastMouseX(0.f),
     m_lastMouseY(0.f),
+    m_sizeMultiplier(1.f),
     m_resetLastPos(true),
     m_resizable(false) {}
 
@@ -38,6 +39,10 @@ inline void Window::removeWindowCallback(WindowCallbackIndex index) {
 
 inline void Window::setResizable(bool enable) {
   m_resizable = enable;
+}
+
+inline void Window::setSizeMultiplier(float multi) {
+  m_sizeMultiplier = multi;
 }
 
 

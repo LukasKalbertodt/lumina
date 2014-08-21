@@ -119,6 +119,9 @@ public:
   void enableBlending(int index, bool enable);
   
   explicit operator bool() const;
+
+private:
+  Vec2i m_size;
 };
 
 } // namespace internal
