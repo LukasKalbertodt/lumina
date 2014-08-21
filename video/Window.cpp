@@ -44,7 +44,7 @@ void Window::open() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, m_version.second);
   }
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+  glfwWindowHint(GLFW_RESIZABLE, m_resizable ? GL_TRUE : GL_FALSE);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
   // Create window

@@ -64,6 +64,8 @@ public:
   */
   void setVersionHint(int major, int minor = 0);
 
+  void setResizable(bool enable);
+
   /** Disables or enables VSync
   If VSync is enabled RenderContext::swapBuffers will be synchronized with
   the screen refresh rate. 
@@ -146,6 +148,7 @@ private:
   std::vector<WindowCallback> m_windowCallbacks;
   float m_lastMouseX, m_lastMouseY;
   bool m_resetLastPos;
+  bool m_resizable;
   CursorMode m_cursorMode;
 
 

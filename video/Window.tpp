@@ -7,7 +7,8 @@ inline Window::Window(std::string title, Vec2i size)
     m_title(title),
     m_lastMouseX(0.f),
     m_lastMouseY(0.f),
-    m_resetLastPos(true) {}
+    m_resetLastPos(true),
+    m_resizable(false) {}
 
 
 inline void Window::setVersionHint(int major, int minor) {
@@ -34,6 +35,11 @@ inline Window::WindowCallbackIndex Window::addWindowCallback(
 inline void Window::removeWindowCallback(WindowCallbackIndex index) {
   m_windowCallbacks[index] = WindowCallback();
 }
+
+inline void Window::setResizable(bool enable) {
+  m_resizable = enable;
+}
+
 
 
 
