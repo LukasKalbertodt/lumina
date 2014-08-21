@@ -13,6 +13,20 @@
 
 
 namespace lumina {
+
+namespace internal {
+
+class VertexSeqPrimeLock {
+private:
+  static bool s_isPrimed;
+
+  template <typename... Ts> friend class VertexSeq;
+};
+
+};
+
+
+
 // =============================================================================
 // Definition of VertexSeq
 // =============================================================================
@@ -29,18 +43,19 @@ namespace lumina {
 * \see HotVertexSeq
 * \see HotVertexSeq<>
 */
+template <typename... Ts>
 class VertexSeq : public GLObject {
 public:
   // default constructor
   VertexSeq();
 
   // copy constructor and copy assignment operator
-  VertexSeq(const VertexSeq& copy);
-  VertexSeq &operator=(const VertexSeq &copy);
+  VertexSeq(const VertexSeq<Ts...>& copy);
+  VertexSeq& operator=(const VertexSeq<Ts...>& copy);
 
   // move constructor and move assignment operator
-  VertexSeq(VertexSeq&& m);
-  VertexSeq& operator=(VertexSeq&& m);
+  VertexSeq(VertexSeq<Ts...>&& m);
+  VertexSeq& operator=(VertexSeq<Ts...>&& m);
 
   // destructor
   ~VertexSeq();
@@ -71,8 +86,8 @@ public:
   * contain a 3D-Position and a 2D-UV-Coordinate, use those 
   * templates: Vec3f, Vec2f
   */
-  template <typename... Cs, typename L>
-  void prime(L lambda);
+  // template <typename L>
+  // void prime(L lambda);
 
   /** Primes the VertexSeq to obtain a HotVertexSeq.
   * Binds all OpenGL resources in order to use (writing data) the VertexSeq.
@@ -83,7 +98,7 @@ public:
   * \param func A functor that accepts a HotVertexSeq<>& as parameter. It will 
   * be called after the HotVertexSeq is created.
   */
-  void prime(std::function<void(HotVertexSeq<>&)> func);
+  void prime(std::function<void(HotVertexSeq<Ts...>&)> func);
 
   /// Returns the native OpenGL handle of the vertex buffer
   GLuint nativeVertexHandle() const;
@@ -125,7 +140,7 @@ private:
 
   friend internal::HotVertexSeqBase;
   friend HotProgram;
-  template <typename... Cs> friend class HotVertexSeq;
+  friend HotVertexSeq<Ts...>;
 };
 
 } // namespace lumina

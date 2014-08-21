@@ -1,7 +1,8 @@
 namespace lumina {
 
 /* Mesh constructors **********************************************************/
-inline VertexSeq::VertexSeq()
+template <typename... Ts>
+inline VertexSeq<Ts...>::VertexSeq()
   : m_vertexHandle(0),
     m_indexHandle(0),
     m_vertexArrayObject(0),
@@ -15,7 +16,8 @@ inline VertexSeq::VertexSeq()
 // inline VertexSeq& operator=(const VertexSeq& copy);
 
 // move constructor and move assignment operator
-inline VertexSeq::VertexSeq(VertexSeq&& m)
+template <typename... Ts> 
+VertexSeq<Ts...>::VertexSeq(VertexSeq&& m)
   : m_vertexHandle(m.m_vertexHandle),
     m_indexHandle(m.m_indexHandle),
     m_vertexArrayObject(m.m_vertexArrayObject),
@@ -31,7 +33,8 @@ inline VertexSeq::VertexSeq(VertexSeq&& m)
   m.m_indexCount = 0;
 }
 
-inline VertexSeq& VertexSeq::operator=(VertexSeq&& m) {
+template <typename... Ts> 
+VertexSeq<Ts...>& VertexSeq<Ts...>::operator=(VertexSeq&& m) {
   // delete OpenGL data
   // glDelete* does nothing if second argument is 0
   glDeleteBuffers(1, &m_vertexHandle);
@@ -64,53 +67,64 @@ inline VertexSeq& VertexSeq::operator=(VertexSeq&& m) {
 // inline std::size_t VertexSeq::vertexSize() const { return m_vertexCount * 4; }
 // inline std::size_t VertexSeq::indexSize() const { return m_indexCount * 4; }
 
-template <typename... Cs, typename L>
-void VertexSeq::prime(L lambda) {
-  HotVertexSeq<Cs...> hot(*this);
-  hot.applyVertexLayout();
-  lambda(hot);
-}
+// template <typename... Ts>
+// template <typename L>
+// void VertexSeq<Ts...>::prime(L lambda) {
+//   HotVertexSeq<Cs...> hot(*this);
+//   hot.applyVertexLayout();
+//   lambda(hot);
+// }
 
-inline void VertexSeq::bindAll() {
+template <typename... Ts> 
+void VertexSeq<Ts...>::bindAll() {
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
   glBindVertexArray(m_vertexArrayObject);
 }
 
-inline void VertexSeq::bindVAO() const {
+template <typename... Ts> 
+void VertexSeq<Ts...>::bindVAO() const {
   glBindVertexArray(m_vertexArrayObject);
 }
 
-inline void VertexSeq::unbindVAO() const {
+template <typename... Ts> 
+void VertexSeq<Ts...>::unbindVAO() const {
   glBindVertexArray(m_vertexArrayObject);
 }
 
 
-inline void VertexSeq::unbindAll() {
+template <typename... Ts> 
+void VertexSeq<Ts...>::unbindAll() {
   glBindVertexArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-inline GLuint VertexSeq::nativeVertexHandle() const {
+template <typename... Ts> 
+GLuint VertexSeq<Ts...>::nativeVertexHandle() const {
   return m_vertexHandle;
 }
 
-inline GLuint VertexSeq::nativeIndexHandle() const {
+template <typename... Ts> 
+GLuint VertexSeq<Ts...>::nativeIndexHandle() const {
   return m_indexHandle;
 }
 
-inline GLuint VertexSeq::nativeVAOHandle() const {
+template <typename... Ts> 
+GLuint VertexSeq<Ts...>::nativeVAOHandle() const {
   return m_vertexArrayObject;
 }
 
-inline int VertexSeq::size() const {
+template <typename... Ts> 
+int VertexSeq<Ts...>::size() const {
   return (m_indexHandle == 0) ? m_vertexCount : m_indexCount;
 }
 
-inline bool VertexSeq::isVertexLayoutActive() const {
+template <typename... Ts> 
+bool VertexSeq<Ts...>::isVertexLayoutActive() const {
   return m_layoutActive;
 }
 
-inline VertexSeq::operator bool() const {
+template <typename... Ts> 
+VertexSeq<Ts...>::operator bool() const {
    return (m_vertexHandle != 0);
 }
 

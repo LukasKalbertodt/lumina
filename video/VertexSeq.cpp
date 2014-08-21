@@ -10,7 +10,7 @@
 
 namespace lumina {
 
-bool VertexSeq::s_isPrimed = false;
+bool internal::VertexSeqPrimeLock::s_isPrimed = false;
 
 VertexSeq::~VertexSeq() {
   // glDelete* does nothing if second argument is 0
@@ -36,7 +36,7 @@ void VertexSeq::create(uint16_t vertexSize,
   }
 
   // check if any other VertexSeq is primed
-  if(s_isPrimed) {
+  if(internal::VertexSeqPrimelock::s_isPrimed) {
     logError(
       "[VertexSeq] Cannot execute 'create' while another VertexSeq is primed!");
     throw LogicEx(
@@ -84,6 +84,7 @@ void VertexSeq::create(uint16_t vertexSize,
   unbindAll();
 }
 
+template <typename... Ts>
 void VertexSeq::prime(std::function<void(HotVertexSeq<>&)> func) {
   m_layoutActive = false;
   HotVertexSeq<> hot(*this);
