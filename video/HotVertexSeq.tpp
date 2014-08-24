@@ -2,8 +2,8 @@ namespace lumina {
 
 template <typename... Ts>
 HotVertexSeq<Ts...>::HotVertexSeq(VertexSeq<Ts...>& ref, void* vbuf, void* ibuf)
-  : vertex(ref.m_vertexCount, vbuf),
-    index(ref.m_indexCount, ibuf),
+  : vertex(ref.vertexCount(), vbuf),
+    index(ref.indexCount(), static_cast<unsigned int*>(ibuf)),
     m_cold(ref) {}
 
 

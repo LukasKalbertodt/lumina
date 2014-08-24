@@ -10,6 +10,8 @@ namespace lumina {
 template <typename... Cs>
 class VertexSet {
 public:
+  VertexSet(int vertexCount, void* buffer);
+
   /// Subscript operator to access a single VertexSlot
   VertexSlot<Cs...> operator[](int index);
 
@@ -23,12 +25,6 @@ public:
 private:
   void* m_buffer;
   int m_slotCount;
-
-  // Private construtor -> called by friend HotVertexSeq
-  VertexSet(int vertexCount);
-
-  // declare friends
-  friend HotVertexSeq<Cs...>;
 };
 
 // template <>

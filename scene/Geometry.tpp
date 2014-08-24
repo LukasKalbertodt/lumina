@@ -48,7 +48,7 @@ VertexSeq<typename internal::VAttrHelper<Cs>::type...> createBox(Vec3f size) {
 
   // vertexCount = 6 faces * 4 points per face
   // indexCount = 6 faces * 4 points + 5 primitive restart
-  out.create(internal::VAttrsHelper<Cs...>::size, 6 * 4, 6 * 4 + 5);
+  out.create(6 * 4, 6 * 4 + 5);
 
   out.prime([&](HotVertexSeq<typename VAttrHelper<Cs>::type...>& hot) {
     // fill vertex buffer with corner-points

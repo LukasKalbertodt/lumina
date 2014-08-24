@@ -1,7 +1,7 @@
 namespace lumina {
 
 template <typename... Cs>
-VertexSet<Cs...>::VertexSet()
+VertexSet<Cs...>::VertexSet(int vertexCount, void* buffer)
   : m_buffer(nullptr), m_slotCount(vertexCount) {}
 
 template <typename... Cs>

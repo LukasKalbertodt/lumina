@@ -39,6 +39,12 @@ public:
   /// Returns the native OpenGL handle of the vertex array object
   GLuint nativeVAOHandle() const;
 
+  /// Returns the number of vertices
+  uint32_t vertexCount() const;
+
+  /// Returns the number of indicies
+  uint32_t indexCount() const;
+
   /// Returns the number of vertices in the sequence
   int size() const;
 
@@ -75,7 +81,6 @@ protected:
   // ===== friend declarations =====
   friend internal::HotVertexSeqBase;
   friend HotProgram;
-  template <typename... Ts> friend class HotVertexSeq;
 };
 
 } // namespace internal

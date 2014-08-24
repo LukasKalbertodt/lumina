@@ -61,6 +61,14 @@ inline GLuint VertexSeqBase::nativeVAOHandle() const {
   return m_vertexArrayObject;
 }
 
+inline uint32_t VertexSeqBase::vertexCount() const {
+  return m_vertexCount;  
+}
+
+inline uint32_t VertexSeqBase::indexCount() const {
+  return m_indexCount;
+}
+
 inline int VertexSeqBase::size() const {
   return (m_indexHandle == 0) ? m_vertexCount : m_indexCount;
 }

@@ -37,7 +37,7 @@ public:
 
 
 private:
-  VertexSeq<Cs...> m_cold;
+  VertexSeq<Cs...>& m_cold;
 
   // private constructor -> called by VertexSeq
   HotVertexSeq(VertexSeq<Cs...>& ref, void* vbuf, void* ibuf);

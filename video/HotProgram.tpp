@@ -55,7 +55,7 @@ void HotProgram::drawImpl(const VertexSeq<Ts...>& data,
     }
   }
 
-  if(!data.isVertexLayoutActive()) {
+  if(!data.isLayoutActive()) {
     logThrowGL("[HotProgram] Attempt to call draw with a VertexSeq whose is "
                "not active! (forgot to call applyVertexLayout?)");
   }
