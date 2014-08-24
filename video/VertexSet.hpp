@@ -68,4 +68,4 @@ private:
 
 } // namespace lumina
 
-#include "VertexSet.hpp"
+#include "VertexSet.tpp"

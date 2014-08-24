@@ -29,7 +29,7 @@ inline VertexSeqBase::VertexSeqBase(VertexSeqBase&& m) noexcept
   m.m_layoutActive = false;
 }
 
-VertexSeqBase::~VertexSeqBase() {
+inline VertexSeqBase::~VertexSeqBase() {
   // glDelete* does nothing if second argument is 0
   glDeleteBuffers(1, &m_vertexHandle);
   glDeleteBuffers(1, &m_indexHandle);
