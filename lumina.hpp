@@ -25,7 +25,8 @@
 
 // include io components
 #include "io/Image.hpp"
-#include "io/ImageJPEG.hpp" 
+#include "io/ImageJPEG.hpp"
+#include "io/ImagePNG.hpp"
 
 // include scene components
 #include "scene/scene.hpp"

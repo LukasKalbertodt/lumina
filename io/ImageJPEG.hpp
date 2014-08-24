@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Image.fpp"
+#include "Image.hpp"
 #include <string>
 
 namespace lumina {
