@@ -10,49 +10,31 @@
 
 namespace lumina {
 
-bool internal::VertexSeqPrimeLock::s_isPrimed = false;
-
-VertexSeq::~VertexSeq() {
-  // glDelete* does nothing if second argument is 0
-  glDeleteBuffers(1, &m_vertexHandle);
-  glDeleteBuffers(1, &m_indexHandle);
-  glDeleteVertexArrays(1, &m_vertexArrayObject);
-}
-
-void VertexSeq::setupOpenGL() {
-  // configure primitive restart
-  glPrimitiveRestartIndex(std::numeric_limits<unsigned int>::max());
-  glEnable(GL_PRIMITIVE_RESTART);
-}
+bool internal::VertexSeqBase::s_isPrimed = false;
 
 
-void VertexSeq::create(uint16_t vertexSize,
-                       uint32_t vertexCount,
-                       uint32_t indexCount) {
+void internal::VertexSeqBase::create(uint16_t vertexSize,
+                                     uint32_t vertexCount,
+                                     uint32_t indexCount) {
   // check if vertex buffer was already created
   if(m_vertexHandle != 0) {
-    logError("[VertexSeq] You can create a VertexSeq only once!");
-    throw LogicEx("[VertexSeq] You can create a VertexSeq only once!");
+    logAndThrow<LogicEx>("[VertexSeq] You can create a VertexSeq only once!");
   }
 
   // check if any other VertexSeq is primed
-  if(internal::VertexSeqPrimelock::s_isPrimed) {
-    logError(
-      "[VertexSeq] Cannot execute 'create' while another VertexSeq is primed!");
-    throw LogicEx(
-      "[VertexSeq] Cannot execute 'create' while another VertexSeq is primed");
+  if(s_isPrimed) {
+    logAndThrow<LogicEx>("[VertexSeq] Cannot execute 'create' while another "
+                         "VertexSeq is primed!");
   }
 
   // check arguments
   if(vertexCount < 1) {
-    logError("[VertexSeq] Invalid 'create' arguments: vertexCount<",
-             vertexCount, ">, indexCount<", indexCount, ">!");
-    throw InvalidArgEx("[VertexSeq] Invalid 'create' arguments");
+    logAndThrow<InvalidArgEx>("[VertexSeq] Invalid 'create' arguments: "
+      "vertexCount<", vertexCount, ">, indexCount<", indexCount, ">!");
   }
 
   // save arguments
   m_vertexCount = vertexCount;
-  m_vertexSize = vertexSize;
   m_indexCount = indexCount;
 
   // create and bind VAO
@@ -65,7 +47,7 @@ void VertexSeq::create(uint16_t vertexSize,
   // create vertex buffer (generate, bind and allocate memory)
   glGenBuffers(1, &m_vertexHandle);
   glBindBuffer(GL_ARRAY_BUFFER, m_vertexHandle);
-  glBufferData(GL_ARRAY_BUFFER, vertexSize * vertexCount * sizeof(GLfloat),
+  glBufferData(GL_ARRAY_BUFFER, vertexSize * vertexCount,
                nullptr, GL_STATIC_DRAW);
 
   checkGLError("[VertexSeq] Error while creating vertex buffer <", GLERR, ">!");
@@ -77,19 +59,12 @@ void VertexSeq::create(uint16_t vertexSize,
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLint),
                  nullptr, GL_STATIC_DRAW);
 
-    checkGLError("[VertexSeq] Error while creating index buffer <", GLERR, ">!");
+    checkGLError("[VertexSeq] Error while creating index buffer <", 
+                 GLERR, ">!");
   }
 
   // unbind all buffers and VAO
   unbindAll();
 }
-
-template <typename... Ts>
-void VertexSeq::prime(std::function<void(HotVertexSeq<>&)> func) {
-  m_layoutActive = false;
-  HotVertexSeq<> hot(*this);
-  func(hot);
-}
-
 
 } // namespace lumina

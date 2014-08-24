@@ -12,83 +12,68 @@
 #include "../config/BaseProxy.hpp"
 #include "../util/NotCloneable.hpp"
 
-
 namespace lumina {
-
-namespace internal {
-
-class HotVertexSeqBase : public GLObject, public NotCloneable {
-private:
-  friend VertexSeq;
-
-protected:
-  VertexSeq& m_cold;
-  
+/** Hot version of VertexSeq.
+ * A VertexSeq that is currently bound. This enables you to change the data of 
+ * the buffers and apply a vertex layout. There is a type-safe and a type-unsafe 
+ * variant of HotVertexSeq. You should use the type-safe one whenever you can.
+ * When the type-safe variant is used, additional compile-time checks will be
+ * performed to reduces bugs.
+ * 
+ * \tparam Cs The list of types that was given to VertexSeq::prime. It 
+ * represents the vertex attributes.
+ * 
+ * \see VertexSeq
+ * \see HotVertexSeq<>
+ */
+template <typename... Cs>
+class HotVertexSeq : public GLObject, private NotCloneable {
 public:
-  HotVertexSeqBase(VertexSeq& ref);
-  
-  // custom destructor
-  ~HotVertexSeqBase();
-
+  /// The vertex buffer
+  VertexSet<Cs...> vertex;
 
   /// The index buffer
-  internal::IndexSet index;
-};
+  IndexSet index;
 
-}
 
-/** Hot version of VertexSeq.
-A VertexSeq that is currently bound. This enables you to change the data of 
-the buffers and apply a vertex layout. There is a type-safe and a type-unsafe 
-variant of HotVertexSeq. You should use the type-safe one whenever you can.
-When the type-safe variant is used, additional compile-time checks will be
-performed to reduces bugs.
-
-\tparam Cs The list of types that was given to VertexSeq::prime. It represents
-the vertex attributes.
-
-\see VertexSeq
-\see HotVertexSeq<>
-*/
-template <typename... Cs>
-class HotVertexSeq : public internal::HotVertexSeqBase {
 private:
-  HotVertexSeq(VertexSeq& ref);
+  VertexSeq<Cs...> m_cold;
 
-  friend VertexSeq;
+  // private constructor -> called by VertexSeq
+  HotVertexSeq(VertexSeq<Cs...>& ref, void* vbuf, void* ibuf);
 
-  void applyVertexLayout();
-public:
-
-  /// The vertex buffer
-  internal::VertexSet<Cs...> vertex;
+  // friend declaration
+  friend VertexSeq<Cs...>;
 };
 
-/** The type-unsafe variant of HotVertexSeq.
-
-\see HotVertexSeq
-*/
-template <>
-class HotVertexSeq<> : public internal::HotVertexSeqBase {
-private:
-  HotVertexSeq(VertexSeq& ref);
-
-  friend VertexSeq;
-
-public:
-  /** Applies the vertex layout.
-  This method needs to be called to tell OpenGL how a vertex looks like. When
-  this method isn't called an attempt to draw this VertexSeq will fail.
-
-  \tparam Ts The same parameter as the parameters for VertexSeq::prime or
-  the type-safe variant of HotVertexSeq.
-  */
-  template <typename... Ts>
-  void applyVertexLayout();
-
-  /// The vertex buffer
-  internal::VertexSet<> vertex;
-};
+// /** The type-unsafe variant of HotVertexSeq.
+//  *
+//  * \see HotVertexSeq
+//  */
+// template <>
+// class HotVertexSeq<> : public internal::HotVertexSeqBase {
+// public:
+//   /** Applies the vertex layout.
+//    * This method needs to be called to tell OpenGL how a vertex looks like. When
+//    * this method isn't called an attempt to draw this VertexSeq will fail.
+// 
+//    * \tparam Ts The same parameter as the parameters for VertexSeq::prime or
+//    * the type-safe variant of HotVertexSeq.
+//    */
+//   template <typename... Ts>
+//   void applyVertexLayout();
+// 
+//   /// The vertex buffer
+//   internal::VertexSet<> vertex;
+// 
+//   /// The index buffer
+//   internal::IndexSet index;
+// 
+// private:
+//   HotVertexSeq(VertexSeq& ref);
+// 
+//   template <typename...> friend VertexSeq;
+// };
 
 } // namespace lumina
 

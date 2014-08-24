@@ -1,6 +1,7 @@
 #pragma once
 
 #include "VertexSeq.fpp"
+#include "VertexLayout.hpp"
 #include "HotVertexSeq.fpp"
 #include "HotProgram.fpp"
 #include "GLObject.hpp"
@@ -16,14 +17,68 @@ namespace lumina {
 
 namespace internal {
 
-class VertexSeqPrimeLock {
-private:
+class VertexSeqBase : public GLObject {
+public:
+  // ===== constructor, destructor, assignment-operator =====
+  VertexSeqBase();
+  VertexSeqBase(const VertexSeqBase&) = delete;
+  VertexSeqBase(VertexSeqBase&& m) noexcept;
+
+  ~VertexSeqBase();
+
+  VertexSeqBase& operator=(VertexSeqBase m);
+
+
+  // ===== public methods =====
+  /// Returns the native OpenGL handle of the vertex buffer
+  GLuint nativeVertexHandle() const;
+
+  /// Returns the native OpenGL handle of the index buffer
+  GLuint nativeIndexHandle() const;
+
+  /// Returns the native OpenGL handle of the vertex array object
+  GLuint nativeVAOHandle() const;
+
+  /// Returns the number of vertices in the sequence
+  int size() const;
+
+  /// Determines if a vertex layout is active
+  bool isLayoutActive() const;
+
+  /// Returns true if the VertexSeq was created
+  explicit operator bool() const;
+
+  static void setupOpenGL();
+
+protected:
+  // ===== protected member =====
+  GLuint m_vertexHandle;
+  GLuint m_indexHandle;
+  GLuint m_vertexArrayObject;
+  uint32_t m_vertexCount;
+  uint32_t m_indexCount;
+  bool m_layoutActive;
+
   static bool s_isPrimed;
 
-  template <typename... Ts> friend class VertexSeq;
+
+  // ===== protected methods =====
+  void bindAll();
+  void unbindAll();
+
+  void bindVAO() const;
+  void unbindVAO() const;
+
+  void create(uint16_t vertexSize, uint32_t vertexCount, uint32_t indexCount);
+
+
+  // ===== friend declarations =====
+  friend internal::HotVertexSeqBase;
+  friend HotProgram;
+  template <typename... Ts> friend class HotVertexSeq;
 };
 
-};
+} // namespace internal
 
 
 
@@ -44,22 +99,8 @@ private:
 * \see HotVertexSeq<>
 */
 template <typename... Ts>
-class VertexSeq : public GLObject {
+class VertexSeq : public internal::VertexSeqBase {
 public:
-  // default constructor
-  VertexSeq();
-
-  // copy constructor and copy assignment operator
-  VertexSeq(const VertexSeq<Ts...>& copy);
-  VertexSeq& operator=(const VertexSeq<Ts...>& copy);
-
-  // move constructor and move assignment operator
-  VertexSeq(VertexSeq<Ts...>&& m);
-  VertexSeq& operator=(VertexSeq<Ts...>&& m);
-
-  // destructor
-  ~VertexSeq();
-
   /** Creates internal data structures.
    * Creates a OpenGL vertex buffer (VBO), a vertex array object (VAO),
    * and an optional index buffer when indexCount is not 0.
@@ -72,9 +113,7 @@ public:
    * @param indexCount The number of indicies in the index buffer (0 if you
    * don't need an index buffer)
    */
-  void create(uint16_t vertexSize,
-              uint32_t vertexCount,
-              uint32_t indexCount = 0);
+  void create(uint32_t vertexCount, uint32_t indexCount = 0);
 
   /** Primes the VertexSeq to obtain a HotVertexSeq.
   * Binds all OpenGL resources in order to use (writing data) the VertexSeq.
@@ -99,48 +138,6 @@ public:
   * be called after the HotVertexSeq is created.
   */
   void prime(std::function<void(HotVertexSeq<Ts...>&)> func);
-
-  /// Returns the native OpenGL handle of the vertex buffer
-  GLuint nativeVertexHandle() const;
-
-  /// Returns the native OpenGL handle of the index buffer
-  GLuint nativeIndexHandle() const;
-
-  /// Returns the native OpenGL handle of the vertex array object
-  GLuint nativeVAOHandle() const;
-
-
-  /// Returns the number of vertices in the sequence
-  int size() const;
-
-  /// Determines if a vertex layout is active
-  bool isVertexLayoutActive() const;
-
-  static void setupOpenGL();
-
-  /// Returns true if the VertexSeq was created
-  explicit operator bool() const;
-
-private:
-  GLuint m_vertexHandle;
-  GLuint m_indexHandle;
-  GLuint m_vertexArrayObject;
-  uint32_t m_vertexCount;
-  uint32_t m_indexCount;
-  uint16_t m_vertexSize;
-  bool m_layoutActive;
-
-  static bool s_isPrimed;
-
-  void bindAll();
-  void unbindAll();
-
-  void bindVAO() const;
-  void unbindVAO() const;
-
-  friend internal::HotVertexSeqBase;
-  friend HotProgram;
-  friend HotVertexSeq<Ts...>;
 };
 
 } // namespace lumina

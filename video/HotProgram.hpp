@@ -1,11 +1,15 @@
 #pragma once
 
+#include "FrameBuffer.hpp"
+#include "GLException.hpp"
 #include "GLObject.hpp"
-#include "UniformSet.hpp"
-#include "Program.hpp"
-#include "VertexSeq.fpp"
-#include "PrimitiveType.hpp"
+#include "HotProgram.hpp"
 #include "HotTextureContainer.hpp"
+#include "PrimitiveType.hpp"
+#include "Program.hpp"
+#include "TextureUnits.hpp"
+#include "UniformSet.hpp"
+#include "VertexSeq.hpp"
 
 namespace lumina {
 
@@ -32,15 +36,17 @@ public:
   \param count Specifies how many vertices out of the sequence are used. The
   default value (-1) causes the whole vertex sequence to be drawn.
   */
+  template <typename... Ts>
   void draw(const HotTexCont& texCont,
-            const VertexSeq& data,
+            const VertexSeq<Ts...>& data,
             PrimitiveType type,
             int offset = 0,
             int count = -1);
   /** Draws a VertexSeq without textures.
   See the other overload of draw() for more information.
   */
-  void draw(const VertexSeq& data,
+  template <typename... Ts>
+  void draw(const VertexSeq<Ts...>& data,
             PrimitiveType type,
             int offset = 0,
             int count = -1);
@@ -48,7 +54,8 @@ public:
 private:
   HotProgram(Program& ref);
 
-  void drawImpl(const VertexSeq& data,
+  template <typename... Ts>
+  void drawImpl(const VertexSeq<Ts...>& data,
                 PrimitiveType type,
                 int offset = 0,
                 int count = -1);

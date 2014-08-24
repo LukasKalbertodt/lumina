@@ -53,14 +53,19 @@ typename std::enable_if<sizeof...(Tail) != 0>::type applyLayoutImpl() {
   applyLayoutImpl<Index + 1, Stride, Offset + Size, Tail...>();
 }
 
+
 template <typename T, typename... Ts>
-struct LayoutTypes {
-  static constexpr int stride = LayoutTypes<Ts...>::stride + sizeof(T);
+struct VertexLayout {
+  static constexpr int size = VertexLayout<Ts...>::size + sizeof(T);
+  static constexpr int count = VertexLayout<Ts...>::count + 1;
 };
 template <typename T>
-struct LayoutTypes<T> {
-  static constexpr int stride = sizeof(T);
+struct VertexLayout<T> {
+  static constexpr int size = sizeof(T);
+  static constexpr int count = 1;
 };
+
+
 
 }
 

@@ -13,7 +13,8 @@ namespace lumina {
  * \param size The size of the box in each direction
  * \tparam Chans A list of VertexAttributes that should be written per vertex
  */
-template <VAttr... Chans> VertexSeq createBox(Vec3f size);
+template <VAttr... Chans>
+VertexSeq<typename internal::VAttrHelper<Chans>::type...> createBox(Vec3f size);
 
 } // namespace lumina
 

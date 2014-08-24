@@ -8,26 +8,18 @@
 
 
 namespace lumina {
-namespace internal {
 
 class IndexSet : public GLObject {
 public:
-  IndexSet(int indexCount) : m_buffer(nullptr), m_indexCount(indexCount) {}
+  IndexSet(int indexCount, unsigned int* buffer); 
 
-  IndexSlot operator[](int index) {
-    if(index >= m_indexCount) {
-      logError("[IndexSet] Index <", index, "> out of bounds!");
-      throw GLException("[IndexSet] Index out of bounds");
-    }
-    return std::move(IndexSlot(*(m_buffer + index)));
-  }
+  IndexSlot operator[](int index);
 
 private:
   unsigned int* m_buffer;
   int m_indexCount;
-
-  friend HotVertexSeqBase;
 };
 
-}
-}
+} // namespace lumina
+
+#include "IndexSet.tpp"

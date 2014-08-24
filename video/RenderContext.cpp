@@ -86,7 +86,7 @@ void RenderContext::prime(std::function<void(HotRenderContext&)> func) {
 }
 
 void RenderContext::configure() {
-  VertexSeq::setupOpenGL();
+  internal::VertexSeqBase::setupOpenGL();
 }
 
 } // namespace lumina
