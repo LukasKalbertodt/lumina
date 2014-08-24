@@ -14,7 +14,7 @@ VertexSlot<Cs...> VertexSet<Cs...>::operator[](int index) {
 
   // calculate offset and return another helper object
   auto* buf = static_cast<char*>(m_buffer)  
-              + index * internal::VertexLayout<Cs...>::stride;
+              + index * internal::VertexLayout<Cs...>::size;
   return VertexSlot<Cs...>(buf);
 }
 
