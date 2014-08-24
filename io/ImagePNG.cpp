@@ -64,10 +64,11 @@ ImageBox loadPNGImage(std::string filename) {
   uint8_t* outData = static_cast<uint8_t*>(out.data());
 
 
-  for(int i = 0; i < image.get_width(); ++i) {
-    memcpy(outData + i * image.get_height(),
-           &image.get_row(i),
-           image.get_height());
+  for(int i = 0; i < image.get_height(); ++i) {
+    auto rowLen = image.get_width() * sizeof(image.get_row(i)[0]);
+    memcpy(outData + i * rowLen,
+           image.get_row(i).data(),
+           rowLen);
   }
 
   return ImageBox(std::move(out));
