@@ -61,7 +61,8 @@ struct VertexAttribute<Vector<T, N>> {
 
 
 template <typename T, int Index, int Offset, int Stride>
-typename std::enable_if<true>::type applyLayoutAttrib() {
+typename std::enable_if<std::is_floating_point<T>::value>::type
+applyLayoutAttrib() {
   static_assert(VertexAttribute<T>::valid, "");
 
   glVertexAttribPointer(Index,
@@ -71,7 +72,19 @@ typename std::enable_if<true>::type applyLayoutAttrib() {
                         Stride,
                         reinterpret_cast<void*>(Offset));
   glEnableVertexAttribArray(Index);
-  slog("-> ", Index, ", ", Offset, ", ", Stride);
+}
+
+template <typename T, int Index, int Offset, int Stride>
+typename std::enable_if<!std::is_floating_point<T>::value>::type 
+applyLayoutAttrib() {
+  static_assert(VertexAttribute<T>::valid, "");
+
+  glVertexAttribIPointer(Index,
+                         VertexAttribute<T>::components,
+                         VertexAttribute<T>::type,
+                         Stride,
+                         reinterpret_cast<void*>(Offset));
+  glEnableVertexAttribArray(Index);
 }
 
 template <int Index, int Stride, int Offset, typename T, typename... Tail>
