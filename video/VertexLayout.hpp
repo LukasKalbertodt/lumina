@@ -47,21 +47,25 @@ template <typename T>
 struct VertexAttribute {
   static constexpr bool valid = VertexAttributeType<T>::valid;
   static constexpr GLenum type = VertexAttributeType<T>::type;
-  static constexpr int components = 1;  
+  static constexpr int components = 1;
+  using ttype = T;
 };
+
 
 template <typename T, std::size_t N>
 struct VertexAttribute<Vector<T, N>> {
   static constexpr bool valid = VertexAttributeType<T>::valid;
   static constexpr int components = N;
   static constexpr GLenum type = VertexAttributeType<T>::type;
+  using ttype = T;
 };
 
 
 
 
 template <typename T, int Index, int Offset, int Stride>
-typename std::enable_if<std::is_floating_point<T>::value>::type
+typename std::enable_if<std::is_floating_point<typename VertexAttribute<T>::
+                                                 ttype>::value>::type
 applyLayoutAttrib() {
   static_assert(VertexAttribute<T>::valid, "");
 
@@ -76,7 +80,8 @@ applyLayoutAttrib() {
 }
 
 template <typename T, int Index, int Offset, int Stride>
-typename std::enable_if<!std::is_floating_point<T>::value>::type 
+typename std::enable_if<!std::is_floating_point<typename VertexAttribute<T>::
+                                                 ttype>::value>::type
 applyLayoutAttrib() {
   static_assert(VertexAttribute<T>::valid, "");
 
