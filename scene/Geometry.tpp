@@ -38,20 +38,19 @@ void fillData(T slot, const VPoint& data) {
 
 
 template <VAttr... Cs> 
-VertexSeq createBox(Vec3f size) {
+VertexSeq<typename internal::VAttrHelper<Cs>::type...> createBox(Vec3f size) {
   static_assert(sizeof...(Cs) > 0,
                 "[createBox] You must specify vertex channels to be filled!");
 
   using namespace internal;
 
-  VertexSeq out;
+  VertexSeq<typename VAttrHelper<Cs>::type...> out;
 
   // vertexCount = 6 faces * 4 points per face
   // indexCount = 6 faces * 4 points + 5 primitive restart
-  out.create(internal::VAttrsHelper<Cs...>::size, 6 * 4, 6 * 4 + 5);
+  out.create(6 * 4, 6 * 4 + 5);
 
-  out.prime<typename VAttrHelper<Cs>::type...>([&](
-    HotVertexSeq<typename VAttrHelper<Cs>::type...>& hot) {
+  out.prime([&](HotVertexSeq<typename VAttrHelper<Cs>::type...>& hot) {
     // fill vertex buffer with corner-points
 
     // ---------- face positiv z ---------------

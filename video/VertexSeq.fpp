@@ -2,6 +2,10 @@
 
 namespace lumina {
 
-class VertexSeq;
+namespace internal {
+class VertexSeqPrimeLock;
+}
+
+template <typename... Ts> class VertexSeq;
 
 }
