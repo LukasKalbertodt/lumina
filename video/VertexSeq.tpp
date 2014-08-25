@@ -158,8 +158,8 @@ void VertexSeq<Ts...>::prime(std::function<void(HotVertexSeq<Ts...>&)> func) {
   // ===== post-prime =====
   // apply vertex layout
   if(!m_layoutActive) {
-    internal::applyLayoutImpl<0, internal::VertexLayout<Ts...>::size,
-                              0, sizeof(Ts)...>();
+    internal::
+      applyVertexLayout<0, internal::VertexLayout<Ts...>::size, 0, Ts...>();
 
     checkGLError("[HotVertexSeq] Error<", GLERR, 
                  "> while applying vertex layout!");
