@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../util/VectorCore.hpp"
+#include "../service/StaticLogger.hpp"
 
 #include <GL/glew.h>
 
@@ -70,6 +71,7 @@ typename std::enable_if<true>::type applyLayoutAttrib() {
                         Stride,
                         reinterpret_cast<void*>(Offset));
   glEnableVertexAttribArray(Index);
+  slog("-> ", Index, ", ", Offset, ", ", Stride);
 }
 
 template <int Index, int Stride, int Offset, typename T, typename... Tail>
