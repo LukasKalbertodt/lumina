@@ -76,7 +76,6 @@ applyLayoutAttrib() {
                         Stride,
                         reinterpret_cast<void*>(Offset));
   glEnableVertexAttribArray(Index);
-  slog("Float -> ", Index, " ", Offset, " ", Stride);
 }
 
 template <typename T, int Index, int Offset, int Stride>
@@ -91,8 +90,6 @@ applyLayoutAttrib() {
                          Stride,
                          reinterpret_cast<void*>(Offset));
   glEnableVertexAttribArray(Index);
-  slog("NonFl -> ", Index, " ", Offset, " ", Stride);
-}
 
 template <int Index, int Stride, int Offset, typename T, typename... Tail>
 typename std::enable_if<sizeof...(Tail) == 0>::type applyVertexLayout() {
