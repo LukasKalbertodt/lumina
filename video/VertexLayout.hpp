@@ -91,6 +91,8 @@ applyLayoutAttrib() {
                          reinterpret_cast<void*>(Offset));
   glEnableVertexAttribArray(Index);
 
+}
+
 template <int Index, int Stride, int Offset, typename T, typename... Tail>
 typename std::enable_if<sizeof...(Tail) == 0>::type applyVertexLayout() {
   applyLayoutAttrib<T, Index, Offset, Stride>();
