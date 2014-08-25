@@ -73,14 +73,14 @@ typename std::enable_if<true>::type applyLayoutAttrib() {
 }
 
 template <int Index, int Stride, int Offset, typename T, typename... Tail>
-typename std::enable_if<sizeof...(Tail) != 0>::type applyVertexLayout() {
+typename std::enable_if<sizeof...(Tail) == 0>::type applyVertexLayout() {
   applyLayoutAttrib<T, Index, Offset, Stride>();
-  applyVertexLayout<Index + 1, Stride, Offset + sizeof(T), Tail...>();
 }
 
 template <int Index, int Stride, int Offset, typename T, typename... Tail>
-typename std::enable_if<sizeof...(Tail) == 0>::type applyVertexLayout() {
+typename std::enable_if<sizeof...(Tail) != 0>::type applyVertexLayout() {
   applyLayoutAttrib<T, Index, Offset, Stride>();
+  applyVertexLayout<Index + 1, Stride, Offset + sizeof(T), Tail...>();
 }
 
 
