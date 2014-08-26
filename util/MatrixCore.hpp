@@ -172,7 +172,7 @@ public:
    * @brief Transposes the matrix m and writes result into out
    */
   template <std::size_t R, std::size_t C>
-  static void transpose(const T (&m)[R][C], const T (&out)[C][R]) {
+  static void transpose(const T (&m)[R][C], T (&out)[C][R]) {
     for(int i = 0; i< R; ++i) {
       for(int j = 0; j < C; ++j) {
         out[j][i] = m[i][j];
