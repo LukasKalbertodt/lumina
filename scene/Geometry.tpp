@@ -1,7 +1,11 @@
 #include "../util/VariadicTools.hpp"
 #include "../video/PrimitiveType.hpp"
 
+#include "../service/StaticLogger.hpp"
+
 #include <cmath>
+#include <iomanip>
+#include <iostream>
 
 namespace lumina {
 
@@ -217,21 +221,24 @@ VertexSeq<typename internal::VAttrHelper<Cs>::type...> createSphere(
   VertexSeq<typename VAttrHelper<Cs>::type...> out;
 
   int vertexCount = 2 + (thetaSteps - 1) * phiSteps;
+  int indexCount = 2 * phiSteps * 4
+                   + ((thetaSteps - 2) * 2 * (phiSteps + 1) + (thetaSteps - 2));
   // vertexCount = 2 poles
   // indexCount = 
-  out.create(vertexCount);
+  out.create(vertexCount, indexCount);
+  slog("Count: ", vertexCount);
 
   out.prime([&](HotVertexSeq<typename VAttrHelper<Cs>::type...>& hot) {
     // north pole
     fillData<Cs...>(hot.vertex[0],
                     VPoint(Vec3f(0, radius, 0),
                            Vec3f(0, 1, 0),
-                           Vec2f(0, 0)));
+                           Vec2f(0.5, 0)));
     // south pole
-    fillData<Cs...>(hot.vertex[vertexCount],
+    fillData<Cs...>(hot.vertex[vertexCount - 1],
                     VPoint(Vec3f(0, -radius, 0),
                            Vec3f(0, -1, 0),
-                           Vec2f(0, 0)));
+                           Vec2f(0.5, 1)));
 
     for(int thetaIt = 1; thetaIt < thetaSteps; ++thetaIt) {
       float theta = (thetaIt * PI) / (thetaSteps);
@@ -239,11 +246,62 @@ VertexSeq<typename internal::VAttrHelper<Cs>::type...> createSphere(
       for(int phiIt = 0; phiIt < phiSteps; ++phiIt) {
         float phi = (phiIt * PI * 2) / phiSteps;
 
-        Vec3f norm(cos(phi), cos(theta), sin(phi));
+        Vec3f norm(cos(phi) * sin(theta), cos(theta), sin(phi) * sin(theta));
 
-        fillData<Cs...>(hot.vertex[phiIt + (thetaIt - 1) * phiSteps],
-                        VPoint(norm * radius, norm, Vec2f(0, 0)));
+        int index = 1 + phiIt + (thetaIt - 1) * phiSteps;
+        std::cout << std::setprecision(3);
+        Vec2f uv = Vec2f(static_cast<float>(phiIt) / phiSteps,
+                         static_cast<float>(thetaIt) / thetaSteps);
+        // Vec2i uv = Vec2i(1, 0);
+
+        fillData<Cs...>(hot.vertex[index],
+                        VPoint(norm * radius, norm, uv));
       }
+    }
+
+    int ind = 0;
+
+    // ----- north pole -----
+    hot.index[ind++] = 0;
+    hot.index[ind++] = 1;
+    hot.index[ind++] = phiSteps;
+    hot.index[ind++] = GLIndex::PrimitiveRestart;
+
+    for(int phiIt = 1; phiIt < phiSteps; ++phiIt) {
+      hot.index[ind++] = 0;
+      hot.index[ind++] = phiIt + 1;
+      hot.index[ind++] = phiIt;
+      hot.index[ind++] = GLIndex::PrimitiveRestart;
+    }
+
+
+    // ----- main -----
+    for(int level = 0; level < thetaSteps - 2; ++level) {
+      int lowOffset = 1 + level * phiSteps;
+      int highOffset = 1 + (level + 1) * phiSteps;
+
+      for(int piece = 0; piece < phiSteps; ++piece) {
+        hot.index[ind++] = highOffset + piece;
+        hot.index[ind++] = lowOffset + piece;
+      }
+      hot.index[ind++] = highOffset;
+      hot.index[ind++] = lowOffset;
+      hot.index[ind++] = GLIndex::PrimitiveRestart;
+    }
+
+
+    // ------ south pole ---------
+    int lastStripeOffset = (thetaSteps - 2) * phiSteps;
+    hot.index[ind++] = vertexCount - 1;
+    hot.index[ind++] = vertexCount - 2;
+    hot.index[ind++] = lastStripeOffset + 1;
+    hot.index[ind++] = GLIndex::PrimitiveRestart;
+
+    for(int phiIt = 1; phiIt < phiSteps; ++phiIt) {
+      hot.index[ind++] = vertexCount - 1;
+      hot.index[ind++] = lastStripeOffset + phiIt;
+      hot.index[ind++] = lastStripeOffset + phiIt + 1;
+      hot.index[ind++] = GLIndex::PrimitiveRestart;
     }
   });
 
