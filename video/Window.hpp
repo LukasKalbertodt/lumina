@@ -77,6 +77,8 @@ public:
   
   /// Changes the title of the window
   void setTitle(std::string title);
+
+  void setFullscreen(bool enable);
   
   /// Resizes the window 
   void resize(Vec2i size);

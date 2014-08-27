@@ -38,6 +38,11 @@ inline void Window::removeWindowCallback(WindowCallbackIndex index) {
   m_windowCallbacks[index] = WindowCallback();
 }
 
+inline void Window::setFullscreen(bool enable) {
+  m_fullscreen = enable;
+}
+
+
 inline void Window::setResizable(bool enable) {
   m_resizable = enable;
 }
