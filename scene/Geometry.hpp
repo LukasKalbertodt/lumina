@@ -16,6 +16,10 @@ namespace lumina {
 template <VAttr... Chans>
 VertexSeq<typename internal::VAttrHelper<Chans>::type...> createBox(Vec3f size);
 
+template <VAttr... Chans>
+VertexSeq<typename internal::VAttrHelper<Chans>::type...> createSphere(
+  float radius, int thetaSteps, int phiSteps);
+
 } // namespace lumina
 
 #include "Geometry.tpp"

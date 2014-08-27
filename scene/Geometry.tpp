@@ -1,6 +1,8 @@
 #include "../util/VariadicTools.hpp"
 #include "../video/PrimitiveType.hpp"
 
+#include <cmath>
+
 namespace lumina {
 
 namespace internal {
@@ -196,6 +198,53 @@ VertexSeq<typename internal::VAttrHelper<Cs>::type...> createBox(Vec3f size) {
     hot.index[26] = 21;
     hot.index[27] = 22;
     hot.index[28] = 23;
+  });
+
+  return out;
+}
+
+
+template <VAttr... Cs>
+VertexSeq<typename internal::VAttrHelper<Cs>::type...> createSphere(
+  float radius, int thetaSteps, int phiSteps) {
+  static_assert(sizeof...(Cs) > 0,
+                "[createBox] You must specify vertex channels to be filled!");
+
+  using namespace internal;
+
+  constexpr float PI = 3.1415926;
+
+  VertexSeq<typename VAttrHelper<Cs>::type...> out;
+
+  int vertexCount = 2 + (thetaSteps - 1) * phiSteps;
+  // vertexCount = 2 poles
+  // indexCount = 
+  out.create(vertexCount);
+
+  out.prime([&](HotVertexSeq<typename VAttrHelper<Cs>::type...>& hot) {
+    // north pole
+    fillData<Cs...>(hot.vertex[0],
+                    VPoint(Vec3f(0, radius, 0),
+                           Vec3f(0, 1, 0),
+                           Vec2f(0, 0)));
+    // south pole
+    fillData<Cs...>(hot.vertex[vertexCount],
+                    VPoint(Vec3f(0, -radius, 0),
+                           Vec3f(0, -1, 0),
+                           Vec2f(0, 0)));
+
+    for(int thetaIt = 1; thetaIt < thetaSteps; ++thetaIt) {
+      float theta = (thetaIt * PI) / (thetaSteps);
+
+      for(int phiIt = 0; phiIt < phiSteps; ++phiIt) {
+        float phi = (phiIt * PI * 2) / phiSteps;
+
+        Vec3f norm(cos(phi), cos(theta), sin(phi));
+
+        fillData<Cs...>(hot.vertex[phiIt + (thetaIt - 1) * phiSteps],
+                        VPoint(norm * radius, norm, Vec2f(0, 0)));
+      }
+    }
   });
 
   return out;
