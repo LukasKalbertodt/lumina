@@ -9,7 +9,8 @@ inline Window::Window(std::string title, Vec2i size)
     m_lastMouseY(0.f),
     m_sizeMultiplier(1.f),
     m_resetLastPos(true),
-    m_resizable(false) {}
+    m_resizable(false),
+    m_fullscreen(false) {}
 
 
 inline void Window::setVersionHint(int major, int minor) {

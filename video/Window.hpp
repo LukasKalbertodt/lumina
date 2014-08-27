@@ -152,6 +152,7 @@ private:
   float m_sizeMultiplier;
   bool m_resetLastPos;
   bool m_resizable;
+  bool m_fullscreen;
   CursorMode m_cursorMode;
 
 

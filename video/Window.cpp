@@ -49,8 +49,9 @@ void Window::open() {
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
   // Create window
+  auto* mon = m_fullscreen ? glfwGetPrimaryMonitor() : nullptr;
   m_window
-      = glfwCreateWindow(m_size.x, m_size.y, m_title.c_str(), nullptr, nullptr);
+    = glfwCreateWindow(m_size.x, m_size.y, m_title.c_str(), mon, nullptr);
   if(!m_window) {
     // if this is the first window, call glfwTerminate to clean up resources
     if(s_eventReceiver.empty()) {
