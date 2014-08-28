@@ -53,7 +53,7 @@ void Shader<Type>::compile(ShaderSource source) {
   checkGLError("[Shader] OpenGL Error<", GLERR,
                "> occured while compiling shader!");
 
-  log("[Shader] Shader <", m_filename, "> was successfully compiled.");
+  logDebug("[Shader] Shader <", m_filename, "> was successfully compiled.");
 }
 
 

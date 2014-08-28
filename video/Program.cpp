@@ -33,8 +33,8 @@ void Program::create(VShader& vs, FShader& fs) {
     logError("[Program] ", compileLog.data());
     throw GLException("Could not link shaders");
   }
-  log("[Program] Shaders <", vs.getFilename(), ", ", fs.getFilename(),
-      "> were successfully linked.");
+  logDebug("[Program] Shaders <", vs.getFilename(), ", ", fs.getFilename(),
+           "> were successfully linked.");
 
   // detach shaders (TODO: is this a good idea?)
   glDetachShader(program, vs.getHandle());
